@@ -48,13 +48,13 @@ const curriculum = [
         name: "Uriel MacGillivary",
         title: "",
         bio: "Uriel is a yoga teacher, an entrepreneur, and a leader of transformational Yoga teacher trainings and retreats across the Globe. She is the founder of Shanti Yoga Studios and the Shanti Traditional School of Yoga based in Halifax, Nova Scotia.",
-        image: "/teachers-pics copy/Uriel-Seated-Circular.png"
+        image: "/images-in-use/teachers-used/uriel-macgillivary.jpg"
     },
     {
         name: "Nikki Martin",
         title: "",
         bio: "Nikki came to yoga in 2011. Drawn by the strength, grace and challenge of arm balances and inversions, and a desire to finally forge a path to peace and happiness in her life. She quickly fell in love with the practice of yoga as a whole and how it enriched all facets of her life, and though she still loves the physical challenges it presents her practice is now driven by spirituality, philosophy, energetics and the powerful impact yoga has both on her life and in the world.",
-        image: "/teachers-pics copy/nikki-martin-bio.JPG"
+        image: "/images-in-use/teachers-used/nikki-martin.jpg"
     },
   ];
 
@@ -85,9 +85,9 @@ export default function VinyasaKramaPage() {
             subtitle="The Integration of Movement, Prana & Sequencing"
             dates="Next Course Dates: TBD"
             quote="Vinyasa Krama is the system connecting with the rhythm and cycles of energy through movement and breath cultivating a landscape of evolved consciousness."
-            heroImage="/Alexa-Photos/01.jpg"
-            imageTwo="/Alexa-Photos/12.jpg"
-            imageThree="/Alexa-Photos/13.jpg"
+            heroImage="/images-in-use/03.jpg"
+            imageTwo="/images-in-use/19.jpg"
+            imageThree="/images-in-use/24.jpg"
             infoPackageLink="#"
             whoIsThisFor={whoIsThisFor}
             learningOutcomes={learningOutcomes}

@@ -2,12 +2,14 @@ import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { CheckCircle } from "lucide-react";
+import { PageHero } from "@/components/page-hero";
 
 const continuingGrowthItems = [
     "Have you graduated from a 200 hour teaching training program full of knowledge but lacking confidence in stepping into the teaching roll?",
     "Are you looking for more specific feedback on your yoga classes than your current students and peers are offering?",
     "Would you like guided mentorship on teaching with intention and sequencing that offers the most to all the students who show up to your classes?",
     "Are you ready to find your authentic voice as a yoga teacher?",
+    "Peer feedback and support",
 ];
 
 const programSupportItems = [
@@ -29,21 +31,16 @@ export default function MentorshipProgramPage() {
     return (
         <div className="bg-stone-50 text-stone-800">
             {/* Hero Section */}
-            <section className="relative py-24 bg-gradient-to-br from-background via-background to-muted overflow-hidden">
-                <div className="container mx-auto px-4">
-                    <div className="max-w-4xl mx-auto text-center">
-                        <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                            Teaching Mentorship <span className="gradient-sage-text">Program</span>
-                        </h1>
-                        <p className="text-xl text-muted-foreground mb-8">
-                            The path from graduating with a 200 hour teaching certificate to comfortably guiding students through their yoga practice can be an uncertain one.
-                        </p>
-                         <Badge variant="secondary" className="bg-sage-green/10 text-sage-green border-sage-green/20">
-                            August 2025
-                        </Badge>
-                    </div>
+            <div className="relative bg-cover bg-center" style={{ backgroundImage: "url('/images-in-use/03.jpg')" }}>
+                <div className="absolute inset-0 bg-black/50" />
+                <div className="relative">
+                    <PageHero
+                        title="Teaching Mentorship Program"
+                        subtitle="The path from graduating with a 200 hour teaching certificate to comfortably guiding students through their yoga practice can be an uncertain one."
+                        badge="August 2025"
+                    />
                 </div>
-            </section>
+            </div>
 
             <section className="py-16 sm:py-24">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -90,7 +87,7 @@ export default function MentorshipProgramPage() {
                              <div className="bg-white p-6 rounded-lg shadow-sm">
                                 <div className="flex flex-col items-center text-center">
                                     <Image
-                                        src="/Teachers/teachers-pics copy/stephanie-morton.png"
+                                        src="/images-in-use/teachers-used/stephanie-morton.jpg"
                                         alt="Stephanie Morton"
                                         width={120}
                                         height={120}
@@ -102,6 +99,13 @@ export default function MentorshipProgramPage() {
                             </div>
 
                             <div className="bg-white p-6 rounded-lg shadow-sm text-center">
+                                <Image
+                                    src="/images-in-use/24.jpg"
+                                    alt="Yoga class"
+                                    width={400}
+                                    height={250}
+                                    className="rounded-lg mb-4"
+                                />
                                 <blockquote className="text-lg italic text-stone-600 border-l-4 border-sage-green pl-4">
                                     &quot;Our mentorship program supports you in real time as you step into your yoga teaching career, leading studio classes and receiving concrete and actionable feedback.&quot;
                                 </blockquote>

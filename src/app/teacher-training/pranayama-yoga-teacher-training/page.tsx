@@ -61,19 +61,19 @@ const curriculum = [
         name: "Stephanie Morton",
         title: "Teacher",
         bio: "Stephanie Morton has been teaching yoga since 2011. As a long distance runner and running coach, she has worked with many endurance athletes but also has a keen interest in yoga for healthy aging. Her approach to yoga is pragmatic but grounded in traditional teachings and yogic philosophy. Her classes combine asanas and functional movement practices with pranayama and meditation techniques that support every lifestyle. She also specializes in pre and post-natal yoga. Originally from Halifax, she recently returned to Nova Scotia with her family after having lived and worked in Playa del Carmen, Mexico for 15 years. She has a decade of yoga studio management experience and has been a lead trainer in many 200-hour yoga teacher training courses. She is passionate about supporting and mentoring yoga teachers.",
-        image: "/teachers-pics copy/stephanie-morton.png"
+        image: "/images-in-use/teachers-used/stephanie-morton.jpg"
     },
     {
         name: "Andrea Gracia",
         title: "Teacher",
         bio: "Andrea Gracia has been practicing Yoga for a little over 10 years. She began her journey in her homeland of México and has since seen yoga transform her life in many profound ways. A few years ago, Andrea had the opportunity to travel to the birthplace of yoga, where she trained with her teacher along the banks of the Himalayas. Later, she was fortunate enough to travel to South India to study the traditional Ashtanga Vinyasa style with Saraswati Jois in Mysore. Her experiences in India, combined with the knowledge gained from her teachers in México and Canada, as well as her practice over the years, are something she is eager to share with others.",
-        image: "/teachers-pics copy/Andrea Gracia.jpg"
+        image: "/images-in-use/teachers-used/andrea-gracia.jpg"
     },
     {
         name: "Kevin Dougall",
         title: "Teacher",
         bio: "A yoga nerd at heart, Kevin brings his genuine passion for yoga to every class. He started his yoga journey at Shanti in 2011, and has since had the pleasure of training with Ryan Leier, Srivatsa Ramaswami (vinyasa krama), and Manju Jois (ashtanga), and holds a RYT 200, and RCYT (registered children's yoga teacher) certification with Yoga Alliance. He shares his dynamic style of practice which is fun, inspirational, and focused on the core traditions of yoga.",
-        image: "/teachers-pics copy/Kevin Dougall.jpg"
+        image: "/images-in-use/teachers-used/kevin-dougall.jpg"
     },
   ];
 
@@ -101,9 +101,9 @@ export default function PranayamaYogaPage() {
             title="Pranayama Yoga Teacher Training"
             subtitle="Uncover your full potential to Teach, to Practice, to Live."
             dates="February 5-8, 2026"
-            heroImage="/Alexa-Photos/04.jpg"
-            imageTwo="/Alexa-Photos/18.jpg"
-            imageThree="/Alexa-Photos/19.jpg"
+            heroImage="/images-in-use/08.jpg"
+            imageTwo="/images-in-use/12.jpg"
+            imageThree="/images-in-use/13.jpg"
             whoIsThisFor={whoIsThisFor}
             learningOutcomes={learningOutcomes}
             curriculum={curriculum}

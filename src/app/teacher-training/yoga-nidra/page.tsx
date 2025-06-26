@@ -84,7 +84,7 @@ const teachers = [
         name: "Dorothy Spence",
         title: "200, 500 Hours & Level 1 Parayoga Certified",
         bio: "Dorothy's longtime love affair with yoga started with her first downward facing dog over 20 years ago. She is a 'yoga geek' and is constantly studying, talking and integrating yoga's wisdom and philosophy into her everyday life. She is a 200, and 500 hour certified yoga teacher. She continues her tantric hatha yoga studies with Pandi Rajmani Tigunait, the spiritual leader of the Himalayan Institute and is an Ayurveda Yoga Specialist through The Himalayan Institute. With an engineering degree and a Masters in Business Administration, Dorothy is the founder of Imaginal Ventures Inc., a business advisory and training company who supports conscious leaders who are changing the world.",
-        image: "/teachers-pics copy/Dorothy Spence.jpg"
+        image: "/images-in-use/teachers-used/dorothy-spence.jpg"
     }
 ];
 
@@ -101,9 +101,9 @@ export default function YogaNidraPage() {
             title="Yoga Nidra — Levels 1 & 2"
             subtitle="An important practice for modern times"
             dates="Next Course Dates TBD"
-            heroImage="/Alexa-Photos/05.jpg"
-            imageTwo="/Alexa-Photos/10.jpg"
-            imageThree="/Alexa-Photos/11.jpg"
+            heroImage="/images-in-use/05.jpg"
+            imageTwo="/images-in-use/19.jpg"
+            imageThree="/images-in-use/35.jpg"
             whoIsThisFor={whoIsThisFor}
             curriculum={curriculum}
             teachers={teachers}

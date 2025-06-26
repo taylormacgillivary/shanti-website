@@ -61,25 +61,25 @@ const teachers = [
         name: "Emilie Fabre",
         title: "E-RYT 500 Hour, Yin YT 300 Hour",
         bio: "I wasn't always very good with being still. The idea of sitting for a period of time with no 'real' purpose would drive me crazy. I was that person who always needed to be doing and had started to forget the importance of being. My first yin class evoked a lot of emotion, particularly anger, an emotion I wasn't use to feeling or even expressing. Although I did not like to feel that emotion, I couldn't ignore how good my body felt after the yin class, how much more calm I felt from the emotional releases I experienced. Just like my regular practice, I became enthralled with yin, I would look forward to these weekly classes, to that experience of feeling so much and then letting it go. When I started teaching it was natural to offer longer held stretching poses at the end of a challenging vinyasa style of class. I was soon encouraged to look at teaching yin and I am ever grateful for that encouragement! My foundational training took me to Vancouver to study with Bernie Clark, a scientist by trade and yogi at heart! This training cultivated a desire to learn more, it changed how I approached offering yin poses and why. Wanting to learn more I decided to apply to learn with one of Bernie's first Yin teachers, Paul Grilley, the yogi responsible for bringing yin yoga to the west! Paul is known for his extensive knowledge of anatomy and basing his yoga instruction on the function of the postures, not on how they 'should' look. I have completed 300 hours of yin yoga training with Paul and plan to continue learning from him and other knowledgeable and passionate yin yoga instructors. I am excited to share the understanding I have gained thus far on my journey about this practice, helping fellow teachers feel more self-assured in the intention behind their instructions.",
-        image: "/teachers-pics copy/Emilie.jpg"
+        image: "/images-in-use/teachers-used/emilie-fabre.jpg"
     },
     {
         name: "Nikki Martin",
         title: "",
         bio: "Nikki came to yoga in 2012, craving an activity to get her out of the house and drawn by both the strength, grace and challenge of arm balances and inversions, and a desire to finally forge a path to peace and happiness in her life. She quickly fell in love with the practice of yoga as a whole and how it enriched all facets of her life, and though she still loves the physical challenges, it presents she has come to appreciate the mental, spiritual and philosophical aspects of the practice as well. She did her 200hr training with Shanti Hot Yoga the same studio where she was inspired by her teachers to deepen her practice and eventually follow her dream to become a yoga teacher full time. She has since accomplished this goal and with over 1000 hours of teaching experience has garnered her E-RYT 200 certification. As a writer and storyteller, she loves the idea that a yoga class can lead you somewhere, that you can tell a story with body and breath. As a teacher and student, she is passionate about yoga not as a practice of doing, but rather as one of trying, experiencing and feeling. And whether it's a couple of people or a crowded room, as a teacher she tries to pass along the greatest gift this practice has given her, 'Ultimately this is a practice of connectivity. It connects us with the world. It connects us with ourselves. And it connects us with each other.'",
-        image: "/teachers-pics copy/nikki-martin-bio.JPG"
+        image: "/images-in-use/teachers-used/nikki-martin.jpg"
     },
     {
         name: "Uriel MacGillivary",
         title: "E- RYT 500 Hour, Reiki Master",
         bio: "Uriel is a yoga teacher, an entrepreneur, and a leader of transformational Yoga teacher trainings and retreats across the Globe. She is the founder of Shanti Yoga Studios and the Shanti Traditional School of Yoga based in Halifax, Nova Scotia. Having held senior management and marketing roles in Corporate Canada for twenty years she answered the call to become a yoga teacher. A life-changing journey to India to study the ancient teachings would transform her life. Overnight she walked away from everything that she knew and started a phase in her life that would take her on the adventure of a lifetime. Stepping into her true purpose she recognized that students longed for the same deep transformation in their lives. Her studios and teaching philosophy are guided by the values of the time-honored wisdom teachings of the yoga tradition. Led by masters such as the late Georg Feurerstein, of the Traditional School of Yoga and world-renowned yoga and meditation teacher Rod Stryker she is a student for life. Having studied Tantra, Vinyasa Krama, and Iyengar yoga, she brings a multi-disciplinary approach to her teaching. My vision is clear she says: 'I believe in the power of yoga to transform lives and inspire students to awaken their souls calling'.",
-        image: "/teachers-pics copy/Uriel-Seated-Circular.png"
+        image: "/images-in-use/teachers-used/uriel-macgillivary.jpg"
     },
     {
         name: "Stephanie Morton",
         title: "",
         bio: "Stephanie Morton has been teaching yoga since 2011. As a long distance runner and running coach, she has worked with many endurance athletes but also has a keen interest in yoga for healthy aging. Her approach to yoga is pragmatic but grounded in traditional teachings and yogic philosophy. Her classes combine asanas and functional movement practices with pranayama and meditation techniques that support every lifestyle. She also specializes in pre and post-natal yoga. Originally from Halifax, she recently returned to Nova Scotia with her family after having lived and worked in Playa del Carmen, Mexico for 15 years. She has a decade of yoga studio management experience and has been a lead trainer in many 200 hours yoga teacher training courses. She is passionate about supporting and mentoring yoga teachers.",
-        image: "/teachers-pics copy/stephanie-morton.png"
+        image: "/images-in-use/teachers-used/stephanie-morton.jpg"
     },
 ];
 
@@ -96,9 +96,8 @@ export default function YinTeacherTrainingPage() {
             title="Yin Yoga Teacher Training"
             subtitle="A 75-Hour Comprehensive Course"
             dates="Sept 26-28, Oct 24-26, Nov 14-16, 2025"
-            heroImage="/Alexa-Photos/05.jpg"
-            imageTwo="/Alexa-Photos/08.jpg"
-            imageThree="/Alexa-Photos/09.jpg"
+            heroImage="/images-in-use/05.jpg"
+            imageThree="/images-in-use/19.jpg"
             curriculum={curriculum}
             teachers={teachers}
             investment={investment}

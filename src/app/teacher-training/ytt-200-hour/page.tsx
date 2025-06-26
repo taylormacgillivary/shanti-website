@@ -119,19 +119,19 @@ const modules = [
         name: "Kyla MacKinnon",
         title: "E-RYT 500",
         bio: "Kyla is inspired by the act of leading others and empowering them to live their truth. She believes in the power of connecting breath and movement with those around her.",
-        image: "/placeholder.jpg"
+        image: "/images-in-use/teachers-used/kyla-mackinnon.jpg"
     },
     {
         name: "Stephanie Morton",
         title: "",
         bio: "Stephanie Morton has been teaching yoga since 2011. As a long distance runner and running coach, she has worked with many endurance athletes but also has a keen interest in yoga for healthy aging.",
-        image: "/teachers-pics copy/stephanie-morton.png"
+        image: "/images-in-use/teachers-used/stephanie-morton.jpg"
     },
     {
         name: "Kevin Dougall",
         title: "E-RYT 200",
         bio: "A yoga nerd at heart, Kevin brings his genuine passion for yoga to every class. He started his yoga journey at Shanti in 2011, and has since had the pleasure of training with some incredible teachers.",
-        image: "/teachers-pics copy/Kevin Dougall.jpg"
+        image: "/images-in-use/teachers-used/kevin-dougall.jpg"
     },
   ];
 
@@ -172,9 +172,9 @@ export default function YTT200HourPage() {
             subtitle="A 200-Hour Foundational Journey"
             dates="May 2—June 1, 2025"
             quote="We must be willing to let go of the life we have planned, so as to have the life that is waiting for us."
-            heroImage="/Alexa-Photos/05.jpg"
-            imageTwo="/Alexa-Photos/06.jpg"
-            imageThree="/Alexa-Photos/07.jpg"
+            heroImage="/images-in-use/05.jpg"
+            imageTwo="/images-in-use/12.jpg"
+            imageThree="/images-in-use/20.jpg"
             infoPackageLink="#"
             whoIsThisFor={whoIsThisFor}
             curriculum={modules}

@@ -39,7 +39,7 @@ export function Navigation() {
         <Link href="/" className="flex items-center space-x-3">
 
           <Image
-            src="/Logos/shantiyoga LOGO_300dpi.png"
+            src="/images-in-use/Logos/shantiyoga-logo-color.png"
             alt="Shanti Hot Yoga"
             width={120}
             height={40}

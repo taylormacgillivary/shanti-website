@@ -12,7 +12,7 @@ export function Footer() {
           <div className="lg:col-span-1">
             <div className="flex items-center space-x-3 mb-4">
               <Image
-                src="/Logos/shantiyoga LOGO_300dpi_white.png"
+                src="/images-in-use/Logos/shantiyoga-logo-white.png"
                 alt="Shanti Hot Yoga"
                 width={120}
                 height={40}

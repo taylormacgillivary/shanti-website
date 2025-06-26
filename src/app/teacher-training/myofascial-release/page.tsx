@@ -54,7 +54,7 @@ const curriculum = [
         name: "Stephanie Morton",
         title: "Lead Trainer",
         bio: "Stephanie Morton has been teaching yoga since 2011. As a long distance runner and running coach, she has worked with many endurance athletes but also has a keen interest in yoga for healthy aging. Her approach to yoga is pragmatic but grounded in traditional teachings and yogic philosophy. Her classes combine asanas and functional movement practices with pranayama and meditation techniques that support every lifestyle. She also specializes in pre and post-natal yoga. Originally from Halifax, she recently returned to Nova Scotia with her family after having lived and worked in Playa del Carmen, Mexico for 15 years. She has a decade of yoga studio management experience and has been a lead trainer in many 200-hour yoga teacher training courses. She is passionate about supporting and mentoring yoga teachers.",
-        image: "/teachers-pics copy/stephanie-morton.png"
+        image: "/images-in-use/teachers-used/stephanie-morton.jpg"
     },
   ];
 
@@ -79,9 +79,9 @@ export default function MyofascialReleasePage() {
             subtitle="Our Myofascial Release Yoga Teacher Training dives into fascia, the web-like connective tissue that wraps every muscle, organ, and bone."
             dates="October 2-5, 2025"
             quote="Understanding the interconnectedness within our bodies deepens our self-awareness and also enables us to lead yoga classes with greater intention and purpose."
-            heroImage="/Alexa-Photos/20.jpg"
-            imageTwo="/Alexa-Photos/21.jpg"
-            imageThree="/Alexa-Photos/22.jpg"
+            heroImage="/images-in-use/20.jpg"
+            imageTwo="/images-in-use/21.jpg"
+            imageThree="/images-in-use/33.jpg"
             whoIsThisFor={whoIsThisFor}
             learningOutcomes={learningOutcomes}
             curriculum={curriculum}

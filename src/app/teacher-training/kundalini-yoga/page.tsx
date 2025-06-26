@@ -48,13 +48,13 @@ const curriculum = [
         name: "Uriel MacGillivary",
         title: "E-RYT 500 Hour, Reiki Master",
         bio: "Uriel is a yoga teacher, an entrepreneur, and a leader of transformational Yoga teacher trainings and retreats across the Globe. She is the founder of Shanti Yoga Studios and the Shanti Traditional School of Yoga based in Halifax, Nova Scotia. Having held senior management and marketing roles in Corporate Canada for twenty years she answered the call to become a yoga teacher. A life-changing journey to India to study the ancient teachings would transform her life. Overnight she walked away from everything that she knew and started a phase in her life that would take her on the adventure of a lifetime. Stepping into her true purpose she recognized that students longed for the same deep transformation in their lives. Her studios and teaching philosophy are guided by the values of the time-honored wisdom teachings of the yoga tradition. Led by masters such as the late Georg Feurerstein, of the Traditional School of Yoga and world-renowned yoga and meditation teacher Rod Stryker she is a student for life. Having studied Tantra, Vinyasa Krama, and Iyengar yoga, she brings a multi-disciplinary approach to her teaching. My vision is clear she says: 'I believe in the power of yoga to transform lives and inspire students to awaken their souls calling'.",
-        image: "/teachers-pics copy/Uriel-Seated-Circular.png"
+        image: "/images-in-use/teachers-used/uriel-macgillivary.jpg"
     },
     {
         name: "Nikki Martin",
         title: "E-RYT 200 Hour",
         bio: "Nikki came to yoga in 2011. Drawn by the strength, grace and challenge of arm balances and inversions, and a desire to finally forge a path to peace and happiness in her life. She quickly fell in love with the practice of yoga as a whole and how it enriched all facets of her life, and though she still loves the physical challenges it presents her practice is now driven by spirituality, philosophy, energetics and the powerful impact yoga has both on her life and in the world. She did her 200hr YTT with Shanti Hot Yoga, the same studio where she was inspired by her teachers to deepen her practice and eventually follow her dream of becoming a yoga teacher full time. Along the way she discovered a passion for teaching other teachers and helping them discover their own gifts and destinies along this path. Inspired to be more and to know more she has assisted a 200hr YTT to be certified as a Teacher Trainer, taken her Yin TT, attended various workshops and trainings in social justice with industry leaders, and is completing her 300hr YTT through ParaYoga, a Tantra lineage descended from the Himalayan masters. She is passionate about honouring tradition while meeting students where they are and brings a wealth of knowledge to each and every class along with her playful, creative and fiery teaching style. As a writer and storyteller, she loves the idea that a yoga class can lead you somewhere, that you can tell a story with body and breath and the energetic impact that results when they come together with intent. By sprinkling philosophy, spirituality and the 8 Limbs of Yoga into her classes in accessible ways she tries to pass along the greatest gift this practice has given her, 'Ultimately this is a practice of connectivity. It connects us with the world. It connects us with ourselves. And it connects us with each other.'",
-        image: "/teachers-pics copy/nikki-martin-bio.JPG"
+        image: "/images-in-use/teachers-used/nikki-martin.jpg"
     },
   ];
 
@@ -85,9 +85,9 @@ export default function KundaliniYogaPage() {
             subtitle="Uncover your full potential to Teach, to Practice, to Live."
             dates="Next Course Dates: TBD"
             quote="Kundalini Energy is the universal energy of Supreme Intelligence manifested in human beings as the highest source of potentiality."
-            heroImage="/Alexa-Photos/02.jpg"
-            imageTwo="/Alexa-Photos/14.jpg"
-            imageThree="/Alexa-Photos/15.jpg"
+            heroImage="/images-in-use/36.jpg"
+            imageTwo="/images-in-use/37.jpg"
+            imageThree="/images-in-use/39.jpg"
             infoPackageLink="#"
             whoIsThisFor={whoIsThisFor}
             learningOutcomes={learningOutcomes}
