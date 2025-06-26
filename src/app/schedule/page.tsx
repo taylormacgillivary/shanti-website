@@ -269,7 +269,7 @@ export default function SchedulePage() {
                     </>
                   ) : (
                     <div className="py-4 text-gray-500">
-                      We&apos;re sorry, there are no more classes today.
+                      We&apos;re sorry, there are no more classes today. 
                     </div>
                   )}
                 </div>

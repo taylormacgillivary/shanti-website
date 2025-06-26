@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { CheckCircle } from "lucide-react";
 import { PageHero } from "@/components/page-hero";
