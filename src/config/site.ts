@@ -34,7 +34,7 @@ export const siteConfig = {
             href: "/workshops",
             description: "Special workshops and upcoming events.",
             featured: true,
-            image: "/Alexa-Photos/03.jpg",
+            image: "/images-in-use/03.jpg",
         },
         {
             title: "Energy Exchange",

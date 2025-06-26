@@ -3,14 +3,19 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
 const pastRetreats = [
-  { name: "India", image: "/retreats/india.jpg" },
-  { name: "Bali", image: "/retreats/Bali.jpg" },
-  { name: "South of France", image: "/retreats/france.jpg" },
-  { name: "Canada", image: "/retreats/canada.jpg" },
-  { name: "Turkey", image: "/retreats/turkey.jpg" },
-  { name: "Peru", image: "/retreats/Peru.jpg" },
-  { name: "Nicaragua", image: "/retreats/nicaragua.jpg" },
-  { name: "Tanzania", image: "/retreats/Tanzania.jpg" },
+  { name: "Kerala, India", image: "/images-in-use/Retreats/kerala-india.jpeg" },
+  { name: "Bali", image: "/images-in-use/Retreats/Bali.jpg" },
+  { name: "South of France", image: "/images-in-use/Retreats/south-france.avif" },
+  { name: "Greece", image: "/images-in-use/Retreats/greece.avif" },
+  { name: "Vietnam", image: "/images-in-use/Retreats/vietnam.avif" },
+  { name: "Peru", image: "/images-in-use/Retreats/Peru.jpg" },
+  { name: "Nicaragua", image: "/images-in-use/Retreats/nicaragua.avif" },
+  { name: "Tanzania", image: "/images-in-use/Retreats/Tanzania.jpg" },
+  { name: "Costa Rica", image: "/images-in-use/Retreats/costa-rica.webp" },
+  { name: "Florence, Italy", image: "/images-in-use/Retreats/florence-italy.jpg" },
+  { name: "Morocco", image: "/images-in-use/Retreats/morocco.jpg" },
+  { name: "Belize", image: "/images-in-use/Retreats/belize.jpg" },
+  { name: "Galapagos, Ecuador", image: "/images-in-use/Retreats/galapagos-ecuador.jpg" },
 ];
 
 export default function RetreatsPage() {
@@ -46,7 +51,7 @@ export default function RetreatsPage() {
             {/* Image Column */}
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
               <Image
-                src="/retreats/colombia.jpg"
+                src="/images-in-use/Retreats/colombia.jpg"
                 alt="Palamino, Colombia Retreat"
                 fill
                 className="object-cover"
