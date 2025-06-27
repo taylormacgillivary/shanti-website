@@ -1,14 +1,14 @@
 "use client";
 
 import React from "react";
-import WorldMap from "react-svg-worldmap";
+import WorldMap, { CountryContext } from "react-svg-worldmap";
 
 type PastRetreatsMapProps = {
   visitedCountryCodes: string[];
 };
 
 const PastRetreatsMap = ({ visitedCountryCodes }: PastRetreatsMapProps) => {
-  const styleFunction = (countryContext: any) => {
+  const styleFunction = (countryContext: CountryContext) => {
     const isVisited = visitedCountryCodes.some(c => c.toLowerCase() === countryContext.countryCode.toLowerCase());
 
     return {
