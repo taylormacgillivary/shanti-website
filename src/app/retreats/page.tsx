@@ -1,6 +1,10 @@
+"use client";
+
 import Image from "next/image";
+import { useState, useMemo } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import PastRetreatsMap from "@/components/ui/PastRetreatsMap";
 
 const pastRetreats = [
   { name: "Kerala, India", image: "/images-in-use/Retreats/kerala-india.jpeg" },
@@ -16,9 +20,35 @@ const pastRetreats = [
   { name: "Morocco", image: "/images-in-use/Retreats/morocco.jpg" },
   { name: "Belize", image: "/images-in-use/Retreats/belize.jpg" },
   { name: "Galapagos, Ecuador", image: "/images-in-use/Retreats/galapagos-ecuador.jpg" },
+  { name: "Windhorse Farm, Canada", image: "/images-in-use/Retreats/windhorse-farm-canada.jpeg" },
 ];
 
+const retreatToCountryCode: { [key: string]: string } = {
+  "Kerala, India": "in",
+  "Bali": "id",
+  "South of France": "fr",
+  "Greece": "gr",
+  "Vietnam": "vn",
+  "Peru": "pe",
+  "Nicaragua": "ni",
+  "Tanzania": "tz",
+  "Costa Rica": "cr",
+  "Florence, Italy": "it",
+  "Morocco": "ma",
+  "Belize": "bz",
+  "Galapagos, Ecuador": "ec",
+  "Windhorse Farm, Canada": "ca",
+};
+
 export default function RetreatsPage() {
+  const [activeTab, setActiveTab] = useState<'photos' | 'map'>('photos');
+
+  const visitedCountryCodes = useMemo(() => [
+    ...new Set(
+      pastRetreats.map((r) => retreatToCountryCode[r.name]).filter(Boolean)
+    ),
+  ], []);
+
   return (
     <>
       
@@ -121,26 +151,53 @@ export default function RetreatsPage() {
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               We&apos;ve had the privilege of taking yogis on incredible adventures to every corner of the globe. 
-              From the jungles of India to the savannahs of Tanzania and the mountain peaks of Peru, 
-              we&apos;ve sought out places that bring your spirit to life.
+              Explore our past retreats through our photo gallery or on the world map.
             </p>
           </div>
+          
+          <div className="flex justify-center gap-4 mb-8">
+            <Button
+              variant={activeTab === 'photos' ? 'default' : 'outline'}
+              onClick={() => setActiveTab('photos')}
+              className={activeTab === 'photos' ? 'gradient-sage text-white' : 'border-2 border-sage-green/30'}
+            >
+              Photo Gallery
+            </Button>
+            <Button
+              variant={activeTab === 'map' ? 'default' : 'outline'}
+              onClick={() => setActiveTab('map')}
+              className={activeTab === 'map' ? 'gradient-sage text-white' : 'border-2 border-sage-green/30'}
+            >
+              Map View
+            </Button>
+          </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {pastRetreats.map((retreat, index) => (
-              <div key={index} className="relative aspect-square rounded-xl overflow-hidden group">
-                <Image
-                  src={retreat.image}
-                  alt={`${retreat.name} Retreat`}
-                  fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-black/0" />
-                <div className="absolute bottom-4 left-4 text-white">
-                  <h3 className="text-xl font-bold">{retreat.name}</h3>
+          <div className="mt-8">
+            {activeTab === 'photos' && (
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                {pastRetreats.map((retreat, index) => (
+                  <div key={index} className="relative aspect-square rounded-xl overflow-hidden group">
+                    <Image
+                      src={retreat.image}
+                      alt={`${retreat.name} Retreat`}
+                      fill
+                      className="object-cover transition-transform duration-300 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-black/0" />
+                    <div className="absolute bottom-4 left-4 text-white">
+                      <h3 className="text-xl font-bold">{retreat.name}</h3>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+            {activeTab === 'map' && (
+              <div className="flex justify-center pointer-events-none">
+                <div className="max-w-7xl">
+                  <PastRetreatsMap visitedCountryCodes={visitedCountryCodes} />
                 </div>
               </div>
-            ))}
+            )}
           </div>
         </div>
       </section>
