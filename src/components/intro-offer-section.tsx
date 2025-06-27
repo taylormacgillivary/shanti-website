@@ -5,7 +5,7 @@ export function IntroOfferSection() {
   return (
     <section className="relative h-[50vh] min-h-[400px] flex items-center justify-center text-white">
       <Image
-        src="/Alexa-Photos/39.jpg"
+        src="/images-in-use/08.jpg"
         alt="A person in a yoga pose"
         layout="fill"
         objectFit="cover"

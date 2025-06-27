@@ -7,20 +7,31 @@ const AboutPage: NextPage = () => {
       year: 2010,
       title: 'Shanti Dartmouth Opens',
       description: 'Where it all started. Opening in 2010 and building a yoga community that has been together 15 years strong and always striving for growth.',
-      image: '/Alexa-Photos/01.jpg',
     },
     {
       year: 2013,
       title: 'Shanti Bedford Opens',
       description: 'In 2013 we decided to expand our community to Bedford. As the Yoga community in Halifax had few choices around the city, we aimed to bridge the gap in the Halifax.',
-      image: '/Alexa-Photos/02.jpg',
     },
     {
         year: 2015,
         title: 'Shanti Halifax Opens',
-        description: 'Through the summer of 2015 we worked night and day to find local creators and craftspeople to build our central studio in Downtown Halifax and expand our community to the bustling energy of the diverse downtown core.',
-        image: '/Alexa-Photos/03.jpg',
+        description: 'Through the summer of 2015 we worked night and day to find local creators and craftspeople to build our central studio in Downtown Halifax and expand our community to the bustling energy of a diverse downtown core.',
     },
+  ];
+  const studioLocations = [
+    {
+      name: "Shanti Dartmouth",
+      image: "https://images.squarespace-cdn.com/content/v1/673f8221417d512fe9887ee8/1732215365350-3VTMTFPQXCSH4KFD4Q44/Dartmouth2.jpg",
+    },
+    {
+      name: "Shanti Bedford",
+      image: "https://images.squarespace-cdn.com/content/v1/673f8221417d512fe9887ee8/1732215365354-SS65BOZYTUV1H789DX88/Bedford1.jpg",
+    },
+    {
+      name: "Shanti Halifax",
+      image: "https://images.squarespace-cdn.com/content/v1/673f8221417d512fe9887ee8/1732215365346-Q728J2VMG3QEE8DLX537/Halifax%2B1.jpg",
+    }
   ];
 
   return (
@@ -88,7 +99,7 @@ const AboutPage: NextPage = () => {
               </p>
             </div>
             <div className="flex justify-center">
-              <Image src="/Alexa-Photos/08 small.jpg" alt="Uriel MacGillivary" width={400} height={400} className="rounded-lg shadow-lg" />
+              <Image src="/images-in-use/teachers-used/uriel-macgillivary-headshot.jpg" alt="Uriel MacGillivary" width={400} height={400} className="rounded-lg shadow-lg" />
             </div>
           </div>
         </div>
@@ -119,9 +130,13 @@ const AboutPage: NextPage = () => {
         <div className="container mx-auto py-16 px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {
-                    ['04.jpg', '05.jpg', '06.jpg'].map(img=>(
-                        <div key={img} className="rounded-lg shadow-lg overflow-hidden">
-                             <Image src={`/Alexa-Photos/${img}`} alt="Shanti Studio" width={500} height={500} className="object-cover h-64 w-full" />
+                    studioLocations.map(studio=>(
+                        <div key={studio.name} className="rounded-lg shadow-lg overflow-hidden relative">
+                             <Image src={studio.image} alt={`Shanti Studio in ${studio.name}`} width={500} height={500} className="object-cover h-64 w-full" />
+                             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                             <div className="absolute bottom-0 p-4">
+                               <h3 className="text-white text-xl font-bold">{studio.name}</h3>
+                             </div>
                         </div>
                     ))
                 }
