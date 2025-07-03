@@ -47,17 +47,17 @@ export function Footer() {
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/studios" className="text-gray-300 hover:text-sage-green transition-colors">
+                <Link href="/about" className="text-gray-300 hover:text-sage-green transition-colors">
                   Our Studios
                 </Link>
               </li>
               <li>
-                <Link href="/classes" className="text-gray-300 hover:text-sage-green transition-colors">
+                <Link href="/schedule" className="text-gray-300 hover:text-sage-green transition-colors">
                   Classes
                 </Link>
               </li>
               <li>
-                <Link href="/membership" className="text-gray-300 hover:text-sage-green transition-colors">
+                <Link href="/memberships" className="text-gray-300 hover:text-sage-green transition-colors">
                   Membership
                 </Link>
               </li>
@@ -131,13 +131,13 @@ export function Footer() {
             © 2024 Shanti Hot Yoga. All rights reserved.
           </div>
           <div className="flex space-x-6 text-sm">
-            <Link href="/privacy" className="text-gray-400 hover:text-sage-green transition-colors">
+            <Link href="/contact" className="text-gray-400 hover:text-sage-green transition-colors">
               Privacy Policy
             </Link>
-            <Link href="/terms" className="text-gray-400 hover:text-sage-green transition-colors">
+            <Link href="/contact" className="text-gray-400 hover:text-sage-green transition-colors">
               Terms of Service
             </Link>
-            <Link href="/accessibility" className="text-gray-400 hover:text-sage-green transition-colors">
+            <Link href="/contact" className="text-gray-400 hover:text-sage-green transition-colors">
               Accessibility
             </Link>
           </div>

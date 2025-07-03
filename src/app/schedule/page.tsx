@@ -8,6 +8,13 @@ export default function SchedulePage() {
       <Script
         src="https://widgets.mindbodyonline.com/javascripts/healcode.js"
         type="text/javascript"
+        strategy="afterInteractive"
+        onLoad={() => {
+          console.log('Healcode script loaded successfully on schedule page');
+        }}
+        onError={(e) => {
+          console.error('Error loading healcode script on schedule page:', e);
+        }}
       />
       <div className="container mx-auto py-12 px-4 md:px-6">
         <div className="flex flex-col items-center justify-center mb-8">
