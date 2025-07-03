@@ -35,8 +35,7 @@ export default function RootLayout({
     <html lang="en">
       <body 
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
-        data-new-gr-c-s-check-loaded="14.1240.0"
-        data-gr-ext-installed=""
+        suppressHydrationWarning={true}
       >
         <RootLayoutClient>{children}</RootLayoutClient>
       </body>

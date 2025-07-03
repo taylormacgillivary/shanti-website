@@ -68,7 +68,7 @@ export function IntroPassSection() {
           {/* Image Column */}
           <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl lg:order-2 order-1">
             <Image
-              src="/May-18-2022/YogaShantiMay2022-104.jpg"
+              src="/images-in-use/19.jpg"
               alt="Yoga practice at Shanti Hot Yoga"
               fill
               className="object-cover"

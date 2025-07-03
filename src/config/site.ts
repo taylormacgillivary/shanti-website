@@ -64,6 +64,11 @@ export const siteConfig = {
             description: "Our foundational yoga teacher training program.",
         },
         {
+            title: "YTT 500 Hour",
+            href: "/teacher-training/ytt-500-hour",
+            description: "Advanced certification for experienced yoga teachers.",
+        },
+        {
             title: "Teaching Mentorship",
             href: "/teacher-training/mentorship-program",
             description: "Receive guidance and feedback to grow as a teacher.",

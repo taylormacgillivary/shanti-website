@@ -67,14 +67,9 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <a
-                  href="https://clients.mindbodyonline.com/classic/mainclass?studioid=11233"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-300 hover:text-sage-green transition-colors"
-                >
+                <Link href="/schedule" className="text-gray-300 hover:text-sage-green transition-colors">
                   Book Class
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

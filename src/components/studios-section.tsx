@@ -125,15 +125,13 @@ export function StudiosSection() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="https://clients.mindbodyonline.com/classic/mainclass?studioid=11233"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/schedule"
               className="inline-flex items-center justify-center px-8 py-3 gradient-sage text-white font-medium rounded-lg hover:opacity-90 transition-all duration-200 shadow-lg"
             >
               Book Your First Class
             </a>
             <a
-              href="/membership"
+              href="/memberships"
               className="inline-flex items-center justify-center px-8 py-3 border-2 border-sage-green/30 text-foreground font-medium rounded-lg hover:bg-sage-green/5 transition-all duration-200"
             >
               View Memberships

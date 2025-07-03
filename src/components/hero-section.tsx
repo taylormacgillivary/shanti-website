@@ -22,26 +22,6 @@ export function HeroSection() {
       <div className="absolute top-40 right-10 w-72 h-72 bg-primary/20 rounded-full mix-blend-multiply filter blur-xl opacity-60 animate-blob animation-delay-2000"></div>
       <div className="absolute -bottom-8 left-20 w-72 h-72 bg-sage-green/15 rounded-full mix-blend-multiply filter blur-xl opacity-60 animate-blob animation-delay-4000"></div>
 
-      {/* Decorative Images */}
-      <div className="absolute top-1/4 right-10 w-32 h-32 rounded-full overflow-hidden opacity-30 hidden lg:block">
-        <Image
-          src="/May-18-2022/YogaShantiMay2022-101.jpg"
-          alt="Yoga Practice"
-          width={128}
-          height={128}
-          className="object-cover w-full h-full"
-        />
-      </div>
-      <div className="absolute bottom-1/4 left-10 w-24 h-24 rounded-full overflow-hidden opacity-30 hidden lg:block">
-        <Image
-          src="/May-18-2022/YogaShantiMay2022-102.jpg"
-          alt="Yoga Practice"
-          width={96}
-          height={96}
-          className="object-cover w-full h-full"
-        />
-      </div>
-
       <div className="container relative z-10 mx-auto px-4 py-32 text-center">
         <div className="max-w-4xl mx-auto space-y-8">
           {/* Main Headline */}
@@ -61,13 +41,13 @@ export function HeroSection() {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
             <Button size="lg" asChild className="gradient-sage hover:opacity-90 text-white px-8 py-4 text-lg shadow-lg">
-              <Link href="https://clients.mindbodyonline.com/classic/mainclass?studioid=11233" target="_blank">
+              <Link href="/memberships">
                 Start Your Journey
               </Link>
             </Button>
             <Button variant="outline" size="lg" asChild className="px-8 py-4 text-lg border-2 border-sage-green/30 hover:bg-sage-green/5 text-foreground">
-              <Link href="/studios">
-                Explore Studios
+              <Link href="/about">
+                Explore Shanti
               </Link>
             </Button>
           </div>

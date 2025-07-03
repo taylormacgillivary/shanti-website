@@ -185,6 +185,9 @@ const ListItem = React.forwardRef<
   React.ElementRef<"a">,
   React.ComponentPropsWithoutRef<"a"> & { featured?: boolean, image?: string }
 >(({ title, children, featured, href, image, ...props }, ref) => {
+  // Check if this is the 200 Hour YTT option
+  const isYTT200Hour = title === "YTT 200 Hour";
+  
   if (featured && image) {
     return (
       <li className="row-span-4">
@@ -232,10 +235,16 @@ const ListItem = React.forwardRef<
         <Link
           href={href ?? ''}
           ref={ref}
-          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+          className={`block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors ${
+            isYTT200Hour 
+              ? "bg-sage-green/20 hover:bg-sage-green/30 border border-sage-green/30 focus:bg-sage-green/30" 
+              : "hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+          }`}
           {...props}>
-          <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+          <div className={`text-sm font-medium leading-none ${isYTT200Hour ? "text-foreground font-semibold" : ""}`}>
+            {title}
+          </div>
+          <p className={`line-clamp-2 text-sm leading-snug ${isYTT200Hour ? "text-foreground/80" : "text-muted-foreground"}`}>
             {children}
           </p>
         </Link>

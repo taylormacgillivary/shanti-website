@@ -192,6 +192,31 @@ html {
   border-color: rgb(150, 191, 80);
 }
 
+/* Sage green opacity variants */
+.bg-sage-green\/20 {
+  background-color: rgba(150, 191, 80, 0.2);
+}
+
+.bg-sage-green\/30 {
+  background-color: rgba(150, 191, 80, 0.3);
+}
+
+.border-sage-green\/30 {
+  border-color: rgba(150, 191, 80, 0.3);
+}
+
+.text-sage-green {
+  color: rgb(150, 191, 80);
+}
+
+.text-sage-green\/80 {
+  color: rgba(150, 191, 80, 0.8);
+}
+
+.text-sage-green-dark {
+  color: rgb(120, 161, 50);
+}
+
 /* Gradient utilities */
 .gradient-sage {
   background: linear-gradient(135deg, rgb(150, 191, 80) 0%, rgb(130, 171, 60) 100%);

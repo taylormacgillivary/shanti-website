@@ -11,7 +11,7 @@ export function TeachersSection() {
           {/* Image Column */}
           <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
             <Image
-              src="/May-18-2022/YogaShantiMay2022-103.jpg"
+              src="/images-in-use/21.jpg"
               alt="Yoga class with experienced teachers"
               fill
               className="object-cover"
