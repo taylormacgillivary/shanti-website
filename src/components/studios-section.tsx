@@ -1,6 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { MapPin, Users, Star } from "lucide-react";
+import { MapPin } from "lucide-react";
 import Image from "next/image";
 
 const studios = [
