@@ -133,6 +133,12 @@ const modules = [
         bio: "A yoga nerd at heart, Kevin brings his genuine passion for yoga to every class. He started his yoga journey at Shanti in 2011, and has since had the pleasure of training with some incredible teachers.",
         image: "/images-in-use/teachers-used/kevin-dougall.jpg"
     },
+    {
+        name: "Uriel MacGillivary",
+        title: "E-RYT 500",
+        bio: "Uriel is a dedicated yoga teacher and spiritual guide who brings deep wisdom and compassion to her teaching. With her E-RYT 500 certification, she has extensive experience in guiding students through transformational yoga journeys.",
+        image: "/images-in-use/teachers-used/uriel-macgillivary-headshot.jpg"
+    },
   ];
 
   const faqs = [
@@ -162,7 +168,7 @@ const modules = [
       deposit: 1000,
       tuition: 3600,
       earlyBirdTuition: 3200,
-      earlyBirdDate: "February 15, 2025"
+      earlyBirdDate: "TBD"
   }
 
 export default function YTT200HourPage() {
@@ -170,14 +176,15 @@ export default function YTT200HourPage() {
         <CoursePage
             title="YTT — Spring 2025"
             subtitle="A 200-Hour Foundational Journey"
-            dates="May 2—June 1, 2025"
+            dates="Next Training Dates TBD"
             quote="We must be willing to let go of the life we have planned, so as to have the life that is waiting for us."
             heroImage="/images-in-use/05.jpg"
             imageTwo="/images-in-use/12.jpg"
             imageThree="/images-in-use/20.jpg"
-            infoPackageLink="#"
+            infoPackageLink="/YTT 2024 Info Package (2).pdf"
             whoIsThisFor={whoIsThisFor}
             curriculum={modules}
+            curriculumTitle="Course Curriculum"
             teachers={teachers}
             faqs={faqs}
             investment={investment}

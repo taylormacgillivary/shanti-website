@@ -21,6 +21,7 @@ const pastRetreats = [
   { name: "Belize", image: "/images-in-use/Retreats/belize.jpg" },
   { name: "Galapagos, Ecuador", image: "/images-in-use/Retreats/galapagos-ecuador.jpg" },
   { name: "Windhorse Farm, Canada", image: "/images-in-use/Retreats/windhorse-farm-canada.jpeg" },
+  { name: "Palamino, Colombia", image: "/images-in-use/Retreats/colombia.jpg" },
 ];
 
 const retreatToCountryCode: { [key: string]: string } = {
@@ -38,6 +39,7 @@ const retreatToCountryCode: { [key: string]: string } = {
   "Belize": "bz",
   "Galapagos, Ecuador": "ec",
   "Windhorse Farm, Canada": "ca",
+  "Palamino, Colombia": "co",
 };
 
 export default function RetreatsPage() {

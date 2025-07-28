@@ -1,8 +1,11 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Bio } from "@/components/ui/Bio";
 import { PageHero } from "@/components/page-hero";
+import { useEffect, useRef } from "react";
 
 const teachers = [
   {
@@ -158,6 +161,37 @@ const teachers = [
 ];
 
 export default function TeachersPage() {
+  const teacherRefs = useRef<{[key: string]: HTMLDivElement | null}>({});
+
+  useEffect(() => {
+    // Check if there's a hash in the URL and scroll to/expand that teacher
+    if (typeof window !== 'undefined' && window.location.hash) {
+      const hash = window.location.hash.substring(1); // Remove the #
+      const targetElement = teacherRefs.current[hash];
+      if (targetElement) {
+        // Small delay to ensure page is fully loaded
+        setTimeout(() => {
+          targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          // Trigger a visual highlight effect
+          targetElement.style.transition = 'box-shadow 0.3s ease';
+          targetElement.style.boxShadow = '0 0 20px rgba(150, 191, 80, 0.5)';
+          setTimeout(() => {
+            targetElement.style.boxShadow = '';
+          }, 2000);
+        }, 500);
+      }
+    }
+  }, []);
+
+  const createTeacherSlug = (name: string) => {
+    return name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+  };
+
+  const isTargetTeacher = (teacherSlug: string) => {
+    if (typeof window === 'undefined') return false;
+    return window.location.hash === `#${teacherSlug}`;
+  };
+
   return (
     <>
       <PageHero
@@ -170,28 +204,36 @@ export default function TeachersPage() {
       <section className="py-24 bg-gradient-to-b from-background to-muted/30">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {teachers.filter(t => t.featured).map((teacher, index) => (
-              <div key={index} className="relative bg-white rounded-2xl overflow-hidden shadow-xl">
-                <div className="aspect-[3/4] relative">
-                  <Image
-                    src={teacher.image}
-                    alt={teacher.name}
-                    fill
-                    className={`object-cover ${teacher.objectPosition || ''}`}
-                  />
-                </div>
-                <div className="p-6 space-y-4">
-                  <div>
-                    <h3 className="text-2xl font-bold">{teacher.name}</h3>
-                    <p className="text-sage-green font-medium">{teacher.title}</p>
-                    {teacher.certifications && (
-                      <p className="text-sm text-muted-foreground">{teacher.certifications}</p>
-                    )}
+            {teachers.filter(t => t.featured).map((teacher, index) => {
+              const teacherSlug = createTeacherSlug(teacher.name);
+              return (
+                <div 
+                  key={index} 
+                  id={teacherSlug}
+                  ref={(el) => { teacherRefs.current[teacherSlug] = el; }}
+                  className="relative bg-white rounded-2xl overflow-hidden shadow-xl"
+                >
+                  <div className="aspect-[3/4] relative">
+                    <Image
+                      src={teacher.image}
+                      alt={teacher.name}
+                      fill
+                      className={`object-cover ${teacher.objectPosition || ''}`}
+                    />
                   </div>
-                  <Bio text={teacher.bio} />
+                  <div className="p-6 space-y-4">
+                    <div>
+                      <h3 className="text-2xl font-bold">{teacher.name}</h3>
+                      <p className="text-sage-green font-medium">{teacher.title}</p>
+                      {teacher.certifications && (
+                        <p className="text-sm text-muted-foreground">{teacher.certifications}</p>
+                      )}
+                    </div>
+                    <Bio text={teacher.bio} autoExpand={isTargetTeacher(teacherSlug)} />
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -200,22 +242,30 @@ export default function TeachersPage() {
       <section className="py-24 bg-gradient-to-b from-muted/30 to-background">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {teachers.filter(t => !t.featured).map((teacher, index) => (
-              <div key={index} className="bg-white rounded-xl overflow-hidden shadow-lg">
-                <div className="aspect-[3/2] relative">
-                  <Image
-                    src={teacher.image}
-                    alt={teacher.name}
-                    fill
-                    className={`object-cover ${teacher.objectPosition || ''}`}
-                  />
+            {teachers.filter(t => !t.featured).map((teacher, index) => {
+              const teacherSlug = createTeacherSlug(teacher.name);
+              return (
+                <div 
+                  key={index} 
+                  id={teacherSlug}
+                  ref={(el) => { teacherRefs.current[teacherSlug] = el; }}
+                  className="bg-white rounded-xl overflow-hidden shadow-lg"
+                >
+                  <div className="aspect-[3/2] relative">
+                    <Image
+                      src={teacher.image}
+                      alt={teacher.name}
+                      fill
+                      className={`object-cover ${teacher.objectPosition || ''}`}
+                    />
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold mb-2">{teacher.name}</h3>
+                    <Bio text={teacher.bio} autoExpand={isTargetTeacher(teacherSlug)} />
+                  </div>
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-2">{teacher.name}</h3>
-                  <Bio text={teacher.bio} />
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

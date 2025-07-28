@@ -1,14 +1,21 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 
 interface BioProps {
   text: string;
+  autoExpand?: boolean;
 }
 
-export function Bio({ text }: BioProps) {
-  const [isExpanded, setIsExpanded] = useState(false);
+export function Bio({ text, autoExpand = false }: BioProps) {
+  const [isExpanded, setIsExpanded] = useState(autoExpand);
+
+  useEffect(() => {
+    if (autoExpand) {
+      setIsExpanded(true);
+    }
+  }, [autoExpand]);
 
   const toggleExpanded = () => {
     setIsExpanded(!isExpanded);

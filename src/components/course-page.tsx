@@ -49,6 +49,7 @@ interface CoursePageProps {
     whoIsThisFor?: WhoIsThisFor[];
     learningOutcomes?: string[];
     curriculum: Module[];
+    curriculumTitle?: string;
     teachers: Teacher[];
     faqs?: Faq[];
     investment: Investment;
@@ -70,6 +71,7 @@ export function CoursePage({
     whoIsThisFor,
     learningOutcomes,
     curriculum,
+    curriculumTitle = "Course Details",
     teachers,
     faqs,
     investment,
@@ -89,9 +91,18 @@ export function CoursePage({
                     </div>
                 )}
                 {isYogaAlliance && (
-                    <div className="inline-flex items-center gap-2 bg-green-100 text-green-800 font-semibold py-2 px-4 rounded-full">
-                        <ShieldCheck className="h-5 w-5" />
-                        <span>Yoga Alliance Certified</span>
+                    <div className="flex flex-col items-center gap-3">
+                        <div className="inline-flex items-center gap-2 bg-green-100 text-green-800 font-semibold py-2 px-4 rounded-full">
+                            <ShieldCheck className="h-5 w-5" />
+                            <span>Yoga Alliance Certified</span>
+                        </div>
+                        <Image 
+                            src="/images-in-use/RYS-200.png" 
+                            alt="Yoga Alliance RYS-200" 
+                            width={120} 
+                            height={80} 
+                            className="object-contain"
+                        />
                     </div>
                 )}
             </div>
@@ -150,7 +161,7 @@ export function CoursePage({
                         {infoPackageLink &&
                             <div className="text-center mt-12">
                                 <Button asChild size="lg" className="gradient-sage hover:opacity-90 text-white shadow-lg">
-                                    <Link href={infoPackageLink}>Download Info Package</Link>
+                                    <Link href={infoPackageLink} target="_blank" rel="noopener noreferrer">Download Info Package</Link>
                                 </Button>
                             </div>
                         }
@@ -199,11 +210,11 @@ export function CoursePage({
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-12">
                         <h2 className="text-3xl sm:text-4xl font-extrabold text-stone-900">
-                            Course Curriculum
+                            {curriculumTitle}
                         </h2>
                         <p className="mt-4 text-lg text-stone-600 max-w-3xl mx-auto">This training covers a wide range of topics to deepen your understanding and practice.</p>
                     </div>
-                    <Accordion type="single" collapsible className="w-full" defaultValue="item-0">
+                    <Accordion type="single" collapsible className="w-full">
                         {curriculum.map((module, index) => (
                             <AccordionItem key={index} value={`item-${index}`} className="border-b-2 border-stone-200">
                                 <AccordionTrigger className="text-xl sm:text-2xl font-semibold text-stone-800 hover:text-sage-green py-6 text-left">
@@ -211,7 +222,6 @@ export function CoursePage({
                                         <span className="text-sage-green font-bold">{`0${index + 1}`}</span>
                                         <span>{module.title}</span>
                                     </div>
-                                    {module.duration && <span className="text-base font-normal text-stone-500">{module.duration}</span>}
                                 </AccordionTrigger>
                                 <AccordionContent className="pt-4 pb-8 text-base text-stone-700">
                                     <ul className="list-disc list-inside space-y-3 pl-4">
@@ -246,27 +256,42 @@ export function CoursePage({
                         <h2 className="text-3xl sm:text-4xl font-extrabold text-stone-900">Meet Your Teachers</h2>
                     </div>
                     <div className="grid md:grid-cols-2 gap-x-12 gap-y-8 items-start">
-                        {teachers.map((teacher, index) => (
-                             <div key={index} className="flex flex-col sm:flex-row items-start gap-6">
-                                <div className="flex-shrink-0 relative w-[150px] h-[150px]">
-                                    <Image src={teacher.image} alt={teacher.name} fill className="rounded-full object-cover" />
-                                 </div>
-                                 <div className="flex-grow">
-                                     <h3 className="text-2xl font-bold">{teacher.name}</h3>
-                                     <p className="text-sage-green font-semibold mb-2">{teacher.title}</p>
-                                     <Accordion type="single" collapsible>
-                                        <AccordionItem value="item-1" className="border-none">
-                                            <AccordionTrigger className="text-stone-600 hover:no-underline justify-start gap-2 py-1 [&[data-state=open]>svg]:rotate-180">
-                                                Read bio
-                                            </AccordionTrigger>
-                                            <AccordionContent className="text-stone-600">
-                                                {teacher.bio}
-                                            </AccordionContent>
-                                        </AccordionItem>
-                                     </Accordion>
-                                 </div>
-                             </div>
-                        ))}
+                        {teachers.map((teacher, index) => {
+                            // Create a URL-friendly slug from the teacher's name
+                            const teacherSlug = teacher.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+                            
+                            return (
+                                <div key={index} className="flex flex-col sm:flex-row items-start gap-6">
+                                    <div className="flex-shrink-0 relative w-[150px] h-[150px]">
+                                        <Image src={teacher.image} alt={teacher.name} fill className="rounded-full object-cover" />
+                                    </div>
+                                    <div className="flex-grow">
+                                        <h3 className="text-2xl font-bold">{teacher.name}</h3>
+                                        <p className="text-sage-green font-semibold mb-2">{teacher.title}</p>
+                                        <Accordion type="single" collapsible>
+                                            <AccordionItem value="item-1" className="border-none">
+                                                <AccordionTrigger className="text-stone-600 hover:no-underline justify-start gap-2 py-1 [&[data-state=open]>svg]:rotate-180">
+                                                    Read bio
+                                                </AccordionTrigger>
+                                                <AccordionContent className="text-stone-600">
+                                                    {teacher.bio}
+                                                    <div className="mt-3">
+                                                        <Link 
+                                                            href={`/teachers#${teacherSlug}`} 
+                                                            target="_blank" 
+                                                            rel="noopener noreferrer"
+                                                            className="text-sage-green hover:text-sage-green/80 underline text-sm font-medium"
+                                                        >
+                                                            Read full bio
+                                                        </Link>
+                                                    </div>
+                                                </AccordionContent>
+                                            </AccordionItem>
+                                        </Accordion>
+                                    </div>
+                                </div>
+                            );
+                        })}
                     </div>
                 </div>
             </section>

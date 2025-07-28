@@ -214,20 +214,22 @@ export function MembershipSection() {
             We have over 100 corporate members. Is your employer one of them? Click the button below to ask if your
             company is partnered with us already, or to inquire about setting up a new corporate partnership.
           </p>
-          <Button className="mt-6 gradient-sage text-white">Contact Us</Button>
+          <Button className="mt-6 gradient-sage text-white" asChild>
+            <a href="mailto:info@shantihotyoga.ca?subject=corporate%20partner%20request">Contact Us</a>
+          </Button>
         </div>
         <div className="text-center mt-16">
           <h3 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-50">Stay in the loop</h3>
           <p className="mt-4 text-lg text-gray-600 dark:text-gray-400">
             Sign up with your email address to receive news and updates.
           </p>
-          <div className="mt-6 flex justify-center">
+          <div className="mt-6 flex justify-center gap-2">
             <input
-              className="w-full max-w-sm p-2 border border-gray-300 rounded-l-md dark:bg-gray-800 dark:border-gray-700 dark:text-gray-50"
+              className="w-full max-w-sm p-2 border border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-700 dark:text-gray-50"
               placeholder="Email Address"
               type="email"
             />
-            <Button className="rounded-r-md gradient-sage text-white">Sign Up</Button>
+            <Button className="px-6 py-2 rounded-md gradient-sage text-white">Sign Up</Button>
           </div>
         </div>
       </div>

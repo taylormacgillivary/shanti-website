@@ -7,7 +7,7 @@ const studios = [
   {
     id: "halifax",
     name: "Shanti Halifax",
-    location: "Downtown Halifax",
+    location: "Halifax, Downtown",
     description: "Through the summer of 2015 we worked night and day to find local creators and craftspeople to build our central studio in Downtown Halifax and expand our community to the bustling energy of the diverse downtown core.",
     image: "https://images.squarespace-cdn.com/content/v1/673f8221417d512fe9887ee8/1732215365346-Q728J2VMG3QEE8DLX537/Halifax%2B1.jpg",
     features: ["Downtown Location", "Largest Studio", "Premium Amenities"],
@@ -16,7 +16,7 @@ const studios = [
   {
     id: "bedford",
     name: "Shanti Bedford",
-    location: "Bedford",
+    location: "Bedford, Larry Uteck",
     description: "In 2013 we decided to expand our community to Bedford. As the Yoga community in Halifax had few choices around the city, we aimed to bridge the gap in the Halifax.",
     image: "https://images.squarespace-cdn.com/content/v1/673f8221417d512fe9887ee8/1732215365354-SS65BOZYTUV1H789DX88/Bedford1.jpg",
     features: ["Community Focus", "Welcoming Environment", "Convenient Location"],
@@ -25,7 +25,7 @@ const studios = [
   {
     id: "dartmouth",
     name: "Shanti Dartmouth",
-    location: "Dartmouth",
+    location: "Dartmouth, Woodlawn",
     description: "Where it all started. Opening in 2010 and building a yoga community that has been together 11 years strong and always striving for growth.",
     image: "https://images.squarespace-cdn.com/content/v1/673f8221417d512fe9887ee8/1732215365350-3VTMTFPQXCSH4KFD4Q44/Dartmouth2.jpg",
     features: ["Original Studio", "Established Community", "Rich History"],
@@ -91,25 +91,6 @@ export function StudiosSection() {
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
                     <MapPin className="w-4 h-4 text-sage-green" />
                     <span>{studio.location}</span>
-                  </div>
-                  
-                  <div className="flex flex-wrap gap-2">
-                    {studio.features.map((feature, index) => (
-                      <Badge key={index} variant="outline" className="text-xs border-sage-green/20 text-sage-green">
-                        {feature}
-                      </Badge>
-                    ))}
-                  </div>
-                  
-                  <div className="flex items-center gap-4 pt-2">
-                    <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                      <Users className="w-4 h-4 text-sage-green" />
-                      <span>Community</span>
-                    </div>
-                    <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                      <Star className="w-4 h-4 text-yellow-500" />
-                      <span>5.0</span>
-                    </div>
                   </div>
                 </div>
               </CardContent>
