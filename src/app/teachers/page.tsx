@@ -1,8 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { Bio } from "@/components/ui/Bio";
 import { PageHero } from "@/components/page-hero";
 import { useEffect, useRef } from "react";
@@ -47,7 +45,7 @@ const teachers = [
     title: "Teacher",
     image: "/images-in-use/teachers-used/andrea-gracia.jpg",
     bio: "My name is Andrea Gracia and I have been practicing Yoga for a little bit more than 10 years. I started this journey when I was living in México, my home land.\nThroughout the years I have witnessed how yoga has transformed my life in many different ways.\nI had the fortune to travel to the Motherland of Yoga a couple of years ago and train with my teacher in the banks of the Himalayas and later on I was lucky to travel again to South India to study with Saraswati Jois the traditional Ashtanga Vinyasa style in Mysore. My experience in India and what I have learned from my teachers in México and Canada and my personal practice throughout these years is something I wish to share with more people.",
-    objectPosition: "object-top"
+    objectPosition: "object-bottom"
   },
   {
     name: "Kristie Willems",
@@ -142,7 +140,7 @@ const teachers = [
   {
     name: "Erika Hale",
     title: "Teacher",
-    image: "/images-in-use/teachers-used/erika-hale.jpg",
+    image: "/images-in-use/teachers-used/erika-hale.jpeg",
     bio: "Erika started her daily yoga practice in 2021 at Shanti Bedford as a form of exercise, but it quickly and unexpectedly transformed into a spiritual journey and lifestyle. In spring of 2024 she completed her 200 hour yoga teacher training through Shanti. In her classes you can expect a balance of strength and flexibility, with an emphasis on finding effort and ease as you move through each posture. Erika truly believes that yoga is for every body: 'if you can breathe, you can do yoga!'"
   },
   {
@@ -266,20 +264,6 @@ export default function TeachersPage() {
                 </div>
               );
             })}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-24 bg-gradient-to-b from-background to-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-2xl mx-auto">
-            <h2 className="text-3xl font-bold mb-6">Go deeper with expert guidance in our 200-hr teacher training</h2>
-            <Button asChild size="lg" className="gradient-sage text-white hover:opacity-90">
-              <Link href="/teacher-training">
-                Learn More
-              </Link>
-            </Button>
           </div>
         </div>
       </section>
