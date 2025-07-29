@@ -4,6 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { MapPin, Menu } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 import {
   Accordion,
   AccordionContent,
@@ -91,6 +92,7 @@ export function Navigation() {
                       key={item.title}
                       href={item.href}
                       title={item.title}
+                      isNew={item.isNew}
                     >
                       {item.description}
                     </ListItem>
@@ -165,6 +167,7 @@ export function Navigation() {
                                 key={item.href}
                                 href={item.href}
                                 onOpenChange={setIsMobileMenuOpen}
+                                isNew={item.isNew}
                                 >
                                 {item.title}
                                 </MobileNavLink>
@@ -183,8 +186,8 @@ export function Navigation() {
 
 const ListItem = React.forwardRef<
   React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a"> & { featured?: boolean, image?: string }
->(({ title, children, featured, href, image, ...props }, ref) => {
+  React.ComponentPropsWithoutRef<"a"> & { featured?: boolean, image?: string, isNew?: boolean }
+>(({ title, children, featured, href, image, isNew, ...props }, ref) => {
   // Check if this is the 200 Hour YTT option
   const isYTT200Hour = title === "YTT 200 Hour";
   
@@ -241,8 +244,13 @@ const ListItem = React.forwardRef<
               : "hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
           }`}
           {...props}>
-          <div className={`text-sm font-medium leading-none ${isYTT200Hour ? "text-foreground font-semibold" : ""}`}>
+          <div className={`text-sm font-medium leading-none ${isYTT200Hour ? "text-foreground font-semibold" : ""} flex items-center gap-2`}>
             {title}
+            {isNew && (
+              <Badge variant="destructive" className="text-xs px-1 py-0 bg-red-500 text-white">
+                NEW!
+              </Badge>
+            )}
           </div>
           <p className={`line-clamp-2 text-sm leading-snug ${isYTT200Hour ? "text-foreground/80" : "text-muted-foreground"}`}>
             {children}
@@ -259,6 +267,7 @@ interface MobileNavLinkProps {
   children: React.ReactNode;
   onOpenChange: (open: boolean) => void;
   className?: string;
+  isNew?: boolean;
 }
 
 function MobileNavLink({
@@ -266,6 +275,7 @@ function MobileNavLink({
   children,
   onOpenChange,
   className,
+  isNew,
 }: MobileNavLinkProps) {
   return (
     <Link
@@ -274,9 +284,14 @@ function MobileNavLink({
       className={
         className
           ? className
-          : "text-base hover:text-sage-green transition-colors"
+          : "text-base hover:text-sage-green transition-colors flex items-center gap-2"
       }>
       {children}
+      {isNew && (
+        <Badge variant="destructive" className="text-xs px-1 py-0 bg-red-500 text-white">
+          NEW!
+        </Badge>
+      )}
     </Link>
   );
 }

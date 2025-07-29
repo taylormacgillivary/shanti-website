@@ -6,4 +6,5 @@ export type NavItem = {
     external?: boolean;
     featured?: boolean;
     image?: string;
+    isNew?: boolean;
 }; 

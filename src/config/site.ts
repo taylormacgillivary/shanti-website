@@ -108,5 +108,11 @@ export const siteConfig = {
             href: "/teacher-training/myofascial-release",
             description: "Dive into the web-like connective tissue that wraps every muscle, organ, and bone.",
         },
+        {
+            title: "Short CE Courses",
+            href: "/teacher-training/short-ce-courses",
+            description: "Focused continuing education courses for yoga teachers.",
+            isNew: true,
+        },
     ] satisfies NavItem[],
 }; 
