@@ -9,7 +9,7 @@ export default function SchedulePage() {
 
   useEffect(() => {
     // Check if healcode widget is already loaded from another page
-    if (typeof window !== 'undefined' && (window as any).HealcodeWidget) {
+    if (typeof window !== 'undefined' && 'HealcodeWidget' in window) {
       setScriptLoaded(true);
     }
   }, []);
