@@ -24,6 +24,7 @@ import {
 import {
   Sheet,
   SheetContent,
+  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -123,6 +124,9 @@ export function Navigation() {
           <SheetContent side="right">
             <SheetHeader>
               <SheetTitle>Menu</SheetTitle>
+              <SheetDescription>
+                Navigate to different sections of our website
+              </SheetDescription>
             </SheetHeader>
             <div className="mt-4">
                 <Accordion type="multiple" className="w-full">

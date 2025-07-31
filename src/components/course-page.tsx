@@ -55,8 +55,11 @@ interface CoursePageProps {
     investment: Investment;
     paymentDepositLink: string;
     paymentFullLink: string;
+    paymentDepositText?: string;
+    paymentFullText?: string;
     ceCredits?: string;
     isYogaAlliance?: boolean;
+    showDepositOnly?: boolean;
 }
 
 export function CoursePage({
@@ -77,8 +80,11 @@ export function CoursePage({
     investment,
     paymentDepositLink,
     paymentFullLink,
+    paymentDepositText = "Pay Deposit",
+    paymentFullText = "Pay Full Tuition",
     ceCredits,
     isYogaAlliance,
+    showDepositOnly = false,
 }: CoursePageProps) {
     const renderBadges = () => {
         if (!ceCredits && !isYogaAlliance) return null;
@@ -117,6 +123,7 @@ export function CoursePage({
                     src={heroImage}
                     alt={title}
                     fill
+                    sizes="100vw"
                     className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
@@ -176,7 +183,7 @@ export function CoursePage({
                         alt={title}
                         width={1800}
                         height={600}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover object-[center_52%]"
                     />
                 </div>
             )}
@@ -244,7 +251,7 @@ export function CoursePage({
                         alt={title}
                         width={1800}
                         height={600}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover object-[center_80%]"
                     />
                 </div>
             )}
@@ -263,7 +270,7 @@ export function CoursePage({
                             return (
                                 <div key={index} className="flex flex-col sm:flex-row items-start gap-6">
                                     <div className="flex-shrink-0 relative w-[150px] h-[150px]">
-                                        <Image src={teacher.image} alt={teacher.name} fill className="rounded-full object-cover" />
+                                        <Image src={teacher.image} alt={teacher.name} fill sizes="150px" className="rounded-full object-cover" />
                                     </div>
                                     <div className="flex-grow">
                                         <h3 className="text-2xl font-bold">{teacher.name}</h3>
@@ -302,13 +309,40 @@ export function CoursePage({
                     <div className="text-center mb-12">
                         <h2 className="text-3xl sm:text-4xl font-extrabold text-stone-900">Investment</h2>
                     </div>
+                    {showDepositOnly ? (
+                        <div className="flex justify-center">
+                            <div className="w-full max-w-md p-8 bg-stone-100 rounded-lg shadow-lg text-center">
+                                <h3 className="text-2xl font-bold">Total Cost</h3>
+                                <p className="text-5xl font-extrabold text-sage-green my-4">
+                                    ${investment.earlyBirdTuition ? investment.earlyBirdTuition : investment.tuition}
+                                </p>
+                                {investment.earlyBirdTuition && 
+                                    <p className="text-stone-600 mb-4">
+                                        Early bird pricing until {investment.earlyBirdDate}. Regular price ${investment.tuition}.
+                                    </p>
+                                }
+                                {investment.graduateTuition &&
+                                    <p className="text-stone-600 mb-4 text-sm">
+                                        Shanti Grad Price: ${investment.graduateEarlyBirdTuition ? investment.graduateEarlyBirdTuition : investment.graduateTuition}
+                                    </p>
+                                }
+                                <div className="border-t border-stone-300 pt-4 mb-4">
+                                    <h4 className="text-lg font-semibold mb-2">Pay Deposit Now</h4>
+                                    <p className="text-3xl font-bold text-sage-green">${investment.deposit}</p>
+                                </div>
+                                <Button asChild size="lg" className="mt-6 w-full gradient-sage hover:opacity-90 text-white">
+                                    <Link href={paymentDepositLink}>{paymentDepositText}</Link>
+                                </Button>
+                            </div>
+                        </div>
+                    ) : (
                     <div className="flex flex-col md:flex-row justify-center items-center gap-8">
                          <div className="w-full md:w-1/3 p-8 bg-stone-100 rounded-lg shadow-lg text-center">
                              <h3 className="text-2xl font-bold">Deposit</h3>
                              <p className="text-5xl font-extrabold text-sage-green my-4">${investment.deposit}</p>
                              <p className="text-stone-600">Secure your spot in the training.</p>
                              <Button asChild size="lg" className="mt-6 w-full gradient-sage hover:opacity-90 text-white">
-                                 <Link href={paymentDepositLink}>Pay Deposit</Link>
+                                     <Link href={paymentDepositLink}>{paymentDepositText}</Link>
                              </Button>
                          </div>
                          <div className="w-full md:w-1/3 p-8 bg-stone-100 rounded-lg shadow-lg text-center">
@@ -327,13 +361,23 @@ export function CoursePage({
                                 </p>
                              }
                              <Button asChild size="lg" className="mt-6 w-full gradient-sage hover:opacity-90 text-white">
-                                 <Link href={paymentFullLink}>Pay Full Tuition</Link>
+                                     <Link href={paymentFullLink}>{paymentFullText}</Link>
                              </Button>
                          </div>
                     </div>
+                    )}
                     <div className="text-center mt-8 text-stone-600">
+                        {showDepositOnly ? (
+                            <>
+                                <p className="font-semibold mb-2"><strong>Please Note</strong> - When you pay your deposit, your payment info will be stored and we will automatically process the remaining cost of the training two weeks prior to the start of training.</p>
+                                <p>The deposit is not refundable. If you would like to pay the balance owed for the training prior to two weeks in advance, please <a href="mailto:stephanie@shantihotyoga.ca?subject=Early Payment" className="text-sage-green hover:text-sage-green/80 underline">contact us</a>.</p>
+                            </>
+                        ) : (
+                            <>
                         <p>The deposit is not refundable. Refunds (excluding the deposit amount) are available up to 30 days prior to the beginning of training.</p>
                         <p>Full payment is due and will be processed 30 days before training begins.</p>
+                            </>
+                        )}
                     </div>
                 </div>
             </section>

@@ -96,14 +96,15 @@ export default function YinTeacherTrainingPage() {
             title="Yin Yoga Teacher Training"
             subtitle="A 75-Hour Comprehensive Course"
             dates="Sept 26-28, Oct 24-26, Nov 14-16, 2025"
-            heroImage="/images-in-use/05.jpg"
+            heroImage="/images-in-use/24.jpg"
             imageThree="/images-in-use/19.jpg"
             curriculum={curriculum}
             teachers={teachers}
             investment={investment}
-            paymentDepositLink="#"
+            paymentDepositLink="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=43&prodid=1011"
             paymentFullLink="#"
             ceCredits="75 Hours"
+            showDepositOnly={true}
         />
     )
 } 

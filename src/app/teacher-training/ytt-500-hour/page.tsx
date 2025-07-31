@@ -199,6 +199,7 @@ export default function YTT500HourPage() {
                     src="/images-in-use/05.jpg"
                     alt="YTT 500 Hour Advanced Certification"
                     fill
+                    sizes="100vw"
                     className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">

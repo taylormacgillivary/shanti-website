@@ -101,7 +101,7 @@ export default function YogaNidraPage() {
             title="Yoga Nidra — Levels 1 & 2"
             subtitle="An important practice for modern times"
             dates="Next Course Dates TBD"
-            heroImage="/images-in-use/05.jpg"
+            heroImage="/images-in-use/SHY_2798.jpg"
             imageTwo="/images-in-use/19.jpg"
             imageThree="/images-in-use/35.jpg"
             whoIsThisFor={whoIsThisFor}
@@ -110,7 +110,10 @@ export default function YogaNidraPage() {
             investment={investment}
             paymentDepositLink="#"
             paymentFullLink="#"
+            paymentDepositText="Registration Not Currently Open"
+            paymentFullText="Registration Not Currently Open"
             ceCredits="45 Hours"
+            showDepositOnly={true}
         />
     )
 } 

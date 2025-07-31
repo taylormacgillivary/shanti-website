@@ -63,6 +63,7 @@ export default function WorkshopsPage() {
                   src={workshop.image}
                   alt={workshop.title}
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
@@ -132,6 +133,7 @@ export default function WorkshopsPage() {
                     src={workshop.image}
                     alt={workshop.title}
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover"
                   />
                   <div className="absolute top-4 right-4">

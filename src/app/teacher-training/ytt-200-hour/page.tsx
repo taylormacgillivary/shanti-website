@@ -190,6 +190,8 @@ export default function YTT200HourPage() {
             investment={investment}
             paymentDepositLink="#"
             paymentFullLink="#"
+            paymentDepositText="Registration Not Currently Open"
+            paymentFullText="Registration Not Currently Open"
             isYogaAlliance={true}
         />
     )

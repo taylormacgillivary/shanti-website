@@ -78,7 +78,6 @@ export default function MyofascialReleasePage() {
             title="Myofascial Release Teacher Training"
             subtitle="Our Myofascial Release Yoga Teacher Training dives into fascia, the web-like connective tissue that wraps every muscle, organ, and bone."
             dates="October 2-5, 2025"
-            quote="Understanding the interconnectedness within our bodies deepens our self-awareness and also enables us to lead yoga classes with greater intention and purpose."
             heroImage="/images-in-use/20.jpg"
             imageTwo="/images-in-use/21.jpg"
             imageThree="/images-in-use/33.jpg"
@@ -91,6 +90,7 @@ export default function MyofascialReleasePage() {
             paymentDepositLink="#"
             paymentFullLink="#"
             ceCredits="40 Hours"
+            showDepositOnly={true}
         />
     )
 } 

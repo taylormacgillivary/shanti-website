@@ -14,6 +14,7 @@ export function TeachersSection() {
               src="/images-in-use/21.jpg"
               alt="Yoga class with experienced teachers"
               fill
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />

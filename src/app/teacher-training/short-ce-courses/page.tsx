@@ -49,7 +49,7 @@ export default function ShortCECoursesPage() {
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
               Sangha |{" "}
               <span className="gradient-sage-text">
-                Community
+                Community Courses
               </span>
             </h1>
             <p className="text-xl text-muted-foreground mb-4">
@@ -67,7 +67,15 @@ export default function ShortCECoursesPage() {
               <h3 className="font-semibold text-lg mb-3 text-center text-sage-green">Course Bundle</h3>
               <div className="text-center">
                 <p className="text-foreground/90 text-lg">All 6 courses: <span className="font-bold text-sage-green">$825+tax</span></p>
-                <p className="text-muted-foreground text-sm mt-1">Individual courses: $225+tax each</p>
+                <p className="text-muted-foreground text-sm mt-1 mb-4">Individual courses: $225+tax each</p>
+                <a 
+                  href="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=41&sTG=39&prodId=1607"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center rounded-md bg-sage-green text-white font-medium px-6 py-3 hover:bg-sage-green/90 transition-colors"
+                >
+                  Register for Bundle
+                </a>
               </div>
             </div>
           </div>
@@ -177,7 +185,9 @@ export default function ShortCECoursesPage() {
 
                           <div className="mt-6 pt-4 border-t border-sage-green/20">
                             <a 
-                              href="/contact"
+                              href="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=41&sTG=39&prodId=1609"
+                              target="_blank"
+                              rel="noopener noreferrer"
                               className="w-full inline-flex items-center justify-center rounded-md bg-sage-green text-white font-medium px-4 py-3 hover:bg-sage-green/90 transition-colors"
                             >
                               Register
@@ -310,7 +320,9 @@ export default function ShortCECoursesPage() {
 
                           <div className="mt-6 pt-4 border-t border-sage-green/20">
                             <a 
-                              href="/contact"
+                              href="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=41&sTG=39&prodId=1610"
+                              target="_blank"
+                              rel="noopener noreferrer"
                               className="w-full inline-flex items-center justify-center rounded-md bg-sage-green text-white font-medium px-4 py-3 hover:bg-sage-green/90 transition-colors"
                             >
                               Register
@@ -443,7 +455,9 @@ export default function ShortCECoursesPage() {
 
                           <div className="mt-6 pt-4 border-t border-sage-green/20">
                             <a 
-                              href="/contact"
+                              href="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=41&sTG=39&prodId=1611"
+                              target="_blank"
+                              rel="noopener noreferrer"
                               className="w-full inline-flex items-center justify-center rounded-md bg-sage-green text-white font-medium px-4 py-3 hover:bg-sage-green/90 transition-colors"
                             >
                               Register
@@ -578,7 +592,9 @@ export default function ShortCECoursesPage() {
 
                           <div className="mt-6 pt-4 border-t border-sage-green/20">
                             <a 
-                              href="/contact"
+                              href="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=41&sTG=39&prodId=1612"
+                              target="_blank"
+                              rel="noopener noreferrer"
                               className="w-full inline-flex items-center justify-center rounded-md bg-sage-green text-white font-medium px-4 py-3 hover:bg-sage-green/90 transition-colors"
                             >
                               Register
@@ -712,7 +728,9 @@ export default function ShortCECoursesPage() {
 
                           <div className="mt-6 pt-4 border-t border-sage-green/20">
                             <a 
-                              href="/contact"
+                              href="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=41&sTG=39&prodId=1613"
+                              target="_blank"
+                              rel="noopener noreferrer"
                               className="w-full inline-flex items-center justify-center rounded-md bg-sage-green text-white font-medium px-4 py-3 hover:bg-sage-green/90 transition-colors"
                             >
                               Register
@@ -845,7 +863,9 @@ export default function ShortCECoursesPage() {
 
                           <div className="mt-6 pt-4 border-t border-sage-green/20">
                             <a 
-                              href="/contact"
+                              href="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=41&sTG=39&prodId=1614"
+                              target="_blank"
+                              rel="noopener noreferrer"
                               className="w-full inline-flex items-center justify-center rounded-md bg-sage-green text-white font-medium px-4 py-3 hover:bg-sage-green/90 transition-colors"
                             >
                               Register

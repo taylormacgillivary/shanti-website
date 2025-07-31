@@ -216,6 +216,7 @@ export default function TeachersPage() {
                       src={teacher.image}
                       alt={teacher.name}
                       fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       className={`object-cover ${teacher.objectPosition || ''}`}
                     />
                   </div>
@@ -254,6 +255,7 @@ export default function TeachersPage() {
                       src={teacher.image}
                       alt={teacher.name}
                       fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       className={`object-cover ${teacher.objectPosition || ''}`}
                     />
                   </div>

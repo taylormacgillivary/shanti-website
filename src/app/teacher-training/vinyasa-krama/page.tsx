@@ -84,9 +84,8 @@ export default function VinyasaKramaPage() {
             title="Vinyasa Krama"
             subtitle="The Integration of Movement, Prana & Sequencing"
             dates="Next Course Dates: TBD"
-            quote="Vinyasa Krama is the system connecting with the rhythm and cycles of energy through movement and breath cultivating a landscape of evolved consciousness."
             heroImage="/images-in-use/03.jpg"
-            imageTwo="/images-in-use/19.jpg"
+            imageTwo="/images-in-use/12.jpg"
             imageThree="/images-in-use/24.jpg"
             infoPackageLink="#"
             whoIsThisFor={whoIsThisFor}
@@ -97,7 +96,9 @@ export default function VinyasaKramaPage() {
             investment={investment}
             paymentDepositLink="#"
             paymentFullLink="#"
+            paymentDepositText="Registration Not Currently Open"
             ceCredits="45 Hours"
+            showDepositOnly={true}
         />
     )
 } 

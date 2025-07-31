@@ -39,8 +39,7 @@ const AboutPage: NextPage = () => {
       <div className="bg-gray-50">
         <div className="container mx-auto py-16 px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h2 className="text-base font-semibold text-indigo-600 tracking-wide uppercase">About Us</h2>
-            <p className="mt-1 text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl">
+            <p className="text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl">
               Our <span className="sage-green">Philosophy</span>
             </p>
             <p className="mt-4 max-w-2xl mx-auto text-lg text-gray-500">

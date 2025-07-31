@@ -101,18 +101,19 @@ export default function PranayamaYogaPage() {
             title="Pranayama Yoga Teacher Training"
             subtitle="Uncover your full potential to Teach, to Practice, to Live."
             dates="February 5-8, 2026"
-            heroImage="/images-in-use/08.jpg"
+            heroImage="/images-in-use/Shanti Windhorse Retreat Photogrpahy By Scott Munn 2019 (43 of 75).JPG"
             imageTwo="/images-in-use/12.jpg"
-            imageThree="/images-in-use/13.jpg"
+            imageThree="/images-in-use/36.jpg"
             whoIsThisFor={whoIsThisFor}
             learningOutcomes={learningOutcomes}
             curriculum={curriculum}
             teachers={teachers}
             faqs={faqs}
             investment={investment}
-            paymentDepositLink="#"
+            paymentDepositLink="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=41&sTG=39&prodId=1580"
             paymentFullLink="#"
             ceCredits="40 Hours"
+            showDepositOnly={true}
         />
     )
 } 

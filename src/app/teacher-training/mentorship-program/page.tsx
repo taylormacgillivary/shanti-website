@@ -115,7 +115,7 @@ export default function MentorshipProgramPage() {
                                 <h3 className="text-2xl font-bold">Investment</h3>
                                 <p className="text-5xl font-extrabold text-sage-green my-4">$695</p>
                                 <Button asChild size="lg" className="mt-6 w-full gradient-sage hover:opacity-90 text-white">
-                                    <a href="mailto:info@shantihotyoga.ca?subject=Mentorship Program Inquiry">Inquire Here</a>
+                                    <a href="mailto:stephanie@shantihotyoga.ca?subject=Mentorship Program">Inquire Here</a>
                                 </Button>
                             </div>
                         </aside>

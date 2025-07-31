@@ -9,9 +9,10 @@ export function HeroSection() {
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-background/60 to-background/80 z-10" />
         <Image
-          src="/May-18-2022/YogaShantiMay2022-100.jpg"
+          src="/images-in-use/12.jpg"
           alt="Yoga Studio"
           fill
+          sizes="100vw"
           className="object-cover opacity-20"
           priority
         />

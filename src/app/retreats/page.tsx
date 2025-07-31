@@ -86,6 +86,7 @@ export default function RetreatsPage() {
                 src="/images-in-use/Retreats/colombia.jpg"
                 alt="Palamino, Colombia Retreat"
                 fill
+                sizes="100vw"
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
@@ -183,6 +184,7 @@ export default function RetreatsPage() {
                       src={retreat.image}
                       alt={`${retreat.name} Retreat`}
                       fill
+                      sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
                       className="object-cover transition-transform duration-300 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-black/0" />

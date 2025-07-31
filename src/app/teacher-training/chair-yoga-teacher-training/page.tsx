@@ -104,9 +104,10 @@ export default function ChairYogaPage() {
             teachers={teachers}
             faqs={faqs}
             investment={investment}
-            paymentDepositLink="#"
+            paymentDepositLink="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=41&sTG=39&prodId=1577"
             paymentFullLink="#"
             ceCredits="25 Hours"
+            showDepositOnly={true}
         />
     )
 } 

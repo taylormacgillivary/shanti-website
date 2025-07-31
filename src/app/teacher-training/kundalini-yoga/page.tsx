@@ -84,10 +84,9 @@ export default function KundaliniYogaPage() {
             title="Kundalini Yoga"
             subtitle="Uncover your full potential to Teach, to Practice, to Live."
             dates="Next Course Dates: TBD"
-            quote="Kundalini Energy is the universal energy of Supreme Intelligence manifested in human beings as the highest source of potentiality."
             heroImage="/images-in-use/36.jpg"
             imageTwo="/images-in-use/37.jpg"
-            imageThree="/images-in-use/39.jpg"
+            imageThree="/images-in-use/20.jpg"
             infoPackageLink="#"
             whoIsThisFor={whoIsThisFor}
             learningOutcomes={learningOutcomes}
@@ -97,7 +96,10 @@ export default function KundaliniYogaPage() {
             investment={investment}
             paymentDepositLink="#"
             paymentFullLink="#"
+            paymentDepositText="Registration Not Currently Open"
+            paymentFullText="Registration Not Currently Open"
             ceCredits="45 Hours"
+            showDepositOnly={true}
         />
     )
 } 

@@ -7,9 +7,9 @@ export function IntroOfferSection() {
       <Image
         src="/images-in-use/08.jpg"
         alt="A person in a yoga pose"
-        layout="fill"
-        objectFit="cover"
-        className="absolute inset-0 -z-10"
+        fill
+        sizes="100vw"
+        className="absolute inset-0 -z-10 object-cover"
       />
       <div className="absolute inset-0 bg-black/60 -z-10" />
       <div className="container relative z-10 mx-auto px-4 text-center">
