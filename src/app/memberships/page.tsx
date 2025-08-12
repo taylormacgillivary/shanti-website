@@ -5,16 +5,22 @@ import { IntroOfferSection } from "@/components/intro-offer-section";
 import { useEffect, useState } from "react";
 
 export default function MembershipsPage() {
+  const [isClient, setIsClient] = useState(false);
   const [scriptLoaded, setScriptLoaded] = useState(false);
   const [scriptError, setScriptError] = useState(false);
 
   useEffect(() => {
-    if (typeof window === 'undefined') return;
-    if ('HealcodeWidget' in window) setScriptLoaded(true);
+    setIsClient(true);
+    
+    if (typeof window !== 'undefined' && 'HealcodeWidget' in window) {
+      setScriptLoaded(true);
+      return;
+    }
+    
     let tries = 0;
     const interval = setInterval(() => {
       tries += 1;
-      if ('HealcodeWidget' in window) {
+      if (typeof window !== 'undefined' && 'HealcodeWidget' in window) {
         setScriptLoaded(true);
         setScriptError(false);
         clearInterval(interval);
@@ -26,10 +32,12 @@ export default function MembershipsPage() {
     return () => clearInterval(interval);
   }, []);
 
+  const showWidgets = isClient && scriptLoaded && !scriptError;
+
   return (
     <>
-      <IntroOfferSection showWidgets={scriptLoaded && !scriptError} />
-      <MembershipSection showWidgets={scriptLoaded && !scriptError} />
+      <IntroOfferSection showWidgets={showWidgets} />
+      <MembershipSection showWidgets={showWidgets} />
     </>
   );
 } 

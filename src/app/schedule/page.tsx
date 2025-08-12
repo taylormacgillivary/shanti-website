@@ -3,20 +3,24 @@
 import { useState, useEffect } from "react";
 
 export default function SchedulePage() {
+  const [isClient, setIsClient] = useState(false);
   const [scriptLoaded, setScriptLoaded] = useState(false);
   const [scriptError, setScriptError] = useState(false);
 
   useEffect(() => {
-    if (typeof window === 'undefined') return;
+    setIsClient(true);
 
     // Immediate check
-    if ('HealcodeWidget' in window) setScriptLoaded(true);
+    if (typeof window !== 'undefined' && 'HealcodeWidget' in window) {
+      setScriptLoaded(true);
+      return;
+    }
 
     // Poll for readiness up to ~10s
     let tries = 0;
     const interval = setInterval(() => {
       tries += 1;
-      if ('HealcodeWidget' in window) {
+      if (typeof window !== 'undefined' && 'HealcodeWidget' in window) {
         setScriptLoaded(true);
         setScriptError(false);
         clearInterval(interval);
@@ -45,7 +49,14 @@ export default function SchedulePage() {
         
         {/* Branded Web Schedule Widget Container */}
         <div className="w-full">
-          {scriptError ? (
+          {!isClient ? (
+            <div className="flex items-center justify-center min-h-[600px] bg-gray-50 rounded-lg">
+              <div className="text-center">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-sage-green mx-auto mb-4"></div>
+                <p className="text-gray-600">Loading class schedule...</p>
+              </div>
+            </div>
+          ) : scriptError ? (
             <div className="bg-red-50 border border-red-200 rounded-lg p-6 text-center">
               <p className="text-red-800 mb-4">
                 Unable to load the class schedule widget. Please try refreshing the page or use the direct booking link below.

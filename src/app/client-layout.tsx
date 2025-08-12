@@ -18,12 +18,20 @@ export function RootLayoutClient({
       <Script
         src="https://widgets.mindbodyonline.com/javascripts/healcode.js"
         type="text/javascript"
-        strategy="afterInteractive"
+        strategy="beforeInteractive"
         onLoad={() => {
           console.log('Healcode script loaded globally');
+          // Dispatch custom event to notify components
+          if (typeof window !== 'undefined') {
+            window.dispatchEvent(new CustomEvent('healcodeReady'));
+          }
         }}
         onError={(e) => {
           console.error('Error loading global healcode script:', e);
+          // Dispatch error event
+          if (typeof window !== 'undefined') {
+            window.dispatchEvent(new CustomEvent('healcodeError'));
+          }
         }}
       />
       <Navigation />

@@ -1,7 +1,34 @@
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
+import { useState, useEffect } from "react";
 
 export function IntroPassSection() {
+  const [isClient, setIsClient] = useState(false);
+  const [healcodeReady, setHealcodeReady] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+    
+    // Check if HealcodeWidget is already available
+    if (typeof window !== 'undefined' && 'HealcodeWidget' in window) {
+      setHealcodeReady(true);
+      return;
+    }
+
+    // Poll for HealcodeWidget availability
+    let tries = 0;
+    const checkHealcode = setInterval(() => {
+      tries += 1;
+      if (typeof window !== 'undefined' && 'HealcodeWidget' in window) {
+        setHealcodeReady(true);
+        clearInterval(checkHealcode);
+      } else if (tries > 50) { // 5 seconds timeout
+        clearInterval(checkHealcode);
+      }
+    }, 100);
+
+    return () => clearInterval(checkHealcode);
+  }, []);
   return (
     <section className="py-24 bg-gradient-to-b from-muted/30 to-background">
       <div className="container mx-auto px-4">
@@ -50,8 +77,8 @@ export function IntroPassSection() {
               </li>
             </ul>
 
-            {/* Render only on client after Healcode is available to avoid first-load errors */}
-            {typeof window !== 'undefined' && 'HealcodeWidget' in window ? (
+            {/* Render consistently to avoid hydration mismatch */}
+            {isClient && healcodeReady ? (
               // @ts-expect-error - Mindbody widget
               <healcode-widget
                 data-version="0.2"
