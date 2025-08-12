@@ -1,6 +1,5 @@
 "use client"
 
-import Script from "next/script";
 import { useState, useEffect } from "react";
 
 export default function SchedulePage() {
@@ -8,28 +7,30 @@ export default function SchedulePage() {
   const [scriptError, setScriptError] = useState(false);
 
   useEffect(() => {
-    // Check if healcode widget is already loaded from another page
-    if (typeof window !== 'undefined' && 'HealcodeWidget' in window) {
-      setScriptLoaded(true);
-    }
+    if (typeof window === 'undefined') return;
+
+    // Immediate check
+    if ('HealcodeWidget' in window) setScriptLoaded(true);
+
+    // Poll for readiness up to ~10s
+    let tries = 0;
+    const interval = setInterval(() => {
+      tries += 1;
+      if ('HealcodeWidget' in window) {
+        setScriptLoaded(true);
+        setScriptError(false);
+        clearInterval(interval);
+      } else if (tries > 100) { // ~10s at 100ms
+        setScriptError(true);
+        clearInterval(interval);
+      }
+    }, 100);
+
+    return () => clearInterval(interval);
   }, []);
 
   return (
     <>
-      <Script
-        src="https://widgets.mindbodyonline.com/javascripts/healcode.js"
-        type="text/javascript"
-        strategy="afterInteractive"
-        onLoad={() => {
-          console.log('Healcode script loaded successfully');
-          setScriptLoaded(true);
-          setScriptError(false);
-        }}
-        onError={(e) => {
-          console.error('Error loading healcode script:', e);
-          setScriptError(true);
-        }}
-      />
       <div className="container mx-auto py-12 px-4 md:px-6">
         <div className="flex flex-col items-center justify-center mb-8">
           <div className="space-y-2 text-center">
