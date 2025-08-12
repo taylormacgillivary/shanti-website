@@ -1,37 +1,8 @@
 "use client"
 
-import { useState, useEffect } from "react";
+import { HealcodeWidget } from "@/components/healcode-widget";
 
 export default function SchedulePage() {
-  const [isClient, setIsClient] = useState(false);
-  const [scriptLoaded, setScriptLoaded] = useState(false);
-  const [scriptError, setScriptError] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-
-    // Immediate check
-    if (typeof window !== 'undefined' && 'HealcodeWidget' in window) {
-      setScriptLoaded(true);
-      return;
-    }
-
-    // Poll for readiness up to ~10s
-    let tries = 0;
-    const interval = setInterval(() => {
-      tries += 1;
-      if (typeof window !== 'undefined' && 'HealcodeWidget' in window) {
-        setScriptLoaded(true);
-        setScriptError(false);
-        clearInterval(interval);
-      } else if (tries > 100) { // ~10s at 100ms
-        setScriptError(true);
-        clearInterval(interval);
-      }
-    }, 100);
-
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <>
@@ -49,46 +20,18 @@ export default function SchedulePage() {
         
         {/* Branded Web Schedule Widget Container */}
         <div className="w-full">
-          {!isClient ? (
-            <div className="flex items-center justify-center min-h-[600px] bg-gray-50 rounded-lg">
-              <div className="text-center">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-sage-green mx-auto mb-4"></div>
-                <p className="text-gray-600">Loading class schedule...</p>
-              </div>
-            </div>
-          ) : scriptError ? (
-            <div className="bg-red-50 border border-red-200 rounded-lg p-6 text-center">
-              <p className="text-red-800 mb-4">
-                Unable to load the class schedule widget. Please try refreshing the page or use the direct booking link below.
-              </p>
-              <a 
-                href="https://clients.mindbodyonline.com/classic/ws?studioid=11233" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-md bg-sage-green text-white font-medium px-6 py-3 hover:bg-sage-green/90 transition-colors"
-              >
-                Book Classes Directly
-              </a>
-            </div>
-          ) : scriptLoaded ? (
-            // @ts-expect-error - Mindbody widget
-            <healcode-widget
-              data-type="schedules"
-              data-widget-partner="object"
-              data-widget-id="68165685be"
-              data-widget-version="1"
-              data-site-id="1889"
-              data-mb-site-id="11233"
-              style={{ width: '100%', minHeight: '600px' }}
-            />
-          ) : (
-            <div className="flex items-center justify-center min-h-[600px] bg-gray-50 rounded-lg">
-              <div className="text-center">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-sage-green mx-auto mb-4"></div>
-                <p className="text-gray-600">Loading class schedule...</p>
-              </div>
-            </div>
-          )}
+          <HealcodeWidget
+            data-type="schedules"
+            data-widget-partner="object"
+            data-widget-id="68165685be"
+            data-widget-version="1"
+            data-site-id="1889"
+            data-mb-site-id="11233"
+            style={{ width: '100%', minHeight: '600px' }}
+            fallbackUrl="https://clients.mindbodyonline.com/classic/ws?studioid=11233"
+            fallbackText="Book Classes Directly"
+            fallbackClassName="inline-flex items-center justify-center rounded-md bg-sage-green text-white font-medium px-6 py-3 hover:bg-sage-green/90 transition-colors w-full min-h-[200px]"
+          />
         </div>
         
         {/* Fallback content */}

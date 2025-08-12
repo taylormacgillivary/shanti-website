@@ -21,8 +21,33 @@ export function RootLayoutClient({
         strategy="beforeInteractive"
         onLoad={() => {
           console.log('Healcode script loaded globally');
-          // Dispatch custom event to notify components
+          
+          // Add global error handler for healcode errors
           if (typeof window !== 'undefined') {
+            const originalConsoleError = console.error;
+            console.error = function(...args) {
+              // Check if this is a healcode-related error
+              const errorMessage = args.join(' ');
+              if (errorMessage.includes('healcode') || errorMessage.includes('mindbody')) {
+                console.warn('Healcode widget error intercepted:', ...args);
+                // Dispatch error event but don't crash the app
+                window.dispatchEvent(new CustomEvent('healcodeError', { detail: args }));
+                return;
+              }
+              // For all other errors, use original console.error
+              originalConsoleError.apply(console, args);
+            };
+            
+            // Set up global error handler for unhandled healcode errors
+            window.addEventListener('error', (event) => {
+              if (event.filename && event.filename.includes('healcode')) {
+                event.preventDefault(); // Prevent the error from crashing the app
+                console.warn('Healcode script error prevented:', event.error);
+                window.dispatchEvent(new CustomEvent('healcodeError', { detail: event.error }));
+              }
+            });
+            
+            // Dispatch ready event
             window.dispatchEvent(new CustomEvent('healcodeReady'));
           }
         }}
@@ -30,7 +55,7 @@ export function RootLayoutClient({
           console.error('Error loading global healcode script:', e);
           // Dispatch error event
           if (typeof window !== 'undefined') {
-            window.dispatchEvent(new CustomEvent('healcodeError'));
+            window.dispatchEvent(new CustomEvent('healcodeError', { detail: e }));
           }
         }}
       />
