@@ -5,7 +5,7 @@
 import { CardTitle, CardHeader, CardContent, CardFooter, Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 
-export function MembershipSection({ showWidgets = true }: { showWidgets?: boolean }) {
+export function MembershipSection({ showWidgets = true }: { showWidgets?: boolean; isLoading?: boolean }) {
   return (
     <div className="bg-white dark:bg-gray-950 py-12">
       <div className="container mx-auto px-4">

@@ -3,7 +3,7 @@
 import { useHealcodeLoader } from "@/hooks/use-healcode-loader";
 
 export default function SchedulePage() {
-  const { isLoaded } = useHealcodeLoader();
+  const { isLoaded, isLoading } = useHealcodeLoader();
 
   return (
     <>
@@ -32,11 +32,25 @@ export default function SchedulePage() {
               data-mb-site-id="11233"
               style={{ width: '100%', minHeight: '600px' }}
             />
-          ) : (
+          ) : isLoading ? (
             <div className="flex items-center justify-center min-h-[600px] bg-gray-50 rounded-lg">
               <div className="text-center">
                 <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-sage-green mx-auto mb-4"></div>
                 <p className="text-gray-600">Loading class schedule...</p>
+              </div>
+            </div>
+          ) : (
+            <div className="flex items-center justify-center min-h-[600px] bg-red-50 border border-red-200 rounded-lg">
+              <div className="text-center">
+                <p className="text-red-800 mb-4">Unable to load schedule widget</p>
+                <a 
+                  href="https://clients.mindbodyonline.com/classic/ws?studioid=11233" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center rounded-md bg-sage-green text-white font-medium px-6 py-3 hover:bg-sage-green/90 transition-colors"
+                >
+                  Book Classes Directly
+                </a>
               </div>
             </div>
           )}

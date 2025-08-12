@@ -5,12 +5,12 @@ import { IntroOfferSection } from "@/components/intro-offer-section";
 import { useHealcodeLoader } from "@/hooks/use-healcode-loader";
 
 export default function MembershipsPage() {
-  const { isLoaded } = useHealcodeLoader();
+  const { isLoaded, isLoading } = useHealcodeLoader();
 
   return (
     <>
-      <IntroOfferSection showWidgets={isLoaded} />
-      <MembershipSection showWidgets={isLoaded} />
+      <IntroOfferSection showWidgets={isLoaded} isLoading={isLoading} />
+      <MembershipSection showWidgets={isLoaded} isLoading={isLoading} />
     </>
   );
 } 

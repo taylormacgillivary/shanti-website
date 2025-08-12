@@ -3,7 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { useHealcodeLoader } from "@/hooks/use-healcode-loader";
 
 export function IntroPassSection() {
-  const { isLoaded } = useHealcodeLoader();
+  const { isLoaded, isLoading } = useHealcodeLoader();
   return (
     <section className="py-24 bg-gradient-to-b from-muted/30 to-background">
       <div className="container mx-auto px-4">
@@ -64,11 +64,20 @@ export function IntroPassSection() {
                 data-type="pricing-link"
                 data-inner-html="Get Your Intro Pass"
               />
-            ) : (
+            ) : isLoading ? (
               <div className="mt-8 inline-flex items-center justify-center whitespace-nowrap rounded-md text-lg font-medium gradient-sage hover:opacity-90 text-white px-8 py-6 shadow-lg">
                 <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
                 Loading...
               </div>
+            ) : (
+              <a
+                href="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=41&sTG=39&prodId=1364"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-8 inline-flex items-center justify-center whitespace-nowrap rounded-md text-lg font-medium gradient-sage hover:opacity-90 text-white px-8 py-6 shadow-lg"
+              >
+                Get Your Intro Pass
+              </a>
             )}
           </div>
 

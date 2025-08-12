@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 // The IntroOfferSection component displays a hero section with a call to action.
-export function IntroOfferSection({ showWidgets = true }: { showWidgets?: boolean }) {
+export function IntroOfferSection({ showWidgets = true, isLoading = false }: { showWidgets?: boolean; isLoading?: boolean }) {
   return (
     <section className="relative h-[50vh] min-h-[400px] flex items-center justify-center text-white">
       <Image
@@ -33,11 +33,20 @@ export function IntroOfferSection({ showWidgets = true }: { showWidgets?: boolea
                 data-type="pricing-link"
                 data-inner-html="Buy Intro Pass"
               />
-            ) : (
+            ) : isLoading ? (
               <div className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-lg font-medium gradient-sage hover:opacity-90 text-white px-8 py-4 shadow-lg">
                 <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
                 Loading...
               </div>
+            ) : (
+              <a
+                href="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=41&sTG=39&prodId=1364"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-lg font-medium gradient-sage hover:opacity-90 text-white px-8 py-4 shadow-lg"
+              >
+                Buy Intro Pass
+              </a>
             )}
           </div>
         </div>
