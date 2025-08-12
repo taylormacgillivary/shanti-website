@@ -59,33 +59,24 @@ export default function SchedulePage() {
                 Book Classes Directly
               </a>
             </div>
+          ) : scriptLoaded ? (
+            // @ts-expect-error - Mindbody widget
+            <healcode-widget
+              data-type="schedules"
+              data-widget-partner="object"
+              data-widget-id="68165685be"
+              data-widget-version="1"
+              data-site-id="1889"
+              data-mb-site-id="11233"
+              style={{ width: '100%', minHeight: '600px' }}
+            />
           ) : (
-            <>
-              {/* @ts-expect-error - Mindbody widget */}
-              <healcode-widget
-                data-type="schedules"
-                data-widget-partner="object"
-                data-widget-id="68165685be"
-                data-widget-version="1"
-                data-site-id="1889"
-                data-mb-site-id="11233"
-                style={{
-                  width: '100%',
-                  minHeight: '600px',
-                  display: scriptLoaded ? 'block' : 'none'
-                }}
-              />
-              
-              {/* Loading state */}
-              {!scriptLoaded && (
-                <div className="flex items-center justify-center min-h-[600px] bg-gray-50 rounded-lg">
-                  <div className="text-center">
-                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-sage-green mx-auto mb-4"></div>
-                    <p className="text-gray-600">Loading class schedule...</p>
-                  </div>
-                </div>
-              )}
-            </>
+            <div className="flex items-center justify-center min-h-[600px] bg-gray-50 rounded-lg">
+              <div className="text-center">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-sage-green mx-auto mb-4"></div>
+                <p className="text-gray-600">Loading class schedule...</p>
+              </div>
+            </div>
           )}
         </div>
         

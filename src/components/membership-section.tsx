@@ -26,21 +26,21 @@ export function MembershipSection({ showWidgets = true }: { showWidgets?: boolea
               <p className="text-sm text-gray-500 dark:text-gray-400">No further commitment required</p>
             </CardContent>
             <CardFooter>
-              <Button className="w-full gradient-sage text-white" asChild>
-                {/* @ts-expect-error - Mindbody widget */}
-                <healcode-widget
-                  data-version="0.2"
-                  data-link-class="healcode-contract-text-link w-full h-full block flex items-center justify-center"
-                  data-site-id="1889"
-                  data-mb-site-id="11233"
-                  data-service-id="193"
-                  data-bw-identity-site="false"
-                  data-type="contract-link"
-                  data-inner-html="Buy Membership"
-                  style={{ display: showWidgets ? 'block' : 'none' }}
-                />
-              </Button>
-              {!showWidgets && (
+              {showWidgets ? (
+                <Button className="w-full gradient-sage text-white" asChild>
+                  {/* @ts-expect-error - Mindbody widget */}
+                  <healcode-widget
+                    data-version="0.2"
+                    data-link-class="healcode-contract-text-link w-full h-full block flex items-center justify-center"
+                    data-site-id="1889"
+                    data-mb-site-id="11233"
+                    data-service-id="193"
+                    data-bw-identity-site="false"
+                    data-type="contract-link"
+                    data-inner-html="Buy Membership"
+                  />
+                </Button>
+              ) : (
                 <a
                   href="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=43&prodid=193"
                   target="_blank"
@@ -66,21 +66,21 @@ export function MembershipSection({ showWidgets = true }: { showWidgets?: boolea
               <p className="text-sm text-gray-500 dark:text-gray-400">Minimum 4 month commitment</p>
             </CardContent>
             <CardFooter>
-              <Button className="w-full gradient-sage text-white" asChild>
-                {/* @ts-expect-error - Mindbody widget */}
-                <healcode-widget
-                  data-version="0.2"
-                  data-link-class="healcode-contract-text-link w-full h-full block flex items-center justify-center"
-                  data-site-id="1889"
-                  data-mb-site-id="11233"
-                  data-service-id="156"
-                  data-bw-identity-site="false"
-                  data-type="contract-link"
-                  data-inner-html="Buy Membership"
-                  style={{ display: showWidgets ? 'block' : 'none' }}
-                />
-              </Button>
-              {!showWidgets && (
+              {showWidgets ? (
+                <Button className="w-full gradient-sage text-white" asChild>
+                  {/* @ts-expect-error - Mindbody widget */}
+                  <healcode-widget
+                    data-version="0.2"
+                    data-link-class="healcode-contract-text-link w-full h-full block flex items-center justify-center"
+                    data-site-id="1889"
+                    data-mb-site-id="11233"
+                    data-service-id="156"
+                    data-bw-identity-site="false"
+                    data-type="contract-link"
+                    data-inner-html="Buy Membership"
+                  />
+                </Button>
+              ) : (
                 <a
                   href="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=43&prodid=156"
                   target="_blank"
@@ -103,21 +103,21 @@ export function MembershipSection({ showWidgets = true }: { showWidgets?: boolea
               <p className="text-sm text-gray-500 dark:text-gray-400">4 month commitment</p>
             </CardContent>
             <CardFooter>
-              <Button className="w-full gradient-sage text-white" asChild>
-                {/* @ts-expect-error - Mindbody widget */}
-                <healcode-widget
-                  data-version="0.2"
-                  data-link-class="healcode-contract-text-link w-full h-full block flex items-center justify-center"
-                  data-site-id="1889"
-                  data-mb-site-id="11233"
-                  data-service-id="163"
-                  data-bw-identity-site="false"
-                  data-type="contract-link"
-                  data-inner-html="Buy Membership"
-                  style={{ display: showWidgets ? 'block' : 'none' }}
-                />
-              </Button>
-              {!showWidgets && (
+              {showWidgets ? (
+                <Button className="w-full gradient-sage text-white" asChild>
+                  {/* @ts-expect-error - Mindbody widget */}
+                  <healcode-widget
+                    data-version="0.2"
+                    data-link-class="healcode-contract-text-link w-full h-full block flex items-center justify-center"
+                    data-site-id="1889"
+                    data-mb-site-id="11233"
+                    data-service-id="163"
+                    data-bw-identity-site="false"
+                    data-type="contract-link"
+                    data-inner-html="Buy Membership"
+                  />
+                </Button>
+              ) : (
                 <a
                   href="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=43&prodid=163"
                   target="_blank"
@@ -145,21 +145,21 @@ export function MembershipSection({ showWidgets = true }: { showWidgets?: boolea
               <p className="text-sm text-gray-500 dark:text-gray-400">No further commitment required, auto-renews until cancelled</p>
             </CardContent>
             <CardFooter>
-              <Button className="w-full gradient-sage text-white" asChild>
-                {/* @ts-expect-error - Mindbody widget */}
-                <healcode-widget
-                  data-version="0.2"
-                  data-link-class="healcode-contract-text-link w-full h-full block flex items-center justify-center"
-                  data-site-id="1889"
-                  data-mb-site-id="11233"
-                  data-service-id="189"
-                  data-bw-identity-site="false"
-                  data-type="contract-link"
-                  data-inner-html="Buy Membership"
-                  style={{ display: showWidgets ? 'block' : 'none' }}
-                />
-              </Button>
-              {!showWidgets && (
+              {showWidgets ? (
+                <Button className="w-full gradient-sage text-white" asChild>
+                  {/* @ts-expect-error - Mindbody widget */}
+                  <healcode-widget
+                    data-version="0.2"
+                    data-link-class="healcode-contract-text-link w-full h-full block flex items-center justify-center"
+                    data-site-id="1889"
+                    data-mb-site-id="11233"
+                    data-service-id="189"
+                    data-bw-identity-site="false"
+                    data-type="contract-link"
+                    data-inner-html="Buy Membership"
+                  />
+                </Button>
+              ) : (
                 <a
                   href="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=43&prodid=189"
                   target="_blank"
@@ -182,21 +182,21 @@ export function MembershipSection({ showWidgets = true }: { showWidgets?: boolea
               <p className="text-sm text-gray-500 dark:text-gray-400">Minimum 4 month commitment, auto-renews until cancelled </p>
             </CardContent>
             <CardFooter>
-              <Button className="w-full gradient-sage text-white" asChild>
-                {/* @ts-expect-error - Mindbody widget */}
-                <healcode-widget
-                  data-version="0.2"
-                  data-link-class="healcode-contract-text-link w-full h-full block flex items-center justify-center"
-                  data-site-id="1889"
-                  data-mb-site-id="11233"
-                  data-service-id="190"
-                  data-bw-identity-site="false"
-                  data-type="contract-link"
-                  data-inner-html="Buy Membership"
-                  style={{ display: showWidgets ? 'block' : 'none' }}
-                />
-              </Button>
-              {!showWidgets && (
+              {showWidgets ? (
+                <Button className="w-full gradient-sage text-white" asChild>
+                  {/* @ts-expect-error - Mindbody widget */}
+                  <healcode-widget
+                    data-version="0.2"
+                    data-link-class="healcode-contract-text-link w-full h-full block flex items-center justify-center"
+                    data-site-id="1889"
+                    data-mb-site-id="11233"
+                    data-service-id="190"
+                    data-bw-identity-site="false"
+                    data-type="contract-link"
+                    data-inner-html="Buy Membership"
+                  />
+                </Button>
+              ) : (
                 <a
                   href="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=43&prodid=190"
                   target="_blank"
@@ -222,21 +222,21 @@ export function MembershipSection({ showWidgets = true }: { showWidgets?: boolea
               <p className="mt-4">$18 Student/Senior Price</p>
             </CardContent>
             <CardFooter>
-              <Button className="w-full gradient-sage text-white" asChild>
-                {/* @ts-expect-error - Mindbody widget */}
-                <healcode-widget
-                  data-version="0.2"
-                  data-link-class="healcode-pricing-option-text-link w-full h-full block flex items-center justify-center"
-                  data-site-id="1889"
-                  data-mb-site-id="11233"
-                  data-service-id="289"
-                  data-bw-identity-site="false"
-                  data-type="pricing-link"
-                  data-inner-html="Buy Now"
-                  style={{ display: showWidgets ? 'block' : 'none' }}
-                />
-              </Button>
-              {!showWidgets && (
+              {showWidgets ? (
+                <Button className="w-full gradient-sage text-white" asChild>
+                  {/* @ts-expect-error - Mindbody widget */}
+                  <healcode-widget
+                    data-version="0.2"
+                    data-link-class="healcode-pricing-option-text-link w-full h-full block flex items-center justify-center"
+                    data-site-id="1889"
+                    data-mb-site-id="11233"
+                    data-service-id="289"
+                    data-bw-identity-site="false"
+                    data-type="pricing-link"
+                    data-inner-html="Buy Now"
+                  />
+                </Button>
+              ) : (
                 <a
                   href="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=41&sTG=39&prodId=289"
                   target="_blank"
@@ -258,21 +258,21 @@ export function MembershipSection({ showWidgets = true }: { showWidgets?: boolea
               <p className="text-sm text-gray-500 dark:text-gray-400">Expires After 1 Year</p>
             </CardContent>
             <CardFooter>
-              <Button className="w-full gradient-sage text-white" asChild>
-                {/* @ts-expect-error - Mindbody widget */}
-                <healcode-widget
-                  data-version="0.2"
-                  data-link-class="healcode-pricing-option-text-link w-full h-full block flex items-center justify-center"
-                  data-site-id="1889"
-                  data-mb-site-id="11233"
-                  data-service-id="291"
-                  data-bw-identity-site="false"
-                  data-type="pricing-link"
-                  data-inner-html="Buy Now"
-                  style={{ display: showWidgets ? 'block' : 'none' }}
-                />
-              </Button>
-              {!showWidgets && (
+              {showWidgets ? (
+                <Button className="w-full gradient-sage text-white" asChild>
+                  {/* @ts-expect-error - Mindbody widget */}
+                  <healcode-widget
+                    data-version="0.2"
+                    data-link-class="healcode-pricing-option-text-link w-full h-full block flex items-center justify-center"
+                    data-site-id="1889"
+                    data-mb-site-id="11233"
+                    data-service-id="291"
+                    data-bw-identity-site="false"
+                    data-type="pricing-link"
+                    data-inner-html="Buy Now"
+                  />
+                </Button>
+              ) : (
                 <a
                   href="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=41&sTG=39&prodId=291"
                   target="_blank"

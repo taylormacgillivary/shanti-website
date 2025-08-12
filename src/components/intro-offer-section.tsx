@@ -21,19 +21,19 @@ export function IntroOfferSection({ showWidgets = true }: { showWidgets?: boolea
             Our aim is to serve you and what you need. We have teachers of all different backgrounds and trainings, and offer classes across the wide spectrum of yoga. Try them all with your intro pass and find what you love.
           </p>
           <div className="mt-8">
-            {/* @ts-expect-error - Mindbody widget */}
-            <healcode-widget
-              data-version="0.2"
-              data-link-class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-lg font-medium gradient-sage hover:opacity-90 text-white px-8 py-4 shadow-lg"
-              data-site-id="1889"
-              data-mb-site-id="11233"
-              data-service-id="1364"
-              data-bw-identity-site="false"
-              data-type="pricing-link"
-              data-inner-html="Buy Intro Pass"
-              style={{ display: showWidgets ? 'inline-flex' : 'none' }}
-            />
-            {!showWidgets && (
+            {showWidgets ? (
+              // @ts-expect-error - Mindbody widget
+              <healcode-widget
+                data-version="0.2"
+                data-link-class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-lg font-medium gradient-sage hover:opacity-90 text-white px-8 py-4 shadow-lg"
+                data-site-id="1889"
+                data-mb-site-id="11233"
+                data-service-id="1364"
+                data-bw-identity-site="false"
+                data-type="pricing-link"
+                data-inner-html="Buy Intro Pass"
+              />
+            ) : (
               <a
                 href="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=41&sTG=39&prodId=1364"
                 target="_blank"
