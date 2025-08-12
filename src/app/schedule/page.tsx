@@ -1,8 +1,9 @@
 "use client"
 
-import { HealcodeWidget } from "@/components/healcode-widget";
+import { useHealcodeLoader } from "@/hooks/use-healcode-loader";
 
 export default function SchedulePage() {
+  const { isLoaded } = useHealcodeLoader();
 
   return (
     <>
@@ -20,18 +21,25 @@ export default function SchedulePage() {
         
         {/* Branded Web Schedule Widget Container */}
         <div className="w-full">
-          <HealcodeWidget
-            data-type="schedules"
-            data-widget-partner="object"
-            data-widget-id="68165685be"
-            data-widget-version="1"
-            data-site-id="1889"
-            data-mb-site-id="11233"
-            style={{ width: '100%', minHeight: '600px' }}
-            fallbackUrl="https://clients.mindbodyonline.com/classic/ws?studioid=11233"
-            fallbackText="Book Classes Directly"
-            fallbackClassName="inline-flex items-center justify-center rounded-md bg-sage-green text-white font-medium px-6 py-3 hover:bg-sage-green/90 transition-colors w-full min-h-[200px]"
-          />
+          {isLoaded ? (
+            // @ts-expect-error - Mindbody widget
+            <healcode-widget
+              data-type="schedules"
+              data-widget-partner="object"
+              data-widget-id="68165685be"
+              data-widget-version="1"
+              data-site-id="1889"
+              data-mb-site-id="11233"
+              style={{ width: '100%', minHeight: '600px' }}
+            />
+          ) : (
+            <div className="flex items-center justify-center min-h-[600px] bg-gray-50 rounded-lg">
+              <div className="text-center">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-sage-green mx-auto mb-4"></div>
+                <p className="text-gray-600">Loading class schedule...</p>
+              </div>
+            </div>
+          )}
         </div>
         
         {/* Fallback content */}

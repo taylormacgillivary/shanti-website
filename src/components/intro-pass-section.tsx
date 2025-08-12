@@ -1,8 +1,9 @@
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
-import { HealcodeWidget } from "@/components/healcode-widget";
+import { useHealcodeLoader } from "@/hooks/use-healcode-loader";
 
 export function IntroPassSection() {
+  const { isLoaded } = useHealcodeLoader();
   return (
     <section className="py-24 bg-gradient-to-b from-muted/30 to-background">
       <div className="container mx-auto px-4">
@@ -51,19 +52,24 @@ export function IntroPassSection() {
               </li>
             </ul>
 
-            <HealcodeWidget
-              data-version="0.2"
-              data-link-class="mt-8 inline-flex items-center justify-center whitespace-nowrap rounded-md text-lg font-medium gradient-sage hover:opacity-90 text-white px-8 py-6 shadow-lg"
-              data-site-id="1889"
-              data-mb-site-id="11233"
-              data-service-id="1364"
-              data-bw-identity-site="false"
-              data-type="pricing-link"
-              data-inner-html="Get Your Intro Pass"
-              fallbackUrl="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=41&sTG=39&prodId=1364"
-              fallbackText="Get Your Intro Pass"
-              fallbackClassName="mt-8 inline-flex items-center justify-center whitespace-nowrap rounded-md text-lg font-medium gradient-sage hover:opacity-90 text-white px-8 py-6 shadow-lg"
-            />
+            {isLoaded ? (
+              // @ts-expect-error - Mindbody widget
+              <healcode-widget
+                data-version="0.2"
+                data-link-class="mt-8 inline-flex items-center justify-center whitespace-nowrap rounded-md text-lg font-medium gradient-sage hover:opacity-90 text-white px-8 py-6 shadow-lg"
+                data-site-id="1889"
+                data-mb-site-id="11233"
+                data-service-id="1364"
+                data-bw-identity-site="false"
+                data-type="pricing-link"
+                data-inner-html="Get Your Intro Pass"
+              />
+            ) : (
+              <div className="mt-8 inline-flex items-center justify-center whitespace-nowrap rounded-md text-lg font-medium gradient-sage hover:opacity-90 text-white px-8 py-6 shadow-lg">
+                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                Loading...
+              </div>
+            )}
           </div>
 
           {/* Image Column */}
