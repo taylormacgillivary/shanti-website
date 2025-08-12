@@ -120,12 +120,6 @@ const teachers = [
     bio: "Kyla Mackinnon resides on the east coast of Canada in Halifax but fulfills her sense of wanderlust by traveling regularly. Most of her travels involve leading yoga retreats and yoga teacher trainings as she loves to combine her passions of connecting with people and creating memorable experiences. Kyla teaches yoga as a way to inspire others to live a happy, healthy and authentic life. She enjoys coaching people and creating a space where they feel comfortable and confident in order to reach their full potential. Thanks to her many great teachers, Kyla vows to keep the tradition of Krishnamacharya's yoga lineage alive while weaving in a mix of her own movements which she explores through continuous study. When not getting her yoga on, Kyla can be found tasting new vegan health foods, enjoying time in nature, working out with the lululemon crew, connecting with loved ones, and exploring the world."
   },
   {
-    name: "Ashley Carson",
-    title: "Teacher",
-    image: "/images-in-use/teachers-used/ashley-carson.jpg",
-    bio: "Ashley Carson, born and raised in the outskirts of Halifax, Nova Scotia, has been practicing yoga for over 10 years. Yoga, and all that it encompasses b...(4572 chars omitted)...e has helped her to keep challenging herself, to remain curious and to find the courage to sometimes make unconventional choices of the beaten path."
-  },
-  {
     name: "Pytrik",
     title: "Teacher",
     image: "/images-in-use/teachers-used/pytrik.jpg",

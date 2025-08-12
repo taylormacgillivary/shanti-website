@@ -17,7 +17,7 @@ const studios = [
     id: "bedford",
     name: "Shanti Bedford",
     location: "Bedford, Larry Uteck",
-    description: "In 2013 we decided to expand our community to Bedford. As the Yoga community in Halifax had few choices around the city, we aimed to bridge the gap in the Halifax.",
+    description: "In 2013 we decided to expand our community to Bedford. As the Yoga community in Halifax had few choices around the city, we aimed to bridge the gap in the Halifax area.",
     image: "https://images.squarespace-cdn.com/content/v1/673f8221417d512fe9887ee8/1732215365354-SS65BOZYTUV1H789DX88/Bedford1.jpg",
     features: ["Community Focus", "Welcoming Environment", "Convenient Location"],
     established: "2013"

@@ -5,7 +5,7 @@
 import { CardTitle, CardHeader, CardContent, CardFooter, Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 
-export function MembershipSection() {
+export function MembershipSection({ showWidgets = true }: { showWidgets?: boolean }) {
   return (
     <div className="bg-white dark:bg-gray-950 py-12">
       <div className="container mx-auto px-4">
@@ -37,8 +37,19 @@ export function MembershipSection() {
                   data-bw-identity-site="false"
                   data-type="contract-link"
                   data-inner-html="Buy Membership"
+                  style={{ display: showWidgets ? 'block' : 'none' }}
                 />
               </Button>
+              {!showWidgets && (
+                <a
+                  href="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=43&prodid=193"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full h-full block flex items-center justify-center gradient-sage text-white rounded-md py-2"
+                >
+                  Buy Membership
+                </a>
+              )}
             </CardFooter>
           </Card>
           <Card className="border-2 border-purple-500 dark:border-purple-400 rounded-lg shadow-lg relative">
@@ -66,8 +77,19 @@ export function MembershipSection() {
                   data-bw-identity-site="false"
                   data-type="contract-link"
                   data-inner-html="Buy Membership"
+                  style={{ display: showWidgets ? 'block' : 'none' }}
                 />
               </Button>
+              {!showWidgets && (
+                <a
+                  href="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=43&prodid=156"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full h-full block flex items-center justify-center gradient-sage text-white rounded-md py-2"
+                >
+                  Buy Membership
+                </a>
+              )}
             </CardFooter>
           </Card>
           <Card className="border-2 border-gray-200 dark:border-gray-800 rounded-lg shadow-lg">
@@ -92,8 +114,19 @@ export function MembershipSection() {
                   data-bw-identity-site="false"
                   data-type="contract-link"
                   data-inner-html="Buy Membership"
+                  style={{ display: showWidgets ? 'block' : 'none' }}
                 />
               </Button>
+              {!showWidgets && (
+                <a
+                  href="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=43&prodid=163"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full h-full block flex items-center justify-center gradient-sage text-white rounded-md py-2"
+                >
+                  Buy Membership
+                </a>
+              )}
             </CardFooter>
           </Card>
         </div>
@@ -123,8 +156,19 @@ export function MembershipSection() {
                   data-bw-identity-site="false"
                   data-type="contract-link"
                   data-inner-html="Buy Membership"
+                  style={{ display: showWidgets ? 'block' : 'none' }}
                 />
               </Button>
+              {!showWidgets && (
+                <a
+                  href="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=43&prodid=189"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full h-full block flex items-center justify-center gradient-sage text-white rounded-md py-2"
+                >
+                  Buy Membership
+                </a>
+              )}
             </CardFooter>
           </Card>
           <Card className="border-2 border-gray-200 dark:border-gray-800 rounded-lg shadow-lg">
@@ -149,8 +193,19 @@ export function MembershipSection() {
                   data-bw-identity-site="false"
                   data-type="contract-link"
                   data-inner-html="Buy Membership"
+                  style={{ display: showWidgets ? 'block' : 'none' }}
                 />
               </Button>
+              {!showWidgets && (
+                <a
+                  href="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=43&prodid=190"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full h-full block flex items-center justify-center gradient-sage text-white rounded-md py-2"
+                >
+                  Buy Membership
+                </a>
+              )}
             </CardFooter>
           </Card>
         </div>
@@ -178,8 +233,19 @@ export function MembershipSection() {
                   data-bw-identity-site="false"
                   data-type="pricing-link"
                   data-inner-html="Buy Now"
+                  style={{ display: showWidgets ? 'block' : 'none' }}
                 />
               </Button>
+              {!showWidgets && (
+                <a
+                  href="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=41&sTG=39&prodId=289"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full h-full block flex items-center justify-center gradient-sage text-white rounded-md py-2"
+                >
+                  Buy Now
+                </a>
+              )}
             </CardFooter>
           </Card>
           <Card className="border-2 border-gray-200 dark:border-gray-800 rounded-lg shadow-lg">
@@ -203,8 +269,19 @@ export function MembershipSection() {
                   data-bw-identity-site="false"
                   data-type="pricing-link"
                   data-inner-html="Buy Now"
+                  style={{ display: showWidgets ? 'block' : 'none' }}
                 />
               </Button>
+              {!showWidgets && (
+                <a
+                  href="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=41&sTG=39&prodId=291"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full h-full block flex items-center justify-center gradient-sage text-white rounded-md py-2"
+                >
+                  Buy Now
+                </a>
+              )}
             </CardFooter>
           </Card>
         </div>
