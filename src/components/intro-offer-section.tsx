@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { HealcodeLink } from "@/components/healcode-link";
 
 // The IntroOfferSection component displays a hero section with a call to action.
 export function IntroOfferSection({ showWidgets = true, isLoading = false }: { showWidgets?: boolean; isLoading?: boolean }) {
@@ -22,8 +23,7 @@ export function IntroOfferSection({ showWidgets = true, isLoading = false }: { s
           </p>
           <div className="mt-8">
             {showWidgets ? (
-              // @ts-expect-error - Mindbody widget
-              <healcode-widget
+              <HealcodeLink
                 data-version="0.2"
                 data-link-class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-lg font-medium gradient-sage hover:opacity-90 text-white px-8 py-4 shadow-lg"
                 data-site-id="1889"
@@ -32,7 +32,11 @@ export function IntroOfferSection({ showWidgets = true, isLoading = false }: { s
                 data-bw-identity-site="false"
                 data-type="pricing-link"
                 data-inner-html="Buy Intro Pass"
-              />
+                fallbackHref="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=43&prodid=1364"
+                className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-lg font-medium gradient-sage hover:opacity-90 text-white px-8 py-4 shadow-lg"
+              >
+                Buy Intro Pass
+              </HealcodeLink>
             ) : isLoading ? (
               <div className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-lg font-medium gradient-sage hover:opacity-90 text-white px-8 py-4 shadow-lg">
                 <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>

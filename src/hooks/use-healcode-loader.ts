@@ -1,10 +1,15 @@
 "use client";
 
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
+
+// Global state to track healcode script loading
+let healcodeScriptState: 'loading' | 'loaded' | 'error' | 'idle' = 'idle';
+let healcodeCallbacks: Array<(success: boolean) => void> = [];
 
 export function useHealcodeLoader() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const mountedRef = useRef(true);
 
   const checkHealcodeReady = useCallback(() => {
     if (typeof window === 'undefined') return false;
@@ -20,24 +25,53 @@ export function useHealcodeLoader() {
     }
   }, []);
 
+  const updateState = useCallback((loaded: boolean, loading: boolean) => {
+    if (mountedRef.current) {
+      setIsLoaded(loaded);
+      setIsLoading(loading);
+    }
+  }, []);
+
   const loadHealcode = useCallback(() => {
-    if (typeof window === 'undefined') return;
+    if (typeof window === 'undefined') {
+      updateState(false, false);
+      return;
+    }
     
     // Check if HealcodeWidget is already available and functional
     if (checkHealcodeReady()) {
-      setIsLoaded(true);
-      setIsLoading(false);
+      healcodeScriptState = 'loaded';
+      updateState(true, false);
       return;
     }
 
-    // Check if script is already in DOM
+    // If script is already loading, queue the callback
+    if (healcodeScriptState === 'loading') {
+      healcodeCallbacks.push((success) => {
+        updateState(success, false);
+      });
+      return;
+    }
+
+    // If script already failed, don't try again
+    if (healcodeScriptState === 'error') {
+      updateState(false, false);
+      return;
+    }
+
+    // Check if script is already in DOM but not initialized
     const existingScript = document.getElementById('healcode-script');
-    if (existingScript) {
+    if (existingScript && healcodeScriptState === 'idle') {
+      healcodeScriptState = 'loading';
+      
       // Wait for the existing script to load and initialize
       const checkInterval = setInterval(() => {
         if (checkHealcodeReady()) {
-          setIsLoaded(true);
-          setIsLoading(false);
+          healcodeScriptState = 'loaded';
+          updateState(true, false);
+          // Notify other waiting components
+          healcodeCallbacks.forEach(cb => cb(true));
+          healcodeCallbacks = [];
           clearInterval(checkInterval);
         }
       }, 100);
@@ -47,7 +81,11 @@ export function useHealcodeLoader() {
         clearInterval(checkInterval);
         if (!checkHealcodeReady()) {
           console.error('Healcode script failed to initialize');
-          setIsLoading(false);
+          healcodeScriptState = 'error';
+          updateState(false, false);
+          // Notify other waiting components
+          healcodeCallbacks.forEach(cb => cb(false));
+          healcodeCallbacks = [];
         }
       }, 10000);
       
@@ -55,61 +93,65 @@ export function useHealcodeLoader() {
     }
 
     // Load the script for the first time
-    const script = document.createElement('script');
-    script.id = 'healcode-script';
-    script.src = 'https://widgets.mindbodyonline.com/javascripts/healcode.js';
-    script.async = false; // Load synchronously to ensure proper initialization
-    script.crossOrigin = 'anonymous';
-    
-    script.onload = () => {
-      // Wait for HealcodeWidget to be properly initialized
-      const checkInterval = setInterval(() => {
-        if (checkHealcodeReady()) {
-          setIsLoaded(true);
-          setIsLoading(false);
-          clearInterval(checkInterval);
-        }
-      }, 50);
+    if (healcodeScriptState === 'idle') {
+      healcodeScriptState = 'loading';
       
-      // Timeout after 5 seconds
-      setTimeout(() => {
-        clearInterval(checkInterval);
-        if (!checkHealcodeReady()) {
-          console.error('Healcode script loaded but HealcodeWidget not initialized');
-          setIsLoading(false);
-        }
-      }, 5000);
-    };
-    
-    script.onerror = () => {
-      console.error('Failed to load healcode script');
-      setIsLoading(false);
-    };
+      const script = document.createElement('script');
+      script.id = 'healcode-script';
+      script.src = 'https://widgets.mindbodyonline.com/javascripts/healcode.js';
+      script.async = true; // Changed to async to prevent blocking
+      script.crossOrigin = 'anonymous';
+      
+      script.onload = () => {
+        console.log('Healcode script loaded successfully');
+        
+        // Wait for HealcodeWidget to be properly initialized
+        const checkInterval = setInterval(() => {
+          if (checkHealcodeReady()) {
+            healcodeScriptState = 'loaded';
+            updateState(true, false);
+            // Notify other waiting components
+            healcodeCallbacks.forEach(cb => cb(true));
+            healcodeCallbacks = [];
+            clearInterval(checkInterval);
+          }
+        }, 50);
+        
+        // Timeout after 5 seconds
+        setTimeout(() => {
+          clearInterval(checkInterval);
+          if (!checkHealcodeReady()) {
+            console.error('Healcode script loaded but HealcodeWidget not initialized');
+            healcodeScriptState = 'error';
+            updateState(false, false);
+            // Notify other waiting components
+            healcodeCallbacks.forEach(cb => cb(false));
+            healcodeCallbacks = [];
+          }
+        }, 5000);
+      };
+      
+      script.onerror = () => {
+        console.error('Failed to load healcode script');
+        healcodeScriptState = 'error';
+        updateState(false, false);
+        // Notify other waiting components
+        healcodeCallbacks.forEach(cb => cb(false));
+        healcodeCallbacks = [];
+      };
 
-    document.head.appendChild(script);
-  }, [checkHealcodeReady]);
+      document.head.appendChild(script);
+    }
+  }, [checkHealcodeReady, updateState]);
 
   useEffect(() => {
+    mountedRef.current = true;
     loadHealcode();
 
-    // Listen for global ready event
-    const handleGlobalReady = () => {
-      if (checkHealcodeReady()) {
-        setIsLoaded(true);
-        setIsLoading(false);
-      }
-    };
-
-    if (typeof window !== 'undefined') {
-      window.addEventListener('healcodeGlobalReady', handleGlobalReady);
-    }
-
     return () => {
-      if (typeof window !== 'undefined') {
-        window.removeEventListener('healcodeGlobalReady', handleGlobalReady);
-      }
+      mountedRef.current = false;
     };
-  }, [loadHealcode, checkHealcodeReady]);
+  }, [loadHealcode]);
 
   return { isLoaded, isLoading };
 }
