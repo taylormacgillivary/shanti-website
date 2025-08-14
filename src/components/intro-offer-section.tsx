@@ -1,4 +1,7 @@
+"use client"
+
 import Image from "next/image";
+import Script from "next/script";
 
 // The IntroOfferSection component displays a hero section with a call to action.
 export function IntroOfferSection() {
@@ -21,12 +24,26 @@ export function IntroOfferSection() {
             Our aim is to serve you and what you need. We have teachers of all different backgrounds and trainings, and offer classes across the wide spectrum of yoga. Try them all with your intro pass and find what you love.
           </p>
           <div className="mt-8">
-            <button className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-lg font-medium gradient-sage hover:opacity-90 text-white px-8 py-4 shadow-lg">
-              Buy Intro Pass
-            </button>
+            <div 
+              dangerouslySetInnerHTML={{
+                __html: `<healcode-widget data-version="0.2" data-link-class="healcode-pricing-option-text-link inline-flex items-center justify-center whitespace-nowrap rounded-md text-lg font-medium gradient-sage hover:opacity-90 text-white px-8 py-4 shadow-lg cursor-pointer" data-site-id="1889" data-mb-site-id="11233" data-service-id="1364" data-bw-identity-site="true" data-type="pricing-link" data-inner-html="Buy Intro Pass"></healcode-widget>`
+              }}
+            />
           </div>
         </div>
       </div>
+      
+      {/* Load HealCode script using Next.js Script component */}
+      <Script
+        src="https://widgets.mindbodyonline.com/javascripts/healcode.js"
+        strategy="afterInteractive"
+        onLoad={() => {
+          console.log('HealCode script loaded successfully for intro offer')
+        }}
+        onError={(e) => {
+          console.error('Failed to load HealCode script for intro offer:', e)
+        }}
+      />
     </section>
   );
 } 
