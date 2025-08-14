@@ -4,9 +4,8 @@
  */
 import { CardTitle, CardHeader, CardContent, CardFooter, Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { HealcodeLink } from "@/components/healcode-link"
 
-export function MembershipSection({ showWidgets = true }: { showWidgets?: boolean; isLoading?: boolean }) {
+export function MembershipSection() {
   return (
     <div className="bg-white dark:bg-gray-950 py-12">
       <div className="container mx-auto px-4">
@@ -27,30 +26,9 @@ export function MembershipSection({ showWidgets = true }: { showWidgets?: boolea
               <p className="text-sm text-gray-500 dark:text-gray-400">No further commitment required</p>
             </CardContent>
             <CardFooter>
-              {showWidgets ? (
-                <HealcodeLink
-                  data-version="0.2"
-                  data-link-class="healcode-contract-text-link w-full h-full block flex items-center justify-center"
-                  data-site-id="1889"
-                  data-mb-site-id="11233"
-                  data-service-id="193"
-                  data-bw-identity-site="false"
-                  data-type="contract-link"
-                  data-inner-html="Buy Membership"
-                  fallbackHref="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=43&prodid=193"
-                >
-                  Buy Membership
-                </HealcodeLink>
-              ) : (
-                <a
-                  href="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=43&prodid=193"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full h-full block flex items-center justify-center gradient-sage text-white rounded-md py-2"
-                >
-                  Buy Membership
-                </a>
-              )}
+              <Button className="w-full gradient-sage text-white">
+                Buy Membership
+              </Button>
             </CardFooter>
           </Card>
           <Card className="border-2 border-purple-500 dark:border-purple-400 rounded-lg shadow-lg relative">
@@ -67,30 +45,9 @@ export function MembershipSection({ showWidgets = true }: { showWidgets?: boolea
               <p className="text-sm text-gray-500 dark:text-gray-400">Minimum 4 month commitment</p>
             </CardContent>
             <CardFooter>
-              {showWidgets ? (
-                <HealcodeLink
-                  data-version="0.2"
-                  data-link-class="healcode-contract-text-link w-full h-full block flex items-center justify-center"
-                  data-site-id="1889"
-                  data-mb-site-id="11233"
-                  data-service-id="156"
-                  data-bw-identity-site="false"
-                  data-type="contract-link"
-                  data-inner-html="Buy Membership"
-                  fallbackHref="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=43&prodid=156"
-                >
-                  Buy Membership
-                </HealcodeLink>
-              ) : (
-                <a
-                  href="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=43&prodid=156"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full h-full block flex items-center justify-center gradient-sage text-white rounded-md py-2"
-                >
-                  Buy Membership
-                </a>
-              )}
+              <Button className="w-full gradient-sage text-white">
+                Buy Membership
+              </Button>
             </CardFooter>
           </Card>
           <Card className="border-2 border-gray-200 dark:border-gray-800 rounded-lg shadow-lg">
@@ -104,30 +61,9 @@ export function MembershipSection({ showWidgets = true }: { showWidgets?: boolea
               <p className="text-sm text-gray-500 dark:text-gray-400">4 month commitment</p>
             </CardContent>
             <CardFooter>
-              {showWidgets ? (
-                <HealcodeLink
-                    data-version="0.2"
-                    data-link-class="healcode-contract-text-link w-full h-full block flex items-center justify-center"
-                    data-site-id="1889"
-                    data-mb-site-id="11233"
-                    data-service-id="163"
-                    data-bw-identity-site="false"
-                    data-type="contract-link"
-                    data-inner-html="Buy Membership"
-                    fallbackHref="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=43&prodid=163"
-                  >
-                    Buy Membership
-                  </HealcodeLink>
-              ) : (
-                <a
-                  href="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=43&prodid=163"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full h-full block flex items-center justify-center gradient-sage text-white rounded-md py-2"
-                >
-                  Buy Membership
-                </a>
-              )}
+              <Button className="w-full gradient-sage text-white">
+                Buy Membership
+              </Button>
             </CardFooter>
           </Card>
         </div>
@@ -146,30 +82,9 @@ export function MembershipSection({ showWidgets = true }: { showWidgets?: boolea
               <p className="text-sm text-gray-500 dark:text-gray-400">No further commitment required, auto-renews until cancelled</p>
             </CardContent>
             <CardFooter>
-              {showWidgets ? (
-                <HealcodeLink
-                    data-version="0.2"
-                    data-link-class="healcode-contract-text-link w-full h-full block flex items-center justify-center"
-                    data-site-id="1889"
-                    data-mb-site-id="11233"
-                    data-service-id="189"
-                    data-bw-identity-site="false"
-                    data-type="contract-link"
-                    data-inner-html="Buy Membership"
-                    fallbackHref="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=43&prodid=189"
-                  >
-                    Buy Membership
-                  </HealcodeLink>
-              ) : (
-                <a
-                  href="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=43&prodid=189"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full h-full block flex items-center justify-center gradient-sage text-white rounded-md py-2"
-                >
-                  Buy Membership
-                </a>
-              )}
+              <Button className="w-full gradient-sage text-white">
+                Buy Membership
+              </Button>
             </CardFooter>
           </Card>
           <Card className="border-2 border-gray-200 dark:border-gray-800 rounded-lg shadow-lg">
@@ -183,30 +98,9 @@ export function MembershipSection({ showWidgets = true }: { showWidgets?: boolea
               <p className="text-sm text-gray-500 dark:text-gray-400">Minimum 4 month commitment, auto-renews until cancelled </p>
             </CardContent>
             <CardFooter>
-              {showWidgets ? (
-                <HealcodeLink
-                    data-version="0.2"
-                    data-link-class="healcode-contract-text-link w-full h-full block flex items-center justify-center"
-                    data-site-id="1889"
-                    data-mb-site-id="11233"
-                    data-service-id="190"
-                    data-bw-identity-site="false"
-                    data-type="contract-link"
-                    data-inner-html="Buy Membership"
-                    fallbackHref="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=43&prodid=190"
-                  >
-                    Buy Membership
-                  </HealcodeLink>
-              ) : (
-                <a
-                  href="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=43&prodid=190"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full h-full block flex items-center justify-center gradient-sage text-white rounded-md py-2"
-                >
-                  Buy Membership
-                </a>
-              )}
+              <Button className="w-full gradient-sage text-white">
+                Buy Membership
+              </Button>
             </CardFooter>
           </Card>
         </div>
@@ -223,30 +117,9 @@ export function MembershipSection({ showWidgets = true }: { showWidgets?: boolea
               <p className="mt-4">$18 Student/Senior Price</p>
             </CardContent>
             <CardFooter>
-              {showWidgets ? (
-                <HealcodeLink
-                    data-version="0.2"
-                    data-link-class="healcode-pricing-option-text-link w-full h-full block flex items-center justify-center"
-                    data-site-id="1889"
-                    data-mb-site-id="11233"
-                    data-service-id="289"
-                    data-bw-identity-site="false"
-                    data-type="pricing-link"
-                    data-inner-html="Buy Now"
-                    fallbackHref="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=43&prodid=163"
-                  >
-                    Buy Membership
-                  </HealcodeLink>
-              ) : (
-                <a
-                  href="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=41&sTG=39&prodId=289"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full h-full block flex items-center justify-center gradient-sage text-white rounded-md py-2"
-                >
-                  Buy Now
-                </a>
-              )}
+              <Button className="w-full gradient-sage text-white">
+                Buy Now
+              </Button>
             </CardFooter>
           </Card>
           <Card className="border-2 border-gray-200 dark:border-gray-800 rounded-lg shadow-lg">
@@ -259,30 +132,9 @@ export function MembershipSection({ showWidgets = true }: { showWidgets?: boolea
               <p className="text-sm text-gray-500 dark:text-gray-400">Expires After 1 Year</p>
             </CardContent>
             <CardFooter>
-              {showWidgets ? (
-                <HealcodeLink
-                    data-version="0.2"
-                    data-link-class="healcode-pricing-option-text-link w-full h-full block flex items-center justify-center"
-                    data-site-id="1889"
-                    data-mb-site-id="11233"
-                    data-service-id="291"
-                    data-bw-identity-site="false"
-                    data-type="pricing-link"
-                    data-inner-html="Buy Now"
-                    fallbackHref="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=43&prodid=163"
-                  >
-                    Buy Membership
-                  </HealcodeLink>
-              ) : (
-                <a
-                  href="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=41&sTG=39&prodId=291"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full h-full block flex items-center justify-center gradient-sage text-white rounded-md py-2"
-                >
-                  Buy Now
-                </a>
-              )}
+              <Button className="w-full gradient-sage text-white">
+                Buy Now
+              </Button>
             </CardFooter>
           </Card>
         </div>

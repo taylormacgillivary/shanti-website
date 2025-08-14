@@ -1,8 +1,33 @@
 "use client"
 
-import { HealcodeWidget } from "@/components/healcode-widget";
+import { useEffect, useRef } from 'react'
 
 export default function SchedulePage() {
+  const widgetRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    // Load the HealCode script if it hasn't been loaded yet
+    if (!document.querySelector('script[src="https://widgets.mindbodyonline.com/javascripts/healcode.js"]')) {
+      const script = document.createElement('script')
+      script.src = 'https://widgets.mindbodyonline.com/javascripts/healcode.js'
+      script.type = 'text/javascript'
+      script.async = true
+      document.head.appendChild(script)
+    }
+
+    // Create the healcode-widget element manually
+    if (widgetRef.current) {
+      const widget = document.createElement('healcode-widget')
+      widget.setAttribute('data-type', 'schedules')
+      widget.setAttribute('data-widget-partner', 'object')
+      widget.setAttribute('data-widget-id', '68165685be')
+      widget.setAttribute('data-widget-version', '1')
+      
+      // Clear any existing content and append the widget
+      widgetRef.current.innerHTML = ''
+      widgetRef.current.appendChild(widget)
+    }
+  }, [])
 
   return (
     <>
@@ -18,41 +43,9 @@ export default function SchedulePage() {
           </div>
         </div>
         
-        {/* Branded Web Schedule Widget Container */}
-        <div className="w-full">
-          <HealcodeWidget
-            data-type="schedules"
-            data-widget-partner="object"
-            data-widget-id="68165685be"
-            data-widget-version="1"
-            data-site-id="1889"
-            data-mb-site-id="11233"
-            style={{ width: '100%', minHeight: '600px' }}
-          >
-            <a 
-              href="https://clients.mindbodyonline.com/classic/ws?studioid=11233" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center rounded-md bg-sage-green text-white font-medium px-6 py-3 hover:bg-sage-green/90 transition-colors"
-            >
-              Book Classes Directly
-            </a>
-          </HealcodeWidget>
-        </div>
-        
-        {/* Fallback content */}
-        <div className="mt-8 text-center text-sm text-gray-500">
-          <p>
-            Having trouble viewing the schedule? 
-            <a 
-              href="https://clients.mindbodyonline.com/classic/ws?studioid=11233" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-blue-600 hover:text-blue-800 ml-1"
-            >
-              Visit our booking page directly
-            </a>
-          </p>
+        {/* HealCode Widget for Schedule */}
+        <div className="w-full max-w-6xl mx-auto">
+          <div ref={widgetRef} id="healcode-widget-container" />
         </div>
       </div>
     </>

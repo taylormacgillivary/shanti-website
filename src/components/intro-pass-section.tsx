@@ -1,9 +1,7 @@
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
-import { HealcodeLink } from "@/components/healcode-link";
 
 export function IntroPassSection() {
-  // Using HealcodeLink component which handles loading internally
   return (
     <section className="py-24 bg-gradient-to-b from-muted/30 to-background">
       <div className="container mx-auto px-4">
@@ -52,21 +50,9 @@ export function IntroPassSection() {
               </li>
             </ul>
 
-            <HealcodeLink
-              data-version="0.2"
-              data-link-class="mt-8 inline-flex items-center justify-center whitespace-nowrap rounded-md text-lg font-medium gradient-sage hover:opacity-90 text-white px-8 py-6 shadow-lg"
-              data-site-id="1889"
-              data-mb-site-id="11233"
-              data-service-id="1364"
-              data-bw-identity-site="false"
-              data-type="pricing-link"
-              data-inner-html="Get Your Intro Pass"
-              fallbackHref="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=43&prodid=1364"
-              className="mt-8 inline-flex items-center justify-center whitespace-nowrap rounded-md text-lg font-medium gradient-sage hover:opacity-90 text-white px-8 py-6 shadow-lg"
-            >
+            <button className="mt-8 inline-flex items-center justify-center whitespace-nowrap rounded-md text-lg font-medium gradient-sage hover:opacity-90 text-white px-8 py-6 shadow-lg">
               Get Your Intro Pass
-            </HealcodeLink>
-            {/* Removed legacy loading state */}
+            </button>
           </div>
 
           {/* Image Column */}
