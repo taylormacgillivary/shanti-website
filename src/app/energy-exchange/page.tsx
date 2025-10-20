@@ -31,7 +31,7 @@ export default function EnergyExchangePage() {
       <section className="py-16 bg-gradient-to-b from-background to-muted/30">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto space-y-8">
-            <div className="prose prose-lg mx-auto text-center">
+            <div className="prose prose-lg mx-auto text-center space-y-6">
               <p>
                 Our Energy Exchange Program is at the heart of our studios, and creates the backbone of the Shanti experience. 
                 We offer yoga practice in exchange for time spent keeping the studio tidy and looking fresh. This includes 

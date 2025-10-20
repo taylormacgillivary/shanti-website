@@ -25,7 +25,7 @@ export default function ShantiOnlinePage() {
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
             <a 
-              href="https://namastream.com/shantihotyoga/account/login" 
+              href="https://www.shantiyogaonline.ca/" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="inline-flex items-center justify-center px-8 py-3 gradient-sage text-white font-medium rounded-lg hover:opacity-90 transition-all duration-200 shadow-lg"
@@ -33,7 +33,7 @@ export default function ShantiOnlinePage() {
               Log In Here
             </a>
             <a 
-              href="https://namastream.com/shantihotyoga/buy/product/4383" 
+              href="https://www.shantiyogaonline.ca/buy/product/14595" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="inline-flex items-center justify-center px-8 py-3 gradient-sage text-white font-medium rounded-lg hover:opacity-90 transition-all duration-200 shadow-lg"

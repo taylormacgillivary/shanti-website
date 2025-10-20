@@ -11,7 +11,7 @@ const AboutPage: NextPage = () => {
     {
       year: 2013,
       title: 'Shanti Bedford Opens',
-      description: 'In 2013 we decided to expand our community to Bedford. As the Yoga community in Halifax had few choices around the city, we aimed to bridge the gap in the Halifax.',
+      description: 'In 2013 we decided to expand our community to Bedford. As the Yoga community in Halifax had few choices around the city, we aimed to bridge the gap between Dartmouth & Bedford.',
     },
     {
         year: 2015,

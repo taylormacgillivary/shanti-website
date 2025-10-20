@@ -31,7 +31,7 @@ const teachers = [
   {
     name: "Blaine Carter",
     title: "Teacher",
-    image: "/images-in-use/teachers-used/blaine-carter.jpg",
+    image: "/images-in-use/teachers-used/blaine-carter.jpeg",
     bio: "Blaine's doorway into yoga was through lunchtime yoga classes in the workplace in 2010. Then, before he could use his sweet deal groupon at Moksha Dartmouth, he was working out of country and practicing Bikram regularly.\nUpon returning home, he has been practicing at Shanti ever since. He completed his 200hr YTT in 2014, followed up with 50hr Yin TT through Shanti. He also gained certifications with the level 1 Great Yoga Wall, SUP Yoga Instructor, Love Your Brain YTT and Yoga Nidra."
   },
   {
@@ -84,12 +84,6 @@ const teachers = [
     bio: "A yoga nerd at heart, Kevin brings his genuine passion for yoga to every class. He started his yoga journey at Shanti in 2011, and has since had the pleasure of training with Ryan Leier, Srivatsa Ramaswami (vinyasa krama), and Manju Jois (ashtanga), and holds a RYT 200, and RCYT (registered children's yoga teacher) certification with Yoga Alliance. He shares his dynamic style of practice which is fun, inspirational, and focused on the core traditions of yoga."
   },
   {
-    name: "Annette Opas",
-    title: "Teacher",
-    image: "/images-in-use/teachers-used/annette-opas.jpg",
-    bio: "Annette completed her 200 hour Yoga Teacher Training with Shanti Hot Yoga in 2017. She is known for her authentic, playful, non-judgmental and challenging teaching style and compassion for those in and out of the studio. Yoga has been a part of Annette's life for several years now. Her practice has helped her grow stronger; physically & mentally and more courageous, both on and off the mat. As a teacher and student, yoga inspires her to live each moment more intentionally and mindfully."
-  },
-  {
     name: "Diane Bellefontaine",
     title: "Teacher",
     image: "/images-in-use/teachers-used/diane-edited.png",
@@ -107,12 +101,7 @@ const teachers = [
     image: "/images-in-use/teachers-used/shanon-phelan.jpg",
     bio: "Shanon attended her first Yoga (Ashtanga) class with her Mom 25 years ago. She quickly fell in love with it, more so for the physical aspects at that time. However, it didn't take long for her to realize that Yoga was a way of living. Yoga has taught her how to love herself and others, to be gracious, to forgive, to accept, to be kind, to observe, to be present, to listen, to hold space, and to honour the beauty in the human experience. This is the heart of Shanon's practice."
   },
-  {
-    name: "Livia Peyton",
-    title: "Teacher",
-    image: "/images-in-use/teachers-used/livia-peyton.jpg",
-    bio: "Yoga has taught me about the beauty of a journey that has no destination. About the being and not the doing. As an active, constantly moving, always wondering individual, I was not always able to be in the moment. 6 years ago yoga changed that. Through my 200hr YTT in 2018, I developed a passion for communication and building of relationships that I hope to bring into all aspects of my life, practice and teaching."
-  },
+
   {
     name: "Kyla MacKinnon",
     title: "Teacher",
@@ -148,6 +137,44 @@ const teachers = [
     title: "Teacher",
     image: "/images-in-use/teachers-used/courtney-parsons.jpg",
     bio: "Courtney was introduced to yoga at a young age in the midst of her dancing career. She found yoga at a time where flexibility and strength were an asset to being a competitive dancer. While her practice grew, she noticed the benefits that yoga had on her mental clarity and well being.\nFeeling inspired and continuously challenged by her yoga teachers and mentors, Courtney decided to take the next step of completing a 200hr teacher training with Shanti Yoga.",
+    objectPosition: "object-top"
+  },
+  {
+    name: "Andrea Robinson",
+    title: "Teacher",
+    image: "/images-in-use/teachers-used/Andrea Robinson.jpg",
+    bio: "Andrea discovered yoga at a local community center in 2010 and was immediately drawn to the transformational nature of the practice. The Shanti Community has played a large role in her life since then. She completed Shanti's 200hr Yoga Teacher Training program in 2021 as a way to deepen her own personal practice and has completed further training in Kundalini, Yin, Vinyasa Krama and Pranayama. Andrea now enjoys creating and holding space for others to experience the connection to the self that yoga provides.",
+    objectPosition: "object-top"
+  },
+  {
+    name: "Louise Angel",
+    title: "Teacher",
+    image: "/images-in-use/teachers-used/Louise Angel.jpeg",
+    bio: "Fifteen years ago, I discovered yoga as an alternative to high school gym class and was instantly drawn to its unique style of movement. What began as a purely physical practice soon evolved into something much deeper. As I continued my journey through life's challenges, yoga became a grounding force that sparked a deeper curiosity about its ancient roots and transformative potential.\nIn 2025, I completed my 200-hour Yoga Teacher Training (YTT) and I continue to explore and reconnect with my mind, body, and soul through yoga. I hope to inspire the same sense of curiosity and self-discovery in those who practice with me!"
+  },
+  {
+    name: "Leanna Letterio",
+    title: "Teacher",
+    image: "/images-in-use/teachers-used/Leanna Letterio.jpg",
+    bio: "Leanna's yoga journey began over a decade ago and has been a steady thread through seasons of challenge, growth, and self-discovery. Through movement, breath, and meditation, she's learned to cultivate peace, build strength, and find moments of joy—no matter what life holds.\nHer teaching is rooted in mindfulness and inspired by movement, offering thoughtful, accessible practices that ground you in the foundations of yoga while exploring creative ways to flow through the familiar. Guided by her personal health journey and background in architecture, Leanna approaches each class with care and curiosity, weaving sequences that invite you to slow down, build strength, and reconnect.\nShe completed her 200-hr Hatha and Vinyasa training in Bali and began teaching community classes on the beaches of Australia. Whether you come seeking clarity, balance, or a deeper connection to yourself, Leanna holds space for you to meet yourself exactly where you are."
+  },
+  {
+    name: "Katherine King",
+    title: "Teacher",
+    image: "/images-in-use/teachers-used/Katherine King.jpg",
+    bio: "Katherine King is a dedicated yoga teacher who brings passion and expertise to every class."
+  },
+  {
+    name: "Jasmine Chauhan",
+    title: "Teacher",
+    image: "/images-in-use/teachers-used/Jasmine Chauhan.jpeg",
+    bio: "Jasmine Chauhan is a passionate yoga teacher committed to creating a welcoming space for all students."
+  },
+  {
+    name: "Natasha Pollock",
+    title: "Teacher",
+    image: "/images-in-use/teachers-used/Natasha Polluck.jpg",
+    bio: "Natasha Pollock brings her love of yoga and dedication to her students to every class she teaches.",
     objectPosition: "object-top"
   }
 ];

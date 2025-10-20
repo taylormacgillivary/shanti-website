@@ -174,14 +174,14 @@ const modules = [
 export default function YTT200HourPage() {
     return (
         <CoursePage
-            title="YTT — Spring 2025"
+            title="YTT — Spring 2026"
             subtitle="A 200-Hour Foundational Journey"
-            dates="Next Training Dates TBD"
+            dates="Module 1: May 1-8, 2026 • Module 2: May 15-22, 2026 • Module 3: May 29-31, 2026"
             quote="We must be willing to let go of the life we have planned, so as to have the life that is waiting for us."
             heroImage="/images-in-use/05.jpg"
             imageTwo="/images-in-use/12.jpg"
             imageThree="/images-in-use/20.jpg"
-            infoPackageLink="/YTT 2024 Info Package (2).pdf"
+            infoPackageLink="/YTT 2026 Info Package.pdf"
             whoIsThisFor={whoIsThisFor}
             curriculum={modules}
             curriculumTitle="Course Curriculum"

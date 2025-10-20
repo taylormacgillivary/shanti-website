@@ -13,7 +13,7 @@ export default function SchedulePage() {
               Class Schedule
             </h1>
             <p className="text-gray-500 dark:text-gray-400">
-              Book your favorite classes with ease.
+              Book your favourite classes with ease. If you haven&apos;t purchased a pass yet, you&apos;ll be prompted to purchase when you book.
             </p>
           </div>
         </div>

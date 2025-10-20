@@ -5,6 +5,7 @@ import { useState, useMemo } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import PastRetreatsMap from "@/components/ui/PastRetreatsMap";
+import { NewsletterSignup } from "@/components/newsletter-signup";
 
 const pastRetreats = [
   { name: "Kerala, India", image: "/images-in-use/Retreats/kerala-india.jpeg" },
@@ -209,21 +210,13 @@ export default function RetreatsPage() {
       {/* Newsletter Section */}
       <section className="py-24 bg-gradient-to-b from-background to-muted/30">
         <div className="container mx-auto px-4">
-          <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-6">Stay in the loop</h2>
-            <p className="text-lg text-muted-foreground mb-8">
-              Sign up with your email address to receive news and updates about our upcoming retreats.
-            </p>
-            <form className="flex flex-col sm:flex-row gap-4 justify-center">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="px-6 py-3 rounded-lg border-2 border-sage-green/30 focus:outline-none focus:border-sage-green"
-              />
-              <Button className="gradient-sage text-white hover:opacity-90">
-                Sign Up
-              </Button>
-            </form>
+          <div className="max-w-2xl mx-auto">
+            <NewsletterSignup
+              title="Stay in the loop"
+              subtitle="Sign up with your email address to receive news and updates about our upcoming retreats."
+              tags={["retreats", "website-newsletter"]}
+              placeholder="Enter your email"
+            />
           </div>
         </div>
       </section>
