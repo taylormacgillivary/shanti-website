@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { subscribeToNewsletter } from "@/app/actions/newsletter";
 import { toast } from "sonner";
+import { NewsletterConfirmationModal } from "@/components/newsletter-confirmation-modal";
 
 interface NewsletterSignupProps {
   title?: string;
@@ -24,6 +25,8 @@ export function NewsletterSignup({
 }: NewsletterSignupProps) {
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [confirmedEmail, setConfirmedEmail] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -39,45 +42,58 @@ export function NewsletterSignup({
       const result = await subscribeToNewsletter({ email, tags });
 
       if (result.success) {
-        toast.success(result.message);
+        // Show confirmation modal
+        setConfirmedEmail(email);
+        setShowConfirmation(true);
         setEmail(""); // Clear the input
       } else {
-        toast.error(result.message);
+        // Show detailed error message
+        toast.error(result.message || "Failed to subscribe. Please try again.");
+        console.error("Newsletter subscription failed:", result);
       }
-    } catch {
+    } catch (error) {
       toast.error("An unexpected error occurred. Please try again.");
+      console.error("Newsletter subscription error:", error);
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <div className={`text-center ${className}`}>
-      <h3 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-50">
-        {title}
-      </h3>
-      <p className="mt-4 text-lg text-gray-600 dark:text-gray-400">
-        {subtitle}
-      </p>
-      <form onSubmit={handleSubmit} className="mt-6 flex justify-center gap-2">
-        <input
-          className="w-full max-w-sm p-2 border border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-700 dark:text-gray-50"
-          placeholder={placeholder}
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          disabled={isLoading}
-          required
-        />
-        <Button
-          type="submit"
-          className="px-6 py-2 rounded-md gradient-sage text-white"
-          disabled={isLoading}
-        >
-          {isLoading ? "..." : buttonText}
-        </Button>
-      </form>
-    </div>
+    <>
+      <div className={`text-center ${className}`}>
+        <h3 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-50">
+          {title}
+        </h3>
+        <p className="mt-4 text-lg text-gray-600 dark:text-gray-400">
+          {subtitle}
+        </p>
+        <form onSubmit={handleSubmit} className="mt-6 flex justify-center gap-2">
+          <input
+            className="w-full max-w-sm p-2 border border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-700 dark:text-gray-50"
+            placeholder={placeholder}
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            disabled={isLoading}
+            required
+          />
+          <Button
+            type="submit"
+            className="px-6 py-2 rounded-md gradient-sage text-white"
+            disabled={isLoading}
+          >
+            {isLoading ? "..." : buttonText}
+          </Button>
+        </form>
+      </div>
+      
+      <NewsletterConfirmationModal
+        open={showConfirmation}
+        onOpenChange={setShowConfirmation}
+        email={confirmedEmail}
+      />
+    </>
   );
 }
 

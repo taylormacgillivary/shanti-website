@@ -45,11 +45,15 @@ export async function subscribeToList({
 
     // Validate environment variables
     if (!process.env.MAILCHIMP_API_KEY) {
+      console.error('MAILCHIMP_API_KEY environment variable is not set');
       throw new Error('MAILCHIMP_API_KEY is not configured');
     }
     if (!process.env.MAILCHIMP_SERVER_PREFIX) {
+      console.error('MAILCHIMP_SERVER_PREFIX environment variable is not set');
       throw new Error('MAILCHIMP_SERVER_PREFIX is not configured');
     }
+
+    console.log(`Mailchimp: Subscribing ${email} to list ${listId}`);
 
     // Build merge fields
     const merge_fields: Record<string, string> = {
@@ -64,7 +68,7 @@ export async function subscribeToList({
     }
 
     // Add or update member
-    await mailchimp.lists.setListMember(
+    const memberResponse = await mailchimp.lists.setListMember(
       listId,
       email.toLowerCase(),
       {
@@ -74,8 +78,11 @@ export async function subscribeToList({
       }
     );
 
+    console.log(`Mailchimp: Member added/updated. Status: ${memberResponse.status}`);
+
     // Add tags if provided
     if (tags.length > 0) {
+      console.log(`Mailchimp: Adding tags: ${tags.join(', ')}`);
       await mailchimp.lists.updateListMemberTags(
         listId,
         email.toLowerCase(),
@@ -92,18 +99,35 @@ export async function subscribeToList({
   } catch (error: unknown) {
     console.error('Mailchimp subscription error:', error);
 
-    const err = error as { status?: number; response?: { body?: { detail?: string } }; message?: string };
+    const err = error as { status?: number; response?: { body?: { detail?: string; title?: string } }; message?: string };
+
+    // Log detailed error information
+    if (err.response?.body) {
+      console.error('Mailchimp error details:', JSON.stringify(err.response.body, null, 2));
+    }
 
     // Handle specific Mailchimp errors
     if (err.status === 400) {
+      const errorDetail = err.response?.body?.detail || err.response?.body?.title || 'Invalid request';
+      console.error(`Mailchimp 400 error: ${errorDetail}`);
       return {
         success: false,
-        message: 'Invalid email address or already subscribed.',
-        error: err.response?.body?.detail || err.message || 'Unknown error',
+        message: 'Invalid email address or data. Please check and try again.',
+        error: errorDetail,
+      };
+    }
+
+    if (err.status === 401) {
+      console.error('Mailchimp 401 error: Invalid API key or authentication failed');
+      return {
+        success: false,
+        message: 'Configuration error. Please contact support.',
+        error: 'Invalid API credentials',
       };
     }
 
     if (err.status === 404) {
+      console.error(`Mailchimp 404 error: List ${listId} not found`);
       return {
         success: false,
         message: 'List not found. Please check your configuration.',

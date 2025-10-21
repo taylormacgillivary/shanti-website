@@ -20,16 +20,22 @@ export async function subscribeToNewsletter(data: NewsletterData) {
     // Check if the newsletter audience ID is configured
     const listId = process.env.MAILCHIMP_NEWSLETTER_AUDIENCE_ID;
     if (!listId) {
+      console.error("MAILCHIMP_NEWSLETTER_AUDIENCE_ID is not configured in environment variables");
       return {
         success: false,
         message: "Newsletter subscription is not configured. Please contact support.",
       };
     }
 
+    // Log subscription attempt (helpful for debugging)
+    console.log(`Attempting to subscribe: ${validatedData.email} to list: ${listId}`);
+
     // Use custom tags if provided, otherwise default to website-newsletter
     const tags = validatedData.tags && validatedData.tags.length > 0 
       ? validatedData.tags 
       : ["website-newsletter"];
+
+    console.log(`Tags to be applied: ${tags.join(", ")}`);
 
     // Subscribe to Mailchimp
     const result = await subscribeToList({
@@ -40,9 +46,16 @@ export async function subscribeToNewsletter(data: NewsletterData) {
       tags,
     });
 
+    if (result.success) {
+      console.log(`Successfully subscribed: ${validatedData.email}`);
+    } else {
+      console.error(`Failed to subscribe: ${validatedData.email}`, result);
+    }
+
     return result;
   } catch (error) {
     if (error instanceof z.ZodError) {
+      console.error("Validation error:", error.errors);
       return {
         success: false,
         message: error.errors[0].message,

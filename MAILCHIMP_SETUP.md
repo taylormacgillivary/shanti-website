@@ -64,16 +64,34 @@ MAILCHIMP_ENERGY_EXCHANGE_AUDIENCE_ID=your_energy_exchange_audience_id
 
 3. Replace the placeholder values with your actual values from Steps 1 and 2
 
-## Step 4: Test the Integration
+**Important Notes:**
+- The `.env.local` file must be in the root directory of the project
+- The file should NOT be committed to git (it's in `.gitignore`)
+- At minimum, you MUST set `MAILCHIMP_API_KEY`, `MAILCHIMP_SERVER_PREFIX`, and `MAILCHIMP_NEWSLETTER_AUDIENCE_ID` for newsletter signup to work
+- The server prefix in the API key (the part after the dash) must match `MAILCHIMP_SERVER_PREFIX`
+
+## Step 4: Verify Configuration
+
+Before starting your server, verify your configuration is correct:
+
+```bash
+npm run check-mailchimp
+```
+
+This will check that all required environment variables are set correctly.
+
+## Step 5: Test the Integration
 
 1. Restart your development server:
    ```bash
    npm run dev
    ```
 
-2. Navigate to your website's membership page
+2. Navigate to your website's membership page (or any page with newsletter signup)
 3. Try subscribing with a test email address
-4. Check your Mailchimp audience to confirm the subscriber was added
+4. You should see a confirmation modal if successful
+5. Check your Mailchimp audience dashboard to confirm the subscriber was added
+6. Check the terminal/console for detailed log messages about the subscription process
 
 ## Features Included
 
@@ -145,25 +163,107 @@ import { NewsletterSignup } from "@/components/newsletter-signup";
 
 ## Troubleshooting
 
-### "MAILCHIMP_API_KEY is not configured" error
-- Make sure your `.env.local` file exists in the project root
-- Verify the variable name is exactly `MAILCHIMP_API_KEY`
-- Restart your development server after adding environment variables
+### Quick Diagnostics
 
-### "List not found" error
-- Double-check your Audience ID in Mailchimp
-- Make sure you copied the ID correctly (no extra spaces)
-- Verify the audience hasn't been deleted
+First, run the configuration checker:
+```bash
+npm run check-mailchimp
+```
 
-### Subscriber not appearing in Mailchimp
-- Check the Mailchimp dashboard for any bounce or rejection notices
-- Look at the browser console for error messages
-- Verify the email address is valid
+This will identify most configuration issues.
 
-### API Key Issues
-- Make sure the API key includes the server prefix (e.g., `-us1` at the end)
-- Verify the API key is active in your Mailchimp account
-- Check that the API key has the necessary permissions
+### Common Issues
+
+#### "Newsletter subscription is not configured" error
+**Cause:** `MAILCHIMP_NEWSLETTER_AUDIENCE_ID` is not set in `.env.local`
+
+**Solution:**
+1. Check that `.env.local` file exists in the project root
+2. Verify `MAILCHIMP_NEWSLETTER_AUDIENCE_ID` is set
+3. Get your Audience ID from Mailchimp (Settings → Audience name and defaults)
+4. Restart your development server after making changes
+
+#### "MAILCHIMP_API_KEY is not configured" error
+**Cause:** API key is missing or `.env.local` file doesn't exist
+
+**Solution:**
+1. Create `.env.local` file in the project root
+2. Add `MAILCHIMP_API_KEY=your_key_here`
+3. Verify the variable name is exactly `MAILCHIMP_API_KEY`
+4. Restart your development server
+
+#### "List not found" error
+**Cause:** Invalid Audience ID or API key doesn't have access
+
+**Solution:**
+1. Double-check your Audience ID in Mailchimp dashboard
+2. Make sure you copied the ID correctly (no extra spaces)
+3. Verify the audience hasn't been deleted
+4. Check that your API key has permissions to access this list
+5. Check the server console for detailed error messages
+
+#### No confirmation modal appears
+**Cause:** Subscription failed silently
+
+**Solution:**
+1. Open browser DevTools console (F12) to see error messages
+2. Check the terminal where your dev server is running for detailed logs
+3. You'll see messages like:
+   - `Attempting to subscribe: email@example.com to list: abc123`
+   - `Mailchimp: Member added/updated. Status: subscribed`
+4. If you see errors, they will show the specific problem
+
+#### Subscriber not appearing in Mailchimp
+**Cause:** Various - check logs for details
+
+**Solution:**
+1. Check the browser console for error messages
+2. Check the server terminal for detailed Mailchimp API responses
+3. Look for these specific issues:
+   - Email validation failures
+   - Duplicate subscriber (they may already be in the list)
+   - Wrong Audience ID
+   - Mailchimp account issues
+4. Verify the email address is valid
+5. Check your Mailchimp dashboard for any bounce or rejection notices
+6. Try logging into Mailchimp and searching for the email directly
+
+#### API Key Issues
+**Cause:** Invalid or incorrectly formatted API key
+
+**Solution:**
+1. Make sure the API key includes the server prefix (e.g., `xxxxxxxx-us1`)
+2. Verify `MAILCHIMP_SERVER_PREFIX` matches the suffix of your API key
+3. Check that the API key is active in your Mailchimp account
+4. Ensure the API key has the necessary permissions (not read-only)
+5. Try generating a new API key if the current one doesn't work
+
+### Checking Logs
+
+The application now includes detailed logging for troubleshooting:
+
+**Server logs** (in your terminal):
+- Shows when subscriptions are attempted
+- Shows the list ID being used
+- Shows tags being applied
+- Shows Mailchimp API responses
+- Shows detailed error messages with status codes
+
+**Browser console** (F12 → Console tab):
+- Shows client-side errors
+- Shows toast notifications
+- Shows network request failures
+
+### Testing Checklist
+
+1. ✅ `.env.local` file exists in project root
+2. ✅ All required environment variables are set
+3. ✅ `npm run check-mailchimp` passes
+4. ✅ Dev server has been restarted since adding env vars
+5. ✅ Browser console shows no errors
+6. ✅ Server terminal shows subscription attempt logs
+7. ✅ Confirmation modal appears after submission
+8. ✅ Subscriber appears in Mailchimp dashboard within 1-2 minutes
 
 ## Security Notes
 

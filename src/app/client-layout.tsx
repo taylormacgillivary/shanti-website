@@ -1,7 +1,7 @@
 "use client";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Toaster } from "@/components/ui/toaster";
+import { Toaster } from "sonner";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 
@@ -18,7 +18,7 @@ export function RootLayoutClient({
       <Navigation />
       <main className="flex-grow">{children}</main>
       <Footer />
-      <Toaster />
+      <Toaster position="top-center" richColors />
     </QueryClientProvider>
   );
 }
