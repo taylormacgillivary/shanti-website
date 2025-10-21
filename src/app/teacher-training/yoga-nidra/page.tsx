@@ -84,7 +84,7 @@ const teachers = [
         name: "Dorothy Spence",
         title: "200, 500 Hours & Level 1 Parayoga Certified",
         bio: "Dorothy's longtime love affair with yoga started with her first downward facing dog over 20 years ago. She is a 'yoga geek' and is constantly studying, talking and integrating yoga's wisdom and philosophy into her everyday life. She is a 200, and 500 hour certified yoga teacher. She continues her tantric hatha yoga studies with Pandi Rajmani Tigunait, the spiritual leader of the Himalayan Institute and is an Ayurveda Yoga Specialist through The Himalayan Institute. With an engineering degree and a Masters in Business Administration, Dorothy is the founder of Imaginal Ventures Inc., a business advisory and training company who supports conscious leaders who are changing the world.",
-        image: "/images-in-use/teachers-used/dorothy-spence.jpg"
+        image: "/images-in-use/teachers-used/Dorothy Spence.jpg"
     }
 ];
 
@@ -92,7 +92,7 @@ const investment = {
     deposit: 100,
     tuition: 750,
     earlyBirdTuition: 650,
-    earlyBirdDate: "December 27th",
+    earlyBirdDate: "January 5th, 2026",
 };
 
 export default function YogaNidraPage() {
@@ -100,7 +100,7 @@ export default function YogaNidraPage() {
         <CoursePage
             title="Yoga Nidra — Levels 1 & 2"
             subtitle="An important practice for modern times"
-            dates="Next Course Dates TBD"
+            dates="March 5-8, 2026"
             heroImage="/images-in-use/SHY_2798.jpg"
             imageTwo="/images-in-use/19.jpg"
             imageThree="/images-in-use/35.jpg"
@@ -108,10 +108,10 @@ export default function YogaNidraPage() {
             curriculum={curriculum}
             teachers={teachers}
             investment={investment}
-            paymentDepositLink="#"
-            paymentFullLink="#"
-            paymentDepositText="Registration Not Currently Open"
-            paymentFullText="Registration Not Currently Open"
+            paymentDepositLink="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=43&prodid=1471"
+            paymentFullLink="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=43&prodid=1471"
+            paymentDepositText="Register Now"
+            paymentFullText="Register Now"
             ceCredits="45 Hours"
             showDepositOnly={true}
         />

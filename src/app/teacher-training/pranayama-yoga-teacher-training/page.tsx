@@ -67,7 +67,8 @@ const curriculum = [
         name: "Andrea Gracia",
         title: "Teacher",
         bio: "Andrea Gracia has been practicing Yoga for a little over 10 years. She began her journey in her homeland of México and has since seen yoga transform her life in many profound ways. A few years ago, Andrea had the opportunity to travel to the birthplace of yoga, where she trained with her teacher along the banks of the Himalayas. Later, she was fortunate enough to travel to South India to study the traditional Ashtanga Vinyasa style with Saraswati Jois in Mysore. Her experiences in India, combined with the knowledge gained from her teachers in México and Canada, as well as her practice over the years, are something she is eager to share with others.",
-        image: "/images-in-use/teachers-used/andrea-gracia.jpg"
+        image: "/images-in-use/teachers-used/andrea-gracia.jpg",
+        imagePosition: "center 70%"
     },
     {
         name: "Kevin Dougall",
@@ -92,7 +93,7 @@ const curriculum = [
       deposit: 150,
       tuition: 795,
       earlyBirdTuition: 695,
-      earlyBirdDate: "January 15, 2026"
+      earlyBirdDate: "January 2, 2026"
   }
 
 export default function PranayamaYogaPage() {

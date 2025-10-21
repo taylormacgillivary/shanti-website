@@ -83,7 +83,7 @@ export default function VinyasaKramaPage() {
         <CoursePage
             title="Vinyasa Krama"
             subtitle="The Integration of Movement, Prana & Sequencing"
-            dates="Next Course Dates: TBD"
+            dates="February 19-22, 2026"
             heroImage="/images-in-use/03.jpg"
             imageTwo="/images-in-use/12.jpg"
             imageThree="/images-in-use/24.jpg"
@@ -94,9 +94,9 @@ export default function VinyasaKramaPage() {
             teachers={teachers}
             faqs={faqs}
             investment={investment}
-            paymentDepositLink="#"
-            paymentFullLink="#"
-            paymentDepositText="Registration Not Currently Open"
+            paymentDepositLink="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=41&sTG=39&prodId=1376"
+            paymentFullLink="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=41&sTG=39&prodId=1376"
+            paymentDepositText="Register Now"
             ceCredits="45 Hours"
             showDepositOnly={true}
         />

@@ -2,15 +2,7 @@
 
 import { z } from "zod";
 import { subscribeToList } from "@/lib/mailchimp";
-
-export const newsletterSchema = z.object({
-  email: z.string().email({ message: "Please enter a valid email address." }),
-  firstName: z.string().optional(),
-  lastName: z.string().optional(),
-  tags: z.array(z.string()).optional(),
-});
-
-export type NewsletterData = z.infer<typeof newsletterSchema>;
+import { newsletterSchema, type NewsletterData } from "./newsletter-schema";
 
 export async function subscribeToNewsletter(data: NewsletterData) {
   try {

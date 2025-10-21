@@ -36,7 +36,6 @@ export default function MentorshipProgramPage() {
                     <PageHero
                         title="Teaching Mentorship Program"
                         subtitle="The path from graduating with a 200 hour teaching certificate to comfortably guiding students through their yoga practice can be an uncertain one."
-                        badge="August 2025"
                     />
                 </div>
             </div>

@@ -10,6 +10,7 @@ interface Teacher {
     title: string;
     bio: string;
     image: string;
+    imagePosition?: string;
 }
 
 interface Module {
@@ -270,7 +271,14 @@ export function CoursePage({
                             return (
                                 <div key={index} className="flex flex-col sm:flex-row items-start gap-6">
                                     <div className="flex-shrink-0 relative w-[150px] h-[150px]">
-                                        <Image src={teacher.image} alt={teacher.name} fill sizes="150px" className="rounded-full object-cover" />
+                                        <Image 
+                                            src={teacher.image} 
+                                            alt={teacher.name} 
+                                            fill 
+                                            sizes="150px" 
+                                            className="rounded-full object-cover" 
+                                            style={teacher.imagePosition ? { objectPosition: teacher.imagePosition } : undefined}
+                                        />
                                     </div>
                                     <div className="flex-grow">
                                         <h3 className="text-2xl font-bold">{teacher.name}</h3>
@@ -323,7 +331,7 @@ export function CoursePage({
                                 }
                                 {investment.graduateTuition &&
                                     <p className="text-stone-600 mb-4 text-sm">
-                                        Shanti Grad Price: ${investment.graduateEarlyBirdTuition ? investment.graduateEarlyBirdTuition : investment.graduateTuition}
+                                        <strong>Shanti Grad Price:</strong> ${investment.graduateEarlyBirdTuition ? `${investment.graduateEarlyBirdTuition} early bird, $${investment.graduateTuition} regular price` : investment.graduateTuition}
                                     </p>
                                 }
                                 <div className="border-t border-stone-300 pt-4 mb-4">
@@ -357,7 +365,7 @@ export function CoursePage({
                              }
                              {investment.graduateTuition &&
                                 <p className="text-stone-600 mt-2 text-sm">
-                                    Shanti Grad Price: ${investment.graduateEarlyBirdTuition ? investment.graduateEarlyBirdTuition : investment.graduateTuition}
+                                    <strong>Shanti Grad Price:</strong> ${investment.graduateEarlyBirdTuition ? `${investment.graduateEarlyBirdTuition} early bird, $${investment.graduateTuition} regular price` : investment.graduateTuition}
                                 </p>
                              }
                              <Button asChild size="lg" className="mt-6 w-full gradient-sage hover:opacity-90 text-white">
