@@ -66,6 +66,7 @@ export function Navigation() {
                       title={item.title}
                       featured={item.featured}
                       image={item.image}
+                      external={item.external}
                     >
                       {item.description}
                     </ListItem>
@@ -141,6 +142,7 @@ export function Navigation() {
                                     key={item.href}
                                     href={item.href}
                                     onOpenChange={setIsMobileMenuOpen}
+                                    external={item.external}
                                     >
                                     {item.title}
                                     </MobileNavLink>
@@ -190,10 +192,13 @@ export function Navigation() {
 
 const ListItem = React.forwardRef<
   React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a"> & { featured?: boolean, image?: string, isNew?: boolean }
->(({ title, children, featured, href, image, isNew, ...props }, ref) => {
+  React.ComponentPropsWithoutRef<"a"> & { featured?: boolean, image?: string, isNew?: boolean, external?: boolean }
+>(({ title, children, featured, href, image, isNew, external, ...props }, ref) => {
   // Check if this is the 200 Hour YTT option
   const isYTT200Hour = title === "YTT 200 Hour";
+  
+  // Add external link props if needed
+  const externalProps = external ? { target: "_blank", rel: "noopener noreferrer" } : {};
   
   if (featured && image) {
     return (
@@ -204,6 +209,7 @@ const ListItem = React.forwardRef<
             ref={ref}
             className="flex h-full w-full select-none flex-col justify-end rounded-md bg-cover bg-center p-6 no-underline outline-none focus:shadow-md relative"
             style={{ backgroundImage: `url(${image})` }}
+            {...externalProps}
             {...props}>
             <div className="absolute inset-0 bg-black/40 rounded-md" />
             <div className="relative z-10">
@@ -225,6 +231,7 @@ const ListItem = React.forwardRef<
             href={href ?? ''}
             ref={ref}
             className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+            {...externalProps}
             {...props}>
             <MapPin className="h-6 w-6 text-primary" />
             <div className="mb-2 mt-4 text-lg font-medium">{title}</div>
@@ -247,6 +254,7 @@ const ListItem = React.forwardRef<
               ? "bg-sage-green/20 hover:bg-sage-green/30 border border-sage-green/30 focus:bg-sage-green/30" 
               : "hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
           }`}
+          {...externalProps}
           {...props}>
           <div className={`text-sm font-medium leading-none ${isYTT200Hour ? "text-foreground font-semibold" : ""} flex items-center gap-2`}>
             {title}
@@ -272,6 +280,7 @@ interface MobileNavLinkProps {
   onOpenChange: (open: boolean) => void;
   className?: string;
   isNew?: boolean;
+  external?: boolean;
 }
 
 function MobileNavLink({
@@ -280,7 +289,10 @@ function MobileNavLink({
   onOpenChange,
   className,
   isNew,
+  external,
 }: MobileNavLinkProps) {
+  const externalProps = external ? { target: "_blank", rel: "noopener noreferrer" } : {};
+  
   return (
     <Link
       href={href}
@@ -289,7 +301,8 @@ function MobileNavLink({
         className
           ? className
           : "text-base hover:text-sage-green transition-colors flex items-center gap-2"
-      }>
+      }
+      {...externalProps}>
       {children}
       {isNew && (
         <Badge variant="destructive" className="text-xs px-1 py-0 bg-red-500 text-white">

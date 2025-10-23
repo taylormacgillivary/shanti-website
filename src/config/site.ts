@@ -37,6 +37,12 @@ export const siteConfig = {
             image: "/images-in-use/03.jpg",
         },
         {
+            title: "Ayurvedic Treatments",
+            href: "https://www.mohanayurveda.com/",
+            description: "Book treatments with our Ayurvedic partner, Mohan Ayurveda",
+            external: true,
+        },
+        {
             title: "Energy Exchange",
             href: "/energy-exchange",
             description: "Practice yoga in exchange for your time.",
