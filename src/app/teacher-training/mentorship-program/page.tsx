@@ -102,7 +102,7 @@ export default function MentorshipProgramPage() {
                                     alt="Yoga class"
                                     width={400}
                                     height={250}
-                                    className="rounded-lg mb-4"
+                                    className="rounded-lg mb-4 object-cover"
                                 />
                                 <blockquote className="text-lg italic text-stone-600 border-l-4 border-sage-green pl-4">
                                     &quot;Our mentorship program supports you in real time as you step into your yoga teaching career, leading studio classes and receiving concrete and actionable feedback.&quot;

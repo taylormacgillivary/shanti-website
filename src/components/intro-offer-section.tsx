@@ -12,6 +12,7 @@ export function IntroOfferSection() {
         alt="A person in a yoga pose"
         fill
         sizes="100vw"
+       
         className="absolute inset-0 -z-10 object-cover"
       />
       <div className="absolute inset-0 bg-black/60 -z-10" />
