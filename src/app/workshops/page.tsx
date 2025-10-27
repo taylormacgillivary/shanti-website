@@ -27,7 +27,7 @@ const workshops: Workshop[] = [
     instructor: "Stephanie Morton",
     description: "A slow, luxurious practice featuring both a gently dynamic yoga practice interspersed with myofascial release techniques for tissue hydration, and restorative postures with breath work for integration, rest and deep healing.",
     location: "Dartmouth",
-    dates: ["November 22nd", "6:30pm"],
+    dates: ["<strong>November 22nd</strong>", "<strong>6:30pm</strong>"],
     image: "/images-in-use/mfr-better-backbends-c1a0c9d10b8add5a2e3ff705289a142f.webp",
     featured: true,
     customWidget: '<healcode-widget data-version="0.2" data-site-id="1889" data-mb-site-id="11233" data-service-id="1594" data-bw-identity-site="true" data-type="pricing-link" data-inner-html="Register Now" />'
@@ -37,7 +37,7 @@ const workshops: Workshop[] = [
     instructor: "Andrea Gracia",
     description: "Mysore Style is the traditional way of teaching the Ashtanga Vinyasa Yoga once the student has familiarity with the Sun Salutations and primary series. In this practice you will receive personal attention from Andrea Gracia, an Authorized Level 1 Ashtanga Yoga Teacher who travels to Mysore (India) every year to study with her teacher Saraswathi Jois.",
     location: "Bedford",
-    dates: ["Starts October 16th", "5:45 - 7:15pm"],
+    dates: ["<strong>Starts October 16th</strong>", "5:45 - 7:15pm"],
     duration: "6 Week Program",
     dropIn: "*Drop in available: $30 +tax. Contact studio for more info",
     discount: "*Shanti monthly members receive 10% discount with promo code: Mysore10",
@@ -51,11 +51,11 @@ const workshops: Workshop[] = [
     description: "Back by popular demand this fall, join Amanda Savoie in a deeply restorative and healing sound bath, where guided meditation and soothing sound vibrations carry you into profound relaxation.",
     location: "Bedford",
     dates: [
-      "Monthly Dates:",
+      "<strong>Monthly Dates:</strong>",
       "October 25th",
       "November 28th", 
-      "December 20th",
-      "6:00pm start time for all dates"
+      "December 20th<br><br>",
+      "<strong>6:00pm start time for all dates</strong>"
     ],
     image: "/images-in-use/sound-bath.webp",
     customWidget: '<healcode-widget data-version="0.2" data-site-id="1889" data-mb-site-id="11233" data-service-id="1616" data-bw-identity-site="true" data-type="pricing-link" data-inner-html="Register Now" />'
@@ -66,8 +66,8 @@ const workshops: Workshop[] = [
     description: "Prenatal Yoga is an incredible way to tune into your body in an intimate way as it undergoes a very challenging and magical transformation. Prenatal Yoga will help strengthen both the body and mind during your pregnancy and in preparation for labour while connecting you to a like-minded group. With everyone at a different stage of pregnancy, the community building aspect can be extremely valuable, while at the same time, building a closer connection to the little one in your belly!",
     location: "Dartmouth & Bedford",
     dates: [
-      "Dartmouth: October 23rd, 5:30pm",
-      "Bedford: October 27th, 6pm"
+      "<strong>Dartmouth:</strong> October 23rd, 5:30pm",
+      "<strong>Bedford:</strong> October 27th, 6pm"
     ],
     duration: "4 Week Programs",
     image: "/images-in-use/prenatal-2017.jpg",
@@ -120,7 +120,7 @@ export default function WorkshopsPage() {
                   <div className="absolute top-6 right-6 bg-white/95 backdrop-blur-sm px-6 py-4 rounded-2xl shadow-xl">
                     <div className="text-center">
                       <div className="text-lg font-bold text-sage-green">{workshop.location}</div>
-                      <div className="text-sm text-muted-foreground">{workshop.dates[0]}</div>
+                      <div className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: workshop.dates[0] }} />
                     </div>
                   </div>
                 </div>
@@ -128,7 +128,7 @@ export default function WorkshopsPage() {
                 <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-sage-green/20 to-sage-green/5 flex items-center justify-center">
                   <div className="text-center p-8">
                     <div className="text-lg font-bold text-sage-green">{workshop.location}</div>
-                    <div className="text-sm text-muted-foreground mt-2">{workshop.dates[0]}</div>
+                    <div className="text-sm text-muted-foreground mt-2" dangerouslySetInnerHTML={{ __html: workshop.dates[0] }} />
                   </div>
                 </div>
               )}
@@ -152,9 +152,7 @@ export default function WorkshopsPage() {
 
                 <div className="space-y-2">
                   {workshop.dates.map((date, i) => (
-                    <div key={i} className="text-muted-foreground">
-                      {date}
-                    </div>
+                    <div key={i} className="text-muted-foreground" dangerouslySetInnerHTML={{ __html: date }} />
                   ))}
                   {workshop.duration && (
                     <div className="font-medium text-sage-green">
@@ -236,9 +234,7 @@ export default function WorkshopsPage() {
                   <p className="text-muted-foreground">{workshop.description}</p>
                   <div className="space-y-1">
                     {workshop.dates.map((date, i) => (
-                      <div key={i} className="text-sm text-muted-foreground">
-                        {date}
-                      </div>
+                      <div key={i} className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: date }} />
                     ))}
                     {workshop.duration && (
                       <div className="text-sm font-medium text-sage-green">
