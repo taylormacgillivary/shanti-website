@@ -74,7 +74,7 @@ export function MembershipSection() {
               <div 
                 className="w-full"
                 dangerouslySetInnerHTML={{
-                  __html: `<healcode-widget data-version="0.2" data-link-class="healcode-contract-text-link w-full gradient-sage text-white inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 cursor-pointer" data-site-id="1889" data-mb-site-id="11233" data-service-id="156" data-bw-identity-site="true" data-type="contract-link" data-inner-html="Buy Membership"></healcode-widget>`
+                  __html: `<healcode-widget data-version="0.2" data-link-class="healcode-contract-text-link w-full gradient-sage text-white inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 cursor-pointer" data-site-id="1889" data-mb-site-id="11233" data-service-id="163" data-bw-identity-site="true" data-type="contract-link" data-inner-html="Buy Membership"></healcode-widget>`
                 }}
               />
             </CardFooter>

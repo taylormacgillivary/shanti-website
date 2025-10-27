@@ -26,7 +26,7 @@ const studios = [
     id: "dartmouth",
     name: "Shanti Dartmouth",
     location: "Dartmouth, Woodlawn",
-    description: "Where it all started. Opening in 2010 and building a yoga community that has been together 11 years strong and always striving for growth.",
+    description: "Where it all started. Opening in 2010 and building a yoga community that has been together 15 years strong and always striving for growth.",
     image: "https://images.squarespace-cdn.com/content/v1/673f8221417d512fe9887ee8/1732215365350-3VTMTFPQXCSH4KFD4Q44/Dartmouth2.jpg",
     features: ["Original Studio", "Established Community", "Rich History"],
     established: "2010"

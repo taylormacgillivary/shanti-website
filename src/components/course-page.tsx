@@ -1,7 +1,10 @@
+"use client"
+
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import Image from "next/image";
 import Link from "next/link";
+import Script from "next/script";
 import { ReactNode } from "react";
 import { Award, ShieldCheck } from "lucide-react";
 
@@ -61,6 +64,9 @@ interface CoursePageProps {
     ceCredits?: string;
     isYogaAlliance?: boolean;
     showDepositOnly?: boolean;
+    useMindbodyWidgets?: boolean;
+    mindbodyDepositServiceId?: string;
+    mindbodyFullServiceId?: string;
 }
 
 export function CoursePage({
@@ -86,6 +92,9 @@ export function CoursePage({
     ceCredits,
     isYogaAlliance,
     showDepositOnly = false,
+    useMindbodyWidgets = false,
+    mindbodyDepositServiceId,
+    mindbodyFullServiceId,
 }: CoursePageProps) {
     const renderBadges = () => {
         if (!ceCredits && !isYogaAlliance) return null;
@@ -338,9 +347,18 @@ export function CoursePage({
                                     <h4 className="text-lg font-semibold mb-2">Pay Deposit Now</h4>
                                     <p className="text-3xl font-bold text-sage-green">${investment.deposit}</p>
                                 </div>
-                                <Button asChild size="lg" className="mt-6 w-full gradient-sage hover:opacity-90 text-white">
-                                    <Link href={paymentDepositLink}>{paymentDepositText}</Link>
-                                </Button>
+                                {useMindbodyWidgets && mindbodyDepositServiceId ? (
+                                    <div 
+                                        className="mt-6 w-full"
+                                        dangerouslySetInnerHTML={{
+                                            __html: `<healcode-widget data-version="0.2" data-link-class="healcode-pricing-option-text-link w-full gradient-sage text-white inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-11 px-8 cursor-pointer" data-site-id="1889" data-mb-site-id="11233" data-service-id="${mindbodyDepositServiceId}" data-bw-identity-site="true" data-type="pricing-link" data-inner-html="${paymentDepositText}"></healcode-widget>`
+                                        }}
+                                    />
+                                ) : (
+                                    <Button asChild size="lg" className="mt-6 w-full gradient-sage hover:opacity-90 text-white">
+                                        <Link href={paymentDepositLink}>{paymentDepositText}</Link>
+                                    </Button>
+                                )}
                             </div>
                         </div>
                     ) : (
@@ -349,9 +367,18 @@ export function CoursePage({
                              <h3 className="text-2xl font-bold">Deposit</h3>
                              <p className="text-5xl font-extrabold text-sage-green my-4">${investment.deposit}</p>
                              <p className="text-stone-600">Secure your spot in the training.</p>
-                             <Button asChild size="lg" className="mt-6 w-full gradient-sage hover:opacity-90 text-white">
-                                     <Link href={paymentDepositLink}>{paymentDepositText}</Link>
-                             </Button>
+                             {useMindbodyWidgets && mindbodyDepositServiceId ? (
+                                <div 
+                                    className="mt-6 w-full"
+                                    dangerouslySetInnerHTML={{
+                                        __html: `<healcode-widget data-version="0.2" data-link-class="healcode-pricing-option-text-link w-full gradient-sage text-white inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-11 px-8 cursor-pointer" data-site-id="1889" data-mb-site-id="11233" data-service-id="${mindbodyDepositServiceId}" data-bw-identity-site="true" data-type="pricing-link" data-inner-html="${paymentDepositText}"></healcode-widget>`
+                                    }}
+                                />
+                             ) : (
+                                <Button asChild size="lg" className="mt-6 w-full gradient-sage hover:opacity-90 text-white">
+                                    <Link href={paymentDepositLink}>{paymentDepositText}</Link>
+                                </Button>
+                             )}
                          </div>
                          <div className="w-full md:w-1/3 p-8 bg-stone-100 rounded-lg shadow-lg text-center">
                              <h3 className="text-2xl font-bold">Full Tuition</h3>
@@ -360,7 +387,7 @@ export function CoursePage({
                              </p>
                              {investment.earlyBirdTuition && 
                                 <p className="text-stone-600">
-                                    Early bird pricing until {investment.earlyBirdDate}. Regular price ${investment.tuition}.
+                                    Early bird pricing until {investment.earlyBirdDate}. <strong>Regular price ${investment.tuition}</strong>.
                                 </p>
                              }
                              {investment.graduateTuition &&
@@ -368,9 +395,18 @@ export function CoursePage({
                                     <strong>Shanti Grad Price:</strong> ${investment.graduateEarlyBirdTuition ? `${investment.graduateEarlyBirdTuition} early bird, $${investment.graduateTuition} regular price` : investment.graduateTuition}
                                 </p>
                              }
-                             <Button asChild size="lg" className="mt-6 w-full gradient-sage hover:opacity-90 text-white">
-                                     <Link href={paymentFullLink}>{paymentFullText}</Link>
-                             </Button>
+                             {useMindbodyWidgets && mindbodyFullServiceId ? (
+                                <div 
+                                    className="mt-6 w-full"
+                                    dangerouslySetInnerHTML={{
+                                        __html: `<healcode-widget data-version="0.2" data-link-class="healcode-pricing-option-text-link w-full gradient-sage text-white inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-11 px-8 cursor-pointer" data-site-id="1889" data-mb-site-id="11233" data-service-id="${mindbodyFullServiceId}" data-bw-identity-site="true" data-type="pricing-link" data-inner-html="${paymentFullText}"></healcode-widget>`
+                                    }}
+                                />
+                             ) : (
+                                <Button asChild size="lg" className="mt-6 w-full gradient-sage hover:opacity-90 text-white">
+                                    <Link href={paymentFullLink}>{paymentFullText}</Link>
+                                </Button>
+                             )}
                          </div>
                     </div>
                     )}
@@ -410,6 +446,20 @@ export function CoursePage({
                         </Accordion>
                     </div>
                 </section>
+            )}
+            
+            {/* Load HealCode script if using Mindbody widgets */}
+            {useMindbodyWidgets && (
+                <Script
+                    src="https://widgets.mindbodyonline.com/javascripts/healcode.js"
+                    strategy="afterInteractive"
+                    onLoad={() => {
+                        console.log('HealCode script loaded successfully for course page')
+                    }}
+                    onError={(e) => {
+                        console.error('Failed to load HealCode script for course page:', e)
+                    }}
+                />
             )}
         </div>
     );

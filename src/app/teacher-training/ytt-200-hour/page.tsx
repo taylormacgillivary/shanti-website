@@ -134,6 +134,12 @@ const modules = [
         image: "/images-in-use/teachers-used/kevin-dougall.jpg"
     },
     {
+        name: "Nikki Martin",
+        title: "",
+        bio: "Nikki Martin is a passionate yoga teacher who brings warmth and authenticity to her classes. She is dedicated to creating a welcoming space for students to explore their practice.",
+        image: "/images-in-use/teachers-used/nikki-martin.jpg"
+    },
+    {
         name: "Uriel MacGillivary",
         title: "E-RYT 500",
         bio: "Uriel is a dedicated yoga teacher and spiritual guide who brings deep wisdom and compassion to her teaching. With her E-RYT 500 certification, she has extensive experience in guiding students through transformational yoga journeys.",
@@ -168,14 +174,14 @@ const modules = [
       deposit: 1000,
       tuition: 3600,
       earlyBirdTuition: 3200,
-      earlyBirdDate: "TBD"
+      earlyBirdDate: "March 1, 2026"
   }
 
 export default function YTT200HourPage() {
     return (
         <CoursePage
-            title="YTT — Spring 2026"
-            subtitle="A 200-Hour Foundational Journey"
+            title="Yoga Teacher Training"
+            subtitle="Spring 2026 • A 200-Hour Foundational Journey"
             dates="Module 1: May 1-8, 2026 • Module 2: May 15-22, 2026 • Module 3: May 29-31, 2026"
             quote="We must be willing to let go of the life we have planned, so as to have the life that is waiting for us."
             heroImage="/images-in-use/05.jpg"
@@ -190,9 +196,12 @@ export default function YTT200HourPage() {
             investment={investment}
             paymentDepositLink="#"
             paymentFullLink="#"
-            paymentDepositText="Registration Not Currently Open"
-            paymentFullText="Registration Not Currently Open"
+            paymentDepositText="Pay Your Deposit"
+            paymentFullText="Pay Remainder of Tuition"
             isYogaAlliance={true}
+            useMindbodyWidgets={true}
+            mindbodyDepositServiceId="1383"
+            mindbodyFullServiceId="1384"
         />
     )
 } 
