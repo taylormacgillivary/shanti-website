@@ -40,11 +40,55 @@ export function Navigation() {
 
   React.useEffect(() => {
     const handleScroll = () => {
-      // Calculate scroll progress through the hero section (0 to 1)
       const viewportHeight = window.innerHeight;
       const scrollY = window.scrollY;
-      // Start transition at 70% through viewport, complete at 100%
-      const progress = Math.min(Math.max((scrollY - viewportHeight * 0.7) / (viewportHeight * 0.3), 0), 1);
+      const navHeight = 64; // h-16 = 64px
+      
+      // Check if we're over the hero video (first screen minus nav height)
+      const heroVideoEnd = viewportHeight - navHeight;
+      
+      // Get the community video section position dynamically
+      const communityVideoSection = document.getElementById('community-video-section');
+      let communityVideoStart = 0;
+      let communityVideoEnd = 0;
+      
+      if (communityVideoSection) {
+        const rect = communityVideoSection.getBoundingClientRect();
+        communityVideoStart = scrollY + rect.top;
+        communityVideoEnd = communityVideoStart + rect.height;
+      }
+      
+      const isOverHeroVideo = scrollY < heroVideoEnd * 0.7;
+      const isOverCommunityVideo = communityVideoSection && 
+                                   scrollY + navHeight >= communityVideoStart && 
+                                   scrollY + navHeight <= communityVideoEnd;
+      
+      // Calculate progress based on whether we're in a video section or not
+      let progress;
+      if (isOverHeroVideo) {
+        // Transitioning away from hero video
+        progress = Math.min(Math.max((scrollY - heroVideoEnd * 0.7) / (heroVideoEnd * 0.3), 0), 1);
+      } else if (isOverCommunityVideo) {
+        // Transitioning into/out of community video
+        const distanceIntoVideo = scrollY + navHeight - communityVideoStart;
+        const transitionZone = viewportHeight * 0.2;
+        
+        if (distanceIntoVideo < transitionZone) {
+          // Fading to white as we enter
+          progress = 1 - (distanceIntoVideo / transitionZone);
+        } else if (distanceIntoVideo > (viewportHeight * 0.8) - transitionZone) {
+          // Fading back to color as we exit
+          const distanceFromEnd = (viewportHeight * 0.8) - distanceIntoVideo;
+          progress = 1 - (distanceFromEnd / transitionZone);
+        } else {
+          // Fully in the video section
+          progress = 0;
+        }
+      } else {
+        // Not over any video
+        progress = 1;
+      }
+      
       setScrollProgress(progress);
     };
 
