@@ -60,8 +60,8 @@ export function HeroSection() {
               <div className="text-sm text-muted-foreground">Studio Locations</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold sage-green">13+</div>
-              <div className="text-sm text-muted-foreground">Years of Community</div>
+              <div className="text-3xl font-bold sage-green">15</div>
+              <div className="text-sm text-muted-foreground">Years of Creating Community</div>
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold sage-green">1</div>
