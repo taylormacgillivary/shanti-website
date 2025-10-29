@@ -1,27 +1,10 @@
 'use client';
 
-import * as React from "react";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { PageHero } from "@/components/page-hero";
-import { useEffect, useState } from "react";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
-
-// Declare HealCode on window object
-declare global {
-  interface Window {
-    HealCode?: {
-      init: () => void;
-    };
-  }
-}
-
+import { useEffect } from "react";
 
 interface Workshop {
   title: string;
@@ -36,9 +19,6 @@ interface Workshop {
   featured?: boolean;
   imagePosition?: string;
   customWidget?: string;
-  widgetId?: string;
-  registrationClosed?: boolean;
-  hasMultipleOptions?: boolean;
 }
 
 const workshops: Workshop[] = [
@@ -50,7 +30,7 @@ const workshops: Workshop[] = [
     dates: ["<strong>November 22nd</strong>", "<strong>6:30pm</strong>"],
     image: "/images-in-use/mfr-better-backbends-c1a0c9d10b8add5a2e3ff705289a142f.webp",
     featured: true,
-    widgetId: "6810920285be"
+    customWidget: '<healcode-widget data-version="0.2" data-site-id="1889" data-mb-site-id="11233" data-service-id="1594" data-bw-identity-site="true" data-type="pricing-link" data-inner-html="Register Now" />'
   },
   {
     title: "Mysore Ashtanga Practice",
@@ -63,8 +43,7 @@ const workshops: Workshop[] = [
     discount: "*Shanti monthly members receive 10% discount with promo code: Mysore10",
     image: "/images-in-use/teachers-used/andrea-gracia.jpg",
     imagePosition: "center bottom",
-    widgetId: "6810924385be",
-    registrationClosed: true
+    customWidget: '<healcode-widget data-version="0.2" data-site-id="1889" data-mb-site-id="11233" data-service-id="1587" data-bw-identity-site="true" data-type="pricing-link" data-inner-html="Register Now" />'
   },
   {
     title: "Healing Sound Bath",
@@ -79,8 +58,7 @@ const workshops: Workshop[] = [
       "<strong>6:00pm start time for all dates</strong>"
     ],
     image: "/images-in-use/sound-bath.webp",
-    widgetId: "6810924285be",
-    hasMultipleOptions: true
+    customWidget: '<healcode-widget data-version="0.2" data-site-id="1889" data-mb-site-id="11233" data-service-id="1616" data-bw-identity-site="true" data-type="pricing-link" data-inner-html="Register Now" />'
   },
   {
     title: "Prenatal Yoga",
@@ -93,9 +71,7 @@ const workshops: Workshop[] = [
     ],
     duration: "4 Week Programs",
     image: "/images-in-use/prenatal-2017.jpg",
-    widgetId: "689767685be",
-    registrationClosed: true,
-    hasMultipleOptions: true
+    customWidget: '<healcode-widget data-version="0.2" data-site-id="1889" data-mb-site-id="11233" data-service-id="1542" data-bw-identity-site="true" data-type="pricing-link" data-inner-html="Register Now" />'
   },
   {
     title: "Read More! Lead More! Move More!",
@@ -110,16 +86,11 @@ const workshops: Workshop[] = [
     duration: "FREE!",
     image: "/images-in-use/joe-doiron.webp",
     imagePosition: "center top",
-    widgetId: "6810920685be",
-    hasMultipleOptions: true
+    customWidget: '<healcode-widget data-version="0.2" data-site-id="1889" data-mb-site-id="11233" data-service-id="1542" data-bw-identity-site="true" data-type="pricing-link" data-inner-html="Register Now" />'
   }
 ];
 
 export default function WorkshopsPage() {
-  const [selectedWorkshop, setSelectedWorkshop] = useState<Workshop | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [widgetInitialized, setWidgetInitialized] = useState(false);
-
   useEffect(() => {
     // Load Mindbody widget script
     const script = document.createElement('script');
@@ -135,90 +106,6 @@ export default function WorkshopsPage() {
       }
     };
   }, []);
-
-  // Initialize widget only once when modal first opens with a widget
-  useEffect(() => {
-    if (isModalOpen && selectedWorkshop?.widgetId && !widgetInitialized) {
-      // Give the DOM time to render the widget element
-      setTimeout(() => {
-        if (window.HealCode) {
-          window.HealCode.init();
-          setWidgetInitialized(true);
-        }
-      }, 100);
-    }
-  }, [isModalOpen, selectedWorkshop, widgetInitialized]);
-
-  // Close our modal when user clicks on Mindbody widget's register button
-  useEffect(() => {
-    if (!isModalOpen) return;
-
-    const handleWidgetButtonClick = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      
-      // Check if the clicked element is a Mindbody register/signup button
-      if (
-        target.closest('a[data-hc-open-modal="modal-iframe"]') ||
-        target.closest('.hc-button.signup_now') ||
-        target.closest('[data-hc-open-modal]')
-      ) {
-        // Close our modal so Mindbody's modal can be fully interactive
-        setTimeout(() => {
-          setIsModalOpen(false);
-        }, 100);
-      }
-    };
-
-    // Add click listener to document
-    document.addEventListener('click', handleWidgetButtonClick, true);
-
-    return () => {
-      document.removeEventListener('click', handleWidgetButtonClick, true);
-    };
-  }, [isModalOpen]);
-
-  // Helper function to check if workshop registration is closed based on start date
-  const isRegistrationClosed = (workshop: Workshop): boolean => {
-    // If manually set, use that
-    if (workshop.registrationClosed !== undefined) {
-      return workshop.registrationClosed;
-    }
-
-    // Try to parse the start date from the dates array
-    const dateString = workshop.dates[0];
-    
-    // Extract date patterns like "October 16th", "Nov 29", etc.
-    const dateMatch = dateString.match(/(January|February|March|April|May|June|July|August|September|October|November|December|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+(\d+)/i);
-    
-    if (dateMatch) {
-      const monthStr = dateMatch[1];
-      const day = parseInt(dateMatch[2]);
-      const currentYear = new Date().getFullYear();
-      
-      // Map month names to numbers
-      const monthMap: { [key: string]: number } = {
-        'january': 0, 'jan': 0, 'february': 1, 'feb': 1, 'march': 2, 'mar': 2,
-        'april': 3, 'apr': 3, 'may': 4, 'june': 5, 'jun': 5,
-        'july': 6, 'jul': 6, 'august': 7, 'aug': 7, 'september': 8, 'sep': 8,
-        'october': 9, 'oct': 9, 'november': 10, 'nov': 10, 'december': 11, 'dec': 11
-      };
-      
-      const month = monthMap[monthStr.toLowerCase()];
-      const startDate = new Date(currentYear, month, day);
-      const today = new Date();
-      today.setHours(0, 0, 0, 0); // Reset to start of day for comparison
-      
-      // If start date is in the past, registration is closed
-      return startDate < today;
-    }
-    
-    return false;
-  };
-
-  const handleRegisterClick = (workshop: Workshop) => {
-    setSelectedWorkshop(workshop);
-    setIsModalOpen(true);
-  };
 
   return (
     <>
@@ -302,10 +189,20 @@ export default function WorkshopsPage() {
                 )}
 
                 <Button 
-                  onClick={() => handleRegisterClick(workshop)}
+                  asChild
                   className="gradient-sage text-white hover:opacity-90 shadow-lg"
                 >
-                  Register Now
+                  {workshop.customWidget ? (
+                    <div dangerouslySetInnerHTML={{ __html: workshop.customWidget }} />
+                  ) : (
+                    <a
+                      href="https://clients.mindbodyonline.com/classic/mainclass?studioid=11233"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Register Now
+                    </a>
+                  )}
                 </Button>
               </div>
             </div>
@@ -372,10 +269,20 @@ export default function WorkshopsPage() {
                   )}
                   <div className="mt-auto pt-2">
                     <Button 
-                      onClick={() => handleRegisterClick(workshop)}
+                      asChild
                       className="w-full gradient-sage text-white hover:opacity-90"
                     >
-                      Register Now
+                      {workshop.customWidget ? (
+                        <div dangerouslySetInnerHTML={{ __html: workshop.customWidget }} />
+                      ) : (
+                        <a
+                          href="https://clients.mindbodyonline.com/classic/mainclass?studioid=11233"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Register Now
+                        </a>
+                      )}
                     </Button>
                   </div>
                 </div>
@@ -385,66 +292,6 @@ export default function WorkshopsPage() {
         </div>
       </section>
 
-      {/* Registration Modal */}
-      <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-        <DialogContent className="max-w-5xl max-h-[90vh] overflow-y-auto">
-          <DialogHeader>
-            <DialogTitle className="text-3xl font-bold mb-2">
-              {selectedWorkshop?.title}
-            </DialogTitle>
-            {selectedWorkshop?.hasMultipleOptions && selectedWorkshop && !isRegistrationClosed(selectedWorkshop) && (
-              <p className="text-sage-green text-lg font-medium">
-                Select your preferred location and time below
-              </p>
-            )}
-          </DialogHeader>
-          <div className="mt-6">
-            {selectedWorkshop && isRegistrationClosed(selectedWorkshop) ? (
-              <div className="text-center py-12 px-4 bg-muted/30 rounded-lg">
-                <p className="text-xl text-muted-foreground mb-8 leading-relaxed max-w-2xl mx-auto">
-                  Registration for this event has already closed. If you would like to request to join this event late, please contact us using the button below.
-                </p>
-                <Button 
-                  asChild
-                  className="gradient-sage text-white hover:opacity-90 text-lg px-8 py-6"
-                >
-                  <a
-                    href={`mailto:info@shantihotyoga.ca?subject=Join ${encodeURIComponent(selectedWorkshop.title)} Late`}
-                  >
-                    Contact Us
-                  </a>
-                </Button>
-              </div>
-            ) : selectedWorkshop?.widgetId ? (
-              <div className="bg-gradient-to-b from-muted/20 to-background p-6 rounded-lg border border-sage-green/20">
-                <div 
-                  dangerouslySetInnerHTML={{ 
-                    __html: `<healcode-widget data-type="enrollments" data-widget-partner="object" data-widget-id="${selectedWorkshop.widgetId}" data-widget-version="0"></healcode-widget>` 
-                  }} 
-                />
-              </div>
-            ) : (
-              <div className="text-center py-8">
-                <p className="text-muted-foreground mb-4">Registration widget not configured for this workshop.</p>
-                <Button 
-                  asChild
-                  className="mt-4 gradient-sage text-white hover:opacity-90"
-                >
-                  <a
-                    href="https://clients.mindbodyonline.com/classic/mainclass?studioid=11233"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Register on Mindbody
-                  </a>
-                </Button>
-              </div>
-            )}
-          </div>
-        </DialogContent>
-      </Dialog>
-
     </>
   );
-}
-
+} 
