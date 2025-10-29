@@ -1,6 +1,6 @@
 "use client"
 
-import { HeroSection } from "@/components/hero-section";
+import { HeroSectionVideo } from "@/components/hero-section-video";
 import { StudiosSection } from "@/components/studios-section";
 import { TeachersSection } from "@/components/teachers-section";
 import { IntroPassSection } from "@/components/intro-pass-section";
@@ -8,7 +8,7 @@ import { IntroPassSection } from "@/components/intro-pass-section";
 export default function Home() {
   return (
     <>
-      <HeroSection />
+      <HeroSectionVideo />
       <StudiosSection />
       <IntroPassSection />
       <TeachersSection />
