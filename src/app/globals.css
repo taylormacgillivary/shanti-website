@@ -256,3 +256,32 @@ html {
   border-style: solid;
   border-color: transparent #e0e7ff transparent transparent; /* bg-indigo-100 */
 }
+
+/* Navigation text white styling for video overlay */
+.text-white [data-radix-navigation-menu-trigger] {
+  color: white !important;
+  background-color: transparent !important;
+  transition: all 0.3s ease;
+}
+
+.text-white [data-radix-navigation-menu-trigger]:hover {
+  color: white !important;
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  opacity: 0.9;
+}
+
+.text-white .navigationMenuTriggerStyle {
+  background-color: transparent !important;
+  color: white !important;
+}
+
+/* Navigation menu links white styling */
+.text-white a[class*="navigationMenuTriggerStyle"] {
+  color: white !important;
+  background-color: transparent !important;
+}
+
+.text-white a[class*="navigationMenuTriggerStyle"]:hover {
+  color: white !important;
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}

@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { MapPin, Menu } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { usePathname } from "next/navigation";
 import {
   Accordion,
   AccordionContent,
@@ -33,30 +34,91 @@ import { siteConfig } from "@/config/site";
 
 export function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+  const [scrollProgress, setScrollProgress] = React.useState(0);
+  const pathname = usePathname();
+  const isHomePage = pathname === "/" || pathname === "/home-test";
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      // Calculate scroll progress through the hero section (0 to 1)
+      const viewportHeight = window.innerHeight;
+      const scrollY = window.scrollY;
+      // Start transition at 70% through viewport, complete at 100%
+      const progress = Math.min(Math.max((scrollY - viewportHeight * 0.7) / (viewportHeight * 0.3), 0), 1);
+      setScrollProgress(progress);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Initial check
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Calculate dynamic styles based on scroll progress
+  const bgOpacity = isHomePage ? scrollProgress * 0.95 : 0.95;
+  const borderOpacity = isHomePage ? scrollProgress : 1;
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header 
+      className="sticky top-0 z-50 w-full transition-all duration-500 backdrop-blur"
+      style={{
+        backgroundColor: isHomePage 
+          ? `rgba(255, 255, 255, ${bgOpacity})`
+          : 'rgba(255, 255, 255, 0.95)',
+        borderBottomWidth: '1px',
+        borderBottomColor: `rgba(226, 232, 240, ${borderOpacity})`,
+        backgroundImage: isHomePage && scrollProgress < 0.3
+          ? 'linear-gradient(to bottom, rgba(0, 0, 0, 0.2), transparent)'
+          : 'none',
+      }}
+    >
       <div className="container flex h-16 items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center space-x-3">
-
+        <Link href="/" className="flex items-center space-x-3 relative">
+          {/* White logo - fades out */}
+          <Image
+            src="/images-in-use/Logos/shantiyoga-logo-white.png"
+            alt="Shanti Hot Yoga"
+            width={120}
+            height={40}
+            className="h-10 w-auto transition-opacity duration-500 absolute"
+            priority
+            style={{ 
+              height: 'auto',
+              opacity: isHomePage ? (1 - scrollProgress) : 0
+            }}
+          />
+          {/* Color logo - fades in */}
           <Image
             src="/images-in-use/Logos/shantiyoga-logo-color.png"
             alt="Shanti Hot Yoga"
             width={120}
             height={40}
-            className="h-10 w-auto"
+            className="h-10 w-auto transition-opacity duration-500"
             priority
-            style={{ height: 'auto' }}
+            style={{ 
+              height: 'auto',
+              opacity: isHomePage ? scrollProgress : 1
+            }}
           />
-
         </Link>
 
         {/* Desktop Navigation */}
         <NavigationMenu className="hidden md:flex">
           <NavigationMenuList>
             <NavigationMenuItem>
-              <NavigationMenuTrigger>Studios</NavigationMenuTrigger>
+              <NavigationMenuTrigger 
+                className="hover:!bg-white/10 transition-all duration-500"
+                style={{
+                  backgroundColor: 'transparent',
+                  color: isHomePage 
+                    ? scrollProgress < 1 
+                      ? `rgb(${255 - scrollProgress * 224}, ${255 - scrollProgress * 229}, ${255 - scrollProgress * 231})`
+                      : undefined
+                    : undefined
+                }}
+              >
+                Studios
+              </NavigationMenuTrigger>
               <NavigationMenuContent>
                 <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                   {siteConfig.studiosNav.map((item) => (
@@ -78,7 +140,18 @@ export function Navigation() {
             {siteConfig.mainNav.map((item) => (
                 item.href && (
                     <NavigationMenuItem key={item.title}>
-                        <Link href={item.href} className={navigationMenuTriggerStyle()}>
+                        <Link 
+                          href={item.href} 
+                          className={`${navigationMenuTriggerStyle()} hover:!bg-white/10 transition-all duration-500`}
+                          style={{
+                            backgroundColor: 'transparent',
+                            color: isHomePage 
+                              ? scrollProgress < 1 
+                                ? `rgb(${255 - scrollProgress * 224}, ${255 - scrollProgress * 229}, ${255 - scrollProgress * 231})`
+                                : undefined
+                              : undefined
+                          }}
+                        >
                             {item.title}
                         </Link>
                     </NavigationMenuItem>
@@ -86,7 +159,19 @@ export function Navigation() {
             ))}
 
             <NavigationMenuItem>
-              <NavigationMenuTrigger>Teacher Training</NavigationMenuTrigger>
+              <NavigationMenuTrigger 
+                className="hover:!bg-white/10 transition-all duration-500"
+                style={{
+                  backgroundColor: 'transparent',
+                  color: isHomePage 
+                    ? scrollProgress < 1 
+                      ? `rgb(${255 - scrollProgress * 224}, ${255 - scrollProgress * 229}, ${255 - scrollProgress * 231})`
+                      : undefined
+                    : undefined
+                }}
+              >
+                Teacher Training
+              </NavigationMenuTrigger>
               <NavigationMenuContent>
                 <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] max-h-[70vh] overflow-y-auto">
                   {siteConfig.teacherTrainingNav.map((item) => (
@@ -107,7 +192,19 @@ export function Navigation() {
 
         {/* CTA Button */}
         <div className="hidden md:flex items-center space-x-4">
-          <Button asChild className="gradient-sage hover:opacity-90 text-white">
+          <Button 
+            asChild 
+            className="transition-all duration-500"
+            style={{
+              backgroundColor: isHomePage 
+                ? `rgba(255, 255, 255, ${0.1 + scrollProgress * 0.8})`
+                : undefined,
+              borderColor: isHomePage 
+                ? `rgba(255, 255, 255, ${0.3 + scrollProgress * 0.7})`
+                : undefined,
+              color: 'white',
+            }}
+          >
             <Link href="/schedule">
               Book Class
             </Link>
@@ -117,7 +214,17 @@ export function Navigation() {
         {/* Mobile Menu Button */}
         <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
           <SheetTrigger asChild>
-            <Button variant="ghost" className="md:hidden">
+            <Button 
+              variant="ghost" 
+              className="md:hidden transition-colors duration-500"
+              style={{
+                color: isHomePage 
+                  ? scrollProgress < 1 
+                    ? `rgb(${255 - scrollProgress * 224}, ${255 - scrollProgress * 229}, ${255 - scrollProgress * 231})`
+                    : undefined
+                  : undefined
+              }}
+            >
               <Menu className="h-6 w-6" />
               <span className="sr-only">Toggle menu</span>
             </Button>
