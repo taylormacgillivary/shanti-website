@@ -238,14 +238,16 @@ export function Navigation() {
         <div className="hidden md:flex items-center space-x-4">
           <Button 
             asChild 
-            className="transition-all duration-500"
+            className="transition-all duration-500 border-2"
             style={{
-              backgroundColor: isHomePage 
-                ? `rgba(255, 255, 255, ${0.1 + scrollProgress * 0.8})`
-                : undefined,
+              background: isHomePage 
+                ? scrollProgress < 0.5
+                  ? `rgba(255, 255, 255, ${0.1 + scrollProgress * 0.2})`
+                  : `linear-gradient(135deg, rgb(${150 * scrollProgress}, ${191 * scrollProgress}, ${80 * scrollProgress}) 0%, rgb(${130 * scrollProgress}, ${171 * scrollProgress}, ${60 * scrollProgress}) 100%)`
+                : 'linear-gradient(135deg, rgb(150, 191, 80) 0%, rgb(130, 171, 60) 100%)',
               borderColor: isHomePage 
-                ? `rgba(255, 255, 255, ${0.3 + scrollProgress * 0.7})`
-                : undefined,
+                ? `rgba(${255 - scrollProgress * 105}, ${255 - scrollProgress * 64}, ${255 - scrollProgress * 175}, ${0.3 + scrollProgress * 0.7})`
+                : 'transparent',
               color: 'white',
             }}
           >
