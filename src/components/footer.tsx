@@ -52,11 +52,6 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/schedule" className="text-gray-300 hover:text-sage-green transition-colors">
-                  Classes
-                </Link>
-              </li>
-              <li>
                 <Link href="/memberships" className="text-gray-300 hover:text-sage-green transition-colors">
                   Membership
                 </Link>
@@ -126,20 +121,9 @@ export function Footer() {
         <Separator className="my-8 bg-gray-700" />
 
         {/* Bottom Section */}
-        <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+        <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0">
           <div className="text-sm text-gray-400">
             © 2024 Shanti Hot Yoga. All rights reserved.
-          </div>
-          <div className="flex space-x-6 text-sm">
-            <Link href="/contact" className="text-gray-400 hover:text-sage-green transition-colors">
-              Privacy Policy
-            </Link>
-            <Link href="/contact" className="text-gray-400 hover:text-sage-green transition-colors">
-              Terms of Service
-            </Link>
-            <Link href="/contact" className="text-gray-400 hover:text-sage-green transition-colors">
-              Accessibility
-            </Link>
           </div>
         </div>
       </div>

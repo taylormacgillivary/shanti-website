@@ -14,6 +14,7 @@ interface Teacher {
     bio: string;
     image: string;
     imagePosition?: string;
+    hideFullBioLink?: boolean;
 }
 
 interface Module {
@@ -299,16 +300,18 @@ export function CoursePage({
                                                 </AccordionTrigger>
                                                 <AccordionContent className="text-stone-600">
                                                     {teacher.bio}
-                                                    <div className="mt-3">
-                                                        <Link 
-                                                            href={`/teachers#${teacherSlug}`} 
-                                                            target="_blank" 
-                                                            rel="noopener noreferrer"
-                                                            className="text-sage-green hover:text-sage-green/80 underline text-sm font-medium"
-                                                        >
-                                                            Read full bio
-                                                        </Link>
-                                                    </div>
+                                                    {!teacher.hideFullBioLink && (
+                                                        <div className="mt-3">
+                                                            <Link 
+                                                                href={`/teachers#${teacherSlug}`} 
+                                                                target="_blank" 
+                                                                rel="noopener noreferrer"
+                                                                className="text-sage-green hover:text-sage-green/80 underline text-sm font-medium"
+                                                            >
+                                                                Read full bio
+                                                            </Link>
+                                                        </div>
+                                                    )}
                                                 </AccordionContent>
                                             </AccordionItem>
                                         </Accordion>
@@ -333,14 +336,24 @@ export function CoursePage({
                                 <p className="text-5xl font-extrabold text-sage-green my-4">
                                     ${investment.earlyBirdTuition ? investment.earlyBirdTuition : investment.tuition}
                                 </p>
-                                {investment.earlyBirdTuition && 
+                                {investment.earlyBirdTuition && investment.earlyBirdDate && 
                                     <p className="text-stone-600 mb-4">
                                         Early bird pricing until {investment.earlyBirdDate}. Regular price ${investment.tuition}.
+                                    </p>
+                                }
+                                {investment.earlyBirdTuition && !investment.earlyBirdDate && 
+                                    <p className="text-stone-600 mb-4">
+                                        Early bird pricing. Regular price ${investment.tuition}.
                                     </p>
                                 }
                                 {investment.graduateTuition &&
                                     <p className="text-stone-600 mb-4 text-sm">
                                         <strong>Shanti Grad Price:</strong> ${investment.graduateEarlyBirdTuition ? `${investment.graduateEarlyBirdTuition} early bird, $${investment.graduateTuition} regular price` : investment.graduateTuition}
+                                    </p>
+                                }
+                                {paymentDepositLink === "#" && paymentDepositText && paymentDepositText.toLowerCase().includes("not") && 
+                                    <p className="text-stone-600 mb-4 text-base font-semibold">
+                                        Registration is not yet open.
                                     </p>
                                 }
                                 <div className="border-t border-stone-300 pt-4 mb-4">
@@ -385,9 +398,14 @@ export function CoursePage({
                              <p className="text-5xl font-extrabold text-sage-green my-4">
                                  ${investment.earlyBirdTuition ? investment.earlyBirdTuition : investment.tuition}
                              </p>
-                             {investment.earlyBirdTuition && 
+                             {investment.earlyBirdTuition && investment.earlyBirdDate && 
                                 <p className="text-stone-600">
                                     Early bird pricing until {investment.earlyBirdDate}. <strong>Regular price ${investment.tuition}</strong>.
+                                </p>
+                             }
+                             {investment.earlyBirdTuition && !investment.earlyBirdDate && 
+                                <p className="text-stone-600">
+                                    Early bird pricing. <strong>Regular price ${investment.tuition}</strong>.
                                 </p>
                              }
                              {investment.graduateTuition &&

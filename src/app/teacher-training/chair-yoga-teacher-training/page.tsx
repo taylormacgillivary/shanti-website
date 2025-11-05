@@ -85,8 +85,7 @@ const curriculum = [
   const investment = {
       deposit: 150,
       tuition: 575,
-      earlyBirdTuition: 475,
-      earlyBirdDate: "September 20, 2025"
+      earlyBirdTuition: 475
   }
 
 export default function ChairYogaPage() {
@@ -94,7 +93,7 @@ export default function ChairYogaPage() {
         <CoursePage
             title="Chair Yoga Teacher Training"
             subtitle="Uncover your full potential to Teach, to Practice, to Live."
-            dates="November 20-23, 2025"
+            dates="Next Course Dates: TBD"
             heroImage="/images-in-use/05.jpg"
             imageTwo="/images-in-use/19.jpg"
             imageThree="/images-in-use/35.jpg"
@@ -104,8 +103,9 @@ export default function ChairYogaPage() {
             teachers={teachers}
             faqs={faqs}
             investment={investment}
-            paymentDepositLink="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=41&sTG=39&prodId=1577"
+            paymentDepositLink="#"
             paymentFullLink="#"
+            paymentDepositText="Registration Not Yet Open"
             ceCredits="25 Hours"
             showDepositOnly={true}
         />
