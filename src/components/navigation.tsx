@@ -366,10 +366,12 @@ const ListItem = React.forwardRef<
             {...props}>
             <div className="absolute inset-0 bg-black/40 rounded-md" />
             <div className="relative z-10">
-              <div className="mb-2 mt-4 text-lg font-medium text-white">{title}</div>
-              <p className="text-sm leading-tight text-white/90">
-                {children}
-              </p>
+              <div className="border border-white/40 rounded-md px-3 py-2 inline-block backdrop-blur-sm bg-black/20">
+                <div className="mb-2 text-lg font-medium text-white">{title}</div>
+                <p className="text-sm leading-tight text-white/90">
+                  {children}
+                </p>
+              </div>
             </div>
           </Link>
         </NavigationMenuLink>
