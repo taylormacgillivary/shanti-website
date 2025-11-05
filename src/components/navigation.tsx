@@ -217,6 +217,9 @@ export function Navigation() {
                 Teacher Training
               </NavigationMenuTrigger>
               <NavigationMenuContent>
+                <div className="text-center py-2 px-4 text-sm text-muted-foreground italic">
+                  Scroll down to view more
+                </div>
                 <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] max-h-[70vh] overflow-y-auto">
                   {siteConfig.teacherTrainingNav.map((item) => (
                     <ListItem
