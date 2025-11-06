@@ -178,9 +178,9 @@ export function CoursePage({
                         </div>
                         {infoPackageLink &&
                             <div className="text-center mt-12">
-                                <Button asChild size="lg" className="gradient-sage hover:opacity-90 text-white shadow-lg">
-                                    <Link href={infoPackageLink} target="_blank" rel="noopener noreferrer">Download Info Package</Link>
-                                </Button>
+                                <div className="inline-flex items-center justify-center px-6 py-3 text-lg font-medium text-stone-600 bg-stone-100 rounded-md">
+                                    Downloadable Info Package Available Soon
+                                </div>
                             </div>
                         }
                     </div>
