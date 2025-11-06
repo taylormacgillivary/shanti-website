@@ -88,13 +88,12 @@ const workshops: Workshop[] = [
     description: "Prenatal Yoga is an incredible way to tune into your body in an intimate way as it undergoes a very challenging and magical transformation. Prenatal Yoga will help strengthen both the body and mind during your pregnancy and in preparation for labour while connecting you to a like-minded group. With everyone at a different stage of pregnancy, the community building aspect can be extremely valuable, while at the same time, building a closer connection to the little one in your belly!",
     location: "Dartmouth & Bedford",
     dates: [
-      "<strong>Dartmouth:</strong> October 23rd, 5:30pm",
-      "<strong>Bedford:</strong> October 27th, 6pm"
+      "<strong>Dartmouth:</strong> November 20th, 5:30pm",
+      "<strong>Bedford:</strong> November 23rd, 6pm"
     ],
     duration: "4 Week Programs",
     image: "/images-in-use/prenatal-2017.jpg",
     widgetId: "689767685be",
-    registrationClosed: true,
     hasMultipleOptions: true
   },
   {
@@ -112,6 +111,19 @@ const workshops: Workshop[] = [
     imagePosition: "center top",
     widgetId: "6810920685be",
     hasMultipleOptions: true
+  },
+  {
+    title: "Ayurveda for Everyday Living",
+    instructor: "Hari Mohan",
+    description: "Discover the timeless wisdom of Ayurveda and learn how to bring balance, vitality, and harmony into your daily life. In this interactive workshop, you'll explore how Ayurveda works and gain hands-on experience through engaging activities and discussions. Understand your unique body–mind type through a Dosha Test and Pulse Examination, learn to make holistic lifestyle choices that support energy, digestion, and emotional well-being, and enjoy a cup of refreshing CCF tea while discovering the healing properties of everyday spices.",
+    location: "Bedford",
+    dates: [
+      "<strong>November 30th</strong>",
+      "<strong>1:00pm</strong>"
+    ],
+    image: "/images-in-use/hari-mohan.jpg",
+    imagePosition: "center 15%",
+    widgetId: "6810941285be"
   }
 ];
 
