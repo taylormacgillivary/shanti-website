@@ -16,7 +16,18 @@ export const siteConfig = {
         },
         {
             title: "Membership",
-            href: "/memberships",
+            items: [
+                {
+                    title: "View All Passes & Memberships",
+                    href: "/memberships",
+                    description: "Browse our membership options and class passes.",
+                },
+                {
+                    title: "Suspend or Cancel Your Membership",
+                    href: "/memberships/suspend-or-cancel",
+                    description: "Manage your membership status.",
+                },
+            ],
         },
         {
             title: "Retreats",

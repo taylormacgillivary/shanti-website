@@ -1,10 +1,11 @@
 export type NavItem = {
     title: string;
-    href: string;
+    href?: string;
     description?: string;
     disabled?: boolean;
     external?: boolean;
     featured?: boolean;
     image?: string;
     isNew?: boolean;
+    items?: NavItem[];
 }; 

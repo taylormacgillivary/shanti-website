@@ -181,8 +181,42 @@ export function Navigation() {
               </NavigationMenuContent>
             </NavigationMenuItem>
             
-            {siteConfig.mainNav.map((item) => (
-                item.href && (
+            {siteConfig.mainNav.map((item) => {
+                // If item has sub-items, render as dropdown
+                if (item.items) {
+                    return (
+                        <NavigationMenuItem key={item.title}>
+                            <NavigationMenuTrigger 
+                                className="hover:!bg-white/10 transition-all duration-500"
+                                style={{
+                                    backgroundColor: 'transparent',
+                                    color: isHomePage 
+                                        ? scrollProgress < 1 
+                                            ? `rgb(${255 - scrollProgress * 224}, ${255 - scrollProgress * 229}, ${255 - scrollProgress * 231})`
+                                            : undefined
+                                        : undefined
+                                }}
+                            >
+                                {item.title}
+                            </NavigationMenuTrigger>
+                            <NavigationMenuContent>
+                                <ul className="grid w-[400px] gap-3 p-4">
+                                    {item.items.map((subItem) => (
+                                        <ListItem
+                                            key={subItem.title}
+                                            href={subItem.href}
+                                            title={subItem.title}
+                                        >
+                                            {subItem.description}
+                                        </ListItem>
+                                    ))}
+                                </ul>
+                            </NavigationMenuContent>
+                        </NavigationMenuItem>
+                    );
+                }
+                // Otherwise render as simple link
+                return item.href ? (
                     <NavigationMenuItem key={item.title}>
                         <Link 
                           href={item.href} 
@@ -199,8 +233,8 @@ export function Navigation() {
                             {item.title}
                         </Link>
                     </NavigationMenuItem>
-                )
-            ))}
+                ) : null;
+            })}
 
             <NavigationMenuItem>
               <NavigationMenuTrigger 
@@ -307,16 +341,44 @@ export function Navigation() {
                         </AccordionContent>
                     </AccordionItem>
                 </Accordion>
-                {siteConfig.mainNav.map((item) => (
-                    <MobileNavLink
-                    key={item.href}
-                    href={item.href}
-                    onOpenChange={setIsMobileMenuOpen}
-                    className="text-lg font-medium border-b py-4 block"
-                    >
-                    {item.title}
-                    </MobileNavLink>
-                ))}
+                {siteConfig.mainNav.map((item) => {
+                    // If item has sub-items, render as accordion
+                    if (item.items) {
+                        return (
+                            <Accordion key={item.title} type="multiple" className="w-full">
+                                <AccordionItem value={item.title.toLowerCase()}>
+                                    <AccordionTrigger className="text-lg font-medium">
+                                        {item.title}
+                                    </AccordionTrigger>
+                                    <AccordionContent>
+                                        <div className="pl-4 flex flex-col gap-2">
+                                            {item.items.map((subItem) => (
+                                                <MobileNavLink
+                                                    key={subItem.href}
+                                                    href={subItem.href || '#'}
+                                                    onOpenChange={setIsMobileMenuOpen}
+                                                >
+                                                    {subItem.title}
+                                                </MobileNavLink>
+                                            ))}
+                                        </div>
+                                    </AccordionContent>
+                                </AccordionItem>
+                            </Accordion>
+                        );
+                    }
+                    // Otherwise render as simple link
+                    return item.href ? (
+                        <MobileNavLink
+                            key={item.href}
+                            href={item.href}
+                            onOpenChange={setIsMobileMenuOpen}
+                            className="text-lg font-medium border-b py-4 block"
+                        >
+                            {item.title}
+                        </MobileNavLink>
+                    ) : null;
+                })}
                 <Accordion type="multiple" className="w-full">
                     <AccordionItem value="teacher-training">
                         <AccordionTrigger className="text-lg font-medium">
