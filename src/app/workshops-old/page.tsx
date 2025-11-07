@@ -52,8 +52,7 @@ const workshops: Workshop[] = [
     location: "Bedford",
     dates: [
       "<strong>Monthly Dates:</strong>",
-      "October 25th",
-      "November 28th", 
+      "November 29th", 
       "December 20th<br><br>",
       "<strong>6:00pm start time for all dates</strong>"
     ],
