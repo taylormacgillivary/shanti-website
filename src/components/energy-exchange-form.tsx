@@ -1,13 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "@/components/ui/use-toast";
+import { submitEnergyExchangeApplication } from "@/app/actions/energy-exchange";
+import { CheckCircle2 } from "lucide-react";
 
 interface EnergyExchangeFormProps {
   open: boolean;
@@ -15,7 +16,8 @@ interface EnergyExchangeFormProps {
 }
 
 export function EnergyExchangeForm({ open, onOpenChange }: EnergyExchangeFormProps) {
-  const { toast } = useToast();
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -50,62 +52,92 @@ export function EnergyExchangeForm({ open, onOpenChange }: EnergyExchangeFormPro
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Here you would typically send the form data to your backend
-    console.log("Form submitted:", formData);
-    
-    // Close the dialog
-    onOpenChange(false);
-    
-    // Show success message
-    toast({
-      title: "Application Submitted!",
-      description: "Thank you for your interest in our Energy Exchange program. We'll review your application and get back to you soon.",
-      duration: 5000,
-    });
+    setIsSubmitting(true);
 
-    // Reset form
-    setFormData({
-      firstName: "",
-      lastName: "",
-      email: "",
-      phone: "",
-      newsletter: false,
-      locations: {
-        halifax: false,
-        dartmouth: false,
-        bedford: false
-      },
-      availability: {
-        monday: false,
-        tuesday: false,
-        wednesday: false,
-        thursday: false,
-        friday: false,
-        saturday: false,
-        sunday: false
-      },
-      shifts: {
-        morning: false,
-        evening: false,
-        anytime: false
-      },
-      howDidYouHear: "",
-      yogaExperience: "",
-      programAppeal: "",
-      conflicts: "",
-      additionalInfo: ""
-    });
+    try {
+      const result = await submitEnergyExchangeApplication(formData);
+      
+      if (result.success) {
+        setShowSuccess(true);
+        // Reset form
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone: "",
+          newsletter: false,
+          locations: {
+            halifax: false,
+            dartmouth: false,
+            bedford: false
+          },
+          availability: {
+            monday: false,
+            tuesday: false,
+            wednesday: false,
+            thursday: false,
+            friday: false,
+            saturday: false,
+            sunday: false
+          },
+          shifts: {
+            morning: false,
+            evening: false,
+            anytime: false
+          },
+          howDidYouHear: "",
+          yogaExperience: "",
+          programAppeal: "",
+          conflicts: "",
+          additionalInfo: ""
+        });
+      } else {
+        alert(result.message || "An error occurred. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error submitting energy exchange application:", error);
+      alert("An error occurred. Please try again or contact us directly.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleCloseModal = () => {
+    onOpenChange(false);
+    setShowSuccess(false);
   };
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
-        <DialogHeader>
-          <DialogTitle className="text-2xl">Energy Exchange Application</DialogTitle>
-        </DialogHeader>
-        
-        <form onSubmit={handleSubmit} className="space-y-6 py-4">
+        {showSuccess ? (
+          <>
+            <DialogHeader>
+              <div className="flex justify-center mb-4">
+                <CheckCircle2 className="h-16 w-16 text-green-500" />
+              </div>
+              <DialogTitle className="text-2xl text-center">Application Submitted Successfully!</DialogTitle>
+              <DialogDescription className="text-center text-base">
+                Thank you for your interest in our Energy Exchange program. We&apos;ll review your application and get back to you soon.
+              </DialogDescription>
+            </DialogHeader>
+
+            <div className="py-6 text-center space-y-4">
+              <p className="text-muted-foreground">
+                If you have any questions or concerns, please don&apos;t hesitate to contact us.
+              </p>
+              <Button onClick={handleCloseModal} className="gradient-sage text-white">
+                Close
+              </Button>
+            </div>
+          </>
+        ) : (
+          <>
+            <DialogHeader>
+              <DialogTitle className="text-2xl">Energy Exchange Application</DialogTitle>
+            </DialogHeader>
+            
+            <form onSubmit={handleSubmit} className="space-y-6 py-4">
           {/* Name */}
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
@@ -306,10 +338,16 @@ export function EnergyExchangeForm({ open, onOpenChange }: EnergyExchangeFormPro
             </div>
           </div>
 
-          <Button type="submit" className="w-full gradient-sage text-white hover:opacity-90">
-            Submit Application
+          <Button 
+            type="submit" 
+            className="w-full gradient-sage text-white hover:opacity-90"
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? "Submitting..." : "Submit Application"}
           </Button>
         </form>
+          </>
+        )}
       </DialogContent>
     </Dialog>
   );
