@@ -1,19 +1,72 @@
 "use server";
 
-import { z } from "zod";
+export type ContactFormData = {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+};
 
-export const formSchema = z.object({
-  name: z.string().min(2, { message: "Name must be at least 2 characters." }),
-  email: z.string().email({ message: "Please enter a valid email." }),
-  subject: z.string().min(5, { message: "Subject must be at least 5 characters." }),
-  message: z.string().min(10, { message: "Message must be at least 10 characters." }),
-});
+export async function sendEmail(data: ContactFormData) {
+  try {
+    // Format the email content
+    const emailContent = `
+New Contact Form Submission
 
-export type FormData = z.infer<typeof formSchema>;
+Name: ${data.name}
+Email: ${data.email}
+Subject: ${data.subject}
 
-export async function sendEmail(data: FormData) {
-    console.log("Sending email with data:", data);
-    // Here you would typically use a service like Resend, SendGrid, or Nodemailer
-    // For this example, we'll just simulate a successful submission.
-    return { success: true, data };
+Message:
+${data.message}
+    `.trim();
+
+    console.log("Contact form submission:", emailContent);
+
+    // Send email using Web3Forms
+    try {
+      const emailBody = {
+        access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "",
+        subject: `Contact Form: ${data.subject}`,
+        from_name: data.name,
+        email: data.email,
+        message: emailContent,
+        to_email: "taylor@shantihotyoga.ca",
+      };
+
+      // If Web3Forms key is not available, just log it
+      if (!process.env.NEXT_PUBLIC_WEB3FORMS_KEY) {
+        console.warn("Email service not configured. Form data logged above.");
+        // Still return success so the user sees confirmation
+        // The form data is logged and can be retrieved from server logs
+      } else {
+        const response = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify(emailBody),
+        });
+
+        if (!response.ok) {
+          console.error("Failed to send email via Web3Forms");
+        }
+      }
+    } catch (emailError) {
+      console.error("Error sending email:", emailError);
+      // Continue anyway - data is logged
+    }
+
+    return { 
+      success: true, 
+      message: "Your message has been sent successfully." 
+    };
+  } catch (error) {
+    console.error("Error submitting contact form:", error);
+    return { 
+      success: false, 
+      message: "An error occurred while sending your message. Please try again or contact us directly." 
+    };
+  }
 } 

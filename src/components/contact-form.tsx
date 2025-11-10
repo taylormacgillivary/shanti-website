@@ -1,9 +1,21 @@
 "use client";
 
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { toast } from "sonner";
-import { sendEmail, FormData, formSchema } from "@/app/actions/contact";
+import { z } from "zod";
+import { sendEmail } from "@/app/actions/contact";
+import { CheckCircle2 } from "lucide-react";
+
+// Client-side schema for form validation
+const formSchema = z.object({
+  name: z.string().min(2, { message: "Name must be at least 2 characters." }),
+  email: z.string().email({ message: "Please enter a valid email." }),
+  subject: z.string().min(5, { message: "Subject must be at least 5 characters." }),
+  message: z.string().min(10, { message: "Message must be at least 10 characters." }),
+});
+
+type FormData = z.infer<typeof formSchema>;
 
 import {
   Form,
@@ -13,12 +25,21 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 export function ContactForm({ className }: { className?: string }) {
+  const [showSuccess, setShowSuccess] = useState(false);
+  
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -32,12 +53,16 @@ export function ContactForm({ className }: { className?: string }) {
   async function onSubmit(data: FormData) {
     const result = await sendEmail(data);
     if (result.success) {
-      toast.success("Your message has been sent!");
+      setShowSuccess(true);
       form.reset();
     } else {
-      toast.error("Something went wrong. Please try again.");
+      alert(result.message || "Something went wrong. Please try again.");
     }
   }
+
+  const handleCloseSuccess = () => {
+    setShowSuccess(false);
+  };
 
   return (
     <Form {...form}>
@@ -107,6 +132,27 @@ export function ContactForm({ className }: { className?: string }) {
             {form.formState.isSubmitting ? "Sending..." : "Send Message"}
         </Button>
       </form>
+
+      {/* Success Modal */}
+      <Dialog open={showSuccess} onOpenChange={setShowSuccess}>
+        <DialogContent className="max-w-md">
+          <DialogHeader>
+            <div className="flex justify-center mb-4">
+              <CheckCircle2 className="h-16 w-16 text-green-500" />
+            </div>
+            <DialogTitle className="text-2xl text-center">Message Sent Successfully!</DialogTitle>
+            <DialogDescription className="text-center text-base">
+              Thank you for reaching out. We&apos;ve received your message and will get back to you soon.
+            </DialogDescription>
+          </DialogHeader>
+
+          <div className="py-6 text-center">
+            <Button onClick={handleCloseSuccess} className="gradient-sage text-white">
+              Close
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </Form>
   );
 } 

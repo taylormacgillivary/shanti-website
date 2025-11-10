@@ -110,8 +110,9 @@ All emails sent to taylor@shantihotyoga.ca include:
 - Error handling includes user-friendly messages
 - Validation:
   - Energy Exchange: HTML5 required fields
-  - Contact Form: Zod schema validation via react-hook-form
+  - Contact Form: Zod schema validation via react-hook-form (client-side schema)
   - Membership Forms: HTML5 required fields + custom validation
 - All forms use consistent styling with gradient-sage buttons
 - Success modals use identical structure and styling across all forms
+- **Important:** Contact form uses client-side Zod schema to avoid server/client boundary issues with `zodResolver`
 
