@@ -40,6 +40,9 @@ ${data.message}
         // Still return success so the user sees confirmation
         // The form data is logged and can be retrieved from server logs
       } else {
+        console.log("Sending to Web3Forms API...");
+        console.log("Request body:", JSON.stringify(emailBody));
+        
         const response = await fetch("https://api.web3forms.com/submit", {
           method: "POST",
           headers: {
@@ -49,8 +52,28 @@ ${data.message}
           body: JSON.stringify(emailBody),
         });
 
+        console.log("Response status:", response.status);
+        console.log("Response headers:", Object.fromEntries(response.headers.entries()));
+
+        // Get response text first to see what we're getting
+        const responseText = await response.text();
+        console.log("Raw response:", responseText.substring(0, 500)); // Log first 500 chars
+
+        // Try to parse as JSON
+        let responseData;
+        try {
+          responseData = JSON.parse(responseText);
+          console.log("Web3Forms API response:", responseData);
+        } catch (parseError) {
+          console.error("Failed to parse response as JSON. Response was:", responseText.substring(0, 200));
+          throw new Error("Web3Forms returned invalid response");
+        }
+
         if (!response.ok) {
-          console.error("Failed to send email via Web3Forms");
+          console.error("Failed to send email via Web3Forms. Status:", response.status);
+          console.error("Web3Forms error response:", responseData);
+        } else {
+          console.log("Email sent successfully via Web3Forms");
         }
       }
     } catch (emailError) {

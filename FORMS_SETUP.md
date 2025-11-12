@@ -49,6 +49,14 @@ If not configured, add to `.env.local`:
 NEXT_PUBLIC_WEB3FORMS_KEY=your_web3forms_access_key_here
 ```
 
+### Vercel Deployment
+After adding the environment variable in Vercel:
+1. Go to Vercel Dashboard → Settings → Environment Variables
+2. Add `NEXT_PUBLIC_WEB3FORMS_KEY` with your Web3Forms access key
+3. Ensure "Production" environment is checked
+4. **Important:** Redeploy your application for the changes to take effect
+5. The environment variable must be set BEFORE deployment to be available at runtime
+
 ## Consistent User Experience
 
 All forms now follow the same pattern:
