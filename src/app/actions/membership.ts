@@ -94,7 +94,7 @@ ${data.additionalInfo ? `\nAdditional Information:\n${data.additionalInfo}` : ''
         try {
           responseData = JSON.parse(responseText);
           console.log("Web3Forms API response:", responseData);
-        } catch (parseError) {
+        } catch {
           console.error("Failed to parse response as JSON. Response was:", responseText.substring(0, 200));
           throw new Error("Web3Forms returned invalid response");
         }
@@ -206,7 +206,7 @@ ${data.feedback ? `\nFeedback:\n${data.feedback}` : ''}
         try {
           responseData = JSON.parse(responseText);
           console.log("Web3Forms API response:", responseData);
-        } catch (parseError) {
+        } catch {
           console.error("Failed to parse response as JSON. Response was:", responseText.substring(0, 200));
           throw new Error("Web3Forms returned invalid response");
         }

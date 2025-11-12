@@ -57,15 +57,17 @@ ${data.message}
 
         // Get response text first to see what we're getting
         const responseText = await response.text();
-        console.log("Raw response:", responseText.substring(0, 500)); // Log first 500 chars
+        console.log("Full raw response:", responseText); // Log FULL response
 
         // Try to parse as JSON
         let responseData;
         try {
           responseData = JSON.parse(responseText);
           console.log("Web3Forms API response:", responseData);
-        } catch (parseError) {
-          console.error("Failed to parse response as JSON. Response was:", responseText.substring(0, 200));
+        } catch {
+          console.error("Failed to parse response as JSON.");
+          console.error("Full response text:", responseText);
+          console.error("This usually means the API rejected the request or there's a network issue");
           throw new Error("Web3Forms returned invalid response");
         }
 
