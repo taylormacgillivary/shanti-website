@@ -187,7 +187,7 @@ export default function YTT200HourPage() {
             heroImage="/images-in-use/05.jpg"
             imageTwo="/images-in-use/12.jpg"
             imageThree="/images-in-use/20.jpg"
-            infoPackageLink="/YTT 2026 Info Package.pdf"
+            infoPackageLink="/ytt-2026-info-package.pdf"
             whoIsThisFor={whoIsThisFor}
             curriculum={modules}
             curriculumTitle="Course Curriculum"

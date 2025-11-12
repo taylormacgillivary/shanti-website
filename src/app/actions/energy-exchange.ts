@@ -110,15 +110,6 @@ ${data.additionalInfo || "Not provided"}
 
     // Send email using Web3Forms
     try {
-      const emailBody = {
-        access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "",
-        subject: "New Energy Exchange Application",
-        from_name: `${data.firstName} ${data.lastName}`,
-        email: data.email,
-        message: emailContent,
-        to_email: "taylor@shantihotyoga.ca",
-      };
-
       // If Web3Forms key is not available, just log it
       if (!process.env.NEXT_PUBLIC_WEB3FORMS_KEY) {
         console.warn("Email service not configured. Form data logged above.");
@@ -126,15 +117,29 @@ ${data.additionalInfo || "Not provided"}
         // The form data is logged and can be retrieved from server logs
       } else {
         console.log("Sending to Web3Forms API...");
-        console.log("Request body:", JSON.stringify(emailBody));
+        console.log("Request body:", JSON.stringify({
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY?.substring(0, 10) + "...",
+          subject: "New Energy Exchange Application",
+          from_name: `${data.firstName} ${data.lastName}`,
+          email: data.email,
+        }));
         
         const response = await fetch("https://api.web3forms.com/submit", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
             Accept: "application/json",
+            "User-Agent": "Mozilla/5.0 (compatible; ShantiHotYoga/1.0; +https://shantihotyoga.ca)",
+            Origin: "https://shantihotyoga.ca",
+            Referer: "https://shantihotyoga.ca/energy-exchange",
           },
-          body: JSON.stringify(emailBody),
+          body: JSON.stringify({
+            access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
+            subject: "New Energy Exchange Application",
+            from_name: `${data.firstName} ${data.lastName}`,
+            email: data.email,
+            message: emailContent,
+          }),
         });
 
         console.log("Response status:", response.status);
@@ -142,7 +147,7 @@ ${data.additionalInfo || "Not provided"}
 
         // Get response text first to see what we're getting
         const responseText = await response.text();
-        console.log("Raw response:", responseText.substring(0, 500)); // Log first 500 chars
+        console.log("Raw response:", responseText.substring(0, 500));
 
         // Try to parse as JSON
         let responseData;
@@ -154,16 +159,17 @@ ${data.additionalInfo || "Not provided"}
           throw new Error("Web3Forms returned invalid response");
         }
 
-        if (!response.ok) {
-          console.error("Failed to send email via Web3Forms. Status:", response.status);
-          console.error("Web3Forms error response:", responseData);
-        } else {
+        if (responseData.success) {
           console.log("Email sent successfully via Web3Forms");
+        } else {
+          console.error("Failed to send email via Web3Forms");
+          console.error("Web3Forms error response:", responseData);
+          throw new Error(responseData.message || "Failed to send email");
         }
       }
     } catch (emailError) {
       console.error("Error sending email:", emailError);
-      // Continue anyway - data is logged
+      throw emailError; // Re-throw to trigger error response
     }
 
     return { 
