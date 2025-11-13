@@ -76,6 +76,12 @@ const curriculum = [
         bio: "A yoga nerd at heart, Kevin brings his genuine passion for yoga to every class. He started his yoga journey at Shanti in 2011, and has since had the pleasure of training with Ryan Leier, Srivatsa Ramaswami (vinyasa krama), and Manju Jois (ashtanga), and holds a RYT 200, and RCYT (registered children's yoga teacher) certification with Yoga Alliance. He shares his dynamic style of practice which is fun, inspirational, and focused on the core traditions of yoga.",
         image: "/images-in-use/teachers-used/kevin-dougall.jpg"
     },
+    {
+        name: "Amanda Greenwood",
+        title: "Teacher",
+        bio: "Amanda Greenwood (she/her) is a Recreation & Leisure graduate, R-YT 200 with continued training in Myofascial, Yin, Vinyasa Krama and Kundalini. Amanda began her teacher training in January 2019 and has been teaching since September 2019 in various formats with studios and gyms in HRM.",
+        image: "/images-in-use/teachers-used/amanda-greenwood.jpeg"
+    },
   ];
 
   const faqs = [

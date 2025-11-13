@@ -66,6 +66,12 @@ const teachers = [
     bio: "Paighton's yoga journey started several years ago at Shanti Halifax. Arriving with few expectations, and leaving fulfilled with a newfound sense of peace, she knew she had found a home in this community. After several years of dreaming to do so, Paighton completed her 200HR Yoga Teacher Training with Shanti in the Fall of 2021, and shortly after her 75HR Yin Teacher Training with Shanti in the Winter of 2022. She is beyond thrilled to share her passion further among the Shanti community."
   },
   {
+    name: "Amanda Greenwood",
+    title: "Teacher",
+    image: "/images-in-use/teachers-used/amanda-greenwood.jpeg",
+    bio: "Amanda Greenwood (she/her) is a Recreation & Leisure graduate, R-YT 200 with continued training in Myofascial, Yin, Vinyasa Krama and Kundalini. Amanda began her teacher training in January 2019 and has been teaching since September 2019 in various formats with studios and gyms in HRM."
+  },
+  {
     name: "Abbey Bates",
     title: "Teacher",
     image: "/images-in-use/teachers-used/abbey-bates.jpg",
