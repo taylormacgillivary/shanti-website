@@ -80,7 +80,7 @@ const curriculum = [
         name: "Amanda Greenwood",
         title: "Teacher",
         bio: "Amanda Greenwood (she/her) is a Recreation & Leisure graduate, R-YT 200 with continued training in Myofascial, Yin, Vinyasa Krama and Kundalini. Amanda began her teacher training in January 2019 and has been teaching since September 2019 in various formats with studios and gyms in HRM.",
-        image: "/images-in-use/teachers-used/amanda-greenwood.jpeg"
+        image: "/images-in-use/teachers-used/amanda-greenwood-2.jpeg"
     },
   ];
 
