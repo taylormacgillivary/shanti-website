@@ -88,7 +88,7 @@ const workshops: Workshop[] = [
     location: "Dartmouth & Bedford",
     dates: [
       "<strong>Dartmouth:</strong> November 20th, 5:30pm",
-      "<strong>Bedford:</strong> November 23rd, 6pm"
+      "<strong>Bedford:</strong> November 24th, 6pm"
     ],
     duration: "4 Week Programs",
     image: "/images-in-use/prenatal-2017.jpg",
