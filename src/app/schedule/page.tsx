@@ -48,25 +48,30 @@ export default function SchedulePage() {
     }
 
     // Intercept Next.js router navigation
-    const originalPush = router.push
-    const originalReplace = router.replace
+    const originalPush = router.push.bind(router) as typeof router.push
+    const originalReplace = router.replace.bind(router) as typeof router.replace
     
-    router.push = ((url: string | URL, options?: any) => {
+    type RouterPushOptions = Parameters<typeof router.push>[1]
+    type RouterReplaceOptions = Parameters<typeof router.replace>[1]
+    
+    router.push = ((url: string | URL, options?: RouterPushOptions) => {
       const urlString = typeof url === 'string' ? url : url.pathname
       if (urlString === '/booking-confirmed' || urlString.startsWith('/booking-confirmed')) {
         console.log('Blocked router.push to /booking-confirmed')
         return Promise.resolve(false)
       }
-      return originalPush.call(router, url, options)
+      // Type assertion needed because bound function has stricter types
+      return originalPush(url as Parameters<typeof originalPush>[0], options)
     }) as typeof router.push
 
-    router.replace = ((url: string | URL, options?: any) => {
+    router.replace = ((url: string | URL, options?: RouterReplaceOptions) => {
       const urlString = typeof url === 'string' ? url : url.pathname
       if (urlString === '/booking-confirmed' || urlString.startsWith('/booking-confirmed')) {
         console.log('Blocked router.replace to /booking-confirmed')
         return Promise.resolve(false)
       }
-      return originalReplace.call(router, url, options)
+      // Type assertion needed because bound function has stricter types
+      return originalReplace(url as Parameters<typeof originalReplace>[0], options)
     }) as typeof router.replace
 
     // Set up event listeners
