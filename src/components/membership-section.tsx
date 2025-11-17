@@ -19,15 +19,16 @@ export function MembershipSection() {
           </h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <Card className="border-2 border-gray-200 dark:border-gray-800 rounded-lg shadow-lg">
+          <Card className="border-2 border-gray-200 dark:border-gray-800 rounded-lg shadow-lg flex flex-col">
             <CardHeader>
               <CardTitle>1 Month Membership</CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="flex-grow">
               <p className="text-4xl font-bold">$125/month*</p>
               <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">* Yoga Only</p>
               <p className="mt-4">Student/Senior price $108/month</p>
-              <p className="text-sm text-gray-500 dark:text-gray-400">No further commitment required</p>
+              <p className="text-sm text-gray-600 dark:text-gray-300 mt-2">Use code STUDENTONE1 at checkout</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">No further commitment required</p>
             </CardContent>
             <CardFooter>
               <div 
@@ -38,18 +39,19 @@ export function MembershipSection() {
               />
             </CardFooter>
           </Card>
-          <Card className="border-2 border-purple-500 dark:border-purple-400 rounded-lg shadow-lg relative">
+          <Card className="border-2 border-purple-500 dark:border-purple-400 rounded-lg shadow-lg relative flex flex-col">
             <div className="absolute top-0 right-0 bg-purple-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
               Popular
             </div>
             <CardHeader>
               <CardTitle>Monthly Membership</CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="flex-grow">
               <p className="text-4xl font-bold">$115/month*</p>
               <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">* Yoga Only</p>
               <p className="mt-4">Student/Senior price $89/month</p>
-              <p className="text-sm text-gray-500 dark:text-gray-400">Minimum 4 month commitment</p>
+              <p className="text-sm text-gray-600 dark:text-gray-300 mt-2">Use code STUDENT1 at checkout</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">Minimum 4 month commitment</p>
             </CardContent>
             <CardFooter>
               <div 
@@ -60,11 +62,11 @@ export function MembershipSection() {
               />
             </CardFooter>
           </Card>
-          <Card className="border-2 border-gray-200 dark:border-gray-800 rounded-lg shadow-lg">
+          <Card className="border-2 border-gray-200 dark:border-gray-800 rounded-lg shadow-lg flex flex-col">
             <CardHeader>
               <CardTitle>Take 5 Membership</CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="flex-grow">
               <p className="text-4xl font-bold">$89/Month*</p>
               <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">*Includes Pilates</p>
               <p className="mt-4">Auto-renews monthly</p>
@@ -109,7 +111,8 @@ export function MembershipSection() {
               <p className="text-4xl font-bold">$159/month</p>
               <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">Unlimited Yoga + Pilates</p>
               <p className="mt-4">Student/Senior price $142/month</p>
-              <p className="text-sm text-gray-500 dark:text-gray-400">No further commitment required, auto-renews until cancelled</p>
+              <p className="text-sm text-gray-600 dark:text-gray-300 mt-2">Use code STUDENTONE1 at checkout</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">No further commitment required, auto-renews until cancelled</p>
             </CardContent>
             <CardFooter>
               <div 
@@ -128,7 +131,8 @@ export function MembershipSection() {
               <p className="text-4xl font-bold">$149/month</p>
               <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">Unlimited Yoga + Pilates</p>
               <p className="mt-4">Student/Senior price $123/month</p>
-              <p className="text-sm text-gray-500 dark:text-gray-400">Minimum 4 month commitment, auto-renews until cancelled </p>
+              <p className="text-sm text-gray-600 dark:text-gray-300 mt-2">Use code STUDENT1 at checkout</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">Minimum 4 month commitment, auto-renews until cancelled </p>
             </CardContent>
             <CardFooter>
               <div 
