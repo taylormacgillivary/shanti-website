@@ -1,12 +1,12 @@
 "use client"
 
 import { MembershipSection } from "@/components/membership-section";
-import { IntroOfferSection } from "@/components/intro-offer-section";
+import { GiftCardSection } from "@/components/gift-card-section";
 
 export default function MembershipsPage() {
   return (
     <>
-      <IntroOfferSection />
+      <GiftCardSection />
       <MembershipSection />
     </>
   );
