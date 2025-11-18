@@ -103,7 +103,7 @@ export function Navigation() {
 
   return (
     <header 
-      className="sticky top-0 z-50 w-full transition-all duration-500 backdrop-blur"
+      className="w-full transition-all duration-500 backdrop-blur"
       style={{
         backgroundColor: isHomePage 
           ? `rgba(255, 255, 255, ${bgOpacity})`
