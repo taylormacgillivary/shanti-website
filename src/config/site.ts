@@ -30,8 +30,8 @@ export const siteConfig = {
             ],
         },
         {
-            title: "Retreats",
-            href: "/retreats",
+            title: "Workshops & Events",
+            href: "/workshops",
         },
     ] satisfies NavItem[],
     studiosNav: [
@@ -41,11 +41,11 @@ export const siteConfig = {
             description: "Meet our experienced yoga instructors.",
         },
         {
-            title: "Workshops & Events",
-            href: "/workshops",
-            description: "Special workshops and upcoming events.",
+            title: "Retreats",
+            href: "/retreats",
+            description: "Join us on an adventure to beautiful destinations around the world.",
             featured: true,
-            image: "/images-in-use/03.jpg",
+            image: "/images-in-use/Retreats/windhorse-farm-canada.jpeg",
         },
         {
             title: "Ayurvedic Treatments",
