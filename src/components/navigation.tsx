@@ -273,6 +273,21 @@ export function Navigation() {
 
         {/* CTA Button */}
         <div className="hidden md:flex items-center space-x-4">
+          <a
+            href="https://clients.mindbodyonline.com/classic/mainclass?studioid=11233"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs font-medium transition-colors hover:opacity-70"
+            style={{
+              color: isHomePage 
+                ? scrollProgress < 1 
+                  ? `rgb(${255 - scrollProgress * 224}, ${255 - scrollProgress * 229}, ${255 - scrollProgress * 231})`
+                  : undefined
+                : undefined
+            }}
+          >
+            Mindbody Login
+          </a>
           <Button 
             asChild 
             className="transition-all duration-500 border-2"

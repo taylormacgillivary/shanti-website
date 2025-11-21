@@ -31,12 +31,9 @@ export function MembershipSection() {
               <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">No further commitment required</p>
             </CardContent>
             <CardFooter>
-              <div 
-                className="w-full"
-                dangerouslySetInnerHTML={{
-                  __html: `<healcode-widget data-version="0.2" data-link-class="healcode-contract-text-link w-full gradient-sage text-white inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 cursor-pointer" data-site-id="1889" data-mb-site-id="11233" data-service-id="193" data-bw-identity-site="true" data-type="contract-link" data-inner-html="Buy Membership"></healcode-widget>`
-                }}
-              />
+              <Button className="w-full gradient-sage text-white" asChild>
+                <a href="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=40&prodId=193" target="_blank" rel="noopener noreferrer">Buy Membership</a>
+              </Button>
             </CardFooter>
           </Card>
           <Card className="border-2 border-purple-500 dark:border-purple-400 rounded-lg shadow-lg relative flex flex-col">
@@ -54,12 +51,9 @@ export function MembershipSection() {
               <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">Minimum 4 month commitment</p>
             </CardContent>
             <CardFooter>
-              <div 
-                className="w-full"
-                dangerouslySetInnerHTML={{
-                  __html: `<healcode-widget data-version="0.2" data-link-class="healcode-contract-text-link w-full gradient-sage text-white inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 cursor-pointer" data-site-id="1889" data-mb-site-id="11233" data-service-id="156" data-bw-identity-site="true" data-type="contract-link" data-inner-html="Buy Membership"></healcode-widget>`
-                }}
-              />
+              <Button className="w-full gradient-sage text-white" asChild>
+                <a href="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=40&prodId=156" target="_blank" rel="noopener noreferrer">Buy Membership</a>
+              </Button>
             </CardFooter>
           </Card>
           <Card className="border-2 border-gray-200 dark:border-gray-800 rounded-lg shadow-lg flex flex-col">
@@ -115,12 +109,9 @@ export function MembershipSection() {
               <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">No further commitment required, auto-renews until cancelled</p>
             </CardContent>
             <CardFooter>
-              <div 
-                className="w-full"
-                dangerouslySetInnerHTML={{
-                  __html: `<healcode-widget data-version="0.2" data-link-class="healcode-contract-text-link w-full gradient-sage text-white inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 cursor-pointer" data-site-id="1889" data-mb-site-id="11233" data-service-id="189" data-bw-identity-site="true" data-type="contract-link" data-inner-html="Buy Membership"></healcode-widget>`
-                }}
-              />
+              <Button className="w-full gradient-sage text-white" asChild>
+                <a href="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=40&prodId=189" target="_blank" rel="noopener noreferrer">Buy Membership</a>
+              </Button>
             </CardFooter>
           </Card>
           <Card className="border-2 border-gray-200 dark:border-gray-800 rounded-lg shadow-lg">
@@ -135,12 +126,9 @@ export function MembershipSection() {
               <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">Minimum 4 month commitment, auto-renews until cancelled </p>
             </CardContent>
             <CardFooter>
-              <div 
-                className="w-full"
-                dangerouslySetInnerHTML={{
-                  __html: `<healcode-widget data-version="0.2" data-link-class="healcode-contract-text-link w-full gradient-sage text-white inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 cursor-pointer" data-site-id="1889" data-mb-site-id="11233" data-service-id="190" data-bw-identity-site="true" data-type="contract-link" data-inner-html="Buy Membership"></healcode-widget>`
-                }}
-              />
+              <Button className="w-full gradient-sage text-white" asChild>
+                <a href="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=40&prodId=190" target="_blank" rel="noopener noreferrer">Buy Membership</a>
+              </Button>
             </CardFooter>
           </Card>
         </div>
