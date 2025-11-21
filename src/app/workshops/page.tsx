@@ -43,16 +43,6 @@ interface Workshop {
 
 const workshops: Workshop[] = [
   {
-    title: "Myofascial Release & Yoga Class",
-    instructor: "Stephanie Morton",
-    description: "A slow, luxurious practice featuring both a gently dynamic yoga practice interspersed with myofascial release techniques for tissue hydration, and restorative postures with breath work for integration, rest and deep healing.",
-    location: "Dartmouth",
-    dates: ["<strong>November 22nd</strong>", "<strong>6:30pm</strong>"],
-    image: "/images-in-use/mfr-better-backbends-c1a0c9d10b8add5a2e3ff705289a142f.webp",
-    featured: true,
-    widgetId: "6810920285be"
-  },
-  {
     title: "Mysore Ashtanga Practice",
     instructor: "Andrea Gracia",
     description: "Mysore Style is the traditional way of teaching the Ashtanga Vinyasa Yoga once the student has familiarity with the Sun Salutations and primary series. In this practice you will receive personal attention from Andrea Gracia, an Authorized Level 1 Ashtanga Yoga Teacher who travels to Mysore (India) every year to study with her teacher Saraswathi Jois.",
@@ -78,6 +68,7 @@ const workshops: Workshop[] = [
       "<strong>6:00pm start time for all dates</strong>"
     ],
     image: "/images-in-use/sound-bath.webp",
+    featured: true,
     widgetId: "6810924285be",
     hasMultipleOptions: true
   },

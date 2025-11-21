@@ -87,7 +87,6 @@ export default function VinyasaKramaPage() {
             heroImage="/images-in-use/03.jpg"
             imageTwo="/images-in-use/12.jpg"
             imageThree="/images-in-use/24.jpg"
-            infoPackageLink="#"
             whoIsThisFor={whoIsThisFor}
             learningOutcomes={learningOutcomes}
             curriculum={curriculum}

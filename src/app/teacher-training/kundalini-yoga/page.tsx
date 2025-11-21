@@ -87,7 +87,6 @@ export default function KundaliniYogaPage() {
             heroImage="/images-in-use/36.jpg"
             imageTwo="/images-in-use/37.jpg"
             imageThree="/images-in-use/20.jpg"
-            infoPackageLink="#"
             whoIsThisFor={whoIsThisFor}
             learningOutcomes={learningOutcomes}
             curriculum={curriculum}
