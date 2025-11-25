@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "sonner";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
+import { GiftCardPopup } from "@/components/gift-card-popup";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +22,7 @@ export function RootLayoutClient({
       <main className="flex-grow">{children}</main>
       <Footer />
       <Toaster position="top-center" richColors />
+      <GiftCardPopup />
     </QueryClientProvider>
   );
 }
