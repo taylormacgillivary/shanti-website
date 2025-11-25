@@ -145,11 +145,17 @@ export function MembershipSection() {
               <p className="mt-4">$18 Student/Senior Price</p>
               <p className="text-sm text-gray-500 dark:text-gray-400">Single Use, 1 Year Expiry</p>
             </CardContent>
-            <CardFooter>
+            <CardFooter className="flex flex-col gap-2">
               <div 
                 className="w-full"
                 dangerouslySetInnerHTML={{
                   __html: `<healcode-widget data-version="0.2" data-link-class="healcode-pricing-option-text-link w-full gradient-sage text-white inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 cursor-pointer" data-site-id="1889" data-mb-site-id="11233" data-service-id="289" data-bw-identity-site="true" data-type="pricing-link" data-inner-html="Buy Now"></healcode-widget>`
+                }}
+              />
+              <div 
+                className="w-full text-center"
+                dangerouslySetInnerHTML={{
+                  __html: `<healcode-widget data-version="0.2" data-link-class="healcode-pricing-option-text-link text-xs font-bold transition-colors hover:opacity-70" data-site-id="1889" data-mb-site-id="11233" data-service-id="290" data-bw-identity-site="true" data-type="pricing-link" data-inner-html="Buy Student/Senior Pass"></healcode-widget>`
                 }}
               />
             </CardFooter>
@@ -163,11 +169,17 @@ export function MembershipSection() {
               <p className="mt-4">$149 Student/Senior Price</p>
               <p className="text-sm text-gray-500 dark:text-gray-400">Expires After 1 Year</p>
             </CardContent>
-            <CardFooter>
+            <CardFooter className="flex flex-col gap-2">
               <div 
                 className="w-full"
                 dangerouslySetInnerHTML={{
                   __html: `<healcode-widget data-version="0.2" data-link-class="healcode-pricing-option-text-link w-full gradient-sage text-white inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 cursor-pointer" data-site-id="1889" data-mb-site-id="11233" data-service-id="291" data-bw-identity-site="true" data-type="pricing-link" data-inner-html="Buy Now"></healcode-widget>`
+                }}
+              />
+              <div 
+                className="w-full text-center"
+                dangerouslySetInnerHTML={{
+                  __html: `<healcode-widget data-version="0.2" data-link-class="healcode-pricing-option-text-link text-xs font-bold transition-colors hover:opacity-70" data-site-id="1889" data-mb-site-id="11233" data-service-id="292" data-bw-identity-site="true" data-type="pricing-link" data-inner-html="Buy Student/Senior Pass"></healcode-widget>`
                 }}
               />
             </CardFooter>
