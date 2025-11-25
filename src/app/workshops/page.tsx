@@ -87,22 +87,6 @@ const workshops: Workshop[] = [
     hasMultipleOptions: true
   },
   {
-    title: "Read More! Lead More! Move More!",
-    instructor: "Joe A. Doiron",
-    description: "Raising resilient kids through literacy, movement and mindfulness. Join Joe A. Doiron, founder, creator and author of Active Kids Adventures for this special free workshop.",
-    location: "Dartmouth & Bedford",
-    dates: [
-      "<strong>November 29th</strong>",
-      "<strong>Dartmouth:</strong> 12:30-2:00pm",
-      "<strong>Bedford:</strong> 3:30-5:00pm"
-    ],
-    duration: "FREE!",
-    image: "/images-in-use/joe-doiron.webp",
-    imagePosition: "center top",
-    widgetId: "6810920685be",
-    hasMultipleOptions: true
-  },
-  {
     title: "Ayurveda for Everyday Living",
     instructor: "Hari Mohan",
     description: "Discover the timeless wisdom of Ayurveda and learn how to bring balance, vitality, and harmony into your daily life. In this interactive workshop, you'll explore how Ayurveda works and gain hands-on experience through engaging activities and discussions. Understand your unique body–mind type through a Dosha Test and Pulse Examination, learn to make holistic lifestyle choices that support energy, digestion, and emotional well-being, and enjoy a cup of refreshing CCF tea while discovering the healing properties of everyday spices.",
