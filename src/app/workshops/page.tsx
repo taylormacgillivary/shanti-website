@@ -92,7 +92,7 @@ const workshops: Workshop[] = [
     description: "Discover the timeless wisdom of Ayurveda and learn how to bring balance, vitality, and harmony into your daily life. In this interactive workshop, you'll explore how Ayurveda works and gain hands-on experience through engaging activities and discussions. Understand your unique body–mind type through a Dosha Test and Pulse Examination, learn to make holistic lifestyle choices that support energy, digestion, and emotional well-being, and enjoy a cup of refreshing CCF tea while discovering the healing properties of everyday spices.",
     location: "Bedford",
     dates: [
-      "<strong>November 30th</strong>",
+      "<strong>February 15th, 2026</strong>",
       "<strong>1:00pm</strong>"
     ],
     image: "/images-in-use/hari-mohan.jpg",

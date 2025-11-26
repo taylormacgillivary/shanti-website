@@ -70,9 +70,9 @@ const curriculum = [
   ]
 
   const investment = {
-      deposit: 100,
-      tuition: 750,
-      earlyBirdTuition: 650,
+      deposit: 150,
+      tuition: 795,
+      earlyBirdTuition: 695,
       earlyBirdDate: "December 15, 2024",
       graduateTuition: 675,
       graduateEarlyBirdTuition: 575
