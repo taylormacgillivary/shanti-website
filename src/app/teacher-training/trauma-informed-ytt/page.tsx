@@ -67,7 +67,7 @@ export default function TraumaInformedYTTPage() {
         <CoursePage
             title="Creating Safer Yoga Spaces: A Trauma-Informed Approach"
             subtitle="Practical tools for yoga teachers to create more inclusive, trauma-informed spaces"
-            dates="December 6, 2025 | Shanti Bedford | 1pm - 7pm"
+            dates="Date: TBD 2026"
             heroImage="/images-in-use/13.jpg"
             imageTwo="/images-in-use/39.jpg"
             imageThree="/images-in-use/21.jpg"
