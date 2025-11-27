@@ -73,9 +73,7 @@ const curriculum = [
       deposit: 150,
       tuition: 795,
       earlyBirdTuition: 695,
-      earlyBirdDate: "January 15, 2026",
-      graduateTuition: 720,
-      graduateEarlyBirdTuition: 620
+      earlyBirdDate: "January 15, 2026"
   }
 
 export default function VinyasaKramaPage() {

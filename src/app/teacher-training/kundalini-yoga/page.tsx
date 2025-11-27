@@ -73,9 +73,7 @@ const curriculum = [
       deposit: 150,
       tuition: 795,
       earlyBirdTuition: 695,
-      earlyBirdDate: "December 15, 2024",
-      graduateTuition: 675,
-      graduateEarlyBirdTuition: 575
+      earlyBirdDate: "December 15, 2024"
   }
 
 export default function KundaliniYogaPage() {
