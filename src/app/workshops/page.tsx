@@ -93,7 +93,8 @@ const workshops: Workshop[] = [
     ],
     image: "/images-in-use/hari-mohan.jpg",
     imagePosition: "center 15%",
-    widgetId: "6810941285be"
+    widgetId: "6810941285be",
+    registrationClosed: false
   }
 ];
 
