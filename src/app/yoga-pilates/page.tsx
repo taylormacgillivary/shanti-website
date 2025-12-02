@@ -282,7 +282,7 @@ export default function YogaPilatesLandingPage() {
             fill
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/80 to-stone-950/60" />
+          <div className="absolute inset-0 bg-gradient-to-t from-stone-950/90 via-stone-950/60 to-stone-950/40" />
         </div>
 
         <div className="container relative z-10 mx-auto px-4">
