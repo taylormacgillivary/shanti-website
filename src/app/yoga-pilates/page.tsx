@@ -1,94 +1,11 @@
-"use client"
-
-import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import Script from "next/script"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Check, Flame, Heart, MapPin, Zap, Lock } from "lucide-react"
-
-const CORRECT_PASSWORD = "hotpilates"
+import { Check, Flame, Heart, MapPin, Zap } from "lucide-react"
 
 export default function YogaPilatesLandingPage() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
-  const [password, setPassword] = useState("")
-  const [error, setError] = useState(false)
-  const [isLoading, setIsLoading] = useState(true)
-
-  useEffect(() => {
-    // Check if already authenticated in this session
-    const auth = sessionStorage.getItem("yoga-pilates-auth")
-    if (auth === "true") {
-      setIsAuthenticated(true)
-    }
-    setIsLoading(false)
-  }, [])
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (password === CORRECT_PASSWORD) {
-      sessionStorage.setItem("yoga-pilates-auth", "true")
-      setIsAuthenticated(true)
-      setError(false)
-    } else {
-      setError(true)
-    }
-  }
-
-  // Show loading state
-  if (isLoading) {
-    return (
-      <main className="min-h-screen bg-stone-950 flex items-center justify-center">
-        <div className="w-8 h-8 border-2 border-lime-500 border-t-transparent rounded-full animate-spin" />
-      </main>
-    )
-  }
-
-  // Show password gate
-  if (!isAuthenticated) {
-    return (
-      <main className="min-h-screen bg-stone-950 flex items-center justify-center px-4">
-        <div className="w-full max-w-md">
-          <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/5 border border-white/10 mb-6">
-              <Lock className="w-8 h-8 text-lime-400" />
-            </div>
-            <h1 className="text-2xl font-bold text-white mb-2">Preview Access</h1>
-            <p className="text-white/60">Enter the password to view this page</p>
-          </div>
-          
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => {
-                  setPassword(e.target.value)
-                  setError(false)
-                }}
-                placeholder="Enter password"
-                className={`w-full px-4 py-3 rounded-xl bg-white/5 border ${
-                  error ? "border-red-500" : "border-white/10"
-                } text-white placeholder:text-white/40 focus:outline-none focus:border-lime-500 transition-colors`}
-                autoFocus
-              />
-              {error && (
-                <p className="mt-2 text-sm text-red-400">Incorrect password. Please try again.</p>
-              )}
-            </div>
-            <Button
-              type="submit"
-              className="w-full py-3 bg-gradient-to-r from-lime-500 to-emerald-600 hover:from-lime-400 hover:to-emerald-500 text-white font-semibold rounded-xl"
-            >
-              Access Page
-            </Button>
-          </form>
-        </div>
-      </main>
-    )
-  }
-
   return (
     <main className="min-h-screen bg-stone-950">
       {/* Hero Section - Inspired by "Smart Math" Ad */}
