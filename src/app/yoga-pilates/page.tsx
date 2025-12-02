@@ -309,121 +309,223 @@ export default function YogaPilatesLandingPage() {
       {/* Membership Options Section */}
       <section id="memberships" className="py-24 bg-gradient-to-b from-stone-950 to-stone-900">
         <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto">
+          <div className="max-w-6xl mx-auto">
             {/* Section Header */}
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                Unlimited{" "}
+                All the Ways to Access{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-lime-400 to-emerald-400">
-                  Yoga + Pilates
+                  Pilates at Shanti
                 </span>
               </h2>
               <p className="text-xl text-white/60 max-w-2xl mx-auto">
-                One membership. All classes. All three locations. Cancel anytime after your initial term.
+                Choose the option that fits your lifestyle. All memberships include access to all three locations.
               </p>
             </div>
 
-            {/* Pricing Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              {/* 1 Month - No Commitment */}
-              <Card className="relative bg-gradient-to-b from-white/5 to-white/[0.02] border-white/10 rounded-3xl overflow-hidden">
-                <CardHeader className="pt-8 pb-4">
-                  <CardTitle className="text-xl text-white/80 font-medium">1 Month Membership</CardTitle>
-                </CardHeader>
-                <CardContent className="pb-6">
-                  <div className="mb-6">
-                    <span className="text-5xl font-bold text-white">$159</span>
-                    <span className="text-white/50">/month</span>
-                  </div>
-                  <ul className="space-y-3 text-white/70">
-                    <li className="flex items-center gap-3">
-                      <Check className="w-5 h-5 text-lime-400" />
-                      Unlimited Hot Yoga + Hot Pilates
-                    </li>
-                    <li className="flex items-center gap-3">
-                      <Check className="w-5 h-5 text-lime-400" />
-                      Access to all 3 locations
-                    </li>
-                    <li className="flex items-center gap-3">
-                      <Check className="w-5 h-5 text-lime-400" />
-                      No commitment required
-                    </li>
-                    <li className="flex items-center gap-3">
-                      <Check className="w-5 h-5 text-lime-400" />
-                      Cancel anytime
-                    </li>
-                  </ul>
-                  <p className="mt-4 text-sm text-white/50">
-                    Student/Senior: $142/month (use code STUDENTONE1)
-                  </p>
-                </CardContent>
-                <CardFooter className="pb-8">
-                  <Button 
-                    className="w-full py-6 text-lg font-semibold bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-xl" 
-                    asChild
-                  >
-                    <a 
-                      href="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=40&prodId=189" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
+            {/* Unlimited Memberships */}
+            <div className="mb-12">
+              <h3 className="text-2xl font-bold text-white mb-6 text-center">Unlimited Memberships</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                {/* 1 Month - No Commitment */}
+                <Card className="relative bg-gradient-to-b from-white/5 to-white/[0.02] border-white/10 rounded-3xl overflow-hidden">
+                  <CardHeader className="pt-8 pb-4">
+                    <CardTitle className="text-xl text-white/80 font-medium">1 Month Membership</CardTitle>
+                  </CardHeader>
+                  <CardContent className="pb-6">
+                    <div className="mb-6">
+                      <span className="text-5xl font-bold text-white">$159</span>
+                      <span className="text-white/50">/month</span>
+                    </div>
+                    <ul className="space-y-3 text-white/70">
+                      <li className="flex items-center gap-3">
+                        <Check className="w-5 h-5 text-lime-400" />
+                        Unlimited Hot Yoga + Hot Pilates
+                      </li>
+                      <li className="flex items-center gap-3">
+                        <Check className="w-5 h-5 text-lime-400" />
+                        Access to all 3 locations
+                      </li>
+                      <li className="flex items-center gap-3">
+                        <Check className="w-5 h-5 text-lime-400" />
+                        No commitment required
+                      </li>
+                      <li className="flex items-center gap-3">
+                        <Check className="w-5 h-5 text-lime-400" />
+                        Cancel anytime
+                      </li>
+                    </ul>
+                    <p className="mt-4 text-sm text-white/50">
+                      Student/Senior: $142/month (use code STUDENTONE1)
+                    </p>
+                  </CardContent>
+                  <CardFooter className="pb-8">
+                    <Button 
+                      className="w-full py-6 text-lg font-semibold bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-xl" 
+                      asChild
                     >
-                      Get Started
-                    </a>
-                  </Button>
-                </CardFooter>
-              </Card>
+                      <a 
+                        href="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=40&prodId=189" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                      >
+                        Get Started
+                      </a>
+                    </Button>
+                  </CardFooter>
+                </Card>
 
-              {/* Monthly - Best Value */}
-              <Card className="relative bg-gradient-to-b from-lime-500/10 to-emerald-500/5 border-lime-500/30 rounded-3xl overflow-hidden">
-                {/* Popular Badge */}
-                <div className="absolute top-0 right-0 bg-gradient-to-r from-lime-500 to-emerald-500 text-white text-sm font-bold px-4 py-2 rounded-bl-2xl">
-                  BEST VALUE
-                </div>
-                <CardHeader className="pt-8 pb-4">
-                  <CardTitle className="text-xl text-white/80 font-medium">Monthly Membership</CardTitle>
-                </CardHeader>
-                <CardContent className="pb-6">
-                  <div className="mb-6">
-                    <span className="text-5xl font-bold text-white">$149</span>
-                    <span className="text-white/50">/month</span>
+                {/* Monthly - Best Value */}
+                <Card className="relative bg-gradient-to-b from-lime-500/10 to-emerald-500/5 border-lime-500/30 rounded-3xl overflow-hidden">
+                  {/* Popular Badge */}
+                  <div className="absolute top-0 right-0 bg-gradient-to-r from-lime-500 to-emerald-500 text-white text-sm font-bold px-4 py-2 rounded-bl-2xl">
+                    BEST VALUE
                   </div>
-                  <ul className="space-y-3 text-white/70">
-                    <li className="flex items-center gap-3">
-                      <Check className="w-5 h-5 text-lime-400" />
-                      Unlimited Hot Yoga + Hot Pilates
-                    </li>
-                    <li className="flex items-center gap-3">
-                      <Check className="w-5 h-5 text-lime-400" />
-                      Access to all 3 locations
-                    </li>
-                    <li className="flex items-center gap-3">
-                      <Check className="w-5 h-5 text-lime-400" />
-                      <span className="text-lime-400 font-medium">Save $10/month</span>
-                    </li>
-                    <li className="flex items-center gap-3">
-                      <Check className="w-5 h-5 text-lime-400" />
-                      4 month initial commitment
-                    </li>
-                  </ul>
-                  <p className="mt-4 text-sm text-white/50">
-                    Student/Senior: $123/month (use code STUDENT1)
-                  </p>
-                </CardContent>
-                <CardFooter className="pb-8">
-                  <Button 
-                    className="w-full py-6 text-lg font-semibold bg-gradient-to-r from-lime-500 to-emerald-600 hover:from-lime-400 hover:to-emerald-500 text-white rounded-xl shadow-lg shadow-emerald-900/30" 
-                    asChild
-                  >
-                    <a 
-                      href="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=40&prodId=190" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
+                  <CardHeader className="pt-8 pb-4">
+                    <CardTitle className="text-xl text-white/80 font-medium">Monthly Membership</CardTitle>
+                  </CardHeader>
+                  <CardContent className="pb-6">
+                    <div className="mb-6">
+                      <span className="text-5xl font-bold text-white">$149</span>
+                      <span className="text-white/50">/month</span>
+                    </div>
+                    <ul className="space-y-3 text-white/70">
+                      <li className="flex items-center gap-3">
+                        <Check className="w-5 h-5 text-lime-400" />
+                        Unlimited Hot Yoga + Hot Pilates
+                      </li>
+                      <li className="flex items-center gap-3">
+                        <Check className="w-5 h-5 text-lime-400" />
+                        Access to all 3 locations
+                      </li>
+                      <li className="flex items-center gap-3">
+                        <Check className="w-5 h-5 text-lime-400" />
+                        <span className="text-lime-400 font-medium">Save $10/month</span>
+                      </li>
+                      <li className="flex items-center gap-3">
+                        <Check className="w-5 h-5 text-lime-400" />
+                        4 month initial commitment
+                      </li>
+                    </ul>
+                    <p className="mt-4 text-sm text-white/50">
+                      Student/Senior: $123/month (use code STUDENT1)
+                    </p>
+                  </CardContent>
+                  <CardFooter className="pb-8">
+                    <Button 
+                      className="w-full py-6 text-lg font-semibold bg-gradient-to-r from-lime-500 to-emerald-600 hover:from-lime-400 hover:to-emerald-500 text-white rounded-xl shadow-lg shadow-emerald-900/30" 
+                      asChild
                     >
-                      Get Started
-                    </a>
-                  </Button>
-                </CardFooter>
-              </Card>
+                      <a 
+                        href="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=40&prodId=190" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                      >
+                        Get Started
+                      </a>
+                    </Button>
+                  </CardFooter>
+                </Card>
+              </div>
+            </div>
+
+            {/* Flexible Options */}
+            <div className="mb-12">
+              <h3 className="text-2xl font-bold text-white mb-6 text-center">Flexible Options</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                {/* Take 5 Membership */}
+                <Card className="relative bg-gradient-to-b from-amber-500/10 to-orange-500/5 border-amber-500/30 rounded-3xl overflow-hidden">
+                  <div className="absolute top-0 right-0 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm font-bold px-4 py-2 rounded-bl-2xl">
+                    BUDGET FRIENDLY
+                  </div>
+                  <CardHeader className="pt-8 pb-4">
+                    <CardTitle className="text-xl text-white/80 font-medium">Take 5 Membership</CardTitle>
+                  </CardHeader>
+                  <CardContent className="pb-6">
+                    <div className="mb-6">
+                      <span className="text-5xl font-bold text-white">$89</span>
+                      <span className="text-white/50">/month</span>
+                    </div>
+                    <ul className="space-y-3 text-white/70">
+                      <li className="flex items-center gap-3">
+                        <Check className="w-5 h-5 text-amber-400" />
+                        5 classes per month
+                      </li>
+                      <li className="flex items-center gap-3">
+                        <Check className="w-5 h-5 text-amber-400" />
+                        Includes Hot Yoga + Hot Pilates
+                      </li>
+                      <li className="flex items-center gap-3">
+                        <Check className="w-5 h-5 text-amber-400" />
+                        Access to all 3 locations
+                      </li>
+                      <li className="flex items-center gap-3">
+                        <Check className="w-5 h-5 text-amber-400" />
+                        4 month commitment
+                      </li>
+                    </ul>
+                    <p className="mt-4 text-sm text-white/50">
+                      Auto-renews monthly after initial term
+                    </p>
+                  </CardContent>
+                  <CardFooter className="pb-8">
+                    <div 
+                      className="w-full"
+                      dangerouslySetInnerHTML={{
+                        __html: `<healcode-widget data-version="0.2" data-link-class="healcode-contract-text-link w-full py-6 text-lg font-semibold bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 text-white rounded-xl shadow-lg shadow-orange-900/30 inline-flex items-center justify-center cursor-pointer" data-site-id="1889" data-mb-site-id="11233" data-service-id="163" data-bw-identity-site="true" data-type="contract-link" data-inner-html="Get Started"></healcode-widget>`
+                      }}
+                    />
+                  </CardFooter>
+                </Card>
+
+                {/* 10 Class Pass */}
+                <Card className="relative bg-gradient-to-b from-white/5 to-white/[0.02] border-white/10 rounded-3xl overflow-hidden">
+                  <CardHeader className="pt-8 pb-4">
+                    <CardTitle className="text-xl text-white/80 font-medium">10 Class Pass</CardTitle>
+                  </CardHeader>
+                  <CardContent className="pb-6">
+                    <div className="mb-6">
+                      <span className="text-5xl font-bold text-white">$189</span>
+                      <span className="text-white/50"> one-time</span>
+                    </div>
+                    <ul className="space-y-3 text-white/70">
+                      <li className="flex items-center gap-3">
+                        <Check className="w-5 h-5 text-lime-400" />
+                        10 classes to use anytime
+                      </li>
+                      <li className="flex items-center gap-3">
+                        <Check className="w-5 h-5 text-lime-400" />
+                        Valid for Hot Yoga + Hot Pilates
+                      </li>
+                      <li className="flex items-center gap-3">
+                        <Check className="w-5 h-5 text-lime-400" />
+                        Access to all 3 locations
+                      </li>
+                      <li className="flex items-center gap-3">
+                        <Check className="w-5 h-5 text-lime-400" />
+                        1 year expiry
+                      </li>
+                    </ul>
+                    <p className="mt-4 text-sm text-white/50">
+                      Student/Senior: $149
+                    </p>
+                  </CardContent>
+                  <CardFooter className="pb-8 flex flex-col gap-3">
+                    <div 
+                      className="w-full"
+                      dangerouslySetInnerHTML={{
+                        __html: `<healcode-widget data-version="0.2" data-link-class="healcode-pricing-option-text-link w-full py-6 text-lg font-semibold bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-xl inline-flex items-center justify-center cursor-pointer" data-site-id="1889" data-mb-site-id="11233" data-service-id="291" data-bw-identity-site="true" data-type="pricing-link" data-inner-html="Get Started"></healcode-widget>`
+                      }}
+                    />
+                    <div 
+                      className="w-full text-center"
+                      dangerouslySetInnerHTML={{
+                        __html: `<healcode-widget data-version="0.2" data-link-class="healcode-pricing-option-text-link text-sm text-white/60 hover:text-white transition-colors cursor-pointer" data-site-id="1889" data-mb-site-id="11233" data-service-id="292" data-bw-identity-site="true" data-type="pricing-link" data-inner-html="Buy Student/Senior Pass →"></healcode-widget>`
+                      }}
+                    />
+                  </CardFooter>
+                </Card>
+              </div>
             </div>
 
             {/* Trial Offer */}
