@@ -26,6 +26,7 @@ declare global {
 interface Workshop {
   title: string;
   description: string;
+  fullDescription?: string;
   location: string;
   dates: string[];
   image: string;
@@ -33,12 +34,14 @@ interface Workshop {
   duration?: string;
   dropIn?: string;
   discount?: string;
+  cost?: string;
   featured?: boolean;
   imagePosition?: string;
   customWidget?: string;
   widgetId?: string;
   registrationClosed?: boolean;
   hasMultipleOptions?: boolean;
+  takeHome?: string;
 }
 
 const workshops: Workshop[] = [
@@ -95,6 +98,35 @@ const workshops: Workshop[] = [
     imagePosition: "center 15%",
     widgetId: "6810941285be",
     registrationClosed: false
+  },
+  {
+    title: "The Art of Oshibana",
+    instructor: "Sasha Sheppard & Emilie Fabre",
+    description: "Discover the ancient Japanese art of Oshibana: the practice of creating art with pressed flowers, in this hands-on workshop that nurtures both creativity and well-being through mindful meditation and creation.",
+    fullDescription: `<p class="mb-4">Discover the ancient Japanese art of Oshibana: the practice of creating art with pressed flowers, in this hands-on workshop that nurtures both creativity and well-being through mindful meditation and creation.</p>
+
+<h3 class="text-lg font-semibold text-sage-green mb-2">Part 1: Guided Meditation with Emilie Fabre</h3>
+<p class="mb-4">Begin your journey with a calming guided meditation session that centres your mind and opens your heart to creativity. This mindful practice prepares your spirit for the artistic work ahead, helping you connect with nature and embrace the present moment.</p>
+
+<h3 class="text-lg font-semibold text-sage-green mb-2">Part 2: The Art of Flower Pressing</h3>
+<p class="mb-4">Explore the rich history of Oshibana and its modern applications. You'll receive a crash course in pressing techniques and build your own flower press to take home. Discover insider tricks for successful pressing and proper storage methods to preserve your botanical treasures.</p>
+
+<h3 class="text-lg font-semibold text-sage-green mb-2">Part 3: Painting with Flowers</h3>
+<p class="mb-4">Create your own botanical collage on a 5x7" frame-ready piece. All materials are provided, including fresh flowers, hand-pressed local blooms, watercolor paper, coloured paper, brushes, and glue. With gentle guidance, you'll explore composition principles while embracing your unique creative vision. This is more than just a craft session, it's an opportunity to connect with a community of creative spirits who share a love of flowers and nature.</p>
+
+<p class="mb-4">Whether you're seeking a new creative outlet, a mindful escape, or simply wish to try something beautiful, this workshop welcomes you. Let's create together!</p>
+
+<p class="italic text-sage-green font-medium">*Take home: Your very own framed botanical artwork!</p>`,
+    location: "Bedford",
+    dates: [
+      "<strong>January 17th, 2026</strong>",
+      "<strong>2:00-4:00pm</strong>"
+    ],
+    cost: "$75+tax",
+    takeHome: "Your very own framed botanical artwork!",
+    image: "/images-in-use/art-of-oshibana.jpg",
+    widgetId: "6811024685be",
+    registrationClosed: false
   }
 ];
 
@@ -102,6 +134,13 @@ export default function WorkshopsPage() {
   const [selectedWorkshop, setSelectedWorkshop] = useState<Workshop | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [widgetInitialized, setWidgetInitialized] = useState(false);
+  const [descriptionWorkshop, setDescriptionWorkshop] = useState<Workshop | null>(null);
+  const [isDescriptionModalOpen, setIsDescriptionModalOpen] = useState(false);
+
+  const handleReadMore = (workshop: Workshop) => {
+    setDescriptionWorkshop(workshop);
+    setIsDescriptionModalOpen(true);
+  };
 
   useEffect(() => {
     // Load Mindbody widget script
@@ -224,6 +263,7 @@ export default function WorkshopsPage() {
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover"
+                    style={workshop.imagePosition ? { objectPosition: workshop.imagePosition } : undefined}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
                   
@@ -333,6 +373,14 @@ export default function WorkshopsPage() {
                     <p className="text-sage-green font-medium">with {workshop.instructor}</p>
                   )}
                   <p className="text-muted-foreground">{workshop.description}</p>
+                  {workshop.fullDescription && (
+                    <button
+                      onClick={() => handleReadMore(workshop)}
+                      className="text-sage-green hover:text-sage-green/80 text-sm font-medium underline underline-offset-2 text-left transition-colors"
+                    >
+                      Read Full Description →
+                    </button>
+                  )}
                   <div className="space-y-1">
                     {workshop.dates.map((date, i) => (
                       <div key={i} className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: date }} />
@@ -423,6 +471,56 @@ export default function WorkshopsPage() {
                 </Button>
               </div>
             )}
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* Full Description Modal */}
+      <Dialog open={isDescriptionModalOpen} onOpenChange={setIsDescriptionModalOpen}>
+        <DialogContent className="max-w-2xl max-h-[75vh] overflow-y-auto my-8">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-bold mb-1">
+              {descriptionWorkshop?.title}
+            </DialogTitle>
+            {descriptionWorkshop?.instructor && (
+              <p className="text-sage-green font-medium">
+                with {descriptionWorkshop.instructor}
+              </p>
+            )}
+          </DialogHeader>
+          <div className="mt-4 space-y-4">
+            {descriptionWorkshop?.fullDescription && (
+              <div 
+                className="text-muted-foreground leading-relaxed prose prose-sage max-w-none"
+                dangerouslySetInnerHTML={{ __html: descriptionWorkshop.fullDescription }}
+              />
+            )}
+            <div className="pt-4 border-t border-sage-green/20 space-y-2">
+              {descriptionWorkshop?.dates.map((date, i) => (
+                <div key={i} className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: date }} />
+              ))}
+              <div className="text-sm text-muted-foreground">
+                <strong>Location:</strong> {descriptionWorkshop?.location}
+              </div>
+              {descriptionWorkshop?.cost && (
+                <div className="text-sm font-medium text-sage-green">
+                  <strong>Cost:</strong> {descriptionWorkshop.cost}
+                </div>
+              )}
+            </div>
+            <div className="pt-4">
+              <Button 
+                onClick={() => {
+                  setIsDescriptionModalOpen(false);
+                  if (descriptionWorkshop) {
+                    handleRegisterClick(descriptionWorkshop);
+                  }
+                }}
+                className="w-full gradient-sage text-white hover:opacity-90"
+              >
+                Register Now
+              </Button>
+            </div>
           </div>
         </DialogContent>
       </Dialog>
