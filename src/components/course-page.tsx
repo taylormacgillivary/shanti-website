@@ -7,6 +7,7 @@ import Link from "next/link";
 import Script from "next/script";
 import { ReactNode } from "react";
 import { Award, ShieldCheck } from "lucide-react";
+import { ScholarshipSection } from "@/components/scholarship-section";
 
 interface Teacher {
     name: string;
@@ -68,6 +69,7 @@ interface CoursePageProps {
     useMindbodyWidgets?: boolean;
     mindbodyDepositServiceId?: string;
     mindbodyFullServiceId?: string;
+    showScholarship?: boolean;
 }
 
 export function CoursePage({
@@ -96,6 +98,7 @@ export function CoursePage({
     useMindbodyWidgets = false,
     mindbodyDepositServiceId,
     mindbodyFullServiceId,
+    showScholarship = false,
 }: CoursePageProps) {
     const renderBadges = () => {
         if (!ceCredits && !isYogaAlliance) return null;
@@ -445,6 +448,8 @@ export function CoursePage({
                     </div>
                 </div>
             </section>
+
+            {showScholarship && <ScholarshipSection />}
 
             {faqs && faqs.length > 0 && (
                 <section className="pb-24 pt-12">

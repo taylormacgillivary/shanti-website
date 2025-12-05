@@ -202,6 +202,7 @@ export default function YTT200HourPage() {
             useMindbodyWidgets={true}
             mindbodyDepositServiceId="1383"
             mindbodyFullServiceId="1384"
+            showScholarship={true}
         />
     )
 } 
