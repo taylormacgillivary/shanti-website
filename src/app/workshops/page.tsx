@@ -46,6 +46,19 @@ interface Workshop {
 
 const workshops: Workshop[] = [
   {
+    title: "New Year's Day Yoga Practice",
+    instructor: "Emilie Fabre",
+    description: "\"Every morning we are born again. What we do today matters most.\" ~Buddha\n\nJoin your yoga community and start the 1ST day of 2025 with intention and heart. This 1 hour vinyasa + yin + meditation practice will be an opportunity to reflect, feel, move and create intention for the next year ahead. This will be a full rounded practice starting slower with the yin style of yoga and then, once more space has opened, we will move into fluidity that will invite connection to your deeper inner strength. The practice will end in meditation, allowing time to ground before moving forward into the new year ahead!",
+    location: "Dartmouth",
+    dates: [
+      "<strong>January 1st, 2026</strong>",
+      "<strong>10:30am - 12:30pm</strong>"
+    ],
+    image: "/images-in-use/teachers-used/emilie-fabre.jpg",
+    widgetId: "6811032385be",
+    featured: true
+  },
+  {
     title: "Mysore Ashtanga Practice",
     instructor: "Andrea Gracia",
     description: "Mysore Style is the traditional way of teaching the Ashtanga Vinyasa Yoga once the student has familiarity with the Sun Salutations and primary series. In this practice you will receive personal attention from Andrea Gracia, an Authorized Level 1 Ashtanga Yoga Teacher who travels to Mysore (India) every year to study with her teacher Saraswathi Jois.",
@@ -56,8 +69,7 @@ const workshops: Workshop[] = [
     discount: "*Shanti monthly members receive 10% discount with promo code: Mysore10",
     image: "/images-in-use/teachers-used/andrea-gracia.jpg",
     imagePosition: "center bottom",
-    widgetId: "6810924385be",
-    featured: true
+    widgetId: "6810924385be"
   },
   {
     title: "Healing Sound Bath",
@@ -209,13 +221,14 @@ export default function WorkshopsPage() {
     // Try to parse the start date from the dates array
     const dateString = workshop.dates[0];
     
-    // Extract date patterns like "October 16th", "Nov 29", etc.
-    const dateMatch = dateString.match(/(January|February|March|April|May|June|July|August|September|October|November|December|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+(\d+)/i);
+    // Extract date patterns like "October 16th", "Nov 29", "January 1st, 2026", etc.
+    const dateMatch = dateString.match(/(January|February|March|April|May|June|July|August|September|October|November|December|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+(\d+)(?:st|nd|rd|th)?(?:,?\s*(\d{4}))?/i);
     
     if (dateMatch) {
       const monthStr = dateMatch[1];
       const day = parseInt(dateMatch[2]);
-      const currentYear = new Date().getFullYear();
+      // Use parsed year if present, otherwise default to current year
+      const year = dateMatch[3] ? parseInt(dateMatch[3]) : new Date().getFullYear();
       
       // Map month names to numbers
       const monthMap: { [key: string]: number } = {
@@ -226,7 +239,7 @@ export default function WorkshopsPage() {
       };
       
       const month = monthMap[monthStr.toLowerCase()];
-      const startDate = new Date(currentYear, month, day);
+      const startDate = new Date(year, month, day);
       const today = new Date();
       today.setHours(0, 0, 0, 0); // Reset to start of day for comparison
       
