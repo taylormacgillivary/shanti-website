@@ -46,6 +46,23 @@ interface Workshop {
 
 const workshops: Workshop[] = [
   {
+    title: "Candlelight Restorative Meditation",
+    instructor: "Kristie Willems",
+    description: "Become bff's with your mind by learning to settle during discomfort, to find inner peace, and to manage stress and anxiety. Join Kristie as she shares tools that can be used on the path to cultivate a regular meditation practice.",
+    fullDescription: `<p class="mb-4">Become bff's with your mind by learning to settle during discomfort, to find inner peace, and to manage stress and anxiety. Join Kristie as she shares tools that can be used on the path to cultivate a regular meditation practice.</p>
+
+<p class="mb-4">This 90 minute workshop includes a deeply rejuvenating yoga practice with gentle, slow-moving floor postures, guided breathing and mindfulness techniques. The practice circles two silent meditations using candlelight, blankets, blocks and bolsters as support.</p>
+
+<p class="mb-4">Meditation is known for promoting awareness, cultivating well-being and reducing stress and anxiety, while the candlelight serves as a soothing point of focus for a wandering mind. Leave this micro-retreat feeling whole, grounded, restored and with a real grasp of the benefits of meditation.</p>`,
+    location: "Dartmouth",
+    dates: [
+      "<strong>February 1st, 2026</strong>",
+      "<strong>12:00-1:30pm</strong>"
+    ],
+    image: "/images-in-use/teachers-used/kristie-willems.jpg",
+    widgetId: "6811032985be"
+  },
+  {
     title: "New Year's Day Yoga Practice",
     instructor: "Emilie Fabre",
     description: "Join your yoga community and start the 1ST day of 2025 with intention and heart. This 1 hour vinyasa + yin + meditation practice will be an opportunity to reflect, feel, move and create intention for the next year ahead. This will be a full rounded practice starting slower with the yin style of yoga and then, once more space has opened, we will move into fluidity that will invite connection to your deeper inner strength. The practice will end in meditation, allowing time to ground before moving forward into the new year ahead!",
@@ -261,6 +278,7 @@ export default function WorkshopsPage() {
         badge="Deepen Your Practice"
         title={<>Workshops & <span className="gradient-sage-text">Special Events</span></>}
         subtitle="Join us for special workshops and events designed to deepen your practice and expand your understanding of yoga. From traditional Ashtanga to specialized techniques, we offer a variety of opportunities to grow."
+        note="Please note: all events require registration in advance"
       />
 
       {/* Featured Workshop */}
