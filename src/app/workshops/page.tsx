@@ -48,7 +48,7 @@ const workshops: Workshop[] = [
   {
     title: "New Year's Day Yoga Practice",
     instructor: "Emilie Fabre",
-    description: "\"Every morning we are born again. What we do today matters most.\" ~Buddha\n\nJoin your yoga community and start the 1ST day of 2025 with intention and heart. This 1 hour vinyasa + yin + meditation practice will be an opportunity to reflect, feel, move and create intention for the next year ahead. This will be a full rounded practice starting slower with the yin style of yoga and then, once more space has opened, we will move into fluidity that will invite connection to your deeper inner strength. The practice will end in meditation, allowing time to ground before moving forward into the new year ahead!",
+    description: "Join your yoga community and start the 1ST day of 2025 with intention and heart. This 1 hour vinyasa + yin + meditation practice will be an opportunity to reflect, feel, move and create intention for the next year ahead. This will be a full rounded practice starting slower with the yin style of yoga and then, once more space has opened, we will move into fluidity that will invite connection to your deeper inner strength. The practice will end in meditation, allowing time to ground before moving forward into the new year ahead!",
     location: "Dartmouth",
     dates: [
       "<strong>January 1st, 2026</strong>",
