@@ -102,17 +102,16 @@ const workshops: Workshop[] = [
   },
   {
     title: "Prenatal Yoga",
-    instructor: "Nikki Smith (Dartmouth) & Prily MacPhee (Bedford)",
+    instructor: "Nikki Smith",
     description: "Prenatal Yoga is an incredible way to tune into your body in an intimate way as it undergoes a very challenging and magical transformation. Prenatal Yoga will help strengthen both the body and mind during your pregnancy and in preparation for labour while connecting you to a like-minded group. With everyone at a different stage of pregnancy, the community building aspect can be extremely valuable, while at the same time, building a closer connection to the little one in your belly!",
-    location: "Dartmouth & Bedford",
+    location: "Dartmouth",
     dates: [
-      "<strong>Dartmouth:</strong> November 20th, 5:30pm",
-      "<strong>Bedford:</strong> November 24th, 6pm"
+      "<strong>January 8th, 2026</strong>",
+      "<strong>5:30pm</strong>"
     ],
-    duration: "4 Week Programs",
+    duration: "4 Week Program",
     image: "/images-in-use/prenatal-2017.jpg",
-    widgetId: "689767685be",
-    hasMultipleOptions: true
+    widgetId: "689767685be"
   },
   {
     title: "Ayurveda for Everyday Living",
