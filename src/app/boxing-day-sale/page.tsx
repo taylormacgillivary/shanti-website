@@ -1,99 +1,20 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import Script from "next/script"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Gift, Sparkles, Copy, Check, Lock } from "lucide-react"
-
-const CORRECT_PASSWORD = "boxingday"
+import { Gift, Sparkles, Copy, Check } from "lucide-react"
 
 export default function BoxingDaySalePage() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
-  const [password, setPassword] = useState("")
-  const [error, setError] = useState(false)
-  const [isLoading, setIsLoading] = useState(true)
   const [copied, setCopied] = useState(false)
-
-  useEffect(() => {
-    // Check if already authenticated in this session
-    const auth = sessionStorage.getItem("boxing-day-sale-auth")
-    if (auth === "true") {
-      setIsAuthenticated(true)
-    }
-    setIsLoading(false)
-  }, [])
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (password === CORRECT_PASSWORD) {
-      sessionStorage.setItem("boxing-day-sale-auth", "true")
-      setIsAuthenticated(true)
-      setError(false)
-    } else {
-      setError(true)
-    }
-  }
 
   const copyPromoCode = () => {
     navigator.clipboard.writeText("BOXING20")
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
-  }
-
-  // Show loading state
-  if (isLoading) {
-    return (
-      <main className="min-h-screen bg-stone-50 flex items-center justify-center">
-        <div className="w-8 h-8 border-2 border-red-600 border-t-transparent rounded-full animate-spin" />
-      </main>
-    )
-  }
-
-  // Show password gate
-  if (!isAuthenticated) {
-    return (
-      <main className="min-h-screen bg-stone-50 flex items-center justify-center px-4">
-        <div className="w-full max-w-md">
-          <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-100 border border-red-200 mb-6">
-              <Lock className="w-8 h-8 text-red-600" />
-            </div>
-            <h1 className="text-2xl font-bold text-gray-900 mb-2">Preview Access</h1>
-            <p className="text-gray-500">Enter the password to view this page</p>
-          </div>
-          
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => {
-                  setPassword(e.target.value)
-                  setError(false)
-                }}
-                placeholder="Enter password"
-                className={`w-full px-4 py-3 rounded-xl bg-white border-2 ${
-                  error ? "border-red-500" : "border-gray-200"
-                } text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-red-500 transition-colors`}
-                autoFocus
-              />
-              {error && (
-                <p className="mt-2 text-sm text-red-500">Incorrect password. Please try again.</p>
-              )}
-            </div>
-            <Button
-              type="submit"
-              className="w-full py-3 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-xl"
-            >
-              Access Page
-            </Button>
-          </form>
-        </div>
-      </main>
-    )
   }
 
   return (

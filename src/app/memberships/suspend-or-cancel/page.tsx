@@ -391,7 +391,7 @@ function CancelForm({ onBack, onSuccess }: { onBack: () => void; onSuccess: () =
             <p className="font-semibold text-amber-900">*PLEASE NOTE SHANTI YOGA ONLINE USERS*</p>
             <p className="text-amber-900 mt-2">
               You cannot cancel your subscription to Shanti Yoga Online via this form submission. Click{" "}
-              <a href="#" className="underline font-semibold">HERE</a> for instructions on how to cancel your online subscription.
+              <a href="/shanti-online#cancel-subscription" className="underline font-semibold">HERE</a> for instructions on how to cancel your online subscription.
             </p>
           </div>
         </div>

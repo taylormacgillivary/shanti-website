@@ -1,7 +1,29 @@
+"use client"
+
+import { useEffect, useState } from "react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { PageHero } from "@/components/page-hero";
 
 export default function ShantiOnlinePage() {
+  const [openItem, setOpenItem] = useState<string | undefined>(undefined);
+
+  useEffect(() => {
+    // Check for hash in URL and open the corresponding accordion item
+    if (typeof window !== "undefined") {
+      const hash = window.location.hash;
+      if (hash === "#cancel-subscription") {
+        setOpenItem("cancel-subscription");
+        // Scroll to the FAQ section after a short delay to allow the accordion to open
+        setTimeout(() => {
+          const element = document.getElementById("cancel-subscription");
+          if (element) {
+            element.scrollIntoView({ behavior: "smooth", block: "center" });
+          }
+        }, 100);
+      }
+    }
+  }, []);
+
   return (
     <>
       <PageHero
@@ -43,7 +65,7 @@ export default function ShantiOnlinePage() {
         </div>
 
         <h2 className="text-3xl font-bold text-center mb-4 mt-8">Frequently Asked Questions</h2>
-        <Accordion type="single" collapsible className="w-full max-w-2xl mx-auto">
+        <Accordion type="single" collapsible className="w-full max-w-2xl mx-auto" value={openItem} onValueChange={setOpenItem}>
           <AccordionItem value="item-1">
             <AccordionTrigger>HOW DO I CREATE AN ACCOUNT?</AccordionTrigger>
             <AccordionContent>
@@ -56,7 +78,7 @@ export default function ShantiOnlinePage() {
               Credit card info is required to create an account because your membership is a monthly subscription that renews automatically each month.
             </AccordionContent>
           </AccordionItem>
-          <AccordionItem value="item-3">
+          <AccordionItem value="cancel-subscription" id="cancel-subscription">
             <AccordionTrigger>WHEN AND HOW DO I CANCEL MY SUBSCRIPTION?</AccordionTrigger>
             <AccordionContent>
               You can cancel your membership anytime. Even though credit card info is required to create your account, you are not obliged to carry your membership past your free trial. To cancel your subscription, go to the <strong>My Settings</strong> in your Namastream account, scroll down to the <strong>Subscriptions</strong> section, and then click on box icon to the right of your membership. A drop down menu will appear with an option to cancel.
