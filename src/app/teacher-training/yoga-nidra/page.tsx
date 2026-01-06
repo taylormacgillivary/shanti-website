@@ -89,9 +89,9 @@ const teachers = [
 ];
 
 const investment = {
-    deposit: 100,
-    tuition: 750,
-    earlyBirdTuition: 650,
+    deposit: 150,
+    tuition: 795,
+    earlyBirdTuition: 695,
     earlyBirdDate: "January 5th, 2026",
 };
 
