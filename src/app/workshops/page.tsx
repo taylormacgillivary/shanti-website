@@ -63,19 +63,6 @@ const workshops: Workshop[] = [
     widgetId: "6811032985be"
   },
   {
-    title: "New Year's Day Yoga Practice",
-    instructor: "Emilie Fabre",
-    description: "Join your yoga community and start the 1ST day of 2025 with intention and heart. This 2 hour vinyasa + yin + meditation practice will be an opportunity to reflect, feel, move and create intention for the next year ahead. This will be a full rounded practice starting slower with the yin style of yoga and then, once more space has opened, we will move into fluidity that will invite connection to your deeper inner strength. The practice will end in meditation, allowing time to ground before moving forward into the new year ahead!",
-    location: "Dartmouth",
-    dates: [
-      "<strong>January 1st, 2026</strong>",
-      "<strong>10:30am - 12:30pm</strong>"
-    ],
-    image: "/images-in-use/teachers-used/emilie-fabre.jpg",
-    widgetId: "6811032385be",
-    featured: true
-  },
-  {
     title: "Mysore Ashtanga Practice",
     instructor: "Andrea Gracia",
     description: "Mysore Style is the traditional way of teaching the Ashtanga Vinyasa Yoga once the student has familiarity with the Sun Salutations and primary series. In this practice you will receive personal attention from Andrea Gracia, an Authorized Level 1 Ashtanga Yoga Teacher who travels to Mysore (India) every year to study with her teacher Saraswathi Jois.",
@@ -154,7 +141,8 @@ const workshops: Workshop[] = [
     takeHome: "Your very own framed botanical artwork!",
     image: "/images-in-use/art-of-oshibana.jpg",
     widgetId: "6811024685be",
-    registrationClosed: false
+    registrationClosed: false,
+    featured: true
   }
 ];
 
