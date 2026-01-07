@@ -63,31 +63,6 @@ const workshops: Workshop[] = [
     widgetId: "6811032985be"
   },
   {
-    title: "Mysore Ashtanga Practice",
-    instructor: "Andrea Gracia",
-    description: "Mysore Style is the traditional way of teaching the Ashtanga Vinyasa Yoga once the student has familiarity with the Sun Salutations and primary series. In this practice you will receive personal attention from Andrea Gracia, an Authorized Level 1 Ashtanga Yoga Teacher who travels to Mysore (India) every year to study with her teacher Saraswathi Jois.",
-    location: "Bedford",
-    dates: ["<strong>Starts December 4th</strong>", "5:45 - 7:15pm"],
-    duration: "4 Week Program",
-    dropIn: "*Drop in available: $30 +tax. Contact studio for more info",
-    discount: "*Shanti monthly members receive 10% discount with promo code: Mysore10",
-    image: "/images-in-use/teachers-used/andrea-gracia.jpg",
-    imagePosition: "center bottom",
-    widgetId: "6810924385be"
-  },
-  {
-    title: "Healing Sound Bath",
-    instructor: "Amanda Savoie",
-    description: "Back by popular demand this fall, join Amanda Savoie in a deeply restorative and healing sound bath, where guided meditation and soothing sound vibrations carry you into profound relaxation.",
-    location: "Bedford",
-    dates: [
-      "<strong>December 20th</strong>",
-      "<strong>6:00pm start time</strong>"
-    ],
-    image: "/images-in-use/sound-bath.webp",
-    widgetId: "6810924285be"
-  },
-  {
     title: "Prenatal Yoga",
     instructor: "Nikki Smith",
     description: "Prenatal Yoga is an incredible way to tune into your body in an intimate way as it undergoes a very challenging and magical transformation. Prenatal Yoga will help strengthen both the body and mind during your pregnancy and in preparation for labour while connecting you to a like-minded group. With everyone at a different stage of pregnancy, the community building aspect can be extremely valuable, while at the same time, building a closer connection to the little one in your belly!",
