@@ -148,3 +148,46 @@ export async function subscribeToEnergyExchange(data: {
   }
 }
 
+export async function subscribeToTeacherTraining(data: {
+  email: string;
+  trainingType?: string;
+}) {
+  try {
+    const listId = process.env.MAILCHIMP_TEACHER_TRAINING_AUDIENCE_ID;
+    if (!listId) {
+      console.error("MAILCHIMP_TEACHER_TRAINING_AUDIENCE_ID is not configured in environment variables");
+      return {
+        success: false,
+        message: "Teacher training subscription is not configured. Please contact support.",
+      };
+    }
+
+    console.log(`Attempting to subscribe to teacher training list: ${data.email}`);
+
+    const tags = ["info-package-request"];
+    if (data.trainingType) {
+      tags.push(data.trainingType);
+    }
+
+    const result = await subscribeToList({
+      email: data.email,
+      listId,
+      tags,
+    });
+
+    if (result.success) {
+      console.log(`Successfully subscribed to teacher training: ${data.email}`);
+    } else {
+      console.error(`Failed to subscribe to teacher training: ${data.email}`, result);
+    }
+
+    return result;
+  } catch (error) {
+    console.error("Teacher training subscription error:", error);
+    return {
+      success: false,
+      message: "An unexpected error occurred. Please try again later.",
+    };
+  }
+}
+

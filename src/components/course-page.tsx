@@ -8,6 +8,7 @@ import Script from "next/script";
 import { ReactNode } from "react";
 import { Award, ShieldCheck } from "lucide-react";
 import { ScholarshipSection } from "@/components/scholarship-section";
+import { InfoPackageEmailCapture } from "@/components/info-package-email-capture";
 
 interface Teacher {
     name: string;
@@ -51,7 +52,8 @@ interface CoursePageProps {
     heroImage: string;
     imageTwo?: string;
     imageThree?: string;
-    infoPackageLink?: string;
+    showInfoPackageCapture?: boolean;
+    infoPackageTrainingType?: string;
     whoIsThisFor?: WhoIsThisFor[];
     learningOutcomes?: string[];
     curriculum: Module[];
@@ -80,7 +82,8 @@ export function CoursePage({
     heroImage,
     imageTwo,
     imageThree,
-    infoPackageLink,
+    showInfoPackageCapture,
+    infoPackageTrainingType,
     whoIsThisFor,
     learningOutcomes,
     curriculum,
@@ -179,15 +182,24 @@ export function CoursePage({
                                 </div>
                             ))}
                         </div>
-                        {infoPackageLink &&
-                            <div className="text-center mt-12">
-                                <Button asChild size="lg" className="gradient-sage hover:opacity-90 text-white">
-                                    <a href={infoPackageLink} download="ytt-2026-info-package.pdf">
-                                        Download Info Package (PDF)
-                                    </a>
-                                </Button>
+                        {showInfoPackageCapture && (
+                            <div className="mt-16 max-w-2xl mx-auto">
+                                <div className="bg-gradient-to-br from-stone-100 to-stone-50 border border-stone-200 rounded-2xl p-8 shadow-lg">
+                                    <div className="text-center mb-6">
+                                        <h3 className="text-2xl font-bold text-stone-900 mb-2">
+                                            Ready to Learn More?
+                                        </h3>
+                                        <p className="text-lg text-stone-700">
+                                            Get the complete info package delivered to your inbox:
+                                        </p>
+                                    </div>
+                                    <InfoPackageEmailCapture 
+                                        trainingType={infoPackageTrainingType}
+                                        buttonText="Send Me the Info Package"
+                                    />
+                                </div>
                             </div>
-                        }
+                        )}
                     </div>
                 </section>
             )}
@@ -446,6 +458,25 @@ export function CoursePage({
                             </>
                         )}
                     </div>
+                    
+                    {showInfoPackageCapture && (
+                        <div className="mt-12 max-w-2xl mx-auto">
+                            <div className="bg-gradient-to-br from-stone-100 to-stone-50 border border-stone-200 rounded-2xl p-8 shadow-lg">
+                                <div className="text-center mb-6">
+                                    <h3 className="text-2xl font-bold text-stone-900 mb-2">
+                                        Want More Details?
+                                    </h3>
+                                    <p className="text-lg text-stone-700">
+                                        Get the complete info package delivered to your inbox:
+                                    </p>
+                                </div>
+                                <InfoPackageEmailCapture 
+                                    trainingType={infoPackageTrainingType}
+                                    buttonText="Send Me the Info Package"
+                                />
+                            </div>
+                        </div>
+                    )}
                 </div>
             </section>
 
