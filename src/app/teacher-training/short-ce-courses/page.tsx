@@ -286,7 +286,7 @@ export default function ShortCECoursesPage() {
                               <div className="w-2 h-2 bg-sage-green rounded-full mt-2 flex-shrink-0"></div>
                               <div>
                                 <p className="font-medium text-foreground">Date</p>
-                                <p className="text-muted-foreground">January 10th, 2026</p>
+                                <p className="text-muted-foreground">TBD 2026</p>
                               </div>
                             </div>
                             

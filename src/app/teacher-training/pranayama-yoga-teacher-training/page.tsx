@@ -92,6 +92,18 @@ const curriculum = [
     {
         question: "How many CE credits is this course?",
         answer: "This course counts for 40 hours of CE credits with Yoga Alliance."
+    },
+    {
+        question: "What is the location?",
+        answer: "Shanti Dartmouth, 114 Woodlawn Rd."
+    },
+    {
+        question: "What are the daily hours?",
+        answer: "Thursday/Friday—4:00 PM-8:30 PM, Saturday/Sunday—9:00 AM-6:00 PM"
+    },
+    {
+        question: "What do I need to bring to the course?",
+        answer: "We will provide you with the course manual. Please bring a notebook, pen, highlighter, and a journal for your personal notes. Bring your Yoga mat and water bottle. Yoga props are provided."
     }
   ]
 

@@ -66,6 +66,18 @@ const curriculum = [
     {
         question: "Is there any required reading?",
         answer: "Yes, The Heart of yoga, T.K.V Desikachar."
+    },
+    {
+        question: "What is the location?",
+        answer: "Shanti Dartmouth, 114 Woodlawn Rd."
+    },
+    {
+        question: "What are the daily hours?",
+        answer: "Thursday- Sunday — 8:30 AM-5:30 PM"
+    },
+    {
+        question: "What do I need to bring to the course?",
+        answer: "We will provide you with the course manual. Please bring a notebook, pen, highlighter, and a journal for your personal notes. Bring your Yoga mat and water bottle. Yoga props are provided."
     }
   ]
 

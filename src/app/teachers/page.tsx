@@ -182,6 +182,12 @@ const teachers = [
     image: "/images-in-use/teachers-used/Natasha Polluck.jpg",
     bio: "Natasha Pollock brings her love of yoga and dedication to her students to every class she teaches.",
     objectPosition: "object-top"
+  },
+  {
+    name: "Hayley Westerman",
+    title: "Teacher",
+    image: "/images-in-use/teachers-used/Hayley Westerman.jpeg",
+    bio: "Hayley is a Vinyasa and Yin Yoga teacher and Registered Massage Therapist whose practice is rooted in nature, mindfulness, and intentional movement.\nShe began her yoga journey 15 years ago while living in the mountains, where the landscape sparked a deep appreciation for stillness, breath, and embodied presence.\nIn the fall of 2016, Hayley completed her 200-hour Yoga Teacher Training in California, immersing herself in philosophy, anatomy, and the art of sequencing.\nHer classes blend fluid Vinyasa flow with the grounding, introspective qualities of Yin, inviting students to cultivate strength, ease, and awareness from the inside out.\nAs a Registered Massage Therapist at East Coast Wellness, she draws on her therapeutic background to create practices that support mobility, release tension, and nourish the nervous system.\nHayley's teaching style is warm, intuitive, and welcoming—offering a space where every student feels supported in their own unique journey."
   }
 ];
 
