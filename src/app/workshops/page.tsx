@@ -109,7 +109,7 @@ const workshops: Workshop[] = [
 <p class="italic text-sage-green font-medium">*Take home: Your very own framed botanical artwork!</p>`,
     location: "Bedford",
     dates: [
-      "<strong>January 17th, 2026</strong>",
+      "<strong>January 31st, 2026</strong> <em class='text-sage-green'>(This event has been rescheduled to January 31st)</em>",
       "<strong>2:00-4:00pm</strong>"
     ],
     cost: "$75+tax",
@@ -118,6 +118,21 @@ const workshops: Workshop[] = [
     widgetId: "6811024685be",
     registrationClosed: false,
     featured: true
+  },
+  {
+    title: "Read More! Lead More! Move More!",
+    instructor: "Joe A. Doiron",
+    description: "Raising resilient kids through literacy, movement and mindfulness. Join Joe A. Doiron, founder, creator and author of Active Kids Adventures for this special free workshop.",
+    location: "Dartmouth & Bedford",
+    dates: [
+      "<strong>February 21st, 2026</strong> - <strong>Dartmouth:</strong> 4:00pm",
+      "<strong>February 28th, 2026</strong> - <strong>Bedford:</strong> 3:00pm"
+    ],
+    duration: "FREE!",
+    image: "/images-in-use/joe-doiron.webp",
+    imagePosition: "center top",
+    widgetId: "6810920685be",
+    hasMultipleOptions: true
   }
 ];
 
