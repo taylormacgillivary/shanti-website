@@ -1,10 +1,88 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import Image from "next/image"
 import Script from "next/script"
 import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+
+const CORRECT_PASSWORD = "intropass"
 
 export default function IntroOfferLandingPage() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [password, setPassword] = useState("")
+  const [error, setError] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    // Check if already authenticated in this session
+    const auth = sessionStorage.getItem("intro-offer-auth")
+    if (auth === "true") {
+      setIsAuthenticated(true)
+    }
+    setIsLoading(false)
+  }, [])
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (password === CORRECT_PASSWORD) {
+      sessionStorage.setItem("intro-offer-auth", "true")
+      setIsAuthenticated(true)
+      setError(false)
+    } else {
+      setError(true)
+    }
+  }
+
+  // Show loading state briefly while checking sessionStorage
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="animate-pulse text-gray-400">Loading...</div>
+      </div>
+    )
+  }
+
+  // Show password prompt if not authenticated
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50 -mt-16 pt-16">
+        <div className="bg-white p-8 rounded-2xl shadow-xl max-w-md w-full mx-4">
+          <div className="text-center mb-6">
+            <h1 className="text-2xl font-bold mb-2">Password Required</h1>
+            <p className="text-gray-600">This page is password protected.</p>
+          </div>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value)
+                  setError(false)
+                }}
+                placeholder="Enter password"
+                className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-sage-green ${
+                  error ? "border-red-500" : "border-gray-300"
+                }`}
+                autoFocus
+              />
+              {error && (
+                <p className="text-red-500 text-sm mt-2">Incorrect password. Please try again.</p>
+              )}
+            </div>
+            <Button 
+              type="submit" 
+              className="w-full gradient-sage text-white py-3"
+            >
+              Access Page
+            </Button>
+          </form>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="bg-white">
       {/* Hero Section - Aligned with "Transformation" Ad */}
