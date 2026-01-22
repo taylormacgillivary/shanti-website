@@ -125,8 +125,8 @@ const workshops: Workshop[] = [
     description: "Raising resilient kids through literacy, movement and mindfulness. Join Joe A. Doiron, founder, creator and author of Active Kids Adventures for this special free workshop.",
     location: "Dartmouth & Bedford",
     dates: [
-      "<strong>February 21st, 2026</strong> - <strong>Dartmouth:</strong> 4:00pm",
-      "<strong>February 28th, 2026</strong> - <strong>Bedford:</strong> 3:00pm"
+      "<strong>February 21st, 2026</strong> - <strong>Bedford:</strong> 2:30-4:00pm",
+      "<strong>February 28th, 2026</strong> - <strong>Dartmouth:</strong> 1:30-3:00pm"
     ],
     duration: "FREE!",
     image: "/images-in-use/joe-doiron.webp",
