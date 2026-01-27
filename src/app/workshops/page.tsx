@@ -68,7 +68,7 @@ const workshops: Workshop[] = [
     description: "Prenatal Yoga is an incredible way to tune into your body in an intimate way as it undergoes a very challenging and magical transformation. Prenatal Yoga will help strengthen both the body and mind during your pregnancy and in preparation for labour while connecting you to a like-minded group. With everyone at a different stage of pregnancy, the community building aspect can be extremely valuable, while at the same time, building a closer connection to the little one in your belly!",
     location: "Dartmouth",
     dates: [
-      "<strong>January 8th, 2026</strong>",
+      "<strong>February 12th, 2026</strong>",
       "<strong>5:30pm</strong>"
     ],
     duration: "4 Week Program",

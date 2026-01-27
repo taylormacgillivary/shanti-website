@@ -106,10 +106,13 @@ export function ScholarshipSection() {
             <h2 className="text-3xl sm:text-4xl font-extrabold text-stone-900 mb-4">
               Scholarship Opportunity
             </h2>
-            <p className="text-lg text-stone-600 max-w-2xl mx-auto mb-8">
+            <p className="text-lg text-stone-600 max-w-2xl mx-auto mb-4">
               We are pleased to offer a scholarship for our upcoming 200-Hour Yoga Teacher Training program. 
               This opportunity is specifically designed to support an aspiring student for whom the cost of 
               the training presents a significant financial barrier to participation.
+            </p>
+            <p className="text-base font-semibold text-sage-green mb-8">
+              Application Deadline: February 1, 2026
             </p>
             <Button
               onClick={() => setShowInfoModal(true)}
@@ -165,6 +168,10 @@ export function ScholarshipSection() {
                 <li className="flex items-start">
                   <span className="font-semibold min-w-[140px]">Award Amount:</span>
                   <span className="text-sage-green font-semibold">$1,500</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="font-semibold min-w-[140px]">Application Deadline:</span>
+                  <span className="text-sage-green font-semibold">February 1, 2026</span>
                 </li>
                 <li className="flex items-start">
                   <span className="font-semibold min-w-[140px]">Purpose:</span>

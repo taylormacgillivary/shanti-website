@@ -96,7 +96,7 @@ export default function YinTeacherTrainingPage() {
         <CoursePage
             title="Yin Yoga Teacher Training"
             subtitle="A 75-Hour Comprehensive Course"
-            dates="Sept 26-28, Oct 24-26, Nov 14-16, 2025"
+            dates="Sept 25-27, Oct 23-25, Nov 13-15, 2026"
             heroImage="/images-in-use/24.jpg"
             imageThree="/images-in-use/19.jpg"
             curriculum={curriculum}
