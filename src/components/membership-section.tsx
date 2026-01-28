@@ -79,17 +79,18 @@ export function MembershipSection() {
         <div className="mt-16 bg-gray-100 dark:bg-gray-900 p-8 rounded-lg">
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 dark:text-gray-50 mb-4">
-              Your First Two Weeks for Only $39
+              Give the Gift of <span className="gradient-sage-text">Yoga</span>
             </h2>
             <p className="mt-4 text-lg text-gray-600 dark:text-gray-400 mb-6">
-              Our aim is to serve you and what you need. We have teachers of all different backgrounds and trainings, and offer classes across the wide spectrum of yoga. Try them all with your intro pass and find what you love.
+              Give your loved ones the perfect gift - the gift of self-care, transformation, and inner peace. 
+              Choose any dollar amount for maximum flexibility.
             </p>
             <div className="mt-6">
-              <div 
-                dangerouslySetInnerHTML={{
-                  __html: `<healcode-widget data-version="0.2" data-link-class="healcode-pricing-option-text-link inline-flex items-center justify-center whitespace-nowrap rounded-md text-lg font-medium gradient-sage hover:opacity-90 text-white px-8 py-4 shadow-lg cursor-pointer" data-site-id="1889" data-mb-site-id="11233" data-service-id="1364" data-bw-identity-site="true" data-type="pricing-link" data-inner-html="Buy Intro Pass"></healcode-widget>`
-                }}
-              />
+              <Button className="gradient-sage hover:opacity-90 text-white px-8 py-4 text-lg shadow-lg" asChild>
+                <a href="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=42&giftCardID=364" target="_blank" rel="noopener noreferrer">
+                  Purchase Gift Card
+                </a>
+              </Button>
             </div>
           </div>
         </div>
@@ -142,7 +143,7 @@ export function MembershipSection() {
             </CardHeader>
             <CardContent>
               <p className="text-4xl font-bold">$25</p>
-              <p className="mt-4">$18 Student/Senior Price</p>
+              <p className="mt-4">$20 Student/Senior Price</p>
               <p className="text-sm text-gray-500 dark:text-gray-400">Single Use, 1 Year Expiry</p>
             </CardContent>
             <CardFooter className="flex flex-col gap-2">
