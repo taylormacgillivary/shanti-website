@@ -217,6 +217,80 @@ html {
   color: rgb(120, 161, 50);
 }
 
+/* Custom sage blue color - complementary to sage green */
+.sage-blue {
+  color: rgb(100, 160, 190);
+}
+
+.bg-sage-blue {
+  background-color: rgb(100, 160, 190);
+}
+
+.border-sage-blue {
+  border-color: rgb(100, 160, 190);
+}
+
+/* Sage blue opacity variants */
+.bg-sage-blue\/20 {
+  background-color: rgba(100, 160, 190, 0.2);
+}
+
+.bg-sage-blue\/30 {
+  background-color: rgba(100, 160, 190, 0.3);
+}
+
+.border-sage-blue\/30 {
+  border-color: rgba(100, 160, 190, 0.3);
+}
+
+.text-sage-blue {
+  color: rgb(100, 160, 190);
+}
+
+.text-sage-blue\/80 {
+  color: rgba(100, 160, 190, 0.8);
+}
+
+.text-sage-blue-dark {
+  color: rgb(70, 130, 160);
+}
+
+/* Hover utilities for sage green */
+.hover\:bg-sage-green\/20:hover {
+  background-color: rgba(150, 191, 80, 0.2);
+}
+
+.focus\:bg-sage-green\/25:focus {
+  background-color: rgba(150, 191, 80, 0.25);
+}
+
+/* Sliding underline effect for dropdown items */
+.nav-item-title {
+  position: relative;
+  display: inline-block;
+  transition: color 0.3s ease;
+}
+
+.nav-item-title::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: rgb(150, 191, 80);
+  transition: width 0.3s ease;
+}
+
+.nav-item-link:hover .nav-item-title::after,
+.nav-item-link:focus .nav-item-title::after {
+  width: 100%;
+}
+
+.nav-item-link:hover .nav-item-title {
+  color: rgb(120, 161, 50);
+}
+
 /* Gradient utilities */
 .gradient-sage {
   background: linear-gradient(135deg, rgb(150, 191, 80) 0%, rgb(130, 171, 60) 100%);

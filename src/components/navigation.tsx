@@ -484,22 +484,22 @@ const ListItem = React.forwardRef<
         <Link
           href={href ?? ''}
           ref={ref}
-          className={`block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors ${
+          className={`nav-item-link block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors ${
             isYTT200Hour 
-              ? "bg-sage-green/20 hover:bg-sage-green/30 border border-sage-green/30 focus:bg-sage-green/30" 
-              : "hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+              ? "bg-sage-blue/20 hover:bg-sage-blue/30 border border-sage-blue/30 focus:bg-sage-blue/30" 
+              : "hover:bg-sage-green/20 focus:bg-sage-green/25"
           }`}
           {...externalProps}
           {...props}>
           <div className={`text-sm font-medium leading-none ${isYTT200Hour ? "text-foreground font-semibold" : ""} flex items-center gap-2`}>
-            {title}
+            <span className="nav-item-title">{title}</span>
             {isNew && (
               <Badge variant="destructive" className="text-xs px-1 py-0 bg-red-500 text-white">
                 NEW!
               </Badge>
             )}
           </div>
-          <p className={`line-clamp-2 text-sm leading-snug ${isYTT200Hour ? "text-foreground/80" : "text-muted-foreground"}`}>
+          <p className={`line-clamp-2 text-sm leading-snug ${isYTT200Hour ? "text-sage-blue-dark" : "text-muted-foreground"}`}>
             {children}
           </p>
         </Link>
