@@ -268,7 +268,7 @@ export default function IntroOfferLandingPage() {
               </div>
               <h3 className="text-xl font-bold mb-3">14 Days Unlimited</h3>
               <p className="text-gray-600">
-                Attend as many classes as you want for two full weeks. No restrictions.
+                Attend as many classes as you want for two full weeks, including pilates classes.
               </p>
             </div>
 
@@ -281,7 +281,7 @@ export default function IntroOfferLandingPage() {
               </div>
               <h3 className="text-xl font-bold mb-3">3 Studio Locations</h3>
               <p className="text-gray-600">
-                Practice at Halifax, Bedford, or Dartmouth—wherever fits your schedule.
+                Practice at Halifax, Bedford, or Dartmouth. Wherever fits your schedule.
               </p>
             </div>
 
@@ -293,7 +293,7 @@ export default function IntroOfferLandingPage() {
               </div>
               <h3 className="text-xl font-bold mb-3">All Class Styles</h3>
               <p className="text-gray-600">
-                From the intensity of Flow to the stillness of Yin—find what you love.
+                From the intensity of Flow to the stillness of Yin, find what you love.
               </p>
             </div>
           </div>
@@ -390,7 +390,7 @@ export default function IntroOfferLandingPage() {
               <span className="gradient-sage-text">3 Studios.</span> 1 Pass.
             </h2>
             <p className="text-lg text-gray-600">
-              From Downtown Halifax to Bedford and Dartmouth—experience the unique energy 
+              From Downtown Halifax to Bedford and Dartmouth, experience the unique energy 
               of our three beautiful studios with one membership.
             </p>
           </div>
@@ -407,7 +407,7 @@ export default function IntroOfferLandingPage() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-6">
                 <h3 className="text-2xl font-bold text-white mb-1">Halifax</h3>
-                <p className="text-white/80 text-sm">Downtown • 6085 Cunard St</p>
+                <p className="text-white/80 text-sm">5508 Spring Garden Road</p>
               </div>
             </div>
 
@@ -421,7 +421,7 @@ export default function IntroOfferLandingPage() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-6">
                 <h3 className="text-2xl font-bold text-white mb-1">Bedford</h3>
-                <p className="text-white/80 text-sm">1658 Bedford Hwy</p>
+                <p className="text-white/80 text-sm">620 Nine Mile Drive</p>
               </div>
             </div>
 
@@ -435,7 +435,7 @@ export default function IntroOfferLandingPage() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-6">
                 <h3 className="text-2xl font-bold text-white mb-1">Dartmouth</h3>
-                <p className="text-white/80 text-sm">50 Tacoma Dr</p>
+                <p className="text-white/80 text-sm">114 Woodlawn Road</p>
               </div>
             </div>
           </div>
@@ -497,7 +497,7 @@ export default function IntroOfferLandingPage() {
                   <div className="text-sm text-gray-600">Expert Teachers</div>
                 </div>
                 <div className="text-center p-4 bg-gray-50 rounded-xl">
-                  <div className="text-3xl font-bold gradient-sage-text">100+</div>
+                  <div className="text-3xl font-bold gradient-sage-text">100</div>
                   <div className="text-sm text-gray-600">Classes Weekly</div>
                 </div>
                 <div className="text-center p-4 bg-gray-50 rounded-xl">
@@ -535,8 +535,8 @@ export default function IntroOfferLandingPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
             <div className="bg-white p-6 rounded-xl text-center shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
               <div className="text-3xl mb-2">🔥</div>
-              <h3 className="font-semibold">Hot Flow</h3>
-              <p className="text-sm text-gray-500">Dynamic & Energizing</p>
+              <h3 className="font-semibold">All Levels</h3>
+              <p className="text-sm text-gray-500">Accessible & Challenging</p>
             </div>
             <div className="bg-white p-6 rounded-xl text-center shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
               <div className="text-3xl mb-2">🌙</div>
@@ -592,28 +592,6 @@ export default function IntroOfferLandingPage() {
                 No commitment required. Available for new students only.
               </p>
             </div>
-
-            {/* Trust Indicators */}
-            <div className="flex flex-wrap justify-center gap-8 text-gray-400">
-              <div className="flex items-center gap-2">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                </svg>
-                <span>No Hidden Fees</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                </svg>
-                <span>Cancel Anytime</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                </svg>
-                <span>Beginner Friendly</span>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -630,8 +608,7 @@ export default function IntroOfferLandingPage() {
               <div className="border-b border-gray-200 pb-6">
                 <h3 className="font-semibold text-lg mb-2">Is this offer for new students only?</h3>
                 <p className="text-gray-600">
-                  Yes, the 2-Week Intro Pass is available for those who are new to Shanti Hot Yoga 
-                  or haven&apos;t visited in over a year.
+                  Yes, the 2-Week Intro Pass is available for those who are new to Shanti Hot Yoga.
                 </p>
               </div>
 
@@ -639,7 +616,7 @@ export default function IntroOfferLandingPage() {
                 <h3 className="font-semibold text-lg mb-2">Do I need to bring anything?</h3>
                 <p className="text-gray-600">
                   Just bring water, a towel, and comfortable clothing. We have mats available 
-                  if you don&apos;t have your own.
+                  for rent if you don&apos;t have your own.
                 </p>
               </div>
 
@@ -647,7 +624,8 @@ export default function IntroOfferLandingPage() {
                 <h3 className="font-semibold text-lg mb-2">Can I really attend unlimited classes?</h3>
                 <p className="text-gray-600">
                   Absolutely! Your pass gives you access to every class on our schedule at all 
-                  three locations for 14 days. Many students attend 10+ classes during their intro period.
+                  three locations for 14 days. Many students attend 10+ classes during their intro period. 
+                  Note that workshops are not included in the intro pass and are an additional cost.
                 </p>
               </div>
 
