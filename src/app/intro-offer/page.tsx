@@ -1,87 +1,196 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useEffect } from "react"
 import Image from "next/image"
 import Script from "next/script"
 import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-
-const CORRECT_PASSWORD = "intropass"
 
 export default function IntroOfferLandingPage() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
-  const [password, setPassword] = useState("")
-  const [error, setError] = useState(false)
-  const [isLoading, setIsLoading] = useState(true)
 
+  // Listen for Mindbody/HealCode widget events via postMessage
   useEffect(() => {
-    // Check if already authenticated in this session
-    const auth = sessionStorage.getItem("intro-offer-auth")
-    if (auth === "true") {
-      setIsAuthenticated(true)
+    // Function to close widget and redirect
+    const closeWidgetAndRedirect = () => {
+      console.log('🔄 Attempting to close widget and redirect...')
+      
+      // Try to find and click any close buttons in HealCode widgets
+      const closeSelectors = [
+        '.hc-close',
+        '.healcode-close',
+        '[class*="close"]',
+        'button[aria-label="Close"]',
+        'button[aria-label="close"]',
+        '.modal-close',
+        '.btn-close'
+      ]
+      
+      closeSelectors.forEach(selector => {
+        try {
+          const closeBtn = document.querySelector(selector) as HTMLElement
+          if (closeBtn) {
+            closeBtn.click()
+            console.log(`Clicked close button: ${selector}`)
+          }
+        } catch {
+          // Ignore errors
+        }
+      })
+      
+      // Try to access HealCode's global object and call close if available
+      try {
+        const healcode = (window as Window & { HealCode?: { closeModal?: () => void } }).HealCode
+        if (healcode && typeof healcode.closeModal === 'function') {
+          healcode.closeModal()
+          console.log('Called HealCode.closeModal()')
+        }
+      } catch {
+        // Ignore errors
+      }
+      
+      // Remove all iframes and overlays
+      const removeSelectors = [
+        'iframe[src*="mindbody"]',
+        'iframe[src*="healcode"]', 
+        'iframe[src*="cart.mindbodyonline"]',
+        '.healcode-modal',
+        '.hc-modal',
+        '.hc-overlay',
+        '[class*="healcode"]',
+        '[class*="hc-modal"]',
+        '.modal-backdrop'
+      ]
+      
+      removeSelectors.forEach(selector => {
+        document.querySelectorAll(selector).forEach(el => {
+          try {
+            el.remove()
+          } catch {
+            // Ignore errors
+          }
+        })
+      })
+      
+      // Remove any high z-index overlays
+      document.querySelectorAll('div, aside, section').forEach(el => {
+        try {
+          const style = window.getComputedStyle(el)
+          const zIndex = parseInt(style.zIndex) || 0
+          if (style.position === 'fixed' && zIndex > 100) {
+            el.remove()
+          }
+        } catch {
+          // Ignore errors
+        }
+      })
+      
+      // Reset body styles
+      document.body.style.overflow = ''
+      document.body.style.position = ''
+      document.body.classList.remove('modal-open', 'overflow-hidden')
+      
+      // Force a hard redirect that replaces the current history entry
+      console.log('🚀 Redirecting to thank you page...')
+      window.location.replace('/intro-offer/thank-you')
     }
-    setIsLoading(false)
+    
+    const handleMessage = (event: MessageEvent) => {
+      // Log all messages for debugging (check browser console)
+      console.log('📨 postMessage received:', {
+        origin: event.origin,
+        data: event.data
+      })
+      
+      // Check for Mindbody-related origins
+      const mindbodyOrigins = [
+        'mindbodyonline.com',
+        'healcode.com',
+        'brandedweb.mindbodyonline.com',
+        'cart.mindbodyonline.com',
+        'clients.mindbodyonline.com'
+      ]
+      
+      const isMindbodyOrigin = mindbodyOrigins.some(origin => 
+        event.origin.includes(origin)
+      )
+      
+      if (isMindbodyOrigin) {
+        console.log('✅ Mindbody message:', event.data)
+        
+        const data = event.data
+        
+        if (typeof data === 'string') {
+          const completionKeywords = ['complete', 'success', 'purchased', 'confirmed', 'thank']
+          if (completionKeywords.some(keyword => data.toLowerCase().includes(keyword))) {
+            console.log('🎉 Purchase completion detected via string message!')
+            closeWidgetAndRedirect()
+          }
+        } else if (typeof data === 'object' && data !== null) {
+          const dataStr = JSON.stringify(data).toLowerCase()
+          if (
+            dataStr.includes('complete') || 
+            dataStr.includes('success') || 
+            dataStr.includes('purchased') ||
+            dataStr.includes('confirmed') ||
+            data.type === 'purchase_complete' ||
+            data.event === 'purchase_complete' ||
+            data.status === 'success'
+          ) {
+            console.log('🎉 Purchase completion detected via object message!')
+            closeWidgetAndRedirect()
+          }
+        }
+      }
+    }
+
+    window.addEventListener('message', handleMessage)
+    return () => window.removeEventListener('message', handleMessage)
   }, [])
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (password === CORRECT_PASSWORD) {
-      sessionStorage.setItem("intro-offer-auth", "true")
-      setIsAuthenticated(true)
-      setError(false)
-    } else {
-      setError(true)
-    }
-  }
+  // Watch for HealCode modal interactions using MutationObserver
+  useEffect(() => {
+    let modalWasOpen = false
+    let purchaseStartTime: number | null = null
+    
+    const observer = new MutationObserver(() => {
+      // Look for HealCode modal elements
+      const healcodeModal = document.querySelector('.healcode-modal, .hc-modal, [class*="healcode"], iframe[src*="mindbody"]')
+      const mindbodyOverlay = document.querySelector('[class*="mindbody-overlay"], .modal-backdrop, .hc-overlay')
+      
+      // Check if any modal/iframe is visible
+      const modalIsOpen = !!(healcodeModal || mindbodyOverlay || document.querySelector('iframe[src*="cart.mindbodyonline"]'))
+      
+      if (modalIsOpen && !modalWasOpen) {
+        // Modal just opened
+        modalWasOpen = true
+        purchaseStartTime = Date.now()
+        console.log('🛒 HealCode widget/modal opened')
+      } else if (!modalIsOpen && modalWasOpen) {
+        // Modal just closed
+        modalWasOpen = false
+        const timeSpent = purchaseStartTime ? (Date.now() - purchaseStartTime) / 1000 : 0
+        console.log(`🔄 HealCode widget/modal closed after ${timeSpent.toFixed(1)}s`)
+        
+        // If user spent enough time (suggesting they completed a flow), 
+        // we could potentially redirect, but this is risky as they may have just closed it
+        // Uncomment below if postMessage detection doesn't work:
+        // if (timeSpent > 30) {
+        //   console.log('User spent significant time, may have completed purchase')
+        //   router.push('/intro-offer/thank-you')
+        // }
+        
+        purchaseStartTime = null
+      }
+    })
 
-  // Show loading state briefly while checking sessionStorage
-  if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="animate-pulse text-gray-400">Loading...</div>
-      </div>
-    )
-  }
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ['class', 'style']
+    })
 
-  // Show password prompt if not authenticated
-  if (!isAuthenticated) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 -mt-16 pt-16">
-        <div className="bg-white p-8 rounded-2xl shadow-xl max-w-md w-full mx-4">
-          <div className="text-center mb-6">
-            <h1 className="text-2xl font-bold mb-2">Password Required</h1>
-            <p className="text-gray-600">This page is password protected.</p>
-          </div>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => {
-                  setPassword(e.target.value)
-                  setError(false)
-                }}
-                placeholder="Enter password"
-                className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-sage-green ${
-                  error ? "border-red-500" : "border-gray-300"
-                }`}
-                autoFocus
-              />
-              {error && (
-                <p className="text-red-500 text-sm mt-2">Incorrect password. Please try again.</p>
-              )}
-            </div>
-            <Button 
-              type="submit" 
-              className="w-full gradient-sage text-white py-3"
-            >
-              Access Page
-            </Button>
-          </form>
-        </div>
-      </div>
-    )
-  }
+    return () => observer.disconnect()
+  }, [])
 
   return (
     <div className="bg-white">
