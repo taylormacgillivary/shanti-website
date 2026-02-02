@@ -59,7 +59,8 @@ const workshops: Workshop[] = [
     discount: "*Shanti monthly members receive 10% discount with promo code: Mysore10",
     image: "/images-in-use/teachers-used/andrea-gracia.jpg",
     imagePosition: "center bottom",
-    widgetId: "6810924385be"
+    widgetId: "6810924385be",
+    featured: true
   },
   {
     title: "Candlelight Restorative Meditation",
@@ -106,43 +107,13 @@ const workshops: Workshop[] = [
     registrationClosed: false
   },
   {
-    title: "The Art of Oshibana",
-    instructor: "Sasha Sheppard & Emilie Fabre",
-    description: "Discover the ancient Japanese art of Oshibana: the practice of creating art with pressed flowers, in this hands-on workshop that nurtures both creativity and well-being through mindful meditation and creation.",
-    fullDescription: `<p class="mb-4">Discover the ancient Japanese art of Oshibana: the practice of creating art with pressed flowers, in this hands-on workshop that nurtures both creativity and well-being through mindful meditation and creation.</p>
-
-<h3 class="text-lg font-semibold text-sage-green mb-2">Part 1: Guided Meditation with Emilie Fabre</h3>
-<p class="mb-4">Begin your journey with a calming guided meditation session that centres your mind and opens your heart to creativity. This mindful practice prepares your spirit for the artistic work ahead, helping you connect with nature and embrace the present moment.</p>
-
-<h3 class="text-lg font-semibold text-sage-green mb-2">Part 2: The Art of Flower Pressing</h3>
-<p class="mb-4">Explore the rich history of Oshibana and its modern applications. You'll receive a crash course in pressing techniques and build your own flower press to take home. Discover insider tricks for successful pressing and proper storage methods to preserve your botanical treasures.</p>
-
-<h3 class="text-lg font-semibold text-sage-green mb-2">Part 3: Painting with Flowers</h3>
-<p class="mb-4">Create your own botanical collage on a 5x7" frame-ready piece. All materials are provided, including fresh flowers, hand-pressed local blooms, watercolor paper, coloured paper, brushes, and glue. With gentle guidance, you'll explore composition principles while embracing your unique creative vision. This is more than just a craft session, it's an opportunity to connect with a community of creative spirits who share a love of flowers and nature.</p>
-
-<p class="mb-4">Whether you're seeking a new creative outlet, a mindful escape, or simply wish to try something beautiful, this workshop welcomes you. Let's create together!</p>
-
-<p class="italic text-sage-green font-medium">*Take home: Your very own framed botanical artwork!</p>`,
-    location: "Bedford",
-    dates: [
-      "<strong>January 31st, 2026</strong> <em class='text-sage-green'>(This event has been rescheduled to January 31st)</em>",
-      "<strong>2:00-4:00pm</strong>"
-    ],
-    cost: "$75+tax",
-    takeHome: "Your very own framed botanical artwork!",
-    image: "/images-in-use/art-of-oshibana.jpg",
-    widgetId: "6811024685be",
-    registrationClosed: false,
-    featured: true
-  },
-  {
     title: "Read More! Lead More! Move More!",
     instructor: "Joe A. Doiron",
     description: "Raising resilient kids through literacy, movement and mindfulness. Join Joe A. Doiron, founder, creator and author of Active Kids Adventures for this special free workshop.",
     location: "Dartmouth & Bedford",
     dates: [
-      "<strong>February 21st, 2026</strong> - <strong>Bedford:</strong> 2:30-4:00pm",
-      "<strong>February 28th, 2026</strong> - <strong>Dartmouth:</strong> 1:30-3:00pm"
+      "<strong>February 21st, 2026</strong> - <strong>Dartmouth:</strong> 2:30-4:00pm",
+      "<strong>February 28th, 2026</strong> - <strong>Bedford:</strong> 1:30-3:00pm"
     ],
     duration: "FREE!",
     image: "/images-in-use/joe-doiron.webp",
