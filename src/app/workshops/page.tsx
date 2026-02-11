@@ -63,29 +63,12 @@ const workshops: Workshop[] = [
     featured: true
   },
   {
-    title: "Candlelight Restorative Meditation",
-    instructor: "Kristie Willems",
-    description: "Become bff's with your mind by learning to settle during discomfort, to find inner peace, and to manage stress and anxiety. Join Kristie as she shares tools that can be used on the path to cultivate a regular meditation practice.",
-    fullDescription: `<p class="mb-4">Become bff's with your mind by learning to settle during discomfort, to find inner peace, and to manage stress and anxiety. Join Kristie as she shares tools that can be used on the path to cultivate a regular meditation practice.</p>
-
-<p class="mb-4">This 90 minute workshop includes a deeply rejuvenating yoga practice with gentle, slow-moving floor postures, guided breathing and mindfulness techniques. The practice circles two silent meditations using candlelight, blankets, blocks and bolsters as support.</p>
-
-<p class="mb-4">Meditation is known for promoting awareness, cultivating well-being and reducing stress and anxiety, while the candlelight serves as a soothing point of focus for a wandering mind. Leave this micro-retreat feeling whole, grounded, restored and with a real grasp of the benefits of meditation.</p>`,
-    location: "Dartmouth",
-    dates: [
-      "<strong>February 1st, 2026</strong>",
-      "<strong>12:00-1:30pm</strong>"
-    ],
-    image: "/images-in-use/teachers-used/kristie-willems.jpg",
-    widgetId: "6811032985be"
-  },
-  {
     title: "Prenatal Yoga",
     instructor: "Nikki Smith",
     description: "Prenatal Yoga is an incredible way to tune into your body in an intimate way as it undergoes a very challenging and magical transformation. Prenatal Yoga will help strengthen both the body and mind during your pregnancy and in preparation for labour while connecting you to a like-minded group. With everyone at a different stage of pregnancy, the community building aspect can be extremely valuable, while at the same time, building a closer connection to the little one in your belly!",
     location: "Dartmouth",
     dates: [
-      "<strong>February 12th, 2026</strong>",
+      "<strong>March 5th, 2026</strong>",
       "<strong>5:30pm</strong>"
     ],
     duration: "4 Week Program",
