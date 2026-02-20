@@ -77,7 +77,7 @@ export default function MyofascialReleasePage() {
         <CoursePage
             title="Myofascial Release Teacher Training"
             subtitle="Our Myofascial Release Yoga Teacher Training dives into fascia, the web-like connective tissue that wraps every muscle, organ, and bone."
-            dates="October 2-4, 2026"
+            dates="September 17-20, 2026"
             heroImage="/images-in-use/20.jpg"
             imageTwo="/images-in-use/21.jpg"
             imageThree="/images-in-use/33.jpg"
