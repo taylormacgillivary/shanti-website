@@ -93,7 +93,7 @@ export default function ChairYogaPage() {
         <CoursePage
             title="Chair Yoga Teacher Training"
             subtitle="Uncover your full potential to Teach, to Practice, to Live."
-            dates="Next Course Dates: TBD"
+            dates="November 26-29, 2026"
             heroImage="/images-in-use/05.jpg"
             imageTwo="/images-in-use/19.jpg"
             imageThree="/images-in-use/35.jpg"
@@ -103,9 +103,9 @@ export default function ChairYogaPage() {
             teachers={teachers}
             faqs={faqs}
             investment={investment}
-            paymentDepositLink="#"
+            paymentDepositLink="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=41&sTG=39&prodId=1577"
             paymentFullLink="#"
-            paymentDepositText="Registration Not Yet Open"
+            paymentDepositText="Pay Deposit"
             ceCredits="25 Hours"
             showDepositOnly={true}
         />

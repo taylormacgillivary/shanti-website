@@ -189,12 +189,17 @@ export function MembershipSection() {
         <div className="text-center mt-16 bg-gray-100 dark:bg-gray-900 p-8 rounded-lg">
           <h3 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-50">Corporate Membership</h3>
           <p className="mt-4 text-lg text-gray-600 dark:text-gray-400">
-            We have over 100 corporate members. Is your employer one of them? Click the button below to ask if your
-            company is partnered with us already, or to inquire about setting up a new corporate partnership.
+            We have over 100 corporate members. Is your employer one of them? Check our partner directory to see if 
+            your company is already partnered with us, or contact us to inquire about setting up a new corporate partnership.
           </p>
-          <Button className="mt-6 gradient-sage text-white" asChild>
-            <a href="mailto:info@shantihotyoga.ca?subject=corporate%20partner%20request">Contact Us</a>
-          </Button>
+          <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center">
+            <Button className="gradient-sage text-white" asChild>
+              <a href="/corporate-partners">View Partner Directory</a>
+            </Button>
+            <Button variant="outline" asChild>
+              <a href="mailto:info@shantihotyoga.ca?subject=corporate%20partner%20request">Request a Partnership</a>
+            </Button>
+          </div>
         </div>
         <div className="mt-16">
           <NewsletterSignup
