@@ -76,20 +76,6 @@ const workshops: Workshop[] = [
     widgetId: "689767685be"
   },
   {
-    title: "Ayurveda for Everyday Living",
-    instructor: "Hari Mohan",
-    description: "Discover the timeless wisdom of Ayurveda and learn how to bring balance, vitality, and harmony into your daily life. In this interactive workshop, you'll explore how Ayurveda works and gain hands-on experience through engaging activities and discussions. Understand your unique body–mind type through a Dosha Test and Pulse Examination, learn to make holistic lifestyle choices that support energy, digestion, and emotional well-being, and enjoy a cup of refreshing CCF tea while discovering the healing properties of everyday spices.",
-    location: "Bedford",
-    dates: [
-      "<strong>February 15th, 2026</strong>",
-      "<strong>1:00pm</strong>"
-    ],
-    image: "/images-in-use/hari-mohan.jpg",
-    imagePosition: "center 15%",
-    widgetId: "6810941285be",
-    registrationClosed: false
-  },
-  {
     title: "Read More! Lead More! Move More!",
     instructor: "Joe A. Doiron",
     description: "Raising resilient kids through literacy, movement and mindfulness. Join Joe A. Doiron, founder, creator and author of Active Kids Adventures for this special free workshop.",
