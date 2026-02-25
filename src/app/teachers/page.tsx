@@ -72,12 +72,6 @@ const teachers = [
     bio: "Amanda Greenwood (she/her) is a Recreation & Leisure graduate, R-YT 200 with continued training in Myofascial, Yin, Vinyasa Krama and Kundalini. Amanda began her teacher training in January 2019 and has been teaching since September 2019 in various formats with studios and gyms in HRM."
   },
   {
-    name: "Abbey Bates",
-    title: "Teacher",
-    image: "/images-in-use/teachers-used/abbey-bates.jpg",
-    bio: "Abbey started her practice right here in the Dartmouth studio more than ten years ago. Not until she had the opportunity to move overseas did she really find her strong connection with yoga. She traveled to India in 2013 to do her 200 Hour YTT in Vinyasa/Ashtanga. After that, she began to practice every day, growing and progressing in her practice. Living in the United Arab Emirates, Abbey began to teach private and corporate classes as she became apart of the yoga community."
-  },
-  {
     name: "Trever McWilson",
     title: "Teacher",
     image: "/images-in-use/teachers-used/trever-mcwilson.jpeg",
@@ -115,16 +109,10 @@ const teachers = [
     bio: "Kyla Mackinnon resides on the east coast of Canada in Halifax but fulfills her sense of wanderlust by traveling regularly. Most of her travels involve leading yoga retreats and yoga teacher trainings as she loves to combine her passions of connecting with people and creating memorable experiences. Kyla teaches yoga as a way to inspire others to live a happy, healthy and authentic life. She enjoys coaching people and creating a space where they feel comfortable and confident in order to reach their full potential. Thanks to her many great teachers, Kyla vows to keep the tradition of Krishnamacharya's yoga lineage alive while weaving in a mix of her own movements which she explores through continuous study. When not getting her yoga on, Kyla can be found tasting new vegan health foods, enjoying time in nature, working out with the lululemon crew, connecting with loved ones, and exploring the world."
   },
   {
-    name: "Pytrik",
+    name: "Pytrik Oosterhof",
     title: "Teacher",
     image: "/images-in-use/teachers-used/pytrik.jpg",
     bio: "Pytrik completed the 200hr Yoga Teacher Training (YTT) at Shanti in 2024 and aims to share with students what she loves about yoga and life; freedom, detachment and consciousness."
-  },
-  {
-    name: "Katja Greiner",
-    title: "Teacher",
-    image: "/images-in-use/teachers-used/katja-greiner.jpg",
-    bio: "I started practicing yoga in 2012 when I was living in Bermuda looking for a way to get back in shape and quickly feel in love with it.\nI decided to do my 200-hour YTT in May 2023 with Shanti and I started to teach in May 2024. Doing my teacher training has been a life changing experience for me.\nI love the way yoga makes me feel, grounded and present and more connected with my body.\nI am so grateful to be able to share my yoga journey with all my students.\nYoga is so much more than just a physical workout, Yoga is a way of life."
   },
   {
     name: "Erika Hale",
@@ -188,6 +176,19 @@ const teachers = [
     title: "Teacher",
     image: "/images-in-use/teachers-used/Hayley Westerman.jpeg",
     bio: "Hayley is a Vinyasa and Yin Yoga teacher and Registered Massage Therapist whose practice is rooted in nature, mindfulness, and intentional movement.\nShe began her yoga journey 15 years ago while living in the mountains, where the landscape sparked a deep appreciation for stillness, breath, and embodied presence.\nIn the fall of 2016, Hayley completed her 200-hour Yoga Teacher Training in California, immersing herself in philosophy, anatomy, and the art of sequencing.\nHer classes blend fluid Vinyasa flow with the grounding, introspective qualities of Yin, inviting students to cultivate strength, ease, and awareness from the inside out.\nAs a Registered Massage Therapist at East Coast Wellness, she draws on her therapeutic background to create practices that support mobility, release tension, and nourish the nervous system.\nHayley's teaching style is warm, intuitive, and welcoming—offering a space where every student feels supported in their own unique journey."
+  },
+  {
+    name: "Alan Garner",
+    title: "Teacher",
+    image: "/images-in-use/teachers-used/Alan-Garner.jpg",
+    bio: "Alan Garner has been a yoga and meditation practitioner for over 24 years.\nDeeply committed to self-development by education and application he has elevated his journey to include a 500Hr Registered Yoga Teacher certification. Spirituality, yogic traditions and philosophies, along with his personal insights of his own journey, are the foundations of how he leads his classes.",
+    objectPosition: "object-[50%_25%]"
+  },
+  {
+    name: "Jordan Pacewski",
+    title: "Teacher",
+    image: "/images-in-use/teachers-used/jordan-pacewski.jpeg",
+    bio: "My yoga journey started as a fitness endeavour after having to move home from BC due to a minor car accident. Yoga quickly became a part of my daily life and after years in the wine and hospitality industry I decided to take my 200hr in 2019. I grew up a really shy kid with no intentions of public speaking in any capacity so I was unsure if I actually wanted to teach or just took the training to further my practice. I was thrown in to sub at the studio I trained in and all of a sudden I was teaching a few classes a week. I took my 300hr in 2021 followed by my Pilates training in 2022. Somewhere along the line, teaching became my favourite hobby. This summer I decided to take on teaching pilates full time. I couldn't be happier! I'm so thankful to be part of the shanti team!"
   }
 ];
 

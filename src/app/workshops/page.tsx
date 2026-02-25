@@ -161,43 +161,47 @@ export default function WorkshopsPage() {
     };
   }, [isModalOpen]);
 
-  // Helper function to check if workshop registration is closed based on start date
+  // Helper function to check if workshop registration is closed based on dates
   const isRegistrationClosed = (workshop: Workshop): boolean => {
     // If manually set, use that
     if (workshop.registrationClosed !== undefined) {
       return workshop.registrationClosed;
     }
 
-    // Try to parse the start date from the dates array
-    const dateString = workshop.dates[0];
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // Reset to start of day for comparison
     
-    // Extract date patterns like "October 16th", "Nov 29", "January 1st, 2026", etc.
-    const dateMatch = dateString.match(/(January|February|March|April|May|June|July|August|September|October|November|December|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+(\d+)(?:st|nd|rd|th)?(?:,?\s*(\d{4}))?/i);
-    
-    if (dateMatch) {
-      const monthStr = dateMatch[1];
-      const day = parseInt(dateMatch[2]);
-      // Use parsed year if present, otherwise default to current year
-      const year = dateMatch[3] ? parseInt(dateMatch[3]) : new Date().getFullYear();
+    // Map month names to numbers
+    const monthMap: { [key: string]: number } = {
+      'january': 0, 'jan': 0, 'february': 1, 'feb': 1, 'march': 2, 'mar': 2,
+      'april': 3, 'apr': 3, 'may': 4, 'june': 5, 'jun': 5,
+      'july': 6, 'jul': 6, 'august': 7, 'aug': 7, 'september': 8, 'sep': 8,
+      'october': 9, 'oct': 9, 'november': 10, 'nov': 10, 'december': 11, 'dec': 11
+    };
+
+    // Check all dates - registration is only closed if ALL dates have passed
+    for (const dateString of workshop.dates) {
+      // Extract date patterns like "October 16th", "Nov 29", "January 1st, 2026", etc.
+      const dateMatch = dateString.match(/(January|February|March|April|May|June|July|August|September|October|November|December|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+(\d+)(?:st|nd|rd|th)?(?:,?\s*(\d{4}))?/i);
       
-      // Map month names to numbers
-      const monthMap: { [key: string]: number } = {
-        'january': 0, 'jan': 0, 'february': 1, 'feb': 1, 'march': 2, 'mar': 2,
-        'april': 3, 'apr': 3, 'may': 4, 'june': 5, 'jun': 5,
-        'july': 6, 'jul': 6, 'august': 7, 'aug': 7, 'september': 8, 'sep': 8,
-        'october': 9, 'oct': 9, 'november': 10, 'nov': 10, 'december': 11, 'dec': 11
-      };
-      
-      const month = monthMap[monthStr.toLowerCase()];
-      const startDate = new Date(year, month, day);
-      const today = new Date();
-      today.setHours(0, 0, 0, 0); // Reset to start of day for comparison
-      
-      // If start date is in the past, registration is closed
-      return startDate < today;
+      if (dateMatch) {
+        const monthStr = dateMatch[1];
+        const day = parseInt(dateMatch[2]);
+        // Use parsed year if present, otherwise default to current year
+        const year = dateMatch[3] ? parseInt(dateMatch[3]) : new Date().getFullYear();
+        
+        const month = monthMap[monthStr.toLowerCase()];
+        const eventDate = new Date(year, month, day);
+        
+        // If any date is today or in the future, registration is still open
+        if (eventDate >= today) {
+          return false;
+        }
+      }
     }
     
-    return false;
+    // All dates have passed (or no valid dates found), registration is closed
+    return true;
   };
 
   const handleRegisterClick = (workshop: Workshop) => {
