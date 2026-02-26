@@ -429,7 +429,7 @@ export default function ShortCECoursesPage() {
                               <div className="w-2 h-2 bg-sage-green rounded-full mt-2 flex-shrink-0"></div>
                               <div>
                                 <p className="font-medium text-foreground">Time</p>
-                                <p className="text-muted-foreground">1:00-4:00pm</p>
+                                <p className="text-muted-foreground">1-5pm</p>
                               </div>
                             </div>
                             
