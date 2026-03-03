@@ -5,7 +5,6 @@ import { useState, useMemo } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import PastRetreatsMap from "@/components/ui/PastRetreatsMap";
-import { NewsletterSignup } from "@/components/newsletter-signup";
 
 const pastRetreats = [
   { name: "Kerala, India", image: "/images-in-use/Retreats/kerala-india.jpeg" },
@@ -92,20 +91,10 @@ export default function RetreatsPage() {
               </span>
             </h2>
 
-            <p className="text-xl text-muted-foreground leading-relaxed mb-12">
+            <p className="text-xl text-muted-foreground leading-relaxed">
               We&apos;re currently planning our next incredible retreat destination. 
-              Be the first to know where we&apos;re heading next by joining our mailing list.
+              Sign up for our newsletter below to be the first to know where we&apos;re heading next.
             </p>
-
-            <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-xl p-8 md:p-12">
-              <NewsletterSignup
-                title="Get Notified First"
-                subtitle="Sign up with your email to receive news about our next retreat destination and early-bird pricing."
-                tags={["retreats", "website-newsletter"]}
-                placeholder="Enter your email"
-                buttonText="Notify Me"
-              />
-            </div>
           </div>
         </div>
       </section>

@@ -7,7 +7,6 @@
 import { CardTitle, CardHeader, CardContent, CardFooter, Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import Script from "next/script"
-import { NewsletterSignup } from "@/components/newsletter-signup"
 
 export function MembershipSection() {
   return (
@@ -200,13 +199,6 @@ export function MembershipSection() {
               <a href="mailto:info@shantihotyoga.ca?subject=corporate%20partner%20request">Request a Partnership</a>
             </Button>
           </div>
-        </div>
-        <div className="mt-16">
-          <NewsletterSignup
-            title="Stay in the loop"
-            subtitle="Sign up with your email address to receive news and updates."
-            tags={["website-newsletter"]}
-          />
         </div>
       </div>
       
