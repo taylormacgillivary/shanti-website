@@ -63,6 +63,20 @@ const workshops: Workshop[] = [
     featured: true
   },
   {
+    title: "Assisted Rest Workshop",
+    instructor: "Kristie & Leanna Letterio",
+    description: "Receive double the hands-on assists for even more personalized support in every shape. Join Kristie and Leanna Letterio for a 90-minute restorative yin practice designed to help you soften, unwind, and fully rest your body.",
+    location: "Dartmouth",
+    dates: [
+      "<strong>Saturday, March 28th</strong>",
+      "<strong>12:00 - 1:30pm</strong>"
+    ],
+    cost: "$50 + tax",
+    discount: "*Shanti monthly members use promo code REST10 for 10% off",
+    image: "/images-in-use/An-Assisted-Rest.jpeg",
+    widgetId: "6811236985be"
+  },
+  {
     title: "Prenatal Yoga",
     description: "Prenatal Yoga is an incredible way to tune into your body in an intimate way as it undergoes a very challenging and magical transformation. Prenatal Yoga will help strengthen both the body and mind during your pregnancy and in preparation for labour while connecting you to a like-minded group. With everyone at a different stage of pregnancy, the community building aspect can be extremely valuable, while at the same time, building a closer connection to the little one in your belly!",
     location: "Dartmouth & Bedford",
@@ -75,21 +89,6 @@ const workshops: Workshop[] = [
     widgetId: "689767685be",
     hasMultipleOptions: true
   },
-  {
-    title: "Read More! Lead More! Move More!",
-    instructor: "Joe A. Doiron",
-    description: "Raising resilient kids through literacy, movement and mindfulness. Join Joe A. Doiron, founder, creator and author of Active Kids Adventures for this special free workshop.",
-    location: "Dartmouth & Bedford",
-    dates: [
-      "<strong>February 21st, 2026</strong> - <strong>Dartmouth:</strong> 2:30-4:00pm",
-      "<strong>February 28th, 2026</strong> - <strong>Bedford:</strong> 1:30-3:00pm"
-    ],
-    duration: "FREE!",
-    image: "/images-in-use/joe-doiron.webp",
-    imagePosition: "center top",
-    widgetId: "6810920685be",
-    hasMultipleOptions: true
-  }
 ];
 
 export default function WorkshopsPage() {
