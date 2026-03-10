@@ -31,6 +31,7 @@ interface Workshop {
   dates: string[];
   image: string;
   instructor?: string;
+  instructorBio?: string;
   duration?: string;
   dropIn?: string;
   discount?: string;
@@ -59,8 +60,7 @@ const workshops: Workshop[] = [
     discount: "*Shanti monthly members receive 10% discount with promo code: Mysore10",
     image: "/images-in-use/teachers-used/andrea-gracia.jpg",
     imagePosition: "center bottom",
-    widgetId: "6810924385be",
-    featured: true
+    widgetId: "6810924385be"
   },
   {
     title: "Assisted Rest Workshop",
@@ -89,6 +89,36 @@ const workshops: Workshop[] = [
     widgetId: "689767685be",
     hasMultipleOptions: true
   },
+  {
+    title: "The Art of Meditation: My Mother's Bouquet",
+    instructor: "Sasha Sheppard",
+    description: "A 2-hour pressed-flowers workshop to celebrate Mother's Day, blending mindful benefits (mental, cognitive, creative, and physical well-being) with hands-on skills: quick flower-pressing techniques, building your own press, and tips for long-lasting botanicals, then \"paint with flowers\" to create a framed botanical collage.",
+    fullDescription: "This is a 2-hour pressed-flowers workshop to celebrate Mother's Day, blending mindful benefits (mental, cognitive, creative, and physical well-being) with hands-on skills: quick flower-pressing techniques, building your own press, and tips for long-lasting botanicals, then \"paint with flowers\" to create a framed botanical collage.<br/><br/>All materials provided (fresh and hand-pressed local flowers, watercolor paper, brush, glue, and frame) plus gentle guidance, community, and creative inspiration, make a personalized, heartfelt gift for Mom.<br/><br/><strong>Take home:</strong> Your very own framed botanical artwork!",
+    location: "Bedford",
+    dates: [
+      "<strong>Saturday, April 11th, 2026</strong>",
+      "<strong>2:00 - 4:00pm</strong>"
+    ],
+    cost: "$80 + tax",
+    takeHome: "Your very own framed botanical artwork!",
+    image: "/images-in-use/pressed-flowers.webp",
+    widgetId: "6811247685be"
+  },
+  {
+    title: "Master Class with Coeli Marsh: Journey Into Flow & Deep Restoration",
+    instructor: "Coeli Marsh",
+    description: "An all-levels vinyasa masterclass in a heated room ~ fun, challenging, therapeutic, and restorative. We begin with a slow dynamic flow that cultivates sustainable strength, while supporting joint health and nervous system balance. Through thoughtful sequencing and accessible options, we will explore movement that feels empowering and responsive to your body. The second half of class shifts into deeply relaxing restorative yoga, with long-held, nourishing poses that help the nervous system downshift, integrate the practice, and invite deep rest. You will leave feeling spacious, grounded, and replenished.",
+    instructorBio: "Coeli Marsh, MEd, E-RYT 500, has been a yoga teacher and trusted mentor for over two decades. She has taught in studios, K-12 schools, hospitals, and retreat centres, facilitating adaptive and inclusive group experiences. In 2001, Coeli founded the Teachers Study Project, a professional training resource for yoga teachers. Coeli is adept at integrating her background in psychology and education into yoga as a healing art, making the classroom a safe container where all bodies and abilities are welcome. In her teaching, she emphasizes a joyful approach, utilizing the therapeutic power of playfulness in navigating challenges and learning the application of mindfulness into everyday life.",
+    location: "Halifax",
+    dates: [
+      "<strong>Saturday, April 19th, 2026</strong>",
+      "<strong>2:00 - 4:00pm</strong>"
+    ],
+    cost: "$45 + tax",
+    image: "/images-in-use/coeli-marsh.jpg",
+    widgetId: "6811248085be",
+    featured: true
+  },
 ];
 
 export default function WorkshopsPage() {
@@ -97,6 +127,7 @@ export default function WorkshopsPage() {
   const [widgetInitialized, setWidgetInitialized] = useState(false);
   const [descriptionWorkshop, setDescriptionWorkshop] = useState<Workshop | null>(null);
   const [isDescriptionModalOpen, setIsDescriptionModalOpen] = useState(false);
+  const [expandedBioIndex, setExpandedBioIndex] = useState<number | null>(null);
 
   const handleReadMore = (workshop: Workshop) => {
     setDescriptionWorkshop(workshop);
@@ -347,6 +378,24 @@ export default function WorkshopsPage() {
                     >
                       Read Full Description →
                     </button>
+                  )}
+                  {workshop.instructorBio && (
+                    <div className="space-y-2">
+                      <button
+                        onClick={() => setExpandedBioIndex(expandedBioIndex === index ? null : index)}
+                        className="text-sage-green hover:text-sage-green/80 text-sm font-medium underline underline-offset-2 text-left transition-colors flex items-center gap-1"
+                      >
+                        {expandedBioIndex === index ? "Hide" : "Read"} {workshop.instructor?.split(' ')[0]}&apos;s full bio
+                        <span className={`transition-transform duration-200 ${expandedBioIndex === index ? 'rotate-180' : ''}`}>
+                          ▼
+                        </span>
+                      </button>
+                      {expandedBioIndex === index && (
+                        <div className="text-sm text-muted-foreground bg-muted/30 p-4 rounded-lg border border-sage-green/10 animate-in fade-in slide-in-from-top-2 duration-200">
+                          {workshop.instructorBio}
+                        </div>
+                      )}
+                    </div>
                   )}
                   <div className="space-y-1">
                     {workshop.dates.map((date, i) => (

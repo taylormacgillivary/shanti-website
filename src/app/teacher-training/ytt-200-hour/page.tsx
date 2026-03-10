@@ -203,7 +203,9 @@ export default function YTT200HourPage() {
             useMindbodyWidgets={true}
             mindbodyDepositServiceId="1383"
             mindbodyFullServiceId="1384"
+            mindbodyFullRegularServiceId="1633"
             showScholarship={true}
+            fullTuitionDisclaimer="Only use this link if you paid your deposit before March 1"
         />
     )
 } 

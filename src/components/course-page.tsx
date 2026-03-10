@@ -71,7 +71,10 @@ interface CoursePageProps {
     useMindbodyWidgets?: boolean;
     mindbodyDepositServiceId?: string;
     mindbodyFullServiceId?: string;
+    mindbodyFullRegularServiceId?: string;
     showScholarship?: boolean;
+    fullTuitionDisclaimer?: string;
+    fullRegularTuitionDisclaimer?: string;
 }
 
 export function CoursePage({
@@ -101,7 +104,10 @@ export function CoursePage({
     useMindbodyWidgets = false,
     mindbodyDepositServiceId,
     mindbodyFullServiceId,
+    mindbodyFullRegularServiceId,
     showScholarship = false,
+    fullTuitionDisclaimer,
+    fullRegularTuitionDisclaimer,
 }: CoursePageProps) {
     const renderBadges = () => {
         if (!ceCredits && !isYogaAlliance) return null;
@@ -392,26 +398,31 @@ export function CoursePage({
                             </div>
                         </div>
                     ) : (
-                    <div className="flex flex-col md:flex-row justify-center items-center gap-8">
-                         <div className="w-full md:w-1/3 p-8 bg-stone-100 rounded-lg shadow-lg text-center">
+                    <div className="flex flex-col md:flex-row justify-center items-stretch gap-8">
+                         <div className="w-full md:w-1/3 p-8 bg-stone-100 rounded-lg shadow-lg text-center flex flex-col">
                              <h3 className="text-2xl font-bold">Deposit</h3>
                              <p className="text-5xl font-extrabold text-sage-green my-4">${investment.deposit}</p>
                              <p className="text-stone-600">Secure your spot in the training.</p>
-                             {useMindbodyWidgets && mindbodyDepositServiceId ? (
-                                <div 
-                                    className="mt-6 w-full"
-                                    dangerouslySetInnerHTML={{
-                                        __html: `<healcode-widget data-version="0.2" data-link-class="healcode-pricing-option-text-link w-full gradient-sage text-white inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-11 px-8 cursor-pointer" data-site-id="1889" data-mb-site-id="11233" data-service-id="${mindbodyDepositServiceId}" data-bw-identity-site="true" data-type="pricing-link" data-inner-html="${paymentDepositText}"></healcode-widget>`
-                                    }}
-                                />
-                             ) : (
-                                <Button asChild size="lg" className="mt-6 w-full gradient-sage hover:opacity-90 text-white">
-                                    <Link href={paymentDepositLink}>{paymentDepositText}</Link>
-                                </Button>
-                             )}
+                             <div className="mt-auto pt-6">
+                                 {useMindbodyWidgets && mindbodyDepositServiceId ? (
+                                    <div 
+                                        className="w-full"
+                                        dangerouslySetInnerHTML={{
+                                            __html: `<healcode-widget data-version="0.2" data-link-class="healcode-pricing-option-text-link w-full gradient-sage text-white inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-11 px-8 cursor-pointer" data-site-id="1889" data-mb-site-id="11233" data-service-id="${mindbodyDepositServiceId}" data-bw-identity-site="true" data-type="pricing-link" data-inner-html="${paymentDepositText}"></healcode-widget>`
+                                        }}
+                                    />
+                                 ) : (
+                                    <Button asChild size="lg" className="w-full gradient-sage hover:opacity-90 text-white">
+                                        <Link href={paymentDepositLink}>{paymentDepositText}</Link>
+                                    </Button>
+                                 )}
+                                 {fullTuitionDisclaimer && (
+                                    <p className="mt-4 text-sm invisible" aria-hidden="true">{fullTuitionDisclaimer}</p>
+                                 )}
+                             </div>
                          </div>
-                         <div className="w-full md:w-1/3 p-8 bg-stone-100 rounded-lg shadow-lg text-center">
-                             <h3 className="text-2xl font-bold">Full Tuition</h3>
+                         <div className="w-full md:w-1/3 p-8 bg-stone-100 rounded-lg shadow-lg text-center flex flex-col">
+                             <h3 className="text-2xl font-bold">{mindbodyFullRegularServiceId ? "Early Bird Tuition" : "Full Tuition"}</h3>
                              <p className="text-5xl font-extrabold text-sage-green my-4">
                                  ${investment.earlyBirdTuition ? investment.earlyBirdTuition : investment.tuition}
                              </p>
@@ -430,19 +441,55 @@ export function CoursePage({
                                     <strong>Shanti Grad Price:</strong> ${investment.graduateEarlyBirdTuition ? `${investment.graduateEarlyBirdTuition} early bird, $${investment.graduateTuition} regular price` : investment.graduateTuition}
                                 </p>
                              }
-                             {useMindbodyWidgets && mindbodyFullServiceId ? (
-                                <div 
-                                    className="mt-6 w-full"
-                                    dangerouslySetInnerHTML={{
-                                        __html: `<healcode-widget data-version="0.2" data-link-class="healcode-pricing-option-text-link w-full gradient-sage text-white inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-11 px-8 cursor-pointer" data-site-id="1889" data-mb-site-id="11233" data-service-id="${mindbodyFullServiceId}" data-bw-identity-site="true" data-type="pricing-link" data-inner-html="${paymentFullText}"></healcode-widget>`
-                                    }}
-                                />
-                             ) : (
-                                <Button asChild size="lg" className="mt-6 w-full gradient-sage hover:opacity-90 text-white">
-                                    <Link href={paymentFullLink}>{paymentFullText}</Link>
-                                </Button>
-                             )}
+                             <div className="mt-auto pt-6">
+                                 {useMindbodyWidgets && mindbodyFullServiceId ? (
+                                    <div 
+                                        className="w-full"
+                                        dangerouslySetInnerHTML={{
+                                            __html: `<healcode-widget data-version="0.2" data-link-class="healcode-pricing-option-text-link w-full gradient-sage text-white inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-11 px-8 cursor-pointer" data-site-id="1889" data-mb-site-id="11233" data-service-id="${mindbodyFullServiceId}" data-bw-identity-site="true" data-type="pricing-link" data-inner-html="${paymentFullText}"></healcode-widget>`
+                                        }}
+                                    />
+                                 ) : (
+                                    <Button asChild size="lg" className="w-full gradient-sage hover:opacity-90 text-white">
+                                        <Link href={paymentFullLink}>{paymentFullText}</Link>
+                                    </Button>
+                                 )}
+                                 {fullTuitionDisclaimer && (
+                                    <p className="mt-4 text-sm text-stone-600 italic">{fullTuitionDisclaimer}</p>
+                                 )}
+                             </div>
                          </div>
+                         {mindbodyFullRegularServiceId && (
+                         <div className="w-full md:w-1/3 p-8 bg-stone-100 rounded-lg shadow-lg text-center flex flex-col">
+                             <h3 className="text-2xl font-bold">Full Tuition</h3>
+                             <p className="text-5xl font-extrabold text-sage-green my-4">
+                                 ${investment.tuition}
+                             </p>
+                             <p className="text-stone-600">
+                                 Use this link if you signed up after {investment.earlyBirdDate || "the early bird date"}.
+                             </p>
+                             <div className="mt-auto pt-6">
+                                 {useMindbodyWidgets ? (
+                                    <div 
+                                        className="w-full"
+                                        dangerouslySetInnerHTML={{
+                                            __html: `<healcode-widget data-version="0.2" data-link-class="healcode-pricing-option-text-link w-full gradient-sage text-white inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-11 px-8 cursor-pointer" data-site-id="1889" data-mb-site-id="11233" data-service-id="${mindbodyFullRegularServiceId}" data-bw-identity-site="true" data-type="pricing-link" data-inner-html="${paymentFullText}"></healcode-widget>`
+                                        }}
+                                    />
+                                 ) : (
+                                    <Button asChild size="lg" className="w-full gradient-sage hover:opacity-90 text-white">
+                                        <Link href={paymentFullLink}>{paymentFullText}</Link>
+                                    </Button>
+                                 )}
+                                 {fullRegularTuitionDisclaimer && (
+                                    <p className="mt-4 text-sm text-stone-600 italic">{fullRegularTuitionDisclaimer}</p>
+                                 )}
+                                 {!fullRegularTuitionDisclaimer && fullTuitionDisclaimer && (
+                                    <p className="mt-4 text-sm invisible" aria-hidden="true">{fullTuitionDisclaimer}</p>
+                                 )}
+                             </div>
+                         </div>
+                         )}
                     </div>
                     )}
                     <div className="text-center mt-8 text-stone-600">
