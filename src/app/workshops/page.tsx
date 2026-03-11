@@ -52,8 +52,7 @@ const workshops: Workshop[] = [
     description: "Mysore Style is the traditional way of teaching the Ashtanga Vinyasa Yoga once the student has familiarity with the Sun Salutations and primary series. In this practice you will receive personal attention from Andrea Gracia, an Authorized Level 1 Ashtanga Yoga Teacher who travels to Mysore (India) every year to study with her teacher Saraswathi Jois.",
     location: "Bedford",
     dates: [
-      "<strong>Thursdays starting March 19th</strong>",
-      "<strong>5:45 - 7:15pm</strong>"
+      "<strong>TBD</strong>"
     ],
     duration: "6 Week Program",
     cost: "$160 + tax",
