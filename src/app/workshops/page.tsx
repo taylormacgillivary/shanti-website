@@ -111,7 +111,7 @@ const workshops: Workshop[] = [
     instructorBio: "Coeli Marsh, MEd, E-RYT 500, has been a yoga teacher and trusted mentor for over two decades. She has taught in studios, K-12 schools, hospitals, and retreat centres, facilitating adaptive and inclusive group experiences. In 2001, Coeli founded the Teachers Study Project, a professional training resource for yoga teachers. Coeli is adept at integrating her background in psychology and education into yoga as a healing art, making the classroom a safe container where all bodies and abilities are welcome. In her teaching, she emphasizes a joyful approach, utilizing the therapeutic power of playfulness in navigating challenges and learning the application of mindfulness into everyday life.",
     location: "Halifax",
     dates: [
-      "<strong>Saturday, April 19th, 2026</strong>",
+      "<strong>Sunday, April 19th, 2026</strong>",
       "<strong>2:00 - 4:00pm</strong>"
     ],
     cost: "$45 + tax",
