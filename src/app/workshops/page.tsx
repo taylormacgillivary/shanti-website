@@ -100,7 +100,7 @@ const workshops: Workshop[] = [
     ],
     cost: "$80 + tax",
     takeHome: "Your very own framed botanical artwork!",
-    image: "/images-in-use/pressed-flowers.webp",
+    image: "/images-in-use/pressed-flowers-2.jpg",
     widgetId: "6811247685be"
   },
   {
