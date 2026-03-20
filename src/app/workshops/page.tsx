@@ -80,8 +80,8 @@ const workshops: Workshop[] = [
     description: "Prenatal Yoga is an incredible way to tune into your body in an intimate way as it undergoes a very challenging and magical transformation. Prenatal Yoga will help strengthen both the body and mind during your pregnancy and in preparation for labour while connecting you to a like-minded group. With everyone at a different stage of pregnancy, the community building aspect can be extremely valuable, while at the same time, building a closer connection to the little one in your belly!",
     location: "Dartmouth & Bedford",
     dates: [
-      "<strong>March 5th, 2026</strong> - <strong>Dartmouth:</strong> 5:30pm with Nikki Smith",
-      "<strong>March 9th, 2026</strong> - <strong>Bedford:</strong> 6:00pm with Prily MacPhee"
+      "<strong>April 2nd, 2026</strong> - <strong>Dartmouth:</strong> 5:30pm with Nikki Smith",
+      "<strong>April 6th, 2026</strong> - <strong>Bedford:</strong> 6:00pm with Prily MacPhee"
     ],
     duration: "4 Week Program",
     image: "/images-in-use/prenatal-2017.jpg",
@@ -251,7 +251,7 @@ export default function WorkshopsPage() {
       {workshops.filter(w => w.featured).map((workshop, index) => (
         <section key={index} className="py-24 bg-gradient-to-b from-background to-muted/30">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
               {workshop.image ? (
                 <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
                   <Image
