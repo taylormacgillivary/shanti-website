@@ -62,20 +62,6 @@ const workshops: Workshop[] = [
     widgetId: "6810924385be"
   },
   {
-    title: "Assisted Rest Workshop",
-    instructor: "Kristie & Leanna Letterio",
-    description: "Receive double the hands-on assists for even more personalized support in every shape. Join Kristie and Leanna Letterio for a 90-minute restorative yin practice designed to help you soften, unwind, and fully rest your body.",
-    location: "Dartmouth",
-    dates: [
-      "<strong>Saturday, March 28th</strong>",
-      "<strong>12:00 - 1:30pm</strong>"
-    ],
-    cost: "$50 + tax",
-    discount: "*Shanti monthly members use promo code REST10 for 10% off",
-    image: "/images-in-use/An-Assisted-Rest.jpeg",
-    widgetId: "6811236985be"
-  },
-  {
     title: "Prenatal Yoga",
     description: "Prenatal Yoga is an incredible way to tune into your body in an intimate way as it undergoes a very challenging and magical transformation. Prenatal Yoga will help strengthen both the body and mind during your pregnancy and in preparation for labour while connecting you to a like-minded group. With everyone at a different stage of pregnancy, the community building aspect can be extremely valuable, while at the same time, building a closer connection to the little one in your belly!",
     location: "Dartmouth & Bedford",
@@ -87,6 +73,21 @@ const workshops: Workshop[] = [
     image: "/images-in-use/prenatal-2017.jpg",
     widgetId: "689767685be",
     hasMultipleOptions: true
+  },
+  {
+    title: "The Art of Meditation: My Mother's Bouquet",
+    instructor: "Sasha Sheppard",
+    description: "A 2-hour pressed-flowers workshop to celebrate Mother's Day, blending mindful benefits (mental, cognitive, creative, and physical well-being) with hands-on skills: quick flower-pressing techniques, building your own press, and tips for long-lasting botanicals, then \"paint with flowers\" to create a framed botanical collage.",
+    fullDescription: "This is a 2-hour pressed-flowers workshop to celebrate Mother's Day, blending mindful benefits (mental, cognitive, creative, and physical well-being) with hands-on skills: quick flower-pressing techniques, building your own press, and tips for long-lasting botanicals, then \"paint with flowers\" to create a framed botanical collage.<br/><br/>All materials provided (fresh and hand-pressed local flowers, watercolor paper, brush, glue, and frame) plus gentle guidance, community, and creative inspiration, make a personalized, heartfelt gift for Mom.<br/><br/><strong>Take home:</strong> Your very own framed botanical artwork!",
+    location: "Bedford",
+    dates: [
+      "<strong>Saturday, April 11th, 2026</strong>",
+      "<strong>2:00 - 4:00pm</strong>"
+    ],
+    cost: "$80 + tax",
+    takeHome: "Your very own framed botanical artwork!",
+    image: "/images-in-use/pressed-flowers-2.jpg",
+    widgetId: "6811247685be"
   },
   {
     title: "Master Class with Coeli Marsh: Journey Into Flow & Deep Restoration",
