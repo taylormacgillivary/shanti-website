@@ -142,7 +142,7 @@ export function MembershipSection() {
             </CardHeader>
             <CardContent>
               <p className="text-4xl font-bold">$25</p>
-              <p className="mt-4">$20 Student/Senior Price</p>
+              <p className="mt-4">$23 Student/Senior Price</p>
               <p className="text-sm text-gray-500 dark:text-gray-400">Single Use, 1 Year Expiry</p>
             </CardContent>
             <CardFooter className="flex flex-col gap-2">
