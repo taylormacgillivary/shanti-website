@@ -327,14 +327,14 @@ export function Navigation() {
               <span className="sr-only">Toggle menu</span>
             </Button>
           </SheetTrigger>
-          <SheetContent side="right">
+          <SheetContent side="right" className="flex flex-col">
             <SheetHeader>
               <SheetTitle>Menu</SheetTitle>
               <SheetDescription>
                 Navigate to different sections of our website
               </SheetDescription>
             </SheetHeader>
-            <div className="mt-4">
+            <div className="mt-4 flex-1 overflow-y-auto">
                 <Accordion type="multiple" className="w-full">
                     <AccordionItem value="studios">
                         <AccordionTrigger className="text-lg font-medium">
