@@ -43,6 +43,7 @@ interface Workshop {
   registrationClosed?: boolean;
   hasMultipleOptions?: boolean;
   takeHome?: string;
+  hideLocationBadge?: boolean;
 }
 
 const workshops: Workshop[] = [
@@ -102,7 +103,8 @@ const workshops: Workshop[] = [
     cost: "$45 + tax",
     image: "/images-in-use/coeli-marsh.jpg",
     widgetId: "6811248085be",
-    featured: true
+    featured: true,
+    hideLocationBadge: true
   },
 ];
 
@@ -251,12 +253,14 @@ export default function WorkshopsPage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
                   
                   {/* Location Badge */}
-                  <div className="absolute top-6 right-6 bg-white/95 backdrop-blur-sm px-6 py-4 rounded-2xl shadow-xl">
-                    <div className="text-center">
-                      <div className="text-lg font-bold text-sage-green">{workshop.location}</div>
-                      <div className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: workshop.dates[0] }} />
+                  {!workshop.hideLocationBadge && (
+                    <div className="absolute top-6 right-6 bg-white/95 backdrop-blur-sm px-6 py-4 rounded-2xl shadow-xl">
+                      <div className="text-center">
+                        <div className="text-lg font-bold text-sage-green">{workshop.location}</div>
+                        <div className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: workshop.dates[0] }} />
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
               ) : (
                 <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-sage-green/20 to-sage-green/5 flex items-center justify-center">
