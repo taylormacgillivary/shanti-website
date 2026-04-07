@@ -162,7 +162,7 @@ const teachers = [
     name: "Jasmine Chauhan",
     title: "Teacher",
     image: "/images-in-use/teachers-used/Jasmine Chauhan.jpeg",
-    bio: "Jasmine Chauhan is a passionate yoga teacher committed to creating a welcoming space for all students."
+    bio: "Jasmine completed her 200-hour YTT with Shanti in June 2024 with continued training in hands-on assists and yoga as social justice work, both on and off the mat. What drives Jasmine to teach yoga is to contribute to community spaces where yoga is more accessible and inclusive for all. Her classes promote self-awareness and curiosity while offering both personal and collective experiences for movement. Students can expect a warm voice to guide them through a practice with elements of challenge, sweat, pause, and reflection."
   },
   {
     name: "Natasha Pollock",
