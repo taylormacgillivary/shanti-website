@@ -76,21 +76,6 @@ const workshops: Workshop[] = [
     hasMultipleOptions: true
   },
   {
-    title: "The Art of Meditation: My Mother's Bouquet",
-    instructor: "Sasha Sheppard",
-    description: "A 2-hour pressed-flowers workshop to celebrate Mother's Day, blending mindful benefits (mental, cognitive, creative, and physical well-being) with hands-on skills: quick flower-pressing techniques, building your own press, and tips for long-lasting botanicals, then \"paint with flowers\" to create a framed botanical collage.",
-    fullDescription: "This is a 2-hour pressed-flowers workshop to celebrate Mother's Day, blending mindful benefits (mental, cognitive, creative, and physical well-being) with hands-on skills: quick flower-pressing techniques, building your own press, and tips for long-lasting botanicals, then \"paint with flowers\" to create a framed botanical collage.<br/><br/>All materials provided (fresh and hand-pressed local flowers, watercolor paper, brush, glue, and frame) plus gentle guidance, community, and creative inspiration, make a personalized, heartfelt gift for Mom.<br/><br/><strong>Take home:</strong> Your very own framed botanical artwork!",
-    location: "Bedford",
-    dates: [
-      "<strong>Saturday, April 11th, 2026</strong>",
-      "<strong>2:00 - 4:00pm</strong>"
-    ],
-    cost: "$80 + tax",
-    takeHome: "Your very own framed botanical artwork!",
-    image: "/images-in-use/pressed-flowers-2.jpg",
-    widgetId: "6811247685be"
-  },
-  {
     title: "Master Class with Coeli Marsh: Journey Into Flow & Deep Restoration",
     instructor: "Coeli Marsh",
     description: "An all-levels vinyasa masterclass in a heated room ~ fun, challenging, therapeutic, and restorative. We begin with a slow dynamic flow that cultivates sustainable strength, while supporting joint health and nervous system balance. Through thoughtful sequencing and accessible options, we will explore movement that feels empowering and responsive to your body. The second half of class shifts into deeply relaxing restorative yoga, with long-held, nourishing poses that help the nervous system downshift, integrate the practice, and invite deep rest. You will leave feeling spacious, grounded, and replenished.",
