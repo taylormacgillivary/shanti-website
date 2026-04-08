@@ -31,7 +31,7 @@ const corporatePartners = [
   "Bowers Construction",
   "Boyne Clarke",
   "Bryant Realty",
-  "Burchells",
+  "Burchell Wickwire Bryson LLP",
   "Canada Post",
   "Canadian Blood Services",
   "CarbonCure Technologies",
