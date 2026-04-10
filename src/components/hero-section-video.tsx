@@ -1,32 +1,44 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 export function HeroSectionVideo() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const el = videoRef.current;
+    if (!el) return;
+    el.muted = true;
+    const playAttempt = el.play();
+    if (playAttempt !== undefined) {
+      playAttempt.catch(() => {
+        /* Autoplay blocked — poster still shows */
+      });
+    }
+  }, []);
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden -mt-16">
-        {/* Video Background */}
-        <div className="absolute inset-0 -z-10">
-          {/* Dark overlay for text readability */}
-          <div className="absolute inset-0 bg-black/40 z-10" />
-          
+    <section className="relative isolate flex min-h-screen items-center justify-center overflow-hidden -mt-16">
+        {/* Video background: isolate + no negative z-index keeps the layer above the page background */}
+        <div className="pointer-events-none absolute inset-0" aria-hidden>
           <video
+            ref={videoRef}
             autoPlay
             muted
             loop
             playsInline
-            className="absolute inset-0 w-full h-full object-cover"
+            preload="auto"
+            className="absolute inset-0 h-full w-full object-cover"
             poster="/images-in-use/12.jpg"
           >
             <source src="/community-video_web.mp4" type="video/mp4" />
-            {/* Fallback image if video doesn't load */}
-            <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted" />
           </video>
+          <div className="absolute inset-0 bg-black/40" />
         </div>
 
-        {/* Overlay Content - always visible */}
-        <div className="container relative z-10 mx-auto px-4 py-32 text-center">
+        <div className="relative z-10 container mx-auto px-4 py-32 text-center">
           <div className="max-w-4xl mx-auto space-y-8">
             {/* Main Headline */}
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white drop-shadow-lg">
@@ -80,7 +92,7 @@ export function HeroSectionVideo() {
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 animate-bounce">
           <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center backdrop-blur-sm">
             <div className="w-1 h-3 bg-white rounded-full mt-2 animate-pulse"></div>
           </div>

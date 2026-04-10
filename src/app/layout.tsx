@@ -69,10 +69,12 @@ export default function RootLayout({
           `}
         </Script>
         <noscript>
+          {/* Meta Pixel fallback: must be a plain img, not next/image */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             height="1"
             width="1"
-            style={{ display: 'none' }}
+            style={{ display: "none" }}
             src="https://www.facebook.com/tr?id=1420709487999562&ev=PageView&noscript=1"
             alt=""
           />
