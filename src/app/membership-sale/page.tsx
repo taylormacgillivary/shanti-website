@@ -72,8 +72,8 @@ export default function MembershipSalePage() {
 
         <div className="relative z-10 container mx-auto px-4 py-28 md:py-36 text-center">
           <div className="max-w-4xl mx-auto space-y-6 md:space-y-8">
-            <Badge className="bg-white/15 text-white border-white/30 backdrop-blur-md px-4 py-1.5">
-              <CalendarDays className="w-3.5 h-3.5 mr-2 inline" />
+            <Badge className="bg-white/15 text-white border-white/30 backdrop-blur-md px-6 py-2 text-base md:text-lg">
+              <CalendarDays className="w-4.5 h-4.5 mr-2.5 inline" />
               April 20–22 only
             </Badge>
 
@@ -83,7 +83,7 @@ export default function MembershipSalePage() {
             </h1>
 
             <p className="text-xl md:text-2xl text-white/95 drop-shadow-md max-w-2xl mx-auto leading-relaxed">
-              This spring, bring your yoga practice to life with our most accessible membership offer
+              Start for just $9. This exclusive 72-hour offer is our most accessible membership of the year.
             </p>
           </div>
         </div>
