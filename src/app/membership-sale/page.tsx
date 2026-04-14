@@ -113,6 +113,10 @@ export default function MembershipSalePage() {
             <p className="mt-4 text-lg text-muted-foreground">
               This membership pricing will be available from April 20-22 only.
             </p>
+            <p className="mt-2 text-sm text-muted-foreground">
+              Offer not applicable for current members. Please read the membership agreement for
+              full details.
+            </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
