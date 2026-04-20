@@ -3,24 +3,39 @@
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import Script from "next/script";
+import { buttonVariants } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import { Check, CalendarDays, Sparkles } from "lucide-react";
 
 /**
- * Mindbody purchase URLs for this promo. Set in .env when your sale SKUs are live:
- * NEXT_PUBLIC_MB_MEMBERSHIP_SALE_REGULAR_URL
- * NEXT_PUBLIC_MB_MEMBERSHIP_SALE_STUDENT_URL
- *
- * Defaults point at the standard 4-month monthly membership (yoga only) until updated.
+ * Both tiers use Healcode contract widgets on this page (regular: service id 169, student/senior: 173).
  */
-const CHECKOUT_REGULAR =
-  process.env.NEXT_PUBLIC_MB_MEMBERSHIP_SALE_REGULAR_URL ??
-  "https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=40&prodId=156";
 
-const CHECKOUT_STUDENT =
-  process.env.NEXT_PUBLIC_MB_MEMBERSHIP_SALE_STUDENT_URL ?? CHECKOUT_REGULAR;
+/** Same `Button` variant/size/sizing as the original regular CTA; sage fill instead of purple outline. */
+const membershipSaleRegularHealcodeLinkClass = cn(
+  "healcode-contract-text-link",
+  buttonVariants({
+    variant: "outline",
+    size: "lg",
+    className:
+      "w-full border-2 border-white/35 py-6 text-lg gradient-sage text-white hover:opacity-90 dark:border-white/25",
+  }),
+  "hover:bg-transparent dark:hover:bg-transparent"
+);
+
+/** Matches the student/senior `Button` (outline, lg, purple) so the Healcode link looks identical. */
+const membershipSaleStudentHealcodeLinkClass = cn(
+  "healcode-contract-text-link",
+  buttonVariants({
+    variant: "outline",
+    size: "lg",
+    className:
+      "w-full border-2 border-purple-600 text-purple-800 dark:text-purple-200 hover:bg-purple-50 dark:hover:bg-purple-950/40 py-6 text-lg",
+  })
+);
 
 const membershipHighlights = [
   "One membership includes access to unlimited hot yoga on our yoga-only monthly tier",
@@ -141,19 +156,12 @@ export default function MembershipSalePage() {
                 </p>
               </CardContent>
               <CardFooter className="flex flex-col gap-2 border-t bg-muted/20 pt-6 pb-6">
-                <Button
-                  size="lg"
-                  className="w-full gradient-sage hover:opacity-90 text-white py-6 text-lg"
-                  asChild
-                >
-                  <a
-                    href={CHECKOUT_REGULAR}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Buy now — regular
-                  </a>
-                </Button>
+                <div
+                  className="w-full"
+                  dangerouslySetInnerHTML={{
+                    __html: `<healcode-widget data-version="0.2" data-link-class="${membershipSaleRegularHealcodeLinkClass}" data-site-id="1889" data-mb-site-id="11233" data-service-id="169" data-bw-identity-site="true" data-type="contract-link" data-inner-html="Buy now — regular"></healcode-widget>`,
+                  }}
+                />
               </CardFooter>
             </Card>
 
@@ -175,20 +183,12 @@ export default function MembershipSalePage() {
                 </p>
               </CardContent>
               <CardFooter className="flex flex-col gap-2 border-t bg-muted/20 pt-6 pb-6">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="w-full border-2 border-purple-600 text-purple-800 dark:text-purple-200 hover:bg-purple-50 dark:hover:bg-purple-950/40 py-6 text-lg"
-                  asChild
-                >
-                  <a
-                    href={CHECKOUT_STUDENT}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Buy now — student / senior
-                  </a>
-                </Button>
+                <div
+                  className="w-full"
+                  dangerouslySetInnerHTML={{
+                    __html: `<healcode-widget data-version="0.2" data-link-class="${membershipSaleStudentHealcodeLinkClass}" data-site-id="1889" data-mb-site-id="11233" data-service-id="173" data-bw-identity-site="true" data-type="contract-link" data-inner-html="Buy now — student / senior"></healcode-widget>`,
+                  }}
+                />
               </CardFooter>
             </Card>
           </div>
@@ -266,6 +266,10 @@ export default function MembershipSalePage() {
         </div>
       </section>
 
+      <Script
+        src="https://widgets.mindbodyonline.com/javascripts/healcode.js"
+        strategy="afterInteractive"
+      />
     </div>
   );
 }

@@ -3,6 +3,7 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "sonner";
 import { Navigation } from "@/components/navigation";
+import { MembershipSaleAnnouncement } from "@/components/membership-sale-announcement";
 import { Footer } from "@/components/footer";
 import { NewsletterSignup } from "@/components/newsletter-signup";
 
@@ -19,6 +20,7 @@ export function RootLayoutClient({
       <div className="sticky top-0 z-[100] w-full">
         <Navigation />
       </div>
+      <MembershipSaleAnnouncement />
       <main className="flex-grow">{children}</main>
       <NewsletterSignup 
         variant="section"

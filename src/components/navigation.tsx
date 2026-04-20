@@ -31,12 +31,26 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { siteConfig } from "@/config/site";
+import { type NavItem } from "@/types";
+import {
+  isMembershipSaleNavOrPopupVisible,
+  MEMBERSHIP_SALE_PATH,
+} from "@/lib/membership-sale-window";
+
+const MEMBERSHIP_SALE_NAV_ITEM = {
+  title: "Membership Sale",
+  href: MEMBERSHIP_SALE_PATH,
+} satisfies NavItem;
 
 export function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const [scrollProgress, setScrollProgress] = React.useState(0);
   const pathname = usePathname();
   const isHomePage = pathname === "/" || pathname === "/home-test";
+
+  const mainNavItems: NavItem[] = isMembershipSaleNavOrPopupVisible()
+    ? [...siteConfig.mainNav, MEMBERSHIP_SALE_NAV_ITEM]
+    : siteConfig.mainNav;
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -181,7 +195,7 @@ export function Navigation() {
               </NavigationMenuContent>
             </NavigationMenuItem>
             
-            {siteConfig.mainNav.map((item) => {
+            {mainNavItems.map((item) => {
                 // If item has sub-items, render as dropdown
                 if (item.items) {
                     return (
@@ -356,7 +370,7 @@ export function Navigation() {
                         </AccordionContent>
                     </AccordionItem>
                 </Accordion>
-                {siteConfig.mainNav.map((item) => {
+                {mainNavItems.map((item) => {
                     // If item has sub-items, render as accordion
                     if (item.items) {
                         return (
