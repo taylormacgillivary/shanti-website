@@ -1,7 +1,9 @@
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
+import Script from "next/script";
 import { CheckCircle } from "lucide-react";
 import { PageHero } from "@/components/page-hero";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 const continuingGrowthItems = [
     "Have you graduated from a 200 hour teaching training program full of knowledge but lacking confidence in stepping into the teaching roll?",
@@ -26,6 +28,15 @@ const programIncludesItems = [
     "Peer feedback and support",
 ];
 
+const mentorshipRegisterHealcodeLinkClass = cn(
+    "healcode-pricing-option-text-link",
+    buttonVariants({
+        size: "lg",
+        className: "w-full gradient-sage hover:opacity-90 text-white",
+    }),
+    "hover:bg-transparent"
+);
+
 export default function MentorshipProgramPage() {
     return (
         <div className="bg-stone-50 text-stone-800">
@@ -36,6 +47,11 @@ export default function MentorshipProgramPage() {
                     <PageHero
                         title="Teaching Mentorship Program"
                         subtitle="The path from graduating with a 200 hour teaching certificate to comfortably guiding students through their yoga practice can be an uncertain one."
+                        note={
+                            <strong className="text-sage-green">
+                                Current program dates: August 6th - September 11th
+                            </strong>
+                        }
                     />
                 </div>
             </div>
@@ -113,14 +129,21 @@ export default function MentorshipProgramPage() {
                             <div className="bg-white p-8 rounded-lg shadow-lg text-center sticky top-24">
                                 <h3 className="text-2xl font-bold">Investment</h3>
                                 <p className="text-5xl font-extrabold text-sage-green my-4">$695</p>
-                                <Button asChild size="lg" className="mt-6 w-full gradient-sage hover:opacity-90 text-white">
-                                    <a href="mailto:stephanie@shantihotyoga.ca?subject=Mentorship Program">Inquire Here</a>
-                                </Button>
+                                <div
+                                    className="mt-6 w-full"
+                                    dangerouslySetInnerHTML={{
+                                        __html: `<healcode-widget data-version="0.2" data-link-class="${mentorshipRegisterHealcodeLinkClass}" data-site-id="1889" data-mb-site-id="11233" data-service-id="1425" data-bw-identity-site="true" data-type="pricing-link" data-inner-html="Register Now"></healcode-widget>`,
+                                    }}
+                                />
                             </div>
                         </aside>
                     </div>
                 </div>
             </section>
+            <Script
+                src="https://widgets.mindbodyonline.com/javascripts/healcode.js"
+                strategy="afterInteractive"
+            />
         </div>
     );
 } 

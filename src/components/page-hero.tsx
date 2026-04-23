@@ -4,7 +4,7 @@ interface PageHeroProps {
   title: React.ReactNode;
   subtitle?: string;
   badge?: string;
-  note?: string;
+  note?: React.ReactNode;
 }
 
 export function PageHero({ title, subtitle, badge, note }: PageHeroProps) {
