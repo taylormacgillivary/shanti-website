@@ -53,43 +53,26 @@ const workshops: Workshop[] = [
     description: "Mysore Style is the traditional way of teaching the Ashtanga Vinyasa Yoga once the student has familiarity with the Sun Salutations and primary series. In this practice you will receive personal attention from Andrea Gracia, an Authorized Level 1 Ashtanga Yoga Teacher who travels to Mysore (India) every year to study with her teacher Saraswathi Jois.",
     location: "Bedford",
     dates: [
-      "<strong>Starts April 2nd, 2026</strong>"
+      "<strong>Starts May 21st, 2026</strong>"
     ],
     duration: "6 Week Program",
     cost: "$160 + tax",
     discount: "*Shanti monthly members receive 10% discount with promo code: Mysore10",
     image: "/images-in-use/teachers-used/andrea-gracia.jpg",
     imagePosition: "center bottom",
-    widgetId: "6810924385be"
+    widgetId: "6810924385be",
+    featured: true
   },
   {
     title: "Prenatal Yoga",
     description: "Prenatal Yoga is an incredible way to tune into your body in an intimate way as it undergoes a very challenging and magical transformation. Prenatal Yoga will help strengthen both the body and mind during your pregnancy and in preparation for labour while connecting you to a like-minded group. With everyone at a different stage of pregnancy, the community building aspect can be extremely valuable, while at the same time, building a closer connection to the little one in your belly!",
-    location: "Dartmouth & Bedford",
+    location: "Bedford",
     dates: [
-      "<strong>April 2nd, 2026</strong> - <strong>Dartmouth:</strong> 5:30pm with Nikki Smith",
-      "<strong>April 6th, 2026</strong> - <strong>Bedford:</strong> 6:00pm with Prily MacPhee"
+      "<strong>Begins May 25th, 2026</strong>"
     ],
     duration: "4 Week Program",
     image: "/images-in-use/prenatal-2017.jpg",
-    widgetId: "689767685be",
-    hasMultipleOptions: true
-  },
-  {
-    title: "Master Class with Coeli Marsh: Journey Into Flow & Deep Restoration",
-    instructor: "Coeli Marsh",
-    description: "An all-levels vinyasa masterclass in a heated room ~ fun, challenging, therapeutic, and restorative. We begin with a slow dynamic flow that cultivates sustainable strength, while supporting joint health and nervous system balance. Through thoughtful sequencing and accessible options, we will explore movement that feels empowering and responsive to your body. The second half of class shifts into deeply relaxing restorative yoga, with long-held, nourishing poses that help the nervous system downshift, integrate the practice, and invite deep rest. You will leave feeling spacious, grounded, and replenished.",
-    instructorBio: "Coeli Marsh, MEd, E-RYT 500, has been a yoga teacher and trusted mentor for over two decades. She has taught in studios, K-12 schools, hospitals, and retreat centres, facilitating adaptive and inclusive group experiences. In 2001, Coeli founded the Teachers Study Project, a professional training resource for yoga teachers. Coeli is adept at integrating her background in psychology and education into yoga as a healing art, making the classroom a safe container where all bodies and abilities are welcome. In her teaching, she emphasizes a joyful approach, utilizing the therapeutic power of playfulness in navigating challenges and learning the application of mindfulness into everyday life.",
-    location: "Halifax",
-    dates: [
-      "<strong>Sunday, April 19th, 2026</strong>",
-      "<strong>2:00 - 4:00pm</strong>"
-    ],
-    cost: "$45 + tax",
-    image: "/images-in-use/coeli-marsh.jpg",
-    widgetId: "6811248085be",
-    featured: true,
-    hideLocationBadge: true
+    widgetId: "689767685be"
   },
 ];
 
