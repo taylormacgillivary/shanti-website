@@ -189,6 +189,13 @@ const teachers = [
     title: "Teacher",
     image: "/images-in-use/teachers-used/jordan-pacewski.jpeg",
     bio: "My yoga journey started as a fitness endeavour after having to move home from BC due to a minor car accident. Yoga quickly became a part of my daily life and after years in the wine and hospitality industry I decided to take my 200hr in 2019. I grew up a really shy kid with no intentions of public speaking in any capacity so I was unsure if I actually wanted to teach or just took the training to further my practice. I was thrown in to sub at the studio I trained in and all of a sudden I was teaching a few classes a week. I took my 300hr in 2021 followed by my Pilates training in 2022. Somewhere along the line, teaching became my favourite hobby. This summer I decided to take on teaching pilates full time. I couldn't be happier! I'm so thankful to be part of the shanti team!"
+  },
+  {
+    name: "Coeli Marsh",
+    title: "Teacher",
+    certifications: "MEd, E-RYT 500",
+    image: "/images-in-use/coeli-marsh.jpg",
+    bio: "Coeli Marsh, MEd, E-RYT 500, has been a yoga teacher and trusted mentor for over two decades. She has taught in studios, K-12 schools, hospitals, and retreat centers, facilitating adaptive and inclusive group experiences. In 2001, Coeli founded the Teachers Study Project, a professional training resource for yoga teachers. Coeli is adept at integrating her background in psychology and education into yoga as a healing art, making the classroom a safe container where all bodies and abilities are welcome. In her teaching, she emphasizes a joyful approach, utilizing the therapeutic power of playfulness in navigating challenges and learning the application of mindfulness into everyday life."
   }
 ];
 
