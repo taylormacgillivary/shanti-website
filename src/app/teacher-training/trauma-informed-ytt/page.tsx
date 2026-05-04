@@ -77,11 +77,13 @@ export default function TraumaInformedYTTPage() {
             curriculumTitle="Course Overview"
             teachers={teachers}
             investment={investment}
-            paymentDepositLink="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=-7"
-            paymentFullLink="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=-7"
+            paymentDepositLink="#"
+            paymentFullLink="#"
             paymentDepositText="Register Now"
             paymentFullText="Register Now"
             showDepositOnly={true}
+            useMindbodyWidgets
+            mindbodyDepositServiceId="1639"
         />
     )
 }
