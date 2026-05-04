@@ -315,7 +315,7 @@ export function CoursePage({
                                     </div>
                                     <div className="flex-grow">
                                         <h3 className="text-2xl font-bold">{teacher.name}</h3>
-                                        <p className="text-sage-green font-semibold mb-2">{teacher.title}</p>
+                                        <p className="text-sage-green font-semibold mb-2 whitespace-pre-line">{teacher.title}</p>
                                         <Accordion type="single" collapsible>
                                             <AccordionItem value="item-1" className="border-none">
                                                 <AccordionTrigger className="text-stone-600 hover:no-underline justify-start gap-2 py-1 [&[data-state=open]>svg]:rotate-180">

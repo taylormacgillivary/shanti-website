@@ -50,8 +50,8 @@ const curriculum = [
 const teachers = [
     {
         name: "Maeka Wright",
-        title: "Yoga Therapist, Physiotherapy Assistant & Osteopathy Student",
-        bio: "Maeka (they/them) is a yoga therapist, physiotherapy assistant and osteopathy student living and working on the South Shore of Nova Scotia. They are passionate about creating inclusive yoga spaces by inviting participants to move from the place they are at with presence, honesty and a healthy dose of humour. As a life long student of yoga with over 25 years of personal practice and thousands of hours of training, Maeka enjoys sharing their knowledge and experience while giving thanks to the lineage of teachers in this practice that originated in ancient India.",
+        title: "Osteopath, Yoga Therapist\nDOMP C-IAYT",
+        bio: "Maeka (they/them) is an osteopath and yoga therapist living and working on the South Shore of Nova Scotia. They are passionate about creating inclusive yoga spaces by inviting participants to move from the place they are at with presence, honesty and a healthy dose of humour. As a life long student of yoga with over 25 years of personal practice and thousands of hours of training, Maeka enjoys sharing their knowledge and experience while giving thanks to the lineage of teachers in this practice that originated in ancient India.",
         image: "/images-in-use/teachers-used/maeka.jpeg",
         hideFullBioLink: true
     }
