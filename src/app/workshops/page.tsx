@@ -38,7 +38,6 @@ interface Workshop {
   cost?: string;
   featured?: boolean;
   imagePosition?: string;
-  customWidget?: string;
   widgetId?: string;
   registrationClosed?: boolean;
   hasMultipleOptions?: boolean;
@@ -74,6 +73,20 @@ const workshops: Workshop[] = [
     image: "/images-in-use/prenatal-2017.jpg",
     widgetId: "689767685be"
   },
+  {
+    title: "Summer Solstice Sound Bath: Ignite & Align",
+    instructor: "Amanda Savoie",
+    description: "Celebrate the height of the sun and the turning of the season with a deeply immersive sound bath experience rooted in intention, energy, and quiet ritual with Amanda Savoie.",
+    fullDescription: "We&apos;ll begin with a guided journaling practice, inviting you to connect with what you&apos;re ready to call in, expand, and embody as the light reaches its peak. From there, you&apos;ll be carried through a restorative sound journey with crystal singing bowls and other resonant instruments, supporting release, alignment, and inner awakening.<br><br>We&apos;ll close with a gentle tea ritual and intentional moment to ground, integrate, and honour the shift into a new season.<br><br>This is a space to soften, reconnect, and step into your light.",
+    location: "Bedford",
+    dates: [
+      "<strong>Date:</strong> Saturday, June 20th, 2026",
+      "<strong>From:</strong> 6:00 pm - 7:30 pm"
+    ],
+    cost: "$30 + tax (10% off for Shanti members)",
+    image: "/images-in-use/sound-bath.webp",
+    widgetId: "6810924285be"
+  },
 ];
 
 export default function WorkshopsPage() {
@@ -95,6 +108,9 @@ export default function WorkshopsPage() {
     script.src = 'https://widgets.mindbodyonline.com/javascripts/healcode.js';
     script.type = 'text/javascript';
     script.async = true;
+    script.onload = () => {
+      window.HealCode?.init();
+    };
     document.body.appendChild(script);
 
     return () => {
@@ -103,6 +119,10 @@ export default function WorkshopsPage() {
         document.body.removeChild(script);
       }
     };
+  }, []);
+
+  useEffect(() => {
+    window.HealCode?.init();
   }, []);
 
   // Initialize widget only once when modal first opens with a widget
