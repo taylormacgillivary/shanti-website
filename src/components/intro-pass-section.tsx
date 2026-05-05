@@ -29,7 +29,7 @@ export function IntroPassSection() {
 
             <p className="text-xl text-muted-foreground leading-relaxed">
               Experience unlimited classes across all three studios for two full weeks. 
-              Perfect for those new to hot yoga or wanting to try our unique approach to practice.
+              Perfect for those new to hot yoga & pilates or wanting to try our unique approach to practice.
             </p>
 
             <ul className="space-y-3">
@@ -37,7 +37,7 @@ export function IntroPassSection() {
                 <svg className="w-6 h-6 text-sage-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                 </svg>
-                Unlimited access to all classes
+                Unlimited access to all classes & Pilates classes
               </li>
               <li className="flex items-center gap-2 text-lg text-muted-foreground">
                 <svg className="w-6 h-6 text-sage-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
