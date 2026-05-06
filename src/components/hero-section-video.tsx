@@ -51,7 +51,7 @@ export function HeroSectionVideo() {
             {/* Subtitle - no background box */}
             <p className="text-xl md:text-2xl text-white leading-relaxed max-w-3xl mx-auto drop-shadow-lg">
               Access all three locations in Halifax, Bedford, and Dartmouth with one membership. 
-              Join our thriving community and discover the transformative power of hot yoga.
+              Join our thriving community and discover the transformative power of hot yoga & pilates.
             </p>
 
             {/* CTA Buttons */}
