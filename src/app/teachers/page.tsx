@@ -196,6 +196,13 @@ const teachers = [
     certifications: "MEd, E-RYT 500",
     image: "/images-in-use/coeli-marsh.jpg",
     bio: "Coeli Marsh, MEd, E-RYT 500, has been a yoga teacher and trusted mentor for over two decades. She has taught in studios, K-12 schools, hospitals, and retreat centers, facilitating adaptive and inclusive group experiences. In 2001, Coeli founded the Teachers Study Project, a professional training resource for yoga teachers. Coeli is adept at integrating her background in psychology and education into yoga as a healing art, making the classroom a safe container where all bodies and abilities are welcome. In her teaching, she emphasizes a joyful approach, utilizing the therapeutic power of playfulness in navigating challenges and learning the application of mindfulness into everyday life."
+  },
+  {
+    name: "Shyla Hacala",
+    title: "Teacher",
+    image: "/images-in-use/shyla-hacala.jpeg",
+    objectPosition: "object-[63%_0%]",
+    bio: "Shyla is a Certified Yoga Therapist and Pilates teacher with 1,000 hours of therapeutic yoga training and certification in the Barre Pilates Method. Specializing in therapeutic alignment, nervous system regulation, and somatics, Shyla is passionate about creating sustainable movement patterns that prioritize joint health. Her classes offer a supportive, fun, and challenging practice that builds physical resilience and nervous system ease."
   }
 ];
 
