@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
@@ -131,7 +132,7 @@ export default function SuspendOrCancelPage() {
           ) : selectedOption === "suspend" ? (
             <SuspendForm onBack={handleBack} onSuccess={handleSuccess} />
           ) : (
-            <CancelForm onBack={handleBack} onSuccess={handleSuccess} />
+            <CancelForm onBack={handleBack} />
           )}
         </DialogContent>
       </Dialog>
@@ -330,7 +331,8 @@ function SuspendForm({ onBack, onSuccess }: { onBack: () => void; onSuccess: () 
   );
 }
 
-function CancelForm({ onBack, onSuccess }: { onBack: () => void; onSuccess: () => void }) {
+function CancelForm({ onBack }: { onBack: () => void }) {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -358,7 +360,7 @@ function CancelForm({ onBack, onSuccess }: { onBack: () => void; onSuccess: () =
       const result = await submitCancelRequest(formData);
       
       if (result.success) {
-        onSuccess();
+        router.push("/memberships/cancel/thank-you");
       } else {
         alert(result.message || "An error occurred. Please try again.");
       }

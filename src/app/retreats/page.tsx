@@ -76,24 +76,30 @@ export default function RetreatsPage() {
         </div>
       </section>
 
-      {/* Next Retreat TBD Section */}
+      {/* Upcoming Retreat Section */}
       <section className="py-24 bg-gradient-to-b from-background to-muted/30">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <Badge variant="secondary" className="mb-6 bg-sage-green/10 text-sage-green border-sage-green/20">
-              Stay Tuned
-            </Badge>
-
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Our Next Adventure Is{" "}
-              <span className="gradient-sage-text">
-                Coming Soon
-              </span>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              <span className="gradient-sage-text">Malta</span> 2026
             </h2>
 
-            <p className="text-xl text-muted-foreground leading-relaxed">
-              We&apos;re currently planning our next incredible retreat destination. 
-              Sign up for our newsletter below to be the first to know where we&apos;re heading next.
+            <p className="text-2xl md:text-3xl font-semibold text-foreground mb-10">
+              October 23-26, 2026
+            </p>
+
+            <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-8">
+              <Image
+                src="/images-in-use/malta-3.jpg"
+                alt="Malta retreat destination"
+                fill
+                sizes="(max-width: 768px) 100vw, 768px"
+                className="object-cover"
+              />
+            </div>
+
+            <p className="text-2xl md:text-3xl font-bold text-black">
+              <span className="gradient-sage-text">Registration</span> Opening Soon
             </p>
           </div>
         </div>

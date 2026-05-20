@@ -227,12 +227,16 @@ ${data.feedback ? `\nFeedback:\n${data.feedback}` : ''}
         } else {
           console.error("Failed to send email via Web3Forms");
           console.error("Web3Forms error response:", responseData);
-          throw new Error(responseData.message || "Failed to send email");
+          console.warn(
+            "Cancellation request logged above but email notification was not sent. Check server logs and Web3Forms dashboard."
+          );
         }
       }
     } catch (emailError) {
-      console.error("Error sending email:", emailError);
-      throw emailError; // Re-throw to trigger error response
+      console.error("Error sending cancellation email:", emailError);
+      console.warn(
+        "Cancellation request logged above but email notification failed. Check server logs."
+      );
     }
 
     return { 
