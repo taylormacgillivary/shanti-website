@@ -684,7 +684,7 @@ export default function ShortCECoursesPage() {
                               <div className="w-2 h-2 bg-sage-green rounded-full mt-2 flex-shrink-0"></div>
                               <div>
                                 <p className="font-medium text-foreground">Date</p>
-                                <p className="text-muted-foreground">June 13th, 2026</p>
+                                <p className="text-muted-foreground">TBD</p>
                               </div>
                             </div>
                             
@@ -715,14 +715,12 @@ export default function ShortCECoursesPage() {
                           </div>
 
                           <div className="mt-6 pt-4 border-t border-sage-green/20">
-                            <a 
-                              href="https://clients.mindbodyonline.com/classic/ws?studioid=11233&stype=41&sTG=39&prodId=1613"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="w-full inline-flex items-center justify-center rounded-md bg-sage-green text-white font-medium px-4 py-3 hover:bg-sage-green/90 transition-colors"
+                            <button 
+                              disabled
+                              className="w-full inline-flex items-center justify-center rounded-md bg-gray-400 text-white font-medium px-4 py-3 cursor-not-allowed transition-colors"
                             >
-                              Register
-                            </a>
+                              Registration Closed
+                            </button>
                           </div>
                         </div>
                       </div>
