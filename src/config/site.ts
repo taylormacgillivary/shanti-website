@@ -126,12 +126,6 @@ export const siteConfig = {
             description: "Dive into the web-like connective tissue that wraps every muscle, organ, and bone.",
         },
         {
-            title: "Trauma Informed YTT",
-            href: "/teacher-training/trauma-informed-ytt",
-            description: "Creating safer yoga spaces with trauma-informed practices.",
-            isNew: true,
-        },
-        {
             title: "Short CE Courses",
             href: "/teacher-training/short-ce-courses",
             description: "Focused continuing education courses for yoga teachers.",

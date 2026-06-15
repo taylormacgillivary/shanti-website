@@ -191,6 +191,13 @@ const teachers = [
     bio: "My yoga journey started as a fitness endeavour after having to move home from BC due to a minor car accident. Yoga quickly became a part of my daily life and after years in the wine and hospitality industry I decided to take my 200hr in 2019. I grew up a really shy kid with no intentions of public speaking in any capacity so I was unsure if I actually wanted to teach or just took the training to further my practice. I was thrown in to sub at the studio I trained in and all of a sudden I was teaching a few classes a week. I took my 300hr in 2021 followed by my Pilates training in 2022. Somewhere along the line, teaching became my favourite hobby. This summer I decided to take on teaching pilates full time. I couldn't be happier! I'm so thankful to be part of the shanti team!"
   },
   {
+    name: "Shannon Farrell",
+    title: "Teacher",
+    image: "/images-in-use/shannon-farrell.jpeg",
+    objectPosition: "object-top",
+    bio: "Shannon discovered Pilates after a lifetime in sports and movement. Growing up as a competitive athlete and later playing NCAA Division III ice hockey at Trinity College, she developed a deep appreciation for strength, mobility, and the connection between movement and performance.\nAfter years of training and coaching, Shannon turned to Pilates as a way to prevent injuries and move more intentionally. She has participated in both classical and contemporary Pilates training and is certified in Contemporary Pilates.\nHer classes blend athletic strength with mindful movement, designed to leave you feeling stronger, more balanced, and energized. Expect a mix of core-focused challenges, and plenty of millennial-era music to keep things fun. Shannon is passionate about creating a welcoming environment where everyone feels supported, whether you're new to movement or a seasoned practitioner."
+  },
+  {
     name: "Coeli Marsh",
     title: "Teacher",
     certifications: "MEd, E-RYT 500",
