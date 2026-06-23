@@ -35,6 +35,7 @@ interface Investment {
     tuition: number;
     earlyBirdTuition?: number;
     earlyBirdDate?: string;
+    earlyBirdNote?: string;
     graduateTuition?: number;
     graduateEarlyBirdTuition?: number;
 }
@@ -361,12 +362,17 @@ export function CoursePage({
                                 <p className="text-5xl font-extrabold text-sage-green my-4">
                                     ${investment.earlyBirdTuition ? investment.earlyBirdTuition : investment.tuition}
                                 </p>
-                                {investment.earlyBirdTuition && investment.earlyBirdDate && 
+                                {investment.earlyBirdNote &&
+                                    <p className="text-stone-600 mb-4">
+                                        {investment.earlyBirdNote}
+                                    </p>
+                                }
+                                {!investment.earlyBirdNote && investment.earlyBirdTuition && investment.earlyBirdDate && 
                                     <p className="text-stone-600 mb-4">
                                         Early bird pricing until {investment.earlyBirdDate}. Regular price ${investment.tuition}.
                                     </p>
                                 }
-                                {investment.earlyBirdTuition && !investment.earlyBirdDate && 
+                                {!investment.earlyBirdNote && investment.earlyBirdTuition && !investment.earlyBirdDate && 
                                     <p className="text-stone-600 mb-4">
                                         Early bird pricing. Regular price ${investment.tuition}.
                                     </p>

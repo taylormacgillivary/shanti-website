@@ -85,7 +85,8 @@ const curriculum = [
   const investment = {
       deposit: 150,
       tuition: 575,
-      earlyBirdTuition: 475
+      earlyBirdTuition: 475,
+      earlyBirdNote: "Early Bird Pricing. Ends September 30th. Regular price $575.",
   }
 
 export default function ChairYogaPage() {
