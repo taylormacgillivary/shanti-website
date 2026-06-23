@@ -52,7 +52,7 @@ const workshops: Workshop[] = [
     description: "Mysore Style is the traditional way of teaching the Ashtanga Vinyasa Yoga once the student has familiarity with the Sun Salutations and primary series. In this practice you will receive personal attention from Andrea Gracia, an Authorized Level 1 Ashtanga Yoga Teacher who travels to Mysore (India) every year to study with her teacher Saraswathi Jois.",
     location: "Bedford",
     dates: [
-      "<strong>Starts May 21st, 2026</strong>"
+      "<strong>Starts June 25th, 2026</strong>"
     ],
     duration: "6 Week Program",
     cost: "$160 + tax",
@@ -92,7 +92,6 @@ const workshops: Workshop[] = [
 export default function WorkshopsPage() {
   const [selectedWorkshop, setSelectedWorkshop] = useState<Workshop | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [widgetInitialized, setWidgetInitialized] = useState(false);
   const [descriptionWorkshop, setDescriptionWorkshop] = useState<Workshop | null>(null);
   const [isDescriptionModalOpen, setIsDescriptionModalOpen] = useState(false);
   const [expandedBioIndex, setExpandedBioIndex] = useState<number | null>(null);
@@ -125,18 +124,14 @@ export default function WorkshopsPage() {
     window.HealCode?.init();
   }, []);
 
-  // Initialize widget only once when modal first opens with a widget
+  // Re-initialize Mindbody widget when modal opens with a widget
   useEffect(() => {
-    if (isModalOpen && selectedWorkshop?.widgetId && !widgetInitialized) {
-      // Give the DOM time to render the widget element
+    if (isModalOpen && selectedWorkshop?.widgetId) {
       setTimeout(() => {
-        if (window.HealCode) {
-          window.HealCode.init();
-          setWidgetInitialized(true);
-        }
+        window.HealCode?.init();
       }, 100);
     }
-  }, [isModalOpen, selectedWorkshop, widgetInitialized]);
+  }, [isModalOpen, selectedWorkshop?.widgetId]);
 
   // Close our modal when user clicks on Mindbody widget's register button
   useEffect(() => {

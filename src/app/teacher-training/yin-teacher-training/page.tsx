@@ -23,7 +23,7 @@ const curriculum = [
         title: "Distance Learning Component",
         content: [
             "One hour workshop recording about Personalizing your Practice. Includes an overview of target areas, poses for each & exploring each target area for yourself to help students in their exploration.",
-            "One hour workshop recording from Uriel regarding philosophy.",
+            "One hour workshop recording from Niki Smith regarding philosophy.",
             "One reflection submitted on review of a yin class not taught in the weekend. (This can be a class that was conducted live online, from a recording or a studio practice.)",
             "Audio of a meditation practice to guide self-inquiry and nurturing; the expectation is for it to be practiced weekly with weekly prompts for journaling (two-hour time commitment for the month)",
             "Audio of Yoga Nidra, to be practiced weekly with weekly prompts for journaling (two-hour time commitment for the month)",
@@ -71,10 +71,9 @@ const teachers = [
         image: "/images-in-use/teachers-used/nikki-martin.jpg"
     },
     {
-        name: "Uriel MacGillivary",
-        title: "E- RYT 500 Hour, Reiki Master",
-        bio: "Uriel is a yoga teacher, an entrepreneur, and a leader of transformational Yoga teacher trainings and retreats across the Globe. She is the founder of Shanti Yoga Studios and the Shanti Traditional School of Yoga based in Halifax, Nova Scotia. Having held senior management and marketing roles in Corporate Canada for twenty years she answered the call to become a yoga teacher. A life-changing journey to India to study the ancient teachings would transform her life. Overnight she walked away from everything that she knew and started a phase in her life that would take her on the adventure of a lifetime. Stepping into her true purpose she recognized that students longed for the same deep transformation in their lives. Her studios and teaching philosophy are guided by the values of the time-honored wisdom teachings of the yoga tradition. Led by masters such as the late Georg Feurerstein, of the Traditional School of Yoga and world-renowned yoga and meditation teacher Rod Stryker she is a student for life. Having studied Tantra, Vinyasa Krama, and Iyengar yoga, she brings a multi-disciplinary approach to her teaching. My vision is clear she says: 'I believe in the power of yoga to transform lives and inspire students to awaken their souls calling'.",
-        image: "/images-in-use/teachers-used/uriel-macgillivary.jpg"
+        name: "Niki Smith",
+        title: "",
+        bio: "Niki has been part of this beautiful community since the beginning, and is forever grateful for the lessons she has learned from her teachers, mentors, students, and friends.\n\nWhen she began her journey of teaching, she wanted to empower everyone with the gift of yoga. Over the years she has had the honour of teaching many different styles, including Hatha, Vinyasa, Yin, Restorative, Meditation, Prenatal, and Children's yoga, to name a few.\n\nTo Niki, yoga means healing and growth. She is grateful for every class she teaches, feeling lucky to hold space for others so they have this opportunity.\n\nShe believes you have to show up exactly as you are—and that is more than enough. She believes you have to make all the mistakes: smile, laugh, cry, or take deep breaths, but feel your way through it. This is how we grow. She believes that having compassion for yourself is key to self-love, and that self-love is the start of healing.\n\nHer hope is that students find this in her classes.",
     },
     {
         name: "Stephanie Morton",

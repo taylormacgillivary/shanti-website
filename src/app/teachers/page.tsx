@@ -127,6 +127,11 @@ const teachers = [
     bio: "Nikki came to yoga in 2012, craving an activity to get her out of the house and drawn by both the strength, grace and challenge of arm balances and inversions, and a desire to finally forge a path to peace and happiness in her life. She quickly fell in love with the practice of yoga as a whole and how it enriched all facets of her life, and though she still loves the physical challenges, it presents she has come to appreciate the mental, spiritual and philosophical aspects of the practice as well."
   },
   {
+    name: "Niki Smith",
+    title: "Teacher",
+    bio: "Niki has been part of this beautiful community since the beginning, and is forever grateful for the lessons she has learned from her teachers, mentors, students, and friends.\n\nWhen she began her journey of teaching, she wanted to empower everyone with the gift of yoga. Over the years she has had the honour of teaching many different styles, including Hatha, Vinyasa, Yin, Restorative, Meditation, Prenatal, and Children's yoga, to name a few.\n\nTo Niki, yoga means healing and growth. She is grateful for every class she teaches, feeling lucky to hold space for others so they have this opportunity.\n\nShe believes you have to show up exactly as you are—and that is more than enough. She believes you have to make all the mistakes: smile, laugh, cry, or take deep breaths, but feel your way through it. This is how we grow. She believes that having compassion for yourself is key to self-love, and that self-love is the start of healing.\n\nHer hope is that students find this in her classes."
+  },
+  {
     name: "Courtney Parsons",
     title: "Teacher",
     image: "/images-in-use/teachers-used/courtney-parsons.jpg",
@@ -267,13 +272,17 @@ export default function TeachersPage() {
                   className="relative bg-white rounded-2xl overflow-hidden shadow-xl"
                 >
                   <div className="aspect-[3/4] relative">
-                    <Image
-                      src={teacher.image}
-                      alt={teacher.name}
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      className={`object-cover ${teacher.objectPosition || ''}`}
-                    />
+                    {teacher.image ? (
+                      <Image
+                        src={teacher.image}
+                        alt={teacher.name}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className={`object-cover ${teacher.objectPosition || ''}`}
+                      />
+                    ) : (
+                      <div className="absolute inset-0 bg-gradient-to-br from-sage-green/20 to-sage-green/5" />
+                    )}
                   </div>
                   <div className="p-6 space-y-4">
                     <div>
@@ -305,15 +314,17 @@ export default function TeachersPage() {
                   ref={(el) => { teacherRefs.current[teacherSlug] = el; }}
                   className="bg-white rounded-xl overflow-hidden shadow-lg"
                 >
-                  <div className="aspect-[3/2] relative">
-                    <Image
-                      src={teacher.image}
-                      alt={teacher.name}
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      className={`object-cover ${teacher.objectPosition || ''}`}
-                    />
-                  </div>
+                  {teacher.image ? (
+                    <div className="aspect-[3/2] relative">
+                      <Image
+                        src={teacher.image}
+                        alt={teacher.name}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className={`object-cover ${teacher.objectPosition || ''}`}
+                      />
+                    </div>
+                  ) : null}
                   <div className="p-6">
                     <h3 className="text-xl font-bold mb-2">{teacher.name}</h3>
                     <Bio text={teacher.bio} autoExpand={isTargetTeacher(teacherSlug)} />

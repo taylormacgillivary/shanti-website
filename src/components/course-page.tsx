@@ -14,7 +14,7 @@ interface Teacher {
     name: string;
     title: string;
     bio: string;
-    image: string;
+    image?: string;
     imagePosition?: string;
     hideFullBioLink?: boolean;
 }
@@ -303,16 +303,18 @@ export function CoursePage({
                             
                             return (
                                 <div key={index} className="flex flex-col sm:flex-row items-start gap-6">
-                                    <div className="flex-shrink-0 relative w-[150px] h-[150px]">
-                                        <Image 
-                                            src={teacher.image} 
-                                            alt={teacher.name} 
-                                            fill 
-                                            sizes="150px" 
-                                            className="rounded-full object-cover" 
-                                            style={teacher.imagePosition ? { objectPosition: teacher.imagePosition } : undefined}
-                                        />
-                                    </div>
+                                    {teacher.image && (
+                                        <div className="flex-shrink-0 relative w-[150px] h-[150px]">
+                                            <Image 
+                                                src={teacher.image} 
+                                                alt={teacher.name} 
+                                                fill 
+                                                sizes="150px" 
+                                                className="rounded-full object-cover" 
+                                                style={teacher.imagePosition ? { objectPosition: teacher.imagePosition } : undefined}
+                                            />
+                                        </div>
+                                    )}
                                     <div className="flex-grow">
                                         <h3 className="text-2xl font-bold">{teacher.name}</h3>
                                         <p className="text-sage-green font-semibold mb-2 whitespace-pre-line">{teacher.title}</p>
