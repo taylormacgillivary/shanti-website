@@ -4,6 +4,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "sonner";
 import { Navigation } from "@/components/navigation";
 import { MembershipSaleAnnouncement } from "@/components/membership-sale-announcement";
+import { CanadaDaySaleAnnouncement } from "@/components/canada-day-sale-announcement";
+import { CanadaDaySaleBar } from "@/components/canada-day-sale-bar";
 import { Footer } from "@/components/footer";
 import { NewsletterSignup } from "@/components/newsletter-signup";
 
@@ -19,8 +21,10 @@ export function RootLayoutClient({
     <QueryClientProvider client={queryClient}>
       <div className="sticky top-0 z-[100] w-full">
         <Navigation />
+        <CanadaDaySaleBar />
       </div>
       <MembershipSaleAnnouncement />
+      <CanadaDaySaleAnnouncement />
       <main className="flex-grow">{children}</main>
       <NewsletterSignup 
         variant="section"
