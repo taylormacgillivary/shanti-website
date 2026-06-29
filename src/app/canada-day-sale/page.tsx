@@ -12,7 +12,7 @@ const PROMO_CODE = "CANADA"
 
 const REGULAR_PASS_WIDGET = `<healcode-widget data-version="0.2" data-link-class="healcode-pricing-option-text-link w-full gradient-sage text-white inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 cursor-pointer" data-site-id="1889" data-mb-site-id="11233" data-service-id="291" data-bw-identity-site="true" data-type="pricing-link" data-inner-html="Buy Now"></healcode-widget>`
 
-const STUDENT_SENIOR_PASS_WIDGET = `<healcode-widget data-version="0.2" data-link-class="healcode-pricing-option-text-link text-xs font-bold transition-colors hover:opacity-70" data-site-id="1889" data-mb-site-id="11233" data-service-id="292" data-bw-identity-site="true" data-type="pricing-link" data-inner-html="Buy Student/Senior Pass"></healcode-widget>`
+const STUDENT_SENIOR_PASS_WIDGET = `<healcode-widget data-version="0.2" data-link-class="healcode-pricing-option-text-link w-full gradient-sage text-white inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 cursor-pointer" data-site-id="1889" data-mb-site-id="11233" data-service-id="292" data-bw-identity-site="true" data-type="pricing-link" data-inner-html="Buy Student/Senior Pass"></healcode-widget>`
 
 export default function CanadaDaySalePage() {
   const [copied, setCopied] = useState(false)
@@ -213,6 +213,9 @@ export default function CanadaDaySalePage() {
                     className="w-full"
                     dangerouslySetInnerHTML={{ __html: STUDENT_SENIOR_PASS_WIDGET }}
                   />
+                  <p className="text-xs text-center text-gray-700 font-medium">
+                    *Must show ID upon first class to verify student/senior eligibility*
+                  </p>
                 </CardFooter>
               </Card>
             </div>

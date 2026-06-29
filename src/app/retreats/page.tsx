@@ -99,7 +99,7 @@ export default function RetreatsPage() {
             </div>
 
             <p className="text-2xl md:text-3xl font-bold text-black">
-              <span className="gradient-sage-text">Registration</span> Opening Soon
+              SOLD OUT
             </p>
           </div>
         </div>
