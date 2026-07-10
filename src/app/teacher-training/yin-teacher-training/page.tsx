@@ -87,7 +87,7 @@ const investment = {
     deposit: 500,
     tuition: 1425,
     earlyBirdTuition: 1325,
-    earlyBirdDate: "July 26th",
+    earlyBirdDate: "July 26th, 2026",
 };
 
 export default function YinTeacherTrainingPage() {

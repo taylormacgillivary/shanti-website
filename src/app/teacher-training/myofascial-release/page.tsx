@@ -69,7 +69,7 @@ const curriculum = [
       deposit: 150,
       tuition: 795,
       earlyBirdTuition: 695,
-      earlyBirdDate: "August 2, 2025"
+      earlyBirdDate: "August 2, 2026"
   }
 
 export default function MyofascialReleasePage() {
