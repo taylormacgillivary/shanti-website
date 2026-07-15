@@ -105,6 +105,7 @@ export default function YinTeacherTrainingPage() {
             paymentFullLink="#"
             ceCredits="75 Hours"
             showDepositOnly={true}
+            showYinApplication={true}
         />
     )
 } 

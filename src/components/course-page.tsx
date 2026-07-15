@@ -9,6 +9,7 @@ import { ReactNode } from "react";
 import { Award, ShieldCheck } from "lucide-react";
 import { ScholarshipSection } from "@/components/scholarship-section";
 import { InfoPackageEmailCapture } from "@/components/info-package-email-capture";
+import { YinTrainingApplication } from "@/components/yin-training-application";
 
 interface Teacher {
     name: string;
@@ -74,6 +75,7 @@ interface CoursePageProps {
     mindbodyFullServiceId?: string;
     mindbodyFullRegularServiceId?: string;
     showScholarship?: boolean;
+    showYinApplication?: boolean;
     fullTuitionDisclaimer?: string;
     fullRegularTuitionDisclaimer?: string;
 }
@@ -107,34 +109,38 @@ export function CoursePage({
     mindbodyFullServiceId,
     mindbodyFullRegularServiceId,
     showScholarship = false,
+    showYinApplication = false,
     fullTuitionDisclaimer,
     fullRegularTuitionDisclaimer,
 }: CoursePageProps) {
     const renderBadges = () => {
-        if (!ceCredits && !isYogaAlliance) return null;
+        if (!ceCredits && !isYogaAlliance && !showYinApplication) return null;
         return (
-            <div className="flex flex-wrap justify-center items-center gap-4 mt-12">
-                {ceCredits && (
-                    <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-800 font-semibold py-2 px-4 rounded-full">
-                        <Award className="h-5 w-5" />
-                        <span>{ceCredits} CE Credits</span>
-                    </div>
-                )}
-                {isYogaAlliance && (
-                    <div className="flex flex-col items-center gap-3">
-                        <div className="inline-flex items-center gap-2 bg-green-100 text-green-800 font-semibold py-2 px-4 rounded-full">
-                            <ShieldCheck className="h-5 w-5" />
-                            <span>Yoga Alliance Certified</span>
+            <div className="mt-12">
+                <div className="flex flex-wrap justify-center items-center gap-4">
+                    {ceCredits && (
+                        <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-800 font-semibold py-2 px-4 rounded-full">
+                            <Award className="h-5 w-5" />
+                            <span>{ceCredits} CE Credits</span>
                         </div>
-                        <Image 
-                            src="/images-in-use/RYS-200.png" 
-                            alt="Yoga Alliance RYS-200" 
-                            width={120} 
-                            height={80} 
-                            className="object-contain"
-                        />
-                    </div>
-                )}
+                    )}
+                    {isYogaAlliance && (
+                        <div className="flex flex-col items-center gap-3">
+                            <div className="inline-flex items-center gap-2 bg-green-100 text-green-800 font-semibold py-2 px-4 rounded-full">
+                                <ShieldCheck className="h-5 w-5" />
+                                <span>Yoga Alliance Certified</span>
+                            </div>
+                            <Image 
+                                src="/images-in-use/RYS-200.png" 
+                                alt="Yoga Alliance RYS-200" 
+                                width={120} 
+                                height={80} 
+                                className="object-contain"
+                            />
+                        </div>
+                    )}
+                </div>
+                {showYinApplication && <YinTrainingApplication />}
             </div>
         )
     }
