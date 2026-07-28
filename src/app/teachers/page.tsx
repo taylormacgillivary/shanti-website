@@ -190,10 +190,11 @@ const teachers = [
     objectPosition: "object-[50%_25%]"
   },
   {
-    name: "Jordan Pacewski",
+    name: "Janiessa Jarvis",
     title: "Teacher",
-    image: "/images-in-use/teachers-used/jordan-pacewski.jpeg",
-    bio: "My yoga journey started as a fitness endeavour after having to move home from BC due to a minor car accident. Yoga quickly became a part of my daily life and after years in the wine and hospitality industry I decided to take my 200hr in 2019. I grew up a really shy kid with no intentions of public speaking in any capacity so I was unsure if I actually wanted to teach or just took the training to further my practice. I was thrown in to sub at the studio I trained in and all of a sudden I was teaching a few classes a week. I took my 300hr in 2021 followed by my Pilates training in 2022. Somewhere along the line, teaching became my favourite hobby. This summer I decided to take on teaching pilates full time. I couldn't be happier! I'm so thankful to be part of the shanti team!"
+    image: "/images-in-use/janessa.jpg",
+    objectPosition: "object-[50%_20%]",
+    bio: "Hi my name is Janiessa,\nI found Pilates and yoga during a season of recovery after severe injuries and multiple surgeries. I was looking for a way to move my body again, rebuild trust in what it could do, and regain confidence in myself through movement. As a mom of three, I was also searching for something that allowed for personal time, community and a way to fill my cup.\nThat journey eventually led me to teaching. I am a classically and comprehensively trained Pilates and Reformer instructor. I love helping others discover just how strong and capable their bodies are. In every class, I focus on the three C's of Pilates: centering, concentration, and control, while creating a supportive and welcoming space for all levels.\nI also hold my 200-hour Yoga Teacher certification and come from a diverse sports background. Over the years, I've trained and competed in martial arts, bikini bodybuilding, boxing, rugby, baseball, and more. These experiences taught me the value of discipline, resilience, and moving with purpose—lessons I bring into every class I teach.\nMy classes are set to music and designed to help you move safely, build strength, improve stability, and feel good in your body. Whether you're brand new to Pilates or have been practicing for years, my goal is to help you leave class feeling stronger, more confident, and empowered in your movement.\nI can't wait to move with you!"
   },
   {
     name: "Shannon Farrell",
