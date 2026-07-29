@@ -521,30 +521,3 @@ export function CancelForm({ onBack }: { onBack: () => void }) {
   );
 }
 
-export function CancelUnavailableMessage({ onBack }: { onBack: () => void }) {
-  return (
-    <>
-      <DialogHeader>
-        <Button variant="ghost" onClick={onBack} className="w-fit mb-2">
-          ← Back
-        </Button>
-        <DialogTitle className="text-2xl">Cancel Your Membership</DialogTitle>
-      </DialogHeader>
-
-      <div className="py-6 space-y-4">
-        <p className="text-base text-muted-foreground leading-relaxed">
-          We are currently reconfiguring our automatic submission process for
-          membership cancellations. Please email{" "}
-          <a
-            href="mailto:info@shantihotyoga.ca?subject=Membership%20Cancellation%20Request"
-            className="text-sage-green font-semibold underline hover:text-sage-green/80"
-          >
-            info@shantihotyoga.ca
-          </a>{" "}
-          to cancel your membership. Two weeks notice is required to cancel your
-          membership before the next billing cycle.
-        </p>
-      </div>
-    </>
-  );
-}

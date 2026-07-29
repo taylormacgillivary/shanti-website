@@ -11,7 +11,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import {
-  CancelUnavailableMessage,
+  CancelForm,
   MembershipSuccessMessage,
   SuspendForm,
 } from "@/components/membership-manage-forms";
@@ -138,7 +138,7 @@ export default function SuspendOrCancelPage() {
           ) : selectedOption === "suspend" ? (
             <SuspendForm onBack={handleBack} onSuccess={handleSuccess} />
           ) : (
-            <CancelUnavailableMessage onBack={handleBack} />
+            <CancelForm onBack={handleBack} />
           )}
         </DialogContent>
       </Dialog>

@@ -170,19 +170,15 @@ const modules = [
     },
   ]
 
-  const investment = {
-      deposit: 1000,
-      tuition: 3600,
-      earlyBirdTuition: 3200,
-      earlyBirdDate: "March 1, 2026"
-  }
+// Tuition cards + Mindbody payment buttons are archived in ./archived-investment.ts
+// Restore by spreading archivedYtt200InvestmentProps onto CoursePage and removing investmentPlaceholder.
 
 export default function YTT200HourPage() {
     return (
         <CoursePage
             title="Yoga Teacher Training"
-            subtitle="Spring 2026 • A 200-Hour Foundational Journey"
-            dates="Module 1: May 1-8, 2026 • Module 2: May 15-22, 2026 • Module 3: May 29-31, 2026"
+            subtitle="A 200-Hour Foundational Journey"
+            dates="Next Program Dates TBD"
             quote="We must be willing to let go of the life we have planned, so as to have the life that is waiting for us."
             heroImage="/images-in-use/05.jpg"
             imageTwo="/images-in-use/12.jpg"
@@ -194,18 +190,9 @@ export default function YTT200HourPage() {
             curriculumTitle="Course Curriculum"
             teachers={teachers}
             faqs={faqs}
-            investment={investment}
-            paymentDepositLink="#"
-            paymentFullLink="#"
-            paymentDepositText="Pay Your Deposit"
-            paymentFullText="Pay Remainder of Tuition"
+            investmentPlaceholder="Program costs will be posted when the next training dates are finalized"
             isYogaAlliance={true}
-            useMindbodyWidgets={true}
-            mindbodyDepositServiceId="1383"
-            mindbodyFullServiceId="1384"
-            mindbodyFullRegularServiceId="1633"
             showScholarship={true}
-            fullTuitionDisclaimer="Only use this link if you paid your deposit before March 1"
         />
     )
 } 

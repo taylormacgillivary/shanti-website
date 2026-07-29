@@ -62,9 +62,11 @@ interface CoursePageProps {
     curriculumTitle?: string;
     teachers: Teacher[];
     faqs?: Faq[];
-    investment: Investment;
-    paymentDepositLink: string;
-    paymentFullLink: string;
+    investment?: Investment;
+    /** When set, replaces investment cards/buttons with this message (e.g. while dates are TBD). */
+    investmentPlaceholder?: string;
+    paymentDepositLink?: string;
+    paymentFullLink?: string;
     paymentDepositText?: string;
     paymentFullText?: string;
     ceCredits?: string;
@@ -97,8 +99,9 @@ export function CoursePage({
     teachers,
     faqs,
     investment,
-    paymentDepositLink,
-    paymentFullLink,
+    investmentPlaceholder,
+    paymentDepositLink = "#",
+    paymentFullLink = "#",
     paymentDepositText = "Pay Deposit",
     paymentFullText = "Pay Full Tuition",
     ceCredits,
@@ -361,7 +364,13 @@ export function CoursePage({
                     <div className="text-center mb-12">
                         <h2 className="text-3xl sm:text-4xl font-extrabold text-stone-900">Investment</h2>
                     </div>
-                    {showDepositOnly ? (
+                    {investmentPlaceholder ? (
+                        <div className="max-w-2xl mx-auto text-center">
+                            <p className="text-lg sm:text-xl text-stone-700 leading-relaxed">
+                                {investmentPlaceholder}
+                            </p>
+                        </div>
+                    ) : investment && showDepositOnly ? (
                         <div className="flex justify-center">
                             <div className="w-full max-w-md p-8 bg-stone-100 rounded-lg shadow-lg text-center">
                                 <h3 className="text-2xl font-bold">Total Cost</h3>
@@ -411,7 +420,7 @@ export function CoursePage({
                                 )}
                             </div>
                         </div>
-                    ) : (
+                    ) : investment ? (
                     <div className="flex flex-col md:flex-row justify-center items-stretch gap-8">
                          <div className="w-full md:w-1/3 p-8 bg-stone-100 rounded-lg shadow-lg text-center flex flex-col">
                              <h3 className="text-2xl font-bold">Deposit</h3>
@@ -505,7 +514,8 @@ export function CoursePage({
                          </div>
                          )}
                     </div>
-                    )}
+                    ) : null}
+                    {!investmentPlaceholder && (
                     <div className="text-center mt-8 text-stone-600">
                         {showDepositOnly ? (
                             <>
@@ -519,6 +529,7 @@ export function CoursePage({
                             </>
                         )}
                     </div>
+                    )}
                     
                     {showInfoPackageCapture && (
                         <div className="mt-12 max-w-2xl mx-auto">
@@ -566,7 +577,7 @@ export function CoursePage({
             )}
             
             {/* Load HealCode script if using Mindbody widgets */}
-            {useMindbodyWidgets && (
+            {useMindbodyWidgets && !investmentPlaceholder && (
                 <Script
                     src="https://widgets.mindbodyonline.com/javascripts/healcode.js"
                     strategy="afterInteractive"
