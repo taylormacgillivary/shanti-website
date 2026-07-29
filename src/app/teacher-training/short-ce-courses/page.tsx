@@ -18,7 +18,7 @@ export default function ShortCECoursesPage() {
     {
       id: "meditation",
       name: "The Art of Presence",
-      description: "Exploring meditation techniques for stillness and presence"
+      description: "Meditation for Modern Life"
     },
     {
       id: "advanced-asana",
@@ -421,7 +421,7 @@ export default function ShortCECoursesPage() {
                               <div className="w-2 h-2 bg-sage-green rounded-full mt-2 flex-shrink-0"></div>
                               <div>
                                 <p className="font-medium text-foreground">Date</p>
-                                <p className="text-muted-foreground">March 21st, 2026</p>
+                                <p className="text-muted-foreground">October 3rd, 2026</p>
                               </div>
                             </div>
                             
@@ -429,7 +429,15 @@ export default function ShortCECoursesPage() {
                               <div className="w-2 h-2 bg-sage-green rounded-full mt-2 flex-shrink-0"></div>
                               <div>
                                 <p className="font-medium text-foreground">Time</p>
-                                <p className="text-muted-foreground">1-5pm</p>
+                                <p className="text-muted-foreground">1:00-5:00pm</p>
+                              </div>
+                            </div>
+
+                            <div className="flex items-start gap-3">
+                              <div className="w-2 h-2 bg-sage-green rounded-full mt-2 flex-shrink-0"></div>
+                              <div>
+                                <p className="font-medium text-foreground">Location</p>
+                                <p className="text-muted-foreground">Dartmouth</p>
                               </div>
                             </div>
                             
@@ -437,7 +445,7 @@ export default function ShortCECoursesPage() {
                               <div className="w-2 h-2 bg-sage-green rounded-full mt-2 flex-shrink-0"></div>
                               <div>
                                 <p className="font-medium text-foreground">Cost</p>
-                                <p className="text-muted-foreground">$225+tax</p>
+                                <p className="text-muted-foreground">$150+tax</p>
                                 <p className="text-muted-foreground font-semibold text-sage-green">6 course bundle: $825+tax</p>
                               </div>
                             </div>
