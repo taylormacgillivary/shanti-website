@@ -4,19 +4,8 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { sendEmail } from "@/app/actions/contact";
+import { submitWeb3Form, web3formsKeys } from "@/lib/web3forms";
 import { CheckCircle2 } from "lucide-react";
-
-// Client-side schema for form validation
-const formSchema = z.object({
-  name: z.string().min(2, { message: "Name must be at least 2 characters." }),
-  email: z.string().email({ message: "Please enter a valid email." }),
-  subject: z.string().min(5, { message: "Subject must be at least 5 characters." }),
-  message: z.string().min(10, { message: "Message must be at least 10 characters." }),
-});
-
-type FormData = z.infer<typeof formSchema>;
-
 import {
   Form,
   FormControl,
@@ -37,9 +26,18 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
+const formSchema = z.object({
+  name: z.string().min(2, { message: "Name must be at least 2 characters." }),
+  email: z.string().email({ message: "Please enter a valid email." }),
+  subject: z.string().min(5, { message: "Subject must be at least 5 characters." }),
+  message: z.string().min(10, { message: "Message must be at least 10 characters." }),
+});
+
+type FormData = z.infer<typeof formSchema>;
+
 export function ContactForm({ className }: { className?: string }) {
   const [showSuccess, setShowSuccess] = useState(false);
-  
+
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -51,7 +49,16 @@ export function ContactForm({ className }: { className?: string }) {
   });
 
   async function onSubmit(data: FormData) {
-    const result = await sendEmail(data);
+    const result = await submitWeb3Form({
+      access_key: web3formsKeys.contact(),
+      subject: `Contact Form: ${data.subject}`,
+      from_name: data.name,
+      email: data.email,
+      name: data.name,
+      form_subject: data.subject,
+      message: data.message,
+    });
+
     if (result.success) {
       setShowSuccess(true);
       form.reset();
@@ -128,21 +135,27 @@ export function ContactForm({ className }: { className?: string }) {
             </FormItem>
           )}
         />
-        <Button type="submit" className="gradient-sage hover:opacity-90 text-white" disabled={form.formState.isSubmitting}>
-            {form.formState.isSubmitting ? "Sending..." : "Send Message"}
+        <Button
+          type="submit"
+          className="gradient-sage hover:opacity-90 text-white"
+          disabled={form.formState.isSubmitting}
+        >
+          {form.formState.isSubmitting ? "Sending..." : "Send Message"}
         </Button>
       </form>
 
-      {/* Success Modal */}
       <Dialog open={showSuccess} onOpenChange={setShowSuccess}>
         <DialogContent className="max-w-md">
           <DialogHeader>
             <div className="flex justify-center mb-4">
               <CheckCircle2 className="h-16 w-16 text-green-500" />
             </div>
-            <DialogTitle className="text-2xl text-center">Message Sent Successfully!</DialogTitle>
+            <DialogTitle className="text-2xl text-center">
+              Message Sent Successfully!
+            </DialogTitle>
             <DialogDescription className="text-center text-base">
-              Thank you for reaching out. We&apos;ve received your message and will get back to you soon.
+              Thank you for reaching out. We&apos;ve received your message and will
+              get back to you soon.
             </DialogDescription>
           </DialogHeader>
 
@@ -155,4 +168,4 @@ export function ContactForm({ className }: { className?: string }) {
       </Dialog>
     </Form>
   );
-} 
+}

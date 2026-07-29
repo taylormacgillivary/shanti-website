@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { submitScholarshipApplication } from "@/app/actions/scholarship";
+import { submitWeb3Form, web3formsKeys } from "@/lib/web3forms";
 import { CheckCircle2, GraduationCap, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -74,7 +74,27 @@ export function ScholarshipSection() {
   });
 
   async function onSubmit(data: ScholarshipFormData) {
-    const result = await submitScholarshipApplication(data);
+    const result = await submitWeb3Form({
+      access_key: web3formsKeys.scholarship(),
+      subject: "New YTT Scholarship Application",
+      from_name: data.fullName,
+      email: data.email,
+      full_name: data.fullName,
+      reasons_for_enrollment: data.reasonsForEnrollment,
+      teaching_aspirations: data.teachingAspirations || "Not answered",
+      program_selection: data.programSelection,
+      personal_definition: data.personalDefinition,
+      experience_and_style: data.experienceAndStyle,
+      current_routine: data.currentRoutine,
+      origin_story: data.originStory,
+      beyond_physical: data.beyondPhysical,
+      lessons_learned: data.lessonsLearned,
+      teacher_qualities: data.teacherQualities,
+      fears_hesitations: data.fearsHesitations,
+      support_system: data.supportSystem,
+      additional_comments: data.additionalComments || "Not provided",
+    });
+
     if (result.success) {
       setShowFormModal(false);
       setShowSuccess(true);

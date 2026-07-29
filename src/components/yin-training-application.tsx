@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { submitYinTrainingApplication } from "@/app/actions/yin-training";
+import { submitWeb3Form, web3formsKeys } from "@/lib/web3forms";
 import { CheckCircle2 } from "lucide-react";
 
 const initialFormData = {
@@ -39,7 +39,21 @@ export function YinTrainingApplication() {
     setIsSubmitting(true);
 
     try {
-      const result = await submitYinTrainingApplication(formData);
+      const result = await submitWeb3Form({
+        access_key: web3formsKeys.yinTraining(),
+        subject: "New Yin Yoga Teacher Training Application",
+        from_name: formData.name,
+        email: formData.email,
+        name: formData.name,
+        contact_number: formData.contactNumber,
+        emergency_name: formData.emergencyName,
+        emergency_contact: formData.emergencyContact,
+        emergency_relationship: formData.emergencyRelationship,
+        why_yin_training: formData.whyYinTraining,
+        yin_experience: formData.yinExperience,
+        describe_yin_yoga: formData.describeYinYoga,
+        current_practice: formData.currentPractice,
+      });
 
       if (result.success) {
         setShowSuccess(true);

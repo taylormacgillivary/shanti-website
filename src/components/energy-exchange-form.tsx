@@ -7,8 +7,18 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Textarea } from "@/components/ui/textarea";
-import { submitEnergyExchangeApplication } from "@/app/actions/energy-exchange";
+import { submitWeb3Form, web3formsKeys } from "@/lib/web3forms";
 import { CheckCircle2 } from "lucide-react";
+
+function selectedLabels(
+  selections: Record<string, boolean>,
+  labels: Record<string, string>
+): string {
+  return Object.entries(selections)
+    .filter(([, value]) => value)
+    .map(([key]) => labels[key])
+    .join(", ");
+}
 
 interface EnergyExchangeFormProps {
   open: boolean;
@@ -55,11 +65,47 @@ export function EnergyExchangeForm({ open, onOpenChange }: EnergyExchangeFormPro
     setIsSubmitting(true);
 
     try {
-      const result = await submitEnergyExchangeApplication(formData);
-      
+      const locations = selectedLabels(formData.locations, {
+        halifax: "Halifax",
+        dartmouth: "Dartmouth",
+        bedford: "Bedford",
+      });
+      const availability = selectedLabels(formData.availability, {
+        monday: "Monday",
+        tuesday: "Tuesday",
+        wednesday: "Wednesday",
+        thursday: "Thursday",
+        friday: "Friday",
+        saturday: "Saturday",
+        sunday: "Sunday",
+      });
+      const shifts = selectedLabels(formData.shifts, {
+        morning: "Morning",
+        evening: "Evening",
+        anytime: "Anytime",
+      });
+
+      const result = await submitWeb3Form({
+        access_key: web3formsKeys.energyExchange(),
+        subject: "New Energy Exchange Application",
+        from_name: `${formData.firstName} ${formData.lastName}`,
+        email: formData.email,
+        first_name: formData.firstName,
+        last_name: formData.lastName,
+        phone: formData.phone,
+        newsletter_signup: formData.newsletter ? "Yes" : "No",
+        location_preference: locations || "Not specified",
+        availability: availability || "Not specified",
+        shift_preference: shifts || "Not specified",
+        how_did_you_hear: formData.howDidYouHear || "Not answered",
+        yoga_experience: formData.yogaExperience || "Not answered",
+        program_appeal: formData.programAppeal || "Not answered",
+        conflicts: formData.conflicts || "Not answered",
+        additional_info: formData.additionalInfo || "Not provided",
+      });
+
       if (result.success) {
         setShowSuccess(true);
-        // Reset form
         setFormData({
           firstName: "",
           lastName: "",
@@ -69,7 +115,7 @@ export function EnergyExchangeForm({ open, onOpenChange }: EnergyExchangeFormPro
           locations: {
             halifax: false,
             dartmouth: false,
-            bedford: false
+            bedford: false,
           },
           availability: {
             monday: false,
@@ -78,18 +124,18 @@ export function EnergyExchangeForm({ open, onOpenChange }: EnergyExchangeFormPro
             thursday: false,
             friday: false,
             saturday: false,
-            sunday: false
+            sunday: false,
           },
           shifts: {
             morning: false,
             evening: false,
-            anytime: false
+            anytime: false,
           },
           howDidYouHear: "",
           yogaExperience: "",
           programAppeal: "",
           conflicts: "",
-          additionalInfo: ""
+          additionalInfo: "",
         });
       } else {
         alert(result.message || "An error occurred. Please try again.");
