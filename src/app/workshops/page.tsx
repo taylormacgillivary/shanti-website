@@ -52,7 +52,7 @@ const workshops: Workshop[] = [
     description: "Mysore Style is the traditional way of teaching the Ashtanga Vinyasa Yoga once the student has familiarity with the Sun Salutations and primary series. In this practice you will receive personal attention from Andrea Gracia, an Authorized Level 1 Ashtanga Yoga Teacher who travels to Mysore (India) every year to study with her teacher Saraswathi Jois.",
     location: "Bedford",
     dates: [
-      "<strong>Starts June 25th, 2026</strong>"
+      "<strong>August 6 – September 10, 2026</strong>"
     ],
     duration: "6 Week Program",
     cost: "$160 + tax",
@@ -62,6 +62,11 @@ const workshops: Workshop[] = [
     widgetId: "6810924385be",
     featured: true
   },
+];
+
+// Saved for later — move entries back into `workshops` to restore cards
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const savedWorkshops: Workshop[] = [
   {
     title: "Prenatal Yoga",
     description: "Prenatal Yoga is an incredible way to tune into your body in an intimate way as it undergoes a very challenging and magical transformation. Prenatal Yoga will help strengthen both the body and mind during your pregnancy and in preparation for labour while connecting you to a like-minded group. With everyone at a different stage of pregnancy, the community building aspect can be extremely valuable, while at the same time, building a closer connection to the little one in your belly!",
@@ -309,98 +314,104 @@ export default function WorkshopsPage() {
       {/* Other Workshops Grid */}
       <section className="py-24 bg-gradient-to-b from-muted/30 to-background">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {workshops.filter(w => !w.featured).map((workshop, index) => (
-              <div key={index} className="bg-white rounded-xl overflow-hidden shadow-lg flex flex-col">
-                {workshop.image ? (
-                  <div className="aspect-[3/2] relative">
-                    <Image
-                      src={workshop.image}
-                      alt={workshop.title}
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      className="object-cover"
-                      style={workshop.imagePosition ? { objectPosition: workshop.imagePosition } : undefined}
-                    />
-                    <div className="absolute top-4 right-4">
-                      <Badge className="bg-white/90 text-gray-900 backdrop-blur-sm">
-                        {workshop.location}
-                      </Badge>
+          {workshops.filter(w => !w.featured).length === 0 ? (
+            <p className="text-center text-2xl md:text-3xl font-medium text-muted-foreground">
+              Fall Programs Coming Soon!
+            </p>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {workshops.filter(w => !w.featured).map((workshop, index) => (
+                <div key={index} className="bg-white rounded-xl overflow-hidden shadow-lg flex flex-col">
+                  {workshop.image ? (
+                    <div className="aspect-[3/2] relative">
+                      <Image
+                        src={workshop.image}
+                        alt={workshop.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="object-cover"
+                        style={workshop.imagePosition ? { objectPosition: workshop.imagePosition } : undefined}
+                      />
+                      <div className="absolute top-4 right-4">
+                        <Badge className="bg-white/90 text-gray-900 backdrop-blur-sm">
+                          {workshop.location}
+                        </Badge>
+                      </div>
                     </div>
-                  </div>
-                ) : (
-                  <div className="aspect-[3/2] relative bg-gradient-to-br from-sage-green/20 to-sage-green/5 flex items-center justify-center">
-                    <div className="text-center p-4">
-                      <Badge className="bg-white/90 text-gray-900 backdrop-blur-sm">
-                        {workshop.location}
-                      </Badge>
+                  ) : (
+                    <div className="aspect-[3/2] relative bg-gradient-to-br from-sage-green/20 to-sage-green/5 flex items-center justify-center">
+                      <div className="text-center p-4">
+                        <Badge className="bg-white/90 text-gray-900 backdrop-blur-sm">
+                          {workshop.location}
+                        </Badge>
+                      </div>
                     </div>
-                  </div>
-                )}
-                <div className="p-6 space-y-4 flex flex-col flex-grow">
-                  <h3 className="text-2xl font-bold">{workshop.title}</h3>
-                  {workshop.instructor && (
-                    <p className="text-sage-green font-medium">with {workshop.instructor}</p>
                   )}
-                  <p className="text-muted-foreground">{workshop.description}</p>
-                  {workshop.fullDescription && (
-                    <button
-                      onClick={() => handleReadMore(workshop)}
-                      className="text-sage-green hover:text-sage-green/80 text-sm font-medium underline underline-offset-2 text-left transition-colors"
-                    >
-                      Read Full Description →
-                    </button>
-                  )}
-                  {workshop.instructorBio && (
-                    <div className="space-y-2">
+                  <div className="p-6 space-y-4 flex flex-col flex-grow">
+                    <h3 className="text-2xl font-bold">{workshop.title}</h3>
+                    {workshop.instructor && (
+                      <p className="text-sage-green font-medium">with {workshop.instructor}</p>
+                    )}
+                    <p className="text-muted-foreground">{workshop.description}</p>
+                    {workshop.fullDescription && (
                       <button
-                        onClick={() => setExpandedBioIndex(expandedBioIndex === index ? null : index)}
-                        className="text-sage-green hover:text-sage-green/80 text-sm font-medium underline underline-offset-2 text-left transition-colors flex items-center gap-1"
+                        onClick={() => handleReadMore(workshop)}
+                        className="text-sage-green hover:text-sage-green/80 text-sm font-medium underline underline-offset-2 text-left transition-colors"
                       >
-                        {expandedBioIndex === index ? "Hide" : "Read"} {workshop.instructor?.split(' ')[0]}&apos;s full bio
-                        <span className={`transition-transform duration-200 ${expandedBioIndex === index ? 'rotate-180' : ''}`}>
-                          ▼
-                        </span>
+                        Read Full Description →
                       </button>
-                      {expandedBioIndex === index && (
-                        <div className="text-sm text-muted-foreground bg-muted/30 p-4 rounded-lg border border-sage-green/10 animate-in fade-in slide-in-from-top-2 duration-200">
-                          {workshop.instructorBio}
+                    )}
+                    {workshop.instructorBio && (
+                      <div className="space-y-2">
+                        <button
+                          onClick={() => setExpandedBioIndex(expandedBioIndex === index ? null : index)}
+                          className="text-sage-green hover:text-sage-green/80 text-sm font-medium underline underline-offset-2 text-left transition-colors flex items-center gap-1"
+                        >
+                          {expandedBioIndex === index ? "Hide" : "Read"} {workshop.instructor?.split(' ')[0]}&apos;s full bio
+                          <span className={`transition-transform duration-200 ${expandedBioIndex === index ? 'rotate-180' : ''}`}>
+                            ▼
+                          </span>
+                        </button>
+                        {expandedBioIndex === index && (
+                          <div className="text-sm text-muted-foreground bg-muted/30 p-4 rounded-lg border border-sage-green/10 animate-in fade-in slide-in-from-top-2 duration-200">
+                            {workshop.instructorBio}
+                          </div>
+                        )}
+                      </div>
+                    )}
+                    <div className="space-y-1">
+                      {workshop.dates.map((date, i) => (
+                        <div key={i} className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: date }} />
+                      ))}
+                      {workshop.duration && (
+                        <div className="text-sm font-medium text-sage-green">
+                          {workshop.duration}
                         </div>
                       )}
                     </div>
-                  )}
-                  <div className="space-y-1">
-                    {workshop.dates.map((date, i) => (
-                      <div key={i} className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: date }} />
-                    ))}
-                    {workshop.duration && (
-                      <div className="text-sm font-medium text-sage-green">
-                        {workshop.duration}
+                    {workshop.dropIn && (
+                      <div className="text-xs text-muted-foreground italic">
+                        {workshop.dropIn}
                       </div>
                     )}
-                  </div>
-                  {workshop.dropIn && (
-                    <div className="text-xs text-muted-foreground italic">
-                      {workshop.dropIn}
+                    {workshop.discount && (
+                      <div className="text-xs text-sage-green font-medium">
+                        {workshop.discount}
+                      </div>
+                    )}
+                    <div className="mt-auto pt-2">
+                      <Button 
+                        onClick={() => handleRegisterClick(workshop)}
+                        className="w-full gradient-sage text-white hover:opacity-90"
+                      >
+                        Register Now
+                      </Button>
                     </div>
-                  )}
-                  {workshop.discount && (
-                    <div className="text-xs text-sage-green font-medium">
-                      {workshop.discount}
-                    </div>
-                  )}
-                  <div className="mt-auto pt-2">
-                    <Button 
-                      onClick={() => handleRegisterClick(workshop)}
-                      className="w-full gradient-sage text-white hover:opacity-90"
-                    >
-                      Register Now
-                    </Button>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
