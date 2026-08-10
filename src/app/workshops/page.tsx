@@ -60,7 +60,24 @@ const workshops: Workshop[] = [
     image: "/images-in-use/teachers-used/andrea-gracia.jpg",
     imagePosition: "center bottom",
     widgetId: "6810924385be",
+    registrationClosed: false,
     featured: true
+  },
+  {
+    title: "Flow for the Cure",
+    instructor: "Trever McWilson",
+    description: "Join yoga teacher extraordinaire and Estée Lauder Executive Trainer, Trever McWilson, in a dynamic and fun yoga class that will raise funds for Breast Cancer Research — with Shanti & Estée Lauder.",
+    fullDescription: "Join yoga teacher extraordinaire and Estée Lauder Executive Trainer, Trever McWilson, in a dynamic and fun yoga class that will raise funds for Breast Cancer Research.<br><br><em>&ldquo;Early detection and treatment is still considered the best line of defence against breast cancer!! Current technology lets researchers learn at a faster pace than they did decades ago. As technology evolves, more treatments — and, perhaps, methods of prevention — will be uncovered. The only way to this Evolution is through funding and donations. I want to bring my community together to continue to help research and technology evolve. To be able help all the women and men who have been diagnosed with this disease.&rdquo; ~ Trever McWilson</em>",
+    location: "Dartmouth",
+    dates: [
+      "<strong>Date:</strong> Sunday, October 18th, 2026",
+      "<strong>From:</strong> 2:00 pm - 3:00 pm"
+    ],
+    cost: "$30 donation (includes a Clinique goodie bag)",
+    discount: "$30 donation (includes a Clinique goodie bag)",
+    image: "/images-in-use/teachers-used/trever-mcwilson.jpeg",
+    imagePosition: "center top",
+    widgetId: "6811568685be",
   },
 ];
 
@@ -314,104 +331,103 @@ export default function WorkshopsPage() {
       {/* Other Workshops Grid */}
       <section className="py-24 bg-gradient-to-b from-muted/30 to-background">
         <div className="container mx-auto px-4">
-          {workshops.filter(w => !w.featured).length === 0 ? (
-            <p className="text-center text-2xl md:text-3xl font-medium text-muted-foreground">
-              Fall Programs Coming Soon!
-            </p>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {workshops.filter(w => !w.featured).map((workshop, index) => (
-                <div key={index} className="bg-white rounded-xl overflow-hidden shadow-lg flex flex-col">
-                  {workshop.image ? (
-                    <div className="aspect-[3/2] relative">
-                      <Image
-                        src={workshop.image}
-                        alt={workshop.title}
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        className="object-cover"
-                        style={workshop.imagePosition ? { objectPosition: workshop.imagePosition } : undefined}
-                      />
-                      <div className="absolute top-4 right-4">
-                        <Badge className="bg-white/90 text-gray-900 backdrop-blur-sm">
-                          {workshop.location}
-                        </Badge>
-                      </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {workshops.filter(w => !w.featured).map((workshop, index) => (
+              <div key={index} className="bg-white rounded-xl overflow-hidden shadow-lg flex flex-col">
+                {workshop.image ? (
+                  <div className="aspect-[3/2] relative">
+                    <Image
+                      src={workshop.image}
+                      alt={workshop.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-cover"
+                      style={workshop.imagePosition ? { objectPosition: workshop.imagePosition } : undefined}
+                    />
+                    <div className="absolute top-4 right-4">
+                      <Badge className="bg-white/90 text-gray-900 backdrop-blur-sm">
+                        {workshop.location}
+                      </Badge>
                     </div>
-                  ) : (
-                    <div className="aspect-[3/2] relative bg-gradient-to-br from-sage-green/20 to-sage-green/5 flex items-center justify-center">
-                      <div className="text-center p-4">
-                        <Badge className="bg-white/90 text-gray-900 backdrop-blur-sm">
-                          {workshop.location}
-                        </Badge>
-                      </div>
+                  </div>
+                ) : (
+                  <div className="aspect-[3/2] relative bg-gradient-to-br from-sage-green/20 to-sage-green/5 flex items-center justify-center">
+                    <div className="text-center p-4">
+                      <Badge className="bg-white/90 text-gray-900 backdrop-blur-sm">
+                        {workshop.location}
+                      </Badge>
                     </div>
+                  </div>
+                )}
+                <div className="p-6 space-y-4 flex flex-col flex-grow">
+                  <h3 className="text-2xl font-bold">{workshop.title}</h3>
+                  {workshop.instructor && (
+                    <p className="text-sage-green font-medium">with {workshop.instructor}</p>
                   )}
-                  <div className="p-6 space-y-4 flex flex-col flex-grow">
-                    <h3 className="text-2xl font-bold">{workshop.title}</h3>
-                    {workshop.instructor && (
-                      <p className="text-sage-green font-medium">with {workshop.instructor}</p>
-                    )}
-                    <p className="text-muted-foreground">{workshop.description}</p>
-                    {workshop.fullDescription && (
+                  <p className="text-muted-foreground">{workshop.description}</p>
+                  {workshop.fullDescription && (
+                    <button
+                      onClick={() => handleReadMore(workshop)}
+                      className="text-sage-green hover:text-sage-green/80 text-sm font-medium underline underline-offset-2 text-left transition-colors"
+                    >
+                      Read Full Description →
+                    </button>
+                  )}
+                  {workshop.instructorBio && (
+                    <div className="space-y-2">
                       <button
-                        onClick={() => handleReadMore(workshop)}
-                        className="text-sage-green hover:text-sage-green/80 text-sm font-medium underline underline-offset-2 text-left transition-colors"
+                        onClick={() => setExpandedBioIndex(expandedBioIndex === index ? null : index)}
+                        className="text-sage-green hover:text-sage-green/80 text-sm font-medium underline underline-offset-2 text-left transition-colors flex items-center gap-1"
                       >
-                        Read Full Description →
+                        {expandedBioIndex === index ? "Hide" : "Read"} {workshop.instructor?.split(' ')[0]}&apos;s full bio
+                        <span className={`transition-transform duration-200 ${expandedBioIndex === index ? 'rotate-180' : ''}`}>
+                          ▼
+                        </span>
                       </button>
-                    )}
-                    {workshop.instructorBio && (
-                      <div className="space-y-2">
-                        <button
-                          onClick={() => setExpandedBioIndex(expandedBioIndex === index ? null : index)}
-                          className="text-sage-green hover:text-sage-green/80 text-sm font-medium underline underline-offset-2 text-left transition-colors flex items-center gap-1"
-                        >
-                          {expandedBioIndex === index ? "Hide" : "Read"} {workshop.instructor?.split(' ')[0]}&apos;s full bio
-                          <span className={`transition-transform duration-200 ${expandedBioIndex === index ? 'rotate-180' : ''}`}>
-                            ▼
-                          </span>
-                        </button>
-                        {expandedBioIndex === index && (
-                          <div className="text-sm text-muted-foreground bg-muted/30 p-4 rounded-lg border border-sage-green/10 animate-in fade-in slide-in-from-top-2 duration-200">
-                            {workshop.instructorBio}
-                          </div>
-                        )}
-                      </div>
-                    )}
-                    <div className="space-y-1">
-                      {workshop.dates.map((date, i) => (
-                        <div key={i} className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: date }} />
-                      ))}
-                      {workshop.duration && (
-                        <div className="text-sm font-medium text-sage-green">
-                          {workshop.duration}
+                      {expandedBioIndex === index && (
+                        <div className="text-sm text-muted-foreground bg-muted/30 p-4 rounded-lg border border-sage-green/10 animate-in fade-in slide-in-from-top-2 duration-200">
+                          {workshop.instructorBio}
                         </div>
                       )}
                     </div>
-                    {workshop.dropIn && (
-                      <div className="text-xs text-muted-foreground italic">
-                        {workshop.dropIn}
+                  )}
+                  <div className="space-y-1">
+                    {workshop.dates.map((date, i) => (
+                      <div key={i} className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: date }} />
+                    ))}
+                    {workshop.duration && (
+                      <div className="text-sm font-medium text-sage-green">
+                        {workshop.duration}
                       </div>
                     )}
-                    {workshop.discount && (
-                      <div className="text-xs text-sage-green font-medium">
-                        {workshop.discount}
-                      </div>
-                    )}
-                    <div className="mt-auto pt-2">
-                      <Button 
-                        onClick={() => handleRegisterClick(workshop)}
-                        className="w-full gradient-sage text-white hover:opacity-90"
-                      >
-                        Register Now
-                      </Button>
+                  </div>
+                  {workshop.dropIn && (
+                    <div className="text-xs text-muted-foreground italic">
+                      {workshop.dropIn}
                     </div>
+                  )}
+                  {workshop.discount && (
+                    <div className="text-xs text-sage-green font-medium">
+                      {workshop.discount}
+                    </div>
+                  )}
+                  <div className="mt-auto pt-2">
+                    <Button 
+                      onClick={() => handleRegisterClick(workshop)}
+                      className="w-full gradient-sage text-white hover:opacity-90"
+                    >
+                      Register Now
+                    </Button>
                   </div>
                 </div>
-              ))}
+              </div>
+            ))}
+            <div className="rounded-xl border border-dashed border-sage-green/30 bg-sage-green/5 flex items-center justify-center min-h-[280px] p-8">
+              <p className="text-center text-2xl md:text-3xl font-medium text-muted-foreground">
+                More Fall Workshops Coming Soon!
+              </p>
             </div>
-          )}
+          </div>
         </div>
       </section>
 

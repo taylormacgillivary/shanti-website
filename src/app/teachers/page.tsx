@@ -216,6 +216,13 @@ const teachers = [
     image: "/images-in-use/shyla-hacala.jpeg",
     objectPosition: "object-[63%_0%]",
     bio: "Shyla is a Certified Yoga Therapist and Pilates teacher with 1,000 hours of therapeutic yoga training and certification in the Barre Pilates Method. Specializing in therapeutic alignment, nervous system regulation, and somatics, Shyla is passionate about creating sustainable movement patterns that prioritize joint health. Her classes offer a supportive, fun, and challenging practice that builds physical resilience and nervous system ease."
+  },
+  {
+    name: "Taq Kaur Bhandal",
+    title: "Teacher",
+    image: "/images-in-use/taq-kaur-bhandal.jpg",
+    objectPosition: "object-[50%_28%]",
+    bio: "Taq Kaur Bhandal is a certified Pilates instructor who believes movement should help people feel stronger, more connected, and more at home in their bodies. Her classes focus on mindful movement, functional strength, and building confidence and self-love through thoughtful, accessible programming that welcomes participants of all experience levels.\nOutside the studio, Taq is the Director of Equity and Community Supports at NSCAD University and the Founder of I'm With Periods. She brings the same compassionate, evidence-informed approach to her teaching, creating a supportive space where clients can challenge themselves, move with intention, and leave feeling energized."
   }
 ];
 
