@@ -74,7 +74,7 @@ export const siteConfig = {
             description: "Get in touch with any of our locations.",
         }
     ] satisfies NavItem[],
-    trainingsNav: [
+    teacherTrainingNav: [
         {
             title: "YTT 200 Hour",
             href: "/teacher-training/ytt-200-hour",
@@ -125,37 +125,11 @@ export const siteConfig = {
             href: "/teacher-training/myofascial-release",
             description: "Dive into the web-like connective tissue that wraps every muscle, organ, and bone.",
         },
-    ] as NavItem[],
-    coursesNav: [
         {
-            title: "Chanting | Mantras | Sanskrit",
-            href: "/teacher-training/courses/chanting-mantras-sanskrit",
-            description: "Sacred sounds and ancient language in yoga practice.",
+            title: "Short CE Courses",
+            href: "/teacher-training/short-ce-courses",
+            description: "Focused continuing education courses for yoga teachers.",
+            isNew: true,
         },
-        {
-            title: "Yoga In Action",
-            href: "/teacher-training/courses/yoga-in-action",
-            description: "Bringing yoga principles into daily life.",
-        },
-        {
-            title: "The Art of Presence",
-            href: "/teacher-training/courses/meditation",
-            description: "Meditation for modern life.",
-        },
-        {
-            title: "Advanced Asana Practice",
-            href: "/teacher-training/courses/advanced-asana",
-            description: "Exploring advanced yoga postures.",
-        },
-        {
-            title: "Beating Burnout",
-            href: "/teacher-training/courses/beating-burnout",
-            description: "Using yoga to prevent and recover from burnout.",
-        },
-        {
-            title: "Development & Promotion",
-            href: "/teacher-training/courses/development-promotion",
-            description: "Growing your yoga teaching career.",
-        },
-    ] as NavItem[],
+    ] satisfies NavItem[],
 }; 

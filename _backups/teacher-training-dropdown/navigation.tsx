@@ -42,20 +42,11 @@ const MEMBERSHIP_SALE_NAV_ITEM = {
   href: MEMBERSHIP_SALE_PATH,
 } satisfies NavItem;
 
-type TrainingsCoursesTab = "trainings" | "courses";
-
 export function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const [scrollProgress, setScrollProgress] = React.useState(0);
-  const [trainingsCoursesTab, setTrainingsCoursesTab] =
-    React.useState<TrainingsCoursesTab>("trainings");
   const pathname = usePathname();
   const isHomePage = pathname === "/" || pathname === "/home-test";
-
-  const trainingsCoursesItems =
-    trainingsCoursesTab === "trainings"
-      ? siteConfig.trainingsNav
-      : siteConfig.coursesNav;
 
   const mainNavItems: NavItem[] = isMembershipSaleNavOrPopupVisible()
     ? [...siteConfig.mainNav, MEMBERSHIP_SALE_NAV_ITEM]
@@ -271,55 +262,14 @@ export function Navigation() {
                     : undefined
                 }}
               >
-                Trainings and Courses
+                Teacher Training
               </NavigationMenuTrigger>
               <NavigationMenuContent>
-                <div className="p-4 pb-2">
-                  <div
-                    role="tablist"
-                    aria-label="Trainings or Courses"
-                    className="grid grid-cols-2 rounded-md border border-sage-green/30 bg-muted/40 p-1"
-                  >
-                    <button
-                      type="button"
-                      role="tab"
-                      aria-selected={trainingsCoursesTab === "trainings"}
-                      onPointerDown={(event) => event.preventDefault()}
-                      onClick={() => setTrainingsCoursesTab("trainings")}
-                      className={`rounded-sm px-3 py-2 text-sm font-medium transition-colors ${
-                        trainingsCoursesTab === "trainings"
-                          ? "bg-sage-green text-white shadow-sm"
-                          : "text-muted-foreground hover:text-foreground"
-                      }`}
-                    >
-                      Trainings
-                    </button>
-                    <button
-                      type="button"
-                      role="tab"
-                      aria-selected={trainingsCoursesTab === "courses"}
-                      onPointerDown={(event) => event.preventDefault()}
-                      onClick={() => setTrainingsCoursesTab("courses")}
-                      className={`rounded-sm px-3 py-2 text-sm font-medium transition-colors ${
-                        trainingsCoursesTab === "courses"
-                          ? "bg-sage-green text-white shadow-sm"
-                          : "text-muted-foreground hover:text-foreground"
-                      }`}
-                    >
-                      Courses
-                    </button>
-                  </div>
-                  <p className="mt-3 text-center text-xs font-semibold uppercase tracking-wide text-sage-green">
-                    {trainingsCoursesTab === "trainings" ? "Trainings" : "Courses"}
-                  </p>
+                <div className="text-center py-2 px-4 text-sm text-muted-foreground italic">
+                  Scroll down to view more
                 </div>
-                {trainingsCoursesTab === "trainings" ? (
-                  <div className="text-center px-4 pb-1 text-sm text-muted-foreground italic">
-                    Scroll down to view more
-                  </div>
-                ) : null}
-                <ul className="grid w-[400px] gap-3 p-4 pt-2 md:w-[500px] md:grid-cols-2 lg:w-[600px] max-h-[70vh] overflow-y-auto">
-                  {trainingsCoursesItems.map((item) => (
+                <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] max-h-[70vh] overflow-y-auto">
+                  {siteConfig.teacherTrainingNav.map((item) => (
                     <ListItem
                       key={item.title}
                       href={item.href}
@@ -459,59 +409,22 @@ export function Navigation() {
                     ) : null;
                 })}
                 <Accordion type="multiple" className="w-full">
-                    <AccordionItem value="trainings-and-courses">
+                    <AccordionItem value="teacher-training">
                         <AccordionTrigger className="text-lg font-medium">
-                            Trainings and Courses
+                            Teacher Training
                         </AccordionTrigger>
                         <AccordionContent>
-                            <div className="pl-4 flex flex-col gap-3">
-                              <div
-                                role="tablist"
-                                aria-label="Trainings or Courses"
-                                className="grid grid-cols-2 rounded-md border border-sage-green/30 bg-muted/40 p-1"
-                              >
-                                <button
-                                  type="button"
-                                  role="tab"
-                                  aria-selected={trainingsCoursesTab === "trainings"}
-                                  onClick={() => setTrainingsCoursesTab("trainings")}
-                                  className={`rounded-sm px-3 py-2 text-sm font-medium transition-colors ${
-                                    trainingsCoursesTab === "trainings"
-                                      ? "bg-sage-green text-white shadow-sm"
-                                      : "text-muted-foreground hover:text-foreground"
-                                  }`}
+                            <div className="pl-4 flex flex-col gap-2">
+                            {siteConfig.teacherTrainingNav.map((item) => (
+                                <MobileNavLink
+                                key={item.href}
+                                href={item.href}
+                                onOpenChange={setIsMobileMenuOpen}
+                                isNew={item.isNew}
                                 >
-                                  Trainings
-                                </button>
-                                <button
-                                  type="button"
-                                  role="tab"
-                                  aria-selected={trainingsCoursesTab === "courses"}
-                                  onClick={() => setTrainingsCoursesTab("courses")}
-                                  className={`rounded-sm px-3 py-2 text-sm font-medium transition-colors ${
-                                    trainingsCoursesTab === "courses"
-                                      ? "bg-sage-green text-white shadow-sm"
-                                      : "text-muted-foreground hover:text-foreground"
-                                  }`}
-                                >
-                                  Courses
-                                </button>
-                              </div>
-                              <p className="text-xs font-semibold uppercase tracking-wide text-sage-green">
-                                {trainingsCoursesTab === "trainings" ? "Trainings" : "Courses"}
-                              </p>
-                              <div className="flex flex-col gap-2">
-                                {trainingsCoursesItems.map((item) => (
-                                  <MobileNavLink
-                                    key={item.href}
-                                    href={item.href || "#"}
-                                    onOpenChange={setIsMobileMenuOpen}
-                                    isNew={item.isNew}
-                                  >
-                                    {item.title}
-                                  </MobileNavLink>
-                                ))}
-                              </div>
+                                {item.title}
+                                </MobileNavLink>
+                            ))}
                             </div>
                         </AccordionContent>
                     </AccordionItem>
