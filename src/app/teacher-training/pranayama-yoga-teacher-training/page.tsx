@@ -111,7 +111,7 @@ const curriculum = [
       deposit: 150,
       tuition: 795,
       earlyBirdTuition: 695,
-      earlyBirdDate: "January 2, 2026"
+      earlyBirdDate: "January 2, 2027"
   }
 
 export default function PranayamaYogaPage() {
@@ -119,7 +119,7 @@ export default function PranayamaYogaPage() {
         <CoursePage
             title="Pranayama Yoga Teacher Training"
             subtitle="Uncover your full potential to Teach, to Practice, to Live."
-            dates="February 5-8, 2026"
+            dates="February 25-28, 2027"
             heroImage="/images-in-use/Shanti Windhorse Retreat Photogrpahy By Scott Munn 2019 (43 of 75).JPG"
             imageTwo="/images-in-use/12.jpg"
             imageThree="/images-in-use/36.jpg"

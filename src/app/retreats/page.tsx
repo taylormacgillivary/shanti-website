@@ -99,7 +99,14 @@ export default function RetreatsPage() {
             </div>
 
             <p className="text-2xl md:text-3xl font-bold text-black">
-              SOLD OUT
+              Two spaces left. Please contact{" "}
+              <a
+                href="mailto:ujmacgillivary@gmail.com?subject=Malta%20Retreat%20Inquiry"
+                className="text-sage-green hover:text-sage-green/80 underline"
+              >
+                Uriel
+              </a>{" "}
+              to snag one of the last spots!
             </p>
           </div>
         </div>

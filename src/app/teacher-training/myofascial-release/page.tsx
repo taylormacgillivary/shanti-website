@@ -69,7 +69,7 @@ const curriculum = [
       deposit: 150,
       tuition: 795,
       earlyBirdTuition: 695,
-      earlyBirdDate: "August 2, 2026"
+      earlyBirdDate: "December 1, 2026"
   }
 
 export default function MyofascialReleasePage() {
@@ -77,7 +77,7 @@ export default function MyofascialReleasePage() {
         <CoursePage
             title="Myofascial Release Teacher Training"
             subtitle="Our Myofascial Release Yoga Teacher Training dives into fascia, the web-like connective tissue that wraps every muscle, organ, and bone."
-            dates="September 17-20, 2026"
+            dates="January 16-17 & January 30-31, 2027"
             heroImage="/images-in-use/20.jpg"
             imageTwo="/images-in-use/21.jpg"
             imageThree="/images-in-use/33.jpg"
