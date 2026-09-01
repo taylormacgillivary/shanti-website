@@ -61,7 +61,6 @@ const workshops: Workshop[] = [
     imagePosition: "center bottom",
     widgetId: "6810924385be",
     registrationClosed: false,
-    featured: true
   },
   {
     title: "Flow for the Cure",
@@ -93,6 +92,22 @@ const workshops: Workshop[] = [
     widgetId: "689767685be",
     registrationClosed: false,
     hasMultipleOptions: true,
+  },
+  {
+    title: "Fall Equinox Sound Bath",
+    instructor: "Amanda Savoie",
+    description: "Celebrate the Fall Equinox with a deeply restorative sound bath designed to bring you back into balance. As day and night meet in equal measure, this seasonal transition invites us to slow down, turn inward, and release what we no longer need.",
+    fullDescription: "Settle into a comfortable resting position as the soothing vibrations of crystal singing bowls and other healing instruments guide you toward deep relaxation. Through sound and stillness, you&apos;ll be invited to reflect on the season&apos;s gifts, reconnect with yourself, and create space for the months ahead.<br><br>No previous experience is needed. Bring comfortable layers and anything you need to feel warm and supported.",
+    location: "Halifax",
+    dates: [
+      "<strong>Date:</strong> Saturday, September 26th, 2026",
+      "<strong>From:</strong> 6:00 pm"
+    ],
+    cost: "$30 + tax",
+    discount: "$30 + tax",
+    image: "/images-in-use/sound-bath.webp",
+    widgetId: "6810924285be",
+    featured: true
   },
 ];
 
@@ -296,6 +311,15 @@ export default function WorkshopsPage() {
                 <p className="text-xl text-muted-foreground leading-relaxed">
                   {workshop.description}
                 </p>
+
+                {workshop.fullDescription && (
+                  <button
+                    onClick={() => handleReadMore(workshop)}
+                    className="text-sage-green hover:text-sage-green/80 text-sm font-medium underline underline-offset-2 text-left transition-colors"
+                  >
+                    Read Full Description →
+                  </button>
+                )}
 
                 <div className="space-y-2">
                   {workshop.dates.map((date, i) => (
