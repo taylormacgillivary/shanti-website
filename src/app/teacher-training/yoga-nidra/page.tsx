@@ -92,7 +92,7 @@ const investment = {
     deposit: 150,
     tuition: 795,
     earlyBirdTuition: 695,
-    earlyBirdDate: "January 5th, 2026",
+    earlyBirdDate: "February 8th, 2027",
 };
 
 export default function YogaNidraPage() {
@@ -100,7 +100,7 @@ export default function YogaNidraPage() {
         <CoursePage
             title="Yoga Nidra — Levels 1 & 2"
             subtitle="An important practice for modern times"
-            dates="March 5-8, 2026"
+            dates="April 8-11, 2027"
             heroImage="/images-in-use/SHY_2798.jpg"
             imageTwo="/images-in-use/19.jpg"
             imageThree="/images-in-use/35.jpg"
