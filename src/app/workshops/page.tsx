@@ -80,12 +80,12 @@ const workshops: Workshop[] = [
   },
   {
     title: "Prenatal Yoga",
-    instructor: "Prily MacPhee (Bedford) & Niki Smith (Dartmouth)",
+    instructor: "Stephanie Morton (Bedford) & Niki Smith (Dartmouth)",
     description: "Prenatal Yoga is an incredible way to tune into your body in an intimate way as it undergoes a very challenging and magical transformation. Prenatal Yoga will help strengthen both the body and mind during your pregnancy and in preparation for labour while connecting you to a like-minded group. With everyone at a different stage of pregnancy, the community building aspect can be extremely valuable, while at the same time, building a closer connection to the little one in your belly!",
     location: "Dartmouth & Bedford",
     dates: [
-      "<strong>Bedford:</strong> Begins September 14th, 2026",
-      "<strong>Dartmouth:</strong> Begins September 17th, 2026"
+      "<strong>Bedford:</strong> Begins October 19th, 2026",
+      "<strong>Dartmouth:</strong> Begins October 15th, 2026"
     ],
     duration: "4 Week Programs",
     image: "/images-in-use/prenatal-2017.jpg",
@@ -571,4 +571,3 @@ export default function WorkshopsPage() {
     </>
   );
 }
-
