@@ -124,7 +124,7 @@ const modules = [
     {
         name: "Stephanie Morton",
         title: "",
-        bio: "Stephanie Morton has been teaching yoga since 2011. As a long distance runner and running coach, she has worked with many endurance athletes but also has a keen interest in yoga for healthy aging.",
+        bio: "Stephanie Morton has been teaching yoga since 2011. A long-distance runner and running coach, she has worked with many endurance athletes and has a particular interest in healthy aging, functional movement, and sustainable practice.",
         image: "/images-in-use/teachers-used/stephanie-morton.jpg"
     },
     {

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { Bio } from "@/components/ui/Bio";
 import { PageHero } from "@/components/page-hero";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const teachers = [
   {
@@ -25,7 +25,7 @@ const teachers = [
     name: "Stephanie Morton",
     title: "Manager",
     image: "/images-in-use/teachers-used/stephanie-morton.jpg",
-    bio: "Stephanie Morton has been teaching yoga since 2011. As a long distance runner and running coach, she has worked with many endurance athletes but also has a keen interest in yoga for healthy aging.\nHer approach to yoga is pragmatic but grounded in traditional teachings and yogic philosophy. Her classes combine asanas and functional movement practices with pranayama and meditation techniques that support every lifestyle. She also specializes in pre and post-natal yoga.\nOriginally from Halifax, she recently returned to Nova Scotia with her family after having lived and worked in Playa del Carmen, Mexico for 15 years. She has a decade of yoga studio management experience and has been a lead trainer in many 200 hours yoga teacher training courses. She is passionate about supporting and mentoring yoga teachers.",
+    bio: "Stephanie Morton has been teaching yoga since 2011. A long-distance runner and running coach, she has worked with many endurance athletes and has a particular interest in healthy aging, functional movement, and sustainable practice.\nStephanie’s approach is pragmatic and accessible while remaining grounded in traditional yoga teachings and philosophy. Her classes thoughtfully combine asana and functional movement with pranayama and meditation to support students both on and off the mat. She also specializes in prenatal and postnatal yoga.\nAs one of a handful of actively teaching Yoga Medicine® Therapeutic Specialists in Canada, Stephanie has completed advanced training in anatomy, physiology, therapeutic applications of yoga, and evidence-informed movement practices. At Shanti, she is actively involved in the 200-hour teacher training program and leads courses in the 500-hour program, including Pranayama and Myofascial Release. She also leads Shanti’s teaching mentorship program, supporting teachers as they develop their confidence, knowledge, and authentic teaching voice.",
     featured: true
   },
   {
@@ -105,7 +105,7 @@ const teachers = [
   {
     name: "Kyla MacKinnon",
     title: "Teacher",
-    image: "/images-in-use/teachers-used/kyla-mackinnon.jpg",
+    image: "/images-in-use/teachers-used/kyla-mackinnon copy.jpg",
     bio: "Kyla Mackinnon resides on the east coast of Canada in Halifax but fulfills her sense of wanderlust by traveling regularly. Most of her travels involve leading yoga retreats and yoga teacher trainings as she loves to combine her passions of connecting with people and creating memorable experiences. Kyla teaches yoga as a way to inspire others to live a happy, healthy and authentic life. She enjoys coaching people and creating a space where they feel comfortable and confident in order to reach their full potential. Thanks to her many great teachers, Kyla vows to keep the tradition of Krishnamacharya's yoga lineage alive while weaving in a mix of her own movements which she explores through continuous study. When not getting her yoga on, Kyla can be found tasting new vegan health foods, enjoying time in nature, working out with the lululemon crew, connecting with loved ones, and exploring the world."
   },
   {
@@ -183,13 +183,6 @@ const teachers = [
     bio: "Hayley is a Vinyasa and Yin Yoga teacher and Registered Massage Therapist whose practice is rooted in nature, mindfulness, and intentional movement.\nShe began her yoga journey 15 years ago while living in the mountains, where the landscape sparked a deep appreciation for stillness, breath, and embodied presence.\nIn the fall of 2016, Hayley completed her 200-hour Yoga Teacher Training in California, immersing herself in philosophy, anatomy, and the art of sequencing.\nHer classes blend fluid Vinyasa flow with the grounding, introspective qualities of Yin, inviting students to cultivate strength, ease, and awareness from the inside out.\nAs a Registered Massage Therapist at East Coast Wellness, she draws on her therapeutic background to create practices that support mobility, release tension, and nourish the nervous system.\nHayley's teaching style is warm, intuitive, and welcoming—offering a space where every student feels supported in their own unique journey."
   },
   {
-    name: "Alan Garner",
-    title: "Teacher",
-    image: "/images-in-use/teachers-used/Alan-Garner.jpg",
-    bio: "Alan Garner has been a yoga and meditation practitioner for over 24 years.\nDeeply committed to self-development by education and application he has elevated his journey to include a 500Hr Registered Yoga Teacher certification. Spirituality, yogic traditions and philosophies, along with his personal insights of his own journey, are the foundations of how he leads his classes.",
-    objectPosition: "object-[50%_25%]"
-  },
-  {
     name: "Janiessa Jarvis",
     title: "Teacher",
     image: "/images-in-use/janessa.jpg",
@@ -223,16 +216,46 @@ const teachers = [
     image: "/images-in-use/taq-kaur-bhandal.jpg",
     objectPosition: "object-[50%_28%]",
     bio: "Taq Kaur Bhandal is a certified Pilates instructor who believes movement should help people feel stronger, more connected, and more at home in their bodies. Her classes focus on mindful movement, functional strength, and building confidence and self-love through thoughtful, accessible programming that welcomes participants of all experience levels.\nOutside the studio, Taq is the Director of Equity and Community Supports at NSCAD University and the Founder of I'm With Periods. She brings the same compassionate, evidence-informed approach to her teaching, creating a supportive space where clients can challenge themselves, move with intention, and leave feeling energized."
+  },
+  {
+    name: "Gabrielle Kelly",
+    title: "Teacher",
+    image: "/images-in-use/teachers-used/gabrielle-kelly.jpg",
+    objectPosition: "object-[50%_35%]",
+    bio: "I started practising yoga in 2009 as part of my recovery from a life-changing injury. Yoga became a way for me to reconnect with a body that felt unfamiliar and find joy in new ways of movement.\nAs a new teacher, I'm looking forward to sharing that feeling of joy through movement with others. I like to create classes that are engaging, challenging, and fun. You'll enjoy moving with breath and finding a sense of calm during a dynamic class that doesn't take itself too seriously. Yoga is for everyone, my goal is to create a comfortable space where we can practice together at any stage of your yoga journey."
+  },
+  {
+    name: "Mary-Jane Scott",
+    title: "Teacher",
+    image: "/images-in-use/teachers-used/mary-jane-scott.jpg",
+    objectPosition: "object-top",
+    bio: "Initially drawn to flowing with grace, breath and strength in power vinyasa, Mary-Jane (MJ/she/her) quickly began to crave the sense of grounding found on her yoga mat. Regular practice built strength, offered support with recurring back issues, and sparked an interest in the benefits beyond asana. Her exploration of yoga expanded outside the Shanti studios through travel to festivals and retreats. To enrich her personal practice, MJ completed yoga teacher training in 2022. This ignited a curiosity in the diversity of yoga that led her to pursue a range of additional certifications. MJ enjoys holding space for others and bringing a sense of creativity to her classes."
+  },
+  {
+    name: "Grace Young",
+    title: "Teacher",
+    image: "/images-in-use/teachers-used/grace-young.jpg",
+    objectPosition: "object-[50%_35%]",
+    bio: "Grace Young completed her 200-hour yoga teacher training with Shanti this spring, after practicing with the studio for the past few years. She started practicing yoga at 16 and has loved being part of the Shanti community, including through the Energy Exchange program.\nAfter several years of travelling and working remotely, Grace is happy to be back in her hometown of Halifax. She works in the climate space, having previously worked in policy and advocacy for the clean energy transition and now as a communications strategist and consultant, focusing on equitable climate and energy program design and community engagement. She has a Master’s in Gender and Equity Studies, with a focus on climate justice.\nGrace is an avid scuba diver, and spends as much time in the oceans as she can. She is excited to begin her teaching journey and be part of the mentorship program!"
+  },
+  {
+    name: "Sarah Mason",
+    title: "Teacher",
+    image: "/images-in-use/teachers-used/sarah-mason.jpeg",
+    objectPosition: "object-[50%_60%]",
+    bio: "Sarah is a comprehensively trained STOTT Pilates instructor, certified yoga instructor, Pre- and Postnatal Corrective Exercise Specialist (PCES), and Functional Range Conditioning (FRC) mobility specialist. She believes movement should help us feel more capable, connected, and at home in our bodies throughout every stage of life.\nHer breath-led classes blend strength, mobility, and stability with thoughtful cueing and a sense of curiosity. Her background in both Pilates and yoga influences the way she teaches, bringing together precise, intentional movement with breath, body awareness, and space to explore."
   }
 ];
 
 export default function TeachersPage() {
   const teacherRefs = useRef<{[key: string]: HTMLDivElement | null}>({});
+  const [targetTeacherSlug, setTargetTeacherSlug] = useState("");
 
   useEffect(() => {
     // Check if there's a hash in the URL and scroll to/expand that teacher
     if (typeof window !== 'undefined' && window.location.hash) {
       const hash = window.location.hash.substring(1); // Remove the #
+      setTargetTeacherSlug(hash);
       const targetElement = teacherRefs.current[hash];
       if (targetElement) {
         // Small delay to ensure page is fully loaded
@@ -254,8 +277,7 @@ export default function TeachersPage() {
   };
 
   const isTargetTeacher = (teacherSlug: string) => {
-    if (typeof window === 'undefined') return false;
-    return window.location.hash === `#${teacherSlug}`;
+    return targetTeacherSlug === teacherSlug;
   };
 
   return (
