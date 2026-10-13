@@ -91,10 +91,9 @@ export default function KundaliniYogaPage() {
             teachers={teachers}
             faqs={faqs}
             investment={investment}
-            paymentDepositLink="#"
-            paymentFullLink="#"
-            paymentDepositText="Registration Not Currently Open"
-            paymentFullText="Registration Not Currently Open"
+            paymentDepositText="Pay Deposit"
+            useMindbodyWidgets={true}
+            mindbodyDepositServiceId="1508"
             ceCredits="45 Hours"
             showDepositOnly={true}
         />
