@@ -11,12 +11,13 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import { useMembershipSaleStatus } from "@/lib/use-membership-sale-status";
+import { isMembershipSaleCheckoutReady } from "@/lib/membership-sale";
 import {
-  isMembershipSaleNavOrPopupVisible,
   MEMBERSHIP_SALE_PATH,
 } from "@/lib/membership-sale-window";
 
-const POPUP_DISMISS_AT_KEY = "shanti-spring-membership-sale-2026-popup-dismissed-at";
+const POPUP_DISMISS_AT_KEY = "shanti-fall-membership-sale-2026-popup-dismissed-at";
 const SUPPRESS_MS = 12 * 60 * 60 * 1000;
 
 function isPopupSuppressedByRecentClose(): boolean {
@@ -34,7 +35,8 @@ function recordPopupClosedAt(): void {
 }
 
 export function MembershipSaleAnnouncement() {
-  const visible = isMembershipSaleNavOrPopupVisible();
+  const saleStatus = useMembershipSaleStatus();
+  const visible = saleStatus === "active" && isMembershipSaleCheckoutReady();
   const [mounted, setMounted] = React.useState(false);
   const [open, setOpen] = React.useState(false);
 
@@ -72,7 +74,7 @@ export function MembershipSaleAnnouncement() {
           <DialogHeader className="space-y-2 text-center sm:text-center">
             <DialogTitle className="sr-only">Membership sale</DialogTitle>
             <DialogDescription className="text-lg font-medium leading-relaxed text-white sm:text-xl">
-              April 20–22 only. Get your first two months of membership for just $9 each.
+              October 20–22 only. Get your first two months of membership for just $19 each. Yoga only.
             </DialogDescription>
           </DialogHeader>
         </div>

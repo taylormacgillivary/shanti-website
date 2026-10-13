@@ -32,8 +32,9 @@ import {
 } from "@/components/ui/sheet";
 import { siteConfig } from "@/config/site";
 import { type NavItem } from "@/types";
+import { useMembershipSaleStatus } from "@/lib/use-membership-sale-status";
+import { isMembershipSaleCheckoutReady } from "@/lib/membership-sale";
 import {
-  isMembershipSaleNavOrPopupVisible,
   MEMBERSHIP_SALE_PATH,
 } from "@/lib/membership-sale-window";
 
@@ -57,7 +58,8 @@ export function Navigation() {
       ? siteConfig.trainingsNav
       : siteConfig.coursesNav;
 
-  const mainNavItems: NavItem[] = isMembershipSaleNavOrPopupVisible()
+  const saleStatus = useMembershipSaleStatus();
+  const mainNavItems: NavItem[] = saleStatus === "active" && isMembershipSaleCheckoutReady()
     ? [...siteConfig.mainNav, MEMBERSHIP_SALE_NAV_ITEM]
     : siteConfig.mainNav;
 
