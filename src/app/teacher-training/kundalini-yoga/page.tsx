@@ -81,7 +81,7 @@ export default function KundaliniYogaPage() {
         <CoursePage
             title="Kundalini Yoga"
             subtitle="Uncover your full potential to Teach, to Practice, to Live."
-            dates="Next Course Dates: TBD"
+            dates="March 18–21, 2027"
             heroImage="/images-in-use/36.jpg"
             imageTwo="/images-in-use/37.jpg"
             imageThree="/images-in-use/20.jpg"
