@@ -4,15 +4,30 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Script from "next/script";
-import { buttonVariants } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import { Check, CalendarDays, Sparkles } from "lucide-react";
 
-/**
- * Both tiers use Healcode contract widgets on this page (regular: service id 169, student/senior: 173).
- */
+import { useMembershipSaleStatus } from "@/lib/use-membership-sale-status";
+import { getMembershipSaleStatus, isMembershipSaleCheckoutReady, membershipSale } from "@/lib/membership-sale";
+
+function SaleCheckout({ contractId, label, className, status }: {
+  contractId: string | null;
+  label: string;
+  className: string;
+  status: ReturnType<typeof getMembershipSaleStatus>;
+}) {
+  if (status !== "active" || !isMembershipSaleCheckoutReady() || !contractId) {
+    return <Button disabled size="lg" className="w-full py-6 text-base">
+      {status === "upcoming" ? "Available October 20" : status === "ended" ? "Sale ended" : "Online purchases coming soon"}
+    </Button>;
+  }
+  return <div className="w-full" dangerouslySetInnerHTML={{
+    __html: `<healcode-widget data-version="0.2" data-link-class="${className}" data-site-id="1889" data-mb-site-id="11233" data-service-id="${contractId}" data-bw-identity-site="true" data-type="contract-link" data-inner-html="${label}"></healcode-widget>`,
+  }} />;
+}
 
 /** Same `Button` variant/size/sizing as the original regular CTA; sage fill instead of purple outline. */
 const membershipSaleRegularHealcodeLinkClass = cn(
@@ -52,6 +67,7 @@ const gallery = [
 
 export default function MembershipSalePage() {
   const heroVideoRef = useRef<HTMLVideoElement>(null);
+  const saleStatus = useMembershipSaleStatus();
 
   useEffect(() => {
     const el = heroVideoRef.current;
@@ -89,16 +105,16 @@ export default function MembershipSalePage() {
           <div className="max-w-4xl mx-auto space-y-6 md:space-y-8">
             <Badge className="bg-white/15 text-white border-white/30 backdrop-blur-md px-6 py-2 text-base md:text-lg">
               <CalendarDays className="w-4.5 h-4.5 mr-2.5 inline" />
-              April 20–22 only
+              {membershipSale.dates} · Yoga only
             </Badge>
 
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white drop-shadow-lg">
-              Let Your Yoga Practice{" "}
-              <span className="text-sage-green drop-shadow-lg">Bloom</span>
+              Find Your Flow{" "}
+              <span className="text-sage-green drop-shadow-lg">This Fall</span>
             </h1>
 
             <p className="text-xl md:text-2xl text-white/95 drop-shadow-md max-w-2xl mx-auto leading-relaxed">
-              Start for just $9. This exclusive 72-hour offer is our most accessible membership of the year.
+              Your first two months for ${membershipSale.firstMonthsRate} each. Unlimited yoga across Halifax, Bedford, and Dartmouth.
             </p>
           </div>
         </div>
@@ -126,13 +142,20 @@ export default function MembershipSalePage() {
               <span className="gradient-sage-text">unbeatable price</span>
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              This membership pricing will be available from April 20-22 only.
+              Available {membershipSale.dates}. Your membership starts on the day you purchase during the sale.
             </p>
             <p className="mt-2 text-sm text-muted-foreground">
               Offer not applicable for current members. Please read the membership agreement for
               full details.
             </p>
           </div>
+
+          <p role="status" className="text-center text-sm text-muted-foreground mb-8">
+            {saleStatus === "upcoming" ? "Online purchases open October 20. Come back during the sale to join."
+              : saleStatus === "ended" ? "The October sale has ended. Explore our current memberships below."
+              : !isMembershipSaleCheckoutReady() ? "Online purchases will be available soon. Please contact us if you need help."
+              : "Choose your membership below to purchase online."}
+          </p>
 
           <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             <Card className="border-2 border-sage-green/30 shadow-lg overflow-hidden flex flex-col">
@@ -145,22 +168,22 @@ export default function MembershipSalePage() {
               <CardContent className="flex-grow pt-6 space-y-4">
                 <div className="flex justify-between items-baseline gap-4 border-b border-border pb-3">
                   <span className="text-muted-foreground">Months 1 &amp; 2</span>
-                  <span className="text-2xl font-bold text-gray-900 dark:text-gray-50">$9 / month</span>
+                  <span className="text-2xl font-bold text-gray-900 dark:text-gray-50">${membershipSale.firstMonthsRate} / month</span>
                 </div>
                 <div className="flex justify-between items-baseline gap-4">
                   <span className="text-muted-foreground">Months 3 &amp; 4</span>
-                  <span className="text-2xl font-bold text-gray-900 dark:text-gray-50">$115 / month</span>
+                  <span className="text-2xl font-bold text-gray-900 dark:text-gray-50">${membershipSale.regularRate} / month</span>
                 </div>
                 <p className="text-sm text-muted-foreground pt-2">
                   Then continues at the regular monthly rate on the same membership terms.
                 </p>
               </CardContent>
               <CardFooter className="flex flex-col gap-2 border-t bg-muted/20 pt-6 pb-6">
-                <div
-                  className="w-full"
-                  dangerouslySetInnerHTML={{
-                    __html: `<healcode-widget data-version="0.2" data-link-class="${membershipSaleRegularHealcodeLinkClass}" data-site-id="1889" data-mb-site-id="11233" data-service-id="169" data-bw-identity-site="true" data-type="contract-link" data-inner-html="Buy now — regular"></healcode-widget>`,
-                  }}
+                <SaleCheckout
+                  contractId={membershipSale.regularContractId}
+                  label="Buy now — regular"
+                  className={membershipSaleRegularHealcodeLinkClass}
+                  status={saleStatus}
                 />
               </CardFooter>
             </Card>
@@ -172,36 +195,29 @@ export default function MembershipSalePage() {
               <CardContent className="flex-grow pt-6 space-y-4">
                 <div className="flex justify-between items-baseline gap-4 border-b border-border pb-3">
                   <span className="text-muted-foreground">Months 1 &amp; 2</span>
-                  <span className="text-2xl font-bold text-gray-900 dark:text-gray-50">$9 / month</span>
+                  <span className="text-2xl font-bold text-gray-900 dark:text-gray-50">${membershipSale.firstMonthsRate} / month</span>
                 </div>
                 <div className="flex justify-between items-baseline gap-4">
                   <span className="text-muted-foreground">Months 3 &amp; 4</span>
-                  <span className="text-2xl font-bold text-gray-900 dark:text-gray-50">$89 / month</span>
+                  <span className="text-2xl font-bold text-gray-900 dark:text-gray-50">${membershipSale.studentSeniorRate} / month</span>
                 </div>
                 <p className="text-sm text-muted-foreground pt-2">
                   For members who qualify for our student/senior rate. Then continues at the regular monthly rate on the same membership terms.
                 </p>
               </CardContent>
               <CardFooter className="flex flex-col gap-2 border-t bg-muted/20 pt-6 pb-6">
-                <div
-                  className="w-full"
-                  dangerouslySetInnerHTML={{
-                    __html: `<healcode-widget data-version="0.2" data-link-class="${membershipSaleStudentHealcodeLinkClass}" data-site-id="1889" data-mb-site-id="11233" data-service-id="173" data-bw-identity-site="true" data-type="contract-link" data-inner-html="Buy now — student / senior"></healcode-widget>`,
-                  }}
+                <SaleCheckout
+                  contractId={membershipSale.studentSeniorContractId}
+                  label="Buy now — student / senior"
+                  className={membershipSaleStudentHealcodeLinkClass}
+                  status={saleStatus}
                 />
               </CardFooter>
             </Card>
           </div>
 
           <p className="text-center text-xs sm:text-sm text-muted-foreground max-w-2xl mx-auto mt-8 leading-relaxed">
-            The above pricing is for our yoga-only unlimited membership. If you wish to include access to unlimited Pilates classes, there is a $34/month add-on that can be processed by submitting a request to{" "}
-            <a
-              href="mailto:info@shantihotyoga.ca?subject=Pilates%20Add-On%20Request"
-              className="text-sage-green font-medium hover:underline underline-offset-2"
-            >
-              info@shantihotyoga.ca
-            </a>
-            .
+            This is a yoga-only unlimited membership. Pilates classes are not included.
           </p>
 
           <p className="text-center text-sm text-muted-foreground max-w-2xl mx-auto mt-10">
@@ -266,10 +282,12 @@ export default function MembershipSalePage() {
         </div>
       </section>
 
-      <Script
-        src="https://widgets.mindbodyonline.com/javascripts/healcode.js"
-        strategy="afterInteractive"
-      />
+      {saleStatus === "active" && isMembershipSaleCheckoutReady() && (
+        <Script
+          src="https://widgets.mindbodyonline.com/javascripts/healcode.js"
+          strategy="afterInteractive"
+        />
+      )}
     </div>
   );
 }
