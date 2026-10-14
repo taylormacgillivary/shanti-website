@@ -85,6 +85,15 @@ Both remain **Draft**. Their entry triggers, email content, delays and original 
 
 The approved one-time historical sync on October 14, 2026 found one qualifying recipient since July 16 and added the registration tag to that existing contact. A second read-only scan confirmed the tag was already present and no further write was needed.
 
-Live webhook activation still requires production verification/cron secrets to be saved, a production redeploy, the signed connection check, and confirmation that the Mindbody subscription is Active. Until then the deployed integration remains disabled. Registration detection and email suppression are separate: tagging alone does not stop an automation without the saved checks.
+Live tracking was enabled and verified on **October 14, 2026**:
+
+- All five tracking settings are saved as **Secret**, scoped to **Production only** in Shanti's Vercel project.
+- Production deployment `HcbUjEu7CZxt7Nzc47MVjUiHA1ix` is Ready and serves the canonical website domain.
+- Mindbody subscription `5b1c3bd6-5554-473b-aec2-7f8f07925462` is **Active** for `clientSale.created`, pointing to the canonical webhook URL. The previous incomplete pending subscription was deactivated before replacement and was never active.
+- A signed, non-purchase connection check returned 204 without a tag write. Unsigned webhook requests return 401.
+- The authenticated production reconciliation returned 200: one qualifying receipt, one recipient already tagged, no failures or review items. An unauthenticated request returns 401.
+- Vercel's Cron Jobs screen confirms the daily `/api/cron/mfr-purchases` job is enabled at 09:00 UTC.
+
+No new payment or registration was manufactured to test delivery. The live provider connection, signed handler and production ledger reconciliation were verified; handling of simulated purchase notifications is covered by the 23 passing integration tests. Registration detection and email suppression are separate: tagging alone does not stop an automation without the saved checks.
 
 If the feature must be stopped, set `MFR_PURCHASE_TRACKING_ENABLED=false`, redeploy, and deactivate the Mindbody subscription. The one-time sync command is separately explicit. Existing registration tags remain. Never bulk-remove them during rollback.
