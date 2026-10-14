@@ -32,7 +32,11 @@ async function api(path: string, method = "GET", body?: unknown): Promise<unknow
     ...(body ? { body: JSON.stringify(body) } : {}),
   });
   if (!response.ok) throw new TrackingError("webhook_subscription", response.status);
-  return response.json();
+  const data = await response.json() as Record<string, unknown>;
+  // Mindbody returns PascalCase for subscription creation and camelCase for reads.
+  return Object.fromEntries(Object.entries(data).map(([key, value]) => [
+    key.charAt(0).toLowerCase() + key.slice(1), value,
+  ]));
 }
 
 function summary(subscription: Subscription) {
@@ -48,7 +52,7 @@ async function main() {
   }
   if (process.env.MINDBODY_SITE_ID !== "11233") throw new TrackingError("wrong_mindbody_site");
   const list = await api("/subscriptions") as { items: Subscription[] };
-  const matches = list.items.filter(s => s.referenceId === referenceId);
+  const matches = list.items.filter(s => s.referenceId === referenceId && s.status !== "DeactivatedByUser");
   if (matches.length > 1) throw new TrackingError("duplicate_subscriptions_require_review");
   let subscription = matches[0];
   if (command === "status") {
