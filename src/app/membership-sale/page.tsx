@@ -21,7 +21,7 @@ function SaleCheckout({ contractId, label, className, status }: {
 }) {
   if (status !== "active" || !isMembershipSaleCheckoutReady() || !contractId) {
     return <Button disabled size="lg" className="w-full py-6 text-base">
-      {status === "upcoming" ? "Available October 20" : status === "ended" ? "Sale ended" : "Online purchases coming soon"}
+      {status === "ended" ? "Sale ended" : label}
     </Button>;
   }
   return <div className="w-full" dangerouslySetInnerHTML={{
@@ -151,9 +151,8 @@ export default function MembershipSalePage() {
           </div>
 
           <p role="status" className="text-center text-sm text-muted-foreground mb-8">
-            {saleStatus === "upcoming" ? "Online purchases open October 20. Come back during the sale to join."
-              : saleStatus === "ended" ? "The October sale has ended. Explore our current memberships below."
-              : !isMembershipSaleCheckoutReady() ? "Online purchases will be available soon. Please contact us if you need help."
+            {saleStatus === "ended" ? "The October sale has ended. Explore our current memberships below."
+              : !isMembershipSaleCheckoutReady() ? "To purchase, please contact the studio."
               : "Choose your membership below to purchase online."}
           </p>
 

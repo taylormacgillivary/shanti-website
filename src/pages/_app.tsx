@@ -4,10 +4,10 @@ import '@/app/globals.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <RootLayoutClient>
+    <RootLayoutClient allowSalePreview={process.env.NODE_ENV === 'development'}>
       <Component {...pageProps} />
     </RootLayoutClient>
   );
 }
 
-export default MyApp; 
+export default MyApp;

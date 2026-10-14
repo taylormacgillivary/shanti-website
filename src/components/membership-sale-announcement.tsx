@@ -1,100 +1,81 @@
 "use client";
 
 import * as React from "react";
+import Image from "next/image";
 import Link from "next/link";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
+import { usePathname } from "next/navigation";
+import { ArrowRight } from "lucide-react";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { useMembershipSaleStatus } from "@/lib/use-membership-sale-status";
-import { isMembershipSaleCheckoutReady } from "@/lib/membership-sale";
-import {
-  MEMBERSHIP_SALE_PATH,
-} from "@/lib/membership-sale-window";
+import { membershipSale } from "@/lib/membership-sale";
+import { MEMBERSHIP_SALE_PATH } from "@/lib/membership-sale-window";
 
 const POPUP_DISMISS_AT_KEY = "shanti-fall-membership-sale-2026-popup-dismissed-at";
 const SUPPRESS_MS = 12 * 60 * 60 * 1000;
 
 function isPopupSuppressedByRecentClose(): boolean {
-  if (typeof window === "undefined") return false;
-  const raw = localStorage.getItem(POPUP_DISMISS_AT_KEY);
-  if (!raw) return false;
-  const at = Number(raw);
-  if (!Number.isFinite(at)) return false;
-  return Date.now() - at < SUPPRESS_MS;
+  try {
+    const at = Number(localStorage.getItem(POPUP_DISMISS_AT_KEY));
+    const age = Date.now() - at;
+    return at > 0 && Number.isFinite(at) && age >= 0 && age < SUPPRESS_MS;
+  } catch {
+    return false;
+  }
 }
 
 function recordPopupClosedAt(): void {
-  if (typeof window === "undefined") return;
-  localStorage.setItem(POPUP_DISMISS_AT_KEY, String(Date.now()));
+  try {
+    localStorage.setItem(POPUP_DISMISS_AT_KEY, String(Date.now()));
+  } catch {
+    // Storage restrictions must not prevent closing the popup or following the offer.
+  }
 }
 
 export function MembershipSaleAnnouncement() {
   const saleStatus = useMembershipSaleStatus();
-  const visible = saleStatus === "active" && isMembershipSaleCheckoutReady();
-  const [mounted, setMounted] = React.useState(false);
+  const pathname = usePathname();
+  const visible = saleStatus === "active" && pathname !== MEMBERSHIP_SALE_PATH;
   const [open, setOpen] = React.useState(false);
 
   React.useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  React.useEffect(() => {
-    if (!mounted || !visible) {
-      setOpen(false);
-      return;
-    }
-    if (isPopupSuppressedByRecentClose()) {
-      setOpen(false);
-      return;
-    }
-    setOpen(true);
-  }, [mounted, visible]);
+    setOpen(visible && !isPopupSuppressedByRecentClose());
+  }, [visible]);
 
   const handleOpenChange = (next: boolean) => {
     setOpen(next);
-    if (!next) {
-      recordPopupClosedAt();
-    }
+    if (!next) recordPopupClosedAt();
   };
 
-  if (!visible) {
-    return null;
-  }
+  // Close immediately at the end boundary, even if the visitor leaves the modal open.
+  if (!visible) return null;
 
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
-      <DialogContent className="border-sage-green/30 bg-card sm:max-w-md">
-        <div className="-mx-6 -mt-6 mb-4 rounded-t-lg gradient-sage px-6 py-5 text-center text-white shadow-inner">
-          <DialogHeader className="space-y-2 text-center sm:text-center">
-            <DialogTitle className="sr-only">Membership sale</DialogTitle>
-            <DialogDescription className="text-lg font-medium leading-relaxed text-white sm:text-xl">
-              October 20–22 only. Get your first two months of membership for just $19 each. Yoga only.
-            </DialogDescription>
+      <DialogContent className="w-[calc(100%-2rem)] max-w-[420px] gap-0 overflow-hidden rounded-2xl border-[#dce4d0] bg-[#fbf8ef] p-0 text-[#263b2c] shadow-2xl [&>button]:right-3 [&>button]:top-3 [&>button]:rounded-full [&>button]:bg-[#fbf8ef] [&>button]:p-2 [&>button]:opacity-100">
+        <div className="relative h-40 sm:h-44">
+          <Image src="/images-in-use/ad-1-landscape.jpg" alt="A yoga class at Shanti" fill sizes="420px" className="object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#263b2c]/90 via-[#263b2c]/20 to-transparent" />
+          <DialogHeader className="absolute inset-x-0 bottom-5 px-7 text-left sm:text-left">
+            <DialogTitle className="text-2xl font-semibold tracking-tight text-[#fbf8ef]">Fall Membership Sale</DialogTitle>
           </DialogHeader>
         </div>
-        <DialogFooter className="flex-col gap-2 sm:flex-col">
-          <Button
-            asChild
-            size="lg"
-            className="w-full gradient-sage border-0 text-base font-semibold text-white shadow-md hover:opacity-95"
-          >
-            <Link
-              href={MEMBERSHIP_SALE_PATH}
-              onClick={() => {
-                recordPopupClosedAt();
-                setOpen(false);
-              }}
-            >
-              View offer & pricing
+        <div className="px-7 pb-7 pt-6 text-center">
+          <p className="flex items-baseline justify-center gap-1.5 leading-none">
+            <span className="text-7xl font-semibold tracking-tighter">${membershipSale.firstMonthsRate}</span>
+            <span className="text-xl font-medium text-[#4f683b]">/ month</span>
+          </p>
+          <DialogDescription className="mt-3 text-base text-[#263b2c]"><span className="sr-only">${membershipSale.firstMonthsRate} per month </span>for your first two months.</DialogDescription>
+          <p className="mt-2 text-sm text-[#59664f]">Unlimited yoga. All three studios.</p>
+          <Button asChild size="lg" className="mt-6 h-12 w-full rounded-lg bg-[#36513b] text-base font-semibold text-[#fbf8ef] hover:bg-[#263b2c]">
+            <Link href={MEMBERSHIP_SALE_PATH} onClick={() => {
+              recordPopupClosedAt();
+              setOpen(false);
+            }}>
+              See the offer <ArrowRight aria-hidden="true" className="ml-1 h-4 w-4 text-[#d7e7b5]" />
             </Link>
           </Button>
-        </DialogFooter>
+        </div>
       </DialogContent>
     </Dialog>
   );

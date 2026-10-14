@@ -47,7 +47,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
         suppressHydrationWarning={true}
       >
-        <RootLayoutClient>{children}</RootLayoutClient>
+        <RootLayoutClient allowSalePreview={process.env.NODE_ENV === "development" || process.env.VERCEL_ENV === "preview"}>
+          {children}
+        </RootLayoutClient>
         <Analytics />
         {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />

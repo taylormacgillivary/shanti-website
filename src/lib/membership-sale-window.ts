@@ -1,13 +1,13 @@
-import { getMembershipSaleStatus, isMembershipSaleCheckoutReady } from "./membership-sale";
+import { getMembershipSaleStatus } from "./membership-sale";
 
-/** October 20–22 inclusive, using Halifax's October UTC−03:00 offset. */
+/** October 20, 00:01 through October 23, 22:00, Halifax time (end exclusive). */
 export function isWithinMembershipSaleScheduledWindow(now: Date = new Date()): boolean {
   return getMembershipSaleStatus(now) === "active";
 }
 
-/** Hide site-wide promotion until both October checkout contracts are verified. */
+/** All site-wide promotion follows the same clock, independently of checkout setup. */
 export function isMembershipSaleNavOrPopupVisible(now: Date = new Date()): boolean {
-  return isMembershipSaleCheckoutReady() && isWithinMembershipSaleScheduledWindow(now);
+  return isWithinMembershipSaleScheduledWindow(now);
 }
 
 export const MEMBERSHIP_SALE_PATH = "/membership-sale";

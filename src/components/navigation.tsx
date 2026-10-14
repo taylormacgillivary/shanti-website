@@ -33,13 +33,12 @@ import {
 import { siteConfig } from "@/config/site";
 import { type NavItem } from "@/types";
 import { useMembershipSaleStatus } from "@/lib/use-membership-sale-status";
-import { isMembershipSaleCheckoutReady } from "@/lib/membership-sale";
 import {
   MEMBERSHIP_SALE_PATH,
 } from "@/lib/membership-sale-window";
 
 const MEMBERSHIP_SALE_NAV_ITEM = {
-  title: "Membership Sale",
+  title: "Fall Membership Sale",
   href: MEMBERSHIP_SALE_PATH,
 } satisfies NavItem;
 
@@ -59,7 +58,7 @@ export function Navigation() {
       : siteConfig.coursesNav;
 
   const saleStatus = useMembershipSaleStatus();
-  const mainNavItems: NavItem[] = saleStatus === "active" && isMembershipSaleCheckoutReady()
+  const mainNavItems: NavItem[] = saleStatus === "active"
     ? [...siteConfig.mainNav, MEMBERSHIP_SALE_NAV_ITEM]
     : siteConfig.mainNav;
 
@@ -172,7 +171,7 @@ export function Navigation() {
         </Link>
 
         {/* Desktop Navigation */}
-        <NavigationMenu className="hidden md:flex">
+        <NavigationMenu className="hidden xl:flex">
           <NavigationMenuList>
             <NavigationMenuItem>
               <NavigationMenuTrigger 
@@ -338,12 +337,12 @@ export function Navigation() {
         </NavigationMenu>
 
         {/* CTA Button */}
-        <div className="hidden md:flex items-center space-x-4">
+        <div className="hidden xl:flex items-center space-x-4">
           <a
             href="https://clients.mindbodyonline.com/classic/mainclass?studioid=11233"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs font-medium transition-colors hover:opacity-70"
+            className="whitespace-nowrap text-xs font-medium transition-colors hover:opacity-70"
             style={{
               color: isHomePage 
                 ? scrollProgress < 1 
@@ -380,7 +379,7 @@ export function Navigation() {
           <SheetTrigger asChild>
             <Button 
               variant="ghost" 
-              className="md:hidden transition-colors duration-500"
+              className="xl:hidden transition-colors duration-500"
               style={{
                 color: isHomePage 
                   ? scrollProgress < 1 

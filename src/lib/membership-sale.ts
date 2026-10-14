@@ -4,8 +4,10 @@ export const membershipSale = {
   firstMonthsRate: 19,
   regularRate: 115,
   studentSeniorRate: 89,
-  startsAt: "2026-10-20T00:00:00-03:00",
-  endsAt: "2026-10-23T00:00:00-03:00",
+  // America/Halifax is UTC−03:00 at both of these October boundaries.
+  startsAt: "2026-10-20T00:01:00-03:00",
+  // Unadvertised grace day for stragglers; public offer dates remain October 20–22.
+  endsAt: "2026-10-23T22:00:00-03:00",
   // Fill only after verifying October prices and terms in Branded Web Manager.
   // April service IDs (169 / 173) have deliberately not been carried forward.
   regularContractId: null as string | null,
