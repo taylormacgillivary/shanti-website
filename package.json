@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "check-mailchimp": "node scripts/check-mailchimp-setup.js"
+    "check-mailchimp": "node scripts/check-mailchimp-setup.js",
+    "test:mfr": "tsx --test tests/mfr-purchase-tracking.test.ts",
+    "sync:mfr": "tsx scripts/sync-mfr-purchases.ts",
+    "webhook:mfr": "tsx scripts/manage-mfr-webhook.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
@@ -49,9 +52,11 @@
     "@types/node": "^20",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19",
+    "dotenv": "^17.2.3",
     "eslint": "^9",
     "eslint-config-next": "^15.3.6",
     "tailwindcss": "^4",
+    "tsx": "^4.23.15",
     "tw-animate-css": "^1.3.4",
     "typescript": "^5"
   }
