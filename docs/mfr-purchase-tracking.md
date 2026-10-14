@@ -1,6 +1,6 @@
 # MFR January 2027 purchase tracking
 
-This integration marks existing Mailchimp contacts as registered after a qualifying Mindbody deposit purchase. It does not edit, activate, pause or enrol contacts in Mailchimp automations. The Mailchimp owner remains responsible for entry filters and registration exclusions.
+This integration marks existing Mailchimp contacts as registered after a qualifying Mindbody deposit purchase. The purchase handler only adds the registration tag. Separately, at Taylor's request, registration checks were added in the Mailchimp editor before each of the four emails in both existing MFR drafts. The automation owner remains responsible for teacher/general entry rules, email content and activation.
 
 ## Fixed mapping
 
@@ -76,6 +76,15 @@ Creation of the subscription is a separate, deliberate operational step. Capture
 
 Look for `mfr_purchase_webhook`, `mfr_purchase_reconciliation`, `mfr_purchase_review` and `mfr_purchase_failed` in Vercel logs. These contain counts and record references, not raw payloads, emails, API keys or payment data. Failures and unmatched records need staff review; this integration does not send staff notifications.
 
-The automation owner should exclude `MFR YTT 2027 - Registered` from entry and remaining promotional sends in **both** teacher/general paths, and test purchase suppression before activation. Registration detection and email suppression are separate: adding this integration alone does not stop any existing automation.
+The existing drafts now check **Tags → doesn't have any of → MFR YTT 2027 - Registered** immediately before each of their four send-email actions. YES continues to the email; NO exits the flow. The first check also excludes existing registrants. Later checks run after the four-day delays, so registration during a delay is caught before the following send.
+
+- Teacher draft: `https://us18.admin.mailchimp.com/customer-journey/builder?id=3745`
+- General draft: `https://us18.admin.mailchimp.com/customer-journey/builder?id=3746`
+
+Both remain **Draft**. Their entry triggers, email content, delays and original unfinished final If/Else points were not deliberately changed. The editor currently shows the teacher trigger as `MFR YTT 2027 - Launch` and the general trigger as `MFR YTT 2027 - General Launch`; the Mailchimp owner should settle that routing and the original unfinished final points before activation. No test email was sent and neither marketing flow was activated.
+
+The approved one-time historical sync on October 14, 2026 found one qualifying recipient since July 16 and added the registration tag to that existing contact. A second read-only scan confirmed the tag was already present and no further write was needed.
+
+Live webhook activation still requires production verification/cron secrets to be saved, a production redeploy, the signed connection check, and confirmation that the Mindbody subscription is Active. Until then the deployed integration remains disabled. Registration detection and email suppression are separate: tagging alone does not stop an automation without the saved checks.
 
 If the feature must be stopped, set `MFR_PURCHASE_TRACKING_ENABLED=false`, redeploy, and deactivate the Mindbody subscription. The one-time sync command is separately explicit. Existing registration tags remain. Never bulk-remove them during rollback.
