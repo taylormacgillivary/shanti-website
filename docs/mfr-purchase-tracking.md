@@ -11,7 +11,7 @@ This integration marks existing Mailchimp contacts as registered after a qualify
 | Mailchimp audience | `Shanti Yoga All Emails`, supplied by `MAILCHIMP_NEWSLETTER_AUDIENCE_ID` and verified by name before any writes |
 | Registration tag | `MFR YTT 2027 - Registered` |
 | Last qualifying purchase day | January 31, 2027, in America/Halifax |
-| First qualifying purchase day | Required configuration; confirm with Taylor because the pricing option was reused |
+| First qualifying purchase day | July 16, 2026 (`2026-07-16`), confirmed by Taylor as 90 days before October 14, 2026 |
 
 ## Behaviour
 
@@ -45,7 +45,7 @@ Existing private settings:
 
 New private settings:
 
-- `MFR_PURCHASES_SINCE`: required `YYYY-MM-DD` in Halifax time. Use the date confirmed by Taylor. Do not guess the historical intake boundary.
+- `MFR_PURCHASES_SINCE`: `2026-07-16`, the confirmed intake cutoff in Halifax time. Do not move this date backward without confirming the historical intake boundary.
 - `MFR_PURCHASE_TRACKING_ENABLED`: exactly `true` when ready. Missing/false disables both write paths.
 - `MINDBODY_WEBHOOK_SIGNATURE_KEY`: the `messageSignatureKey` returned when the webhook subscription is created. Keep private; never commit it.
 - `CRON_SECRET`: an independently generated random secret (at least 32 random bytes). Vercel sends `Authorization: Bearer <CRON_SECRET>` when invoking cron. Never put it in a URL.
