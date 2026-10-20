@@ -6,6 +6,10 @@ Source: Don MacGillivary, “October Membership Promo”, October 3, 2026, in Ta
 
 Taylor requested that the sale navigation item, announcement bar and popup be temporarily removed until further instruction. `membershipSale.promotionPaused` is `true` and overrides scheduled site-wide promotion, including preview clocks. All three components share this switch; their designs and original schedule are preserved. The landing page remains available by direct URL. Restore only when Taylor requests it, and confirm the schedule still matches the intended sale dates. The first-two-month price remains $19/month, as Taylor reconfirmed October 20.
 
+## Purchase contracts — October 20, 2026
+
+Refreshed the signed-in Shanti Branded Web Manager Links page and selected Buy Now - Contract. The list now contains `$19 - Special Offer ($19.00) Contract ID: 184` and `$19 - Special Offer students/seniors ($19.00) Contract ID: 185`. Generated markup confirms `data-type="contract-link"`, `data-site-id="1889"`, `data-mb-site-id="11233"`, and service IDs 184 / 185 respectively. These are now assigned to the regular and student/senior purchase buttons. Site-wide promotion remains manually paused. No Mindbody contract settings or purchases were changed.
+
 ## Implemented landing page
 
 - URL: `/membership-sale`, reusing the current site's video hero, regular/student-senior pricing cards, membership terms, studio photos, and navigation/footer.

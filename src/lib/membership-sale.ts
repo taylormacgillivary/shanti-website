@@ -10,10 +10,10 @@ export const membershipSale = {
   startsAt: "2026-10-20T00:01:00-03:00",
   // Unadvertised grace day for stragglers; public offer dates remain October 20–22.
   endsAt: "2026-10-23T22:00:00-03:00",
-  // Fill only after verifying October prices and terms in Branded Web Manager.
-  // April service IDs (169 / 173) have deliberately not been carried forward.
-  regularContractId: null as string | null,
-  studentSeniorContractId: null as string | null,
+  // October 20: verified generated Buy Now - Contract embeds in Branded Web (site 1889 / 11233).
+  // $19 - Special Offer / $19 - Special Offer students/seniors; no April contract IDs reused.
+  regularContractId: "184" as string | null,
+  studentSeniorContractId: "185" as string | null,
 } as const;
 
 export function getMembershipSaleStatus(now: Date = new Date()) {
