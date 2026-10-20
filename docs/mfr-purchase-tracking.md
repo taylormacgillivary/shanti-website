@@ -1,6 +1,6 @@
 # MFR January 2027 purchase tracking
 
-This integration marks existing Mailchimp contacts as registered after a qualifying Mindbody deposit purchase. The purchase handler only adds the registration tag. Separately, at Taylor's request, registration checks were added in the Mailchimp editor before each of the four emails in both existing MFR drafts. The automation owner remains responsible for teacher/general entry rules, email content and activation.
+This integration marks existing Mailchimp contacts as registered after a qualifying Mindbody deposit or full-course purchase. The purchase handler only adds the registration tag. Separately, at Taylor's request, registration checks were added in the Mailchimp editor before each of the four emails in both existing MFR drafts. The automation owner remains responsible for teacher/general entry rules, email content and activation.
 
 ## Fixed mapping
 
@@ -8,6 +8,8 @@ This integration marks existing Mailchimp contacts as registered after a qualify
 | --- | --- |
 | Mindbody business | Shanti Hot Yoga, site `11233` |
 | Deposit pricing option | `1283`, currently named “Myofascial Anatomy-Deposit 2026” (confirmed by Taylor as the correct product) |
+| Early-bird full-payment option | `1344`, “Myofascial Anatomy Full Payment EB”, currently $695 |
+| Regular full-payment option | `1285`, “Myofascial Anatomy Full Payment Non-EB”, currently $795 |
 | Mailchimp audience | `Shanti Yoga All Emails`, supplied by `MAILCHIMP_NEWSLETTER_AUDIENCE_ID` and verified by name before any writes |
 | Registration tag | `MFR YTT 2027 - Registered` |
 | Last qualifying purchase day | January 31, 2027, in America/Halifax |
@@ -23,7 +25,9 @@ This integration marks existing Mailchimp contacts as registered after a qualify
 
 No contact subscription status, launch tag, audience membership, pricing option, payment, or automation is changed. Contacts absent from the audience are not automatically created or subscribed. Missing client records, missing email addresses, and absent Mailchimp contacts are recorded for review using client references, not personal details. Daily reconciliation rechecks them, including contacts subsequently added to the audience.
 
-A zero-price, fully discounted deposit still qualifies if Mindbody records the service purchase. Refund/return records and negative quantities do not add a tag. An existing registration tag is **not automatically removed** following a refund: staff should confirm the person's registration status and handle any removal explicitly. Email mismatches between systems require manual resolution.
+A purchase of any one of the three pricing options qualifies independently; a full-payment purchaser does not need a previous deposit. Product IDs identify registrations, so discounts and later display-name or price changes do not break tracking. The separate “Myofascial Anatomy-Final Payment” balance option (`1123`) and the $40 “MFR 2026” workshop (`1594`) are not included. The full-payment options were verified against Mindbody's staff catalogue on October 20, 2026.
+
+A zero-price, fully discounted registration still qualifies if Mindbody records the service purchase. Refund/return records and negative quantities do not add a tag. An existing registration tag is **not automatically removed** following a refund: staff should confirm the person's registration status and handle any removal explicitly. Email mismatches between systems require manual resolution.
 
 ## Reliability without a separate database
 

@@ -2,11 +2,13 @@ import { createHash, createHmac, timingSafeEqual } from "node:crypto";
 
 export const MFR_COURSE = {
   siteId: "11233",
-  productId: "1283",
+  productIds: ["1283", "1344", "1285"], // Deposit, early-bird full payment, regular full payment.
   audienceName: "Shanti Yoga All Emails",
   registeredTag: "MFR YTT 2027 - Registered",
   lastPurchaseDay: "2027-01-31",
 } as const;
+
+const registrationProductIds = new Set<string>(MFR_COURSE.productIds);
 
 export interface TrackingConfig {
   mindbodyKey: string;
@@ -126,7 +128,7 @@ export function receiptFromWebhook(payload: unknown, config: TrackingConfig): Re
   const recipients = new Set<string>();
   for (const value of data.items) {
     const item = record(value);
-    if (String(item.itemId) !== MFR_COURSE.productId || item.type !== "Service") continue;
+    if (!registrationProductIds.has(String(item.itemId)) || item.type !== "Service") continue;
     if (!positiveQuantity(item.quantity) || typeof item.amountPaid !== "number" || !Number.isFinite(item.amountPaid) || item.amountPaid < 0) continue;
     // The recipient can differ from the purchaser, e.g. a gift or staff purchase.
     const recipient = clientId(item.recipientClientId) ?? clientId(data.purchasingClientId);
@@ -147,7 +149,7 @@ export function receiptFromSale(payload: unknown, config: TrackingConfig): Recei
   const recipients = new Set<string>();
   for (const value of sale.PurchasedItems) {
     const item = record(value);
-    if (String(item.Id) !== MFR_COURSE.productId || item.IsService !== true || item.Returned === true) continue;
+    if (!registrationProductIds.has(String(item.Id)) || item.IsService !== true || item.Returned === true) continue;
     if (!positiveQuantity(item.Quantity) || typeof item.TotalAmount !== "number" || !Number.isFinite(item.TotalAmount) || item.TotalAmount < 0) continue;
     const recipient = clientId(item.RecipientClientId) ?? clientId(sale.RecipientClientId) ?? clientId(sale.ClientId);
     if (!recipient) throw new TrackingError("missing_recipient");
