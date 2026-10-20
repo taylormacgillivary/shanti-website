@@ -47,38 +47,6 @@ interface Workshop {
 
 const workshops: Workshop[] = [
   {
-    title: "Mysore Ashtanga Practice",
-    instructor: "Andrea Gracia",
-    description: "Mysore Style is the traditional way of teaching the Ashtanga Vinyasa Yoga once the student has familiarity with the Sun Salutations and primary series. In this practice you will receive personal attention from Andrea Gracia, an Authorized Level 1 Ashtanga Yoga Teacher who travels to Mysore (India) every year to study with her teacher Saraswathi Jois.",
-    location: "Bedford",
-    dates: [
-      "<strong>August 6 – September 10, 2026</strong>"
-    ],
-    duration: "6 Week Program",
-    cost: "$160 + tax",
-    discount: "*Shanti monthly members receive 10% discount with promo code: Mysore10",
-    image: "/images-in-use/teachers-used/andrea-gracia.jpg",
-    imagePosition: "center bottom",
-    widgetId: "6810924385be",
-    registrationClosed: false,
-  },
-  {
-    title: "Flow for the Cure",
-    instructor: "Trever McWilson",
-    description: "Join yoga teacher extraordinaire and Estée Lauder Executive Trainer, Trever McWilson, in a dynamic and fun yoga class that will raise funds for Breast Cancer Research — with Shanti & Estée Lauder.",
-    fullDescription: "Join yoga teacher extraordinaire and Estée Lauder Executive Trainer, Trever McWilson, in a dynamic and fun yoga class that will raise funds for Breast Cancer Research.<br><br><em>&ldquo;Early detection and treatment is still considered the best line of defence against breast cancer!! Current technology lets researchers learn at a faster pace than they did decades ago. As technology evolves, more treatments — and, perhaps, methods of prevention — will be uncovered. The only way to this Evolution is through funding and donations. I want to bring my community together to continue to help research and technology evolve. To be able help all the women and men who have been diagnosed with this disease.&rdquo; ~ Trever McWilson</em>",
-    location: "Dartmouth",
-    dates: [
-      "<strong>Date:</strong> Sunday, October 18th, 2026",
-      "<strong>From:</strong> 2:00 pm - 3:00 pm"
-    ],
-    cost: "$30 donation (includes a Clinique goodie bag)",
-    discount: "$30 donation (includes a Clinique goodie bag)",
-    image: "/images-in-use/teachers-used/trever-mcwilson.jpeg",
-    imagePosition: "center top",
-    widgetId: "6811568685be",
-  },
-  {
     title: "Prenatal Yoga",
     instructor: "Stephanie Morton (Bedford) & Niki Smith (Dartmouth)",
     description: "Prenatal Yoga is an incredible way to tune into your body in an intimate way as it undergoes a very challenging and magical transformation. Prenatal Yoga will help strengthen both the body and mind during your pregnancy and in preparation for labour while connecting you to a like-minded group. With everyone at a different stage of pregnancy, the community building aspect can be extremely valuable, while at the same time, building a closer connection to the little one in your belly!",
@@ -92,22 +60,24 @@ const workshops: Workshop[] = [
     widgetId: "689767685be",
     registrationClosed: false,
     hasMultipleOptions: true,
+    featured: true,
+    hideLocationBadge: true,
   },
   {
-    title: "Fall Equinox Sound Bath",
-    instructor: "Amanda Savoie",
-    description: "Celebrate the Fall Equinox with a deeply restorative sound bath designed to bring you back into balance. As day and night meet in equal measure, this seasonal transition invites us to slow down, turn inward, and release what we no longer need.",
-    fullDescription: "Settle into a comfortable resting position as the soothing vibrations of crystal singing bowls and other healing instruments guide you toward deep relaxation. Through sound and stillness, you&apos;ll be invited to reflect on the season&apos;s gifts, reconnect with yourself, and create space for the months ahead.<br><br>No previous experience is needed. Bring comfortable layers and anything you need to feel warm and supported.",
-    location: "Halifax",
+    title: "Pop-up Ashtanga Full Primary Series",
+    instructor: "Andrea Gracia",
+    description: "Join Andrea Gracia for a rare and special two-hour led full Primary Series. This is a rare opportunity to experience Andrea’s expertise in a led class, and one that may not come around again for a while.",
+    location: "Bedford",
     dates: [
-      "<strong>Date:</strong> Saturday, September 26th, 2026",
-      "<strong>From:</strong> 6:00 pm"
+      "<strong>Date:</strong> Saturday, October 24th, 2026",
+      "<strong>From:</strong> 11:30 am – 1:30 pm"
     ],
+    duration: "2 Hour Class",
     cost: "$30 + tax",
     discount: "$30 + tax",
-    image: "/images-in-use/sound-bath.webp",
-    widgetId: "6810924285be",
-    featured: true
+    image: "/images-in-use/teachers-used/andrea-gracia.jpg",
+    imagePosition: "center bottom",
+    widgetId: "6811718985be",
   },
 ];
 
