@@ -1,7 +1,7 @@
-/** October 2026 offer from Don's October 3 email. */
+/** October 2026 offer; first-two-month price corrected by Taylor on October 20. */
 export const membershipSale = {
   dates: "October 20–22, 2026",
-  firstMonthsRate: 19,
+  firstMonthsRate: 9,
   regularRate: 115,
   studentSeniorRate: 89,
   // America/Halifax is UTC−03:00 at both of these October boundaries.

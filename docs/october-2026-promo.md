@@ -7,13 +7,13 @@ Source: Don MacGillivary, “October Membership Promo”, October 3, 2026, in Ta
 - URL: `/membership-sale`, reusing the current site's video hero, regular/student-senior pricing cards, membership terms, studio photos, and navigation/footer.
 - Public offer dates: October 20–22, 2026. Taylor confirmed these dates October 13.
 - Site promotion and checkout window: October 20 at 12:01 a.m. through October 23 at 10:00 p.m., America/Halifax (end exclusive). October 23 is an unadvertised grace day for stragglers, requested October 14.
-- Both tiers: $19/month for months 1–2. Regular: $115/month for months 3–4. Student/senior: $89/month for months 3–4.
+- Both tiers: $9/month for months 1–2, corrected by Taylor on October 20. Regular: $115/month for months 3–4. Student/senior: $89/month for months 3–4.
 - Yoga only; Pilates is excluded. Membership begins on the purchase day during the sale.
 - Existing minimum four-month commitment, current-member exclusion, and continuation language retained from the current membership sale page. Verify these against the October contracts before launch.
 - Purchase controls disabled before/after the sale and until both October contracts are configured. April widget service IDs 169 and 173 are removed from checkout.
 - Main navigation title: **Fall Membership Sale**, in desktop navigation and mobile main menu.
 - Sticky announcement bar: **Fall membership sale on now — click here for details**. It sits above navigation in the shared sticky header, in forest green/cream with a sage accent.
-- Minimal photo popup: **Fall Membership Sale**, **$19 / month**, **for your first two months**, **Unlimited yoga. All three studios.**, and **See the offer**.
+- Minimal photo popup: **Fall Membership Sale**, **$9 / month**, **for your first two months**, **Unlimited yoga. All three studios.**, and **See the offer**.
 - Navigation, bar and popup share the sale clock; visibility follows the schedule even if checkout IDs are still unset. Checkout stays disabled until both verified IDs are configured.
 - Popup dismissal lasts 12 hours; it does not open on the sale page itself. The bar and navigation remain available after dismissal. An open popup is removed at the closing boundary.
 - Removed “Online purchases open October 20”, “Available October 20” button labels, and “coming soon” wording from the sale page.
@@ -24,7 +24,7 @@ The September/October 2025 “Fall Membership Sale” email thread identifies th
 
 ## Finish before launch
 
-1. In Mindbody / Branded Web Manager, locate the October 2026 regular and student/senior promo **contract links**. Verify $19 for each first two months, $115/$89 for months 3–4, yoga-only access, start date, minimum commitment, renewal, eligibility, and checkout tax presentation.
+1. In Mindbody / Branded Web Manager, locate the October 2026 regular and student/senior promo **contract links**. Verify $9 for each first two months, $115/$89 for months 3–4, yoga-only access, start date, minimum commitment, renewal, eligibility, and checkout tax presentation.
 2. Add the verified numeric contract service IDs to `src/lib/membership-sale.ts`. Site identity currently inherited from the working site's widget markup: site 1889, Mindbody site 11233. Confirm those identities against the generated markup as well.
 3. Check both checkout dialogs when the contracts become available; do not complete a purchase. If the integration supplies a different type of purchase link, adapt the controls to that verified format instead.
 4. Publish the branch to production before the opening time. The October page was initially shared as a Vercel review preview. Deployment in advance is necessary for automatic production appearance/removal. No new deployment or manual switch is needed at either boundary.
