@@ -2,13 +2,17 @@
 
 Source: Don MacGillivary, “October Membership Promo”, October 3, 2026, in Taylor's Shanti Gmail. Taylor approved the details by email on October 5.
 
+## Promotion restored — October 20, 2026
+
+After reviewing the updated purchase buttons, Taylor approved restoring and publishing all site promotion. `membershipSale.promotionPaused` is now `false`: the Fall Membership Sale navigation item, announcement bar and $19 popup follow the original sale window again, with automatic removal October 23 at 10 p.m. Halifax time. Verified Branded Web contracts 184 (regular) and 185 (student/senior) remain connected. The pause recorded below is historical and no longer active.
+
 ## Temporary promotion pause — October 20, 2026
 
-Taylor requested that the sale navigation item, announcement bar and popup be temporarily removed until further instruction. `membershipSale.promotionPaused` is `true` and overrides scheduled site-wide promotion, including preview clocks. All three components share this switch; their designs and original schedule are preserved. The landing page remains available by direct URL. Restore only when Taylor requests it, and confirm the schedule still matches the intended sale dates. The first-two-month price remains $19/month, as Taylor reconfirmed October 20.
+Taylor requested that the sale navigation item, announcement bar and popup be temporarily removed until further instruction. `membershipSale.promotionPaused` was set to `true` to override scheduled site-wide promotion, including preview clocks. All three components share this switch; their designs and original schedule were preserved. The landing page remained available by direct URL. The first-two-month price remains $19/month, as Taylor reconfirmed October 20. Taylor subsequently approved restoration, recorded above.
 
 ## Purchase contracts — October 20, 2026
 
-Refreshed the signed-in Shanti Branded Web Manager Links page and selected Buy Now - Contract. The list now contains `$19 - Special Offer ($19.00) Contract ID: 184` and `$19 - Special Offer students/seniors ($19.00) Contract ID: 185`. Generated markup confirms `data-type="contract-link"`, `data-site-id="1889"`, `data-mb-site-id="11233"`, and service IDs 184 / 185 respectively. These are now assigned to the regular and student/senior purchase buttons. Site-wide promotion remains manually paused. No Mindbody contract settings or purchases were changed.
+Refreshed the signed-in Shanti Branded Web Manager Links page and selected Buy Now - Contract. The list now contains `$19 - Special Offer ($19.00) Contract ID: 184` and `$19 - Special Offer students/seniors ($19.00) Contract ID: 185`. Generated markup confirms `data-type="contract-link"`, `data-site-id="1889"`, `data-mb-site-id="11233"`, and service IDs 184 / 185 respectively. These are now assigned to the regular and student/senior purchase buttons. Both live buttons opened their correct $19 checkout summaries. No Mindbody contract settings or purchases were changed.
 
 ## Implemented landing page
 

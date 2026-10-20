@@ -1,7 +1,7 @@
 /** October 2026 offer from Don's October 3 email. */
 export const membershipSale = {
-  // Manual pause overrides scheduled site promotion; restore only when Taylor asks.
-  promotionPaused: true,
+  // Taylor approved restoring all site promotion on October 20.
+  promotionPaused: false,
   dates: "October 20–22, 2026",
   firstMonthsRate: 19,
   regularRate: 115,

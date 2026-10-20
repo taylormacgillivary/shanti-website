@@ -14,7 +14,8 @@ try {
   }
   const { membershipSale, getMembershipSaleStatus } = require(path.join(temp, "membership-sale.js"));
   const { isMembershipSaleNavOrPopupVisible } = require(path.join(temp, "membership-sale-window.js"));
-  assert.equal(membershipSale.promotionPaused, true, "Public promotion must remain manually paused");
+  const configuredPause = membershipSale.promotionPaused;
+  assert.equal(typeof configuredPause, "boolean");
   assert.equal(membershipSale.dates, "October 20–22, 2026");
   assert.equal(new Date(membershipSale.startsAt).toISOString(), "2026-10-20T03:01:00.000Z");
   assert.equal(new Date(membershipSale.endsAt).toISOString(), "2026-10-24T01:00:00.000Z");
@@ -33,10 +34,12 @@ try {
     for (const [instant, expected] of cases) {
       const now = new Date(instant);
       assert.equal(getMembershipSaleStatus(now), expected, `${zone}: ${instant}`);
+      assert.equal(isMembershipSaleNavOrPopupVisible(now), !configuredPause && expected === "active", `${zone}: configured ${instant}`);
+      membershipSale.promotionPaused = true;
       assert.equal(isMembershipSaleNavOrPopupVisible(now), false, `${zone}: paused ${instant}`);
       membershipSale.promotionPaused = false;
       assert.equal(isMembershipSaleNavOrPopupVisible(now), expected === "active", `${zone}: restored ${instant}`);
-      membershipSale.promotionPaused = true;
+      membershipSale.promotionPaused = configuredPause;
     }
   }
   console.log("Passed: manual pause, restored schedule, exact boundaries and grace day in 3 timezones.");
