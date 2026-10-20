@@ -2,6 +2,10 @@
 
 Source: Don MacGillivary, “October Membership Promo”, October 3, 2026, in Taylor's Shanti Gmail. Taylor approved the details by email on October 5.
 
+## Temporary promotion pause — October 20, 2026
+
+Taylor requested that the sale navigation item, announcement bar and popup be temporarily removed until further instruction. `membershipSale.promotionPaused` is `true` and overrides scheduled site-wide promotion, including preview clocks. All three components share this switch; their designs and original schedule are preserved. The landing page remains available by direct URL. Restore only when Taylor requests it, and confirm the schedule still matches the intended sale dates. The first-two-month price remains $19/month, as Taylor reconfirmed October 20.
+
 ## Implemented landing page
 
 - URL: `/membership-sale`, reusing the current site's video hero, regular/student-senior pricing cards, membership terms, studio photos, and navigation/footer.

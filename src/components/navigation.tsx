@@ -34,6 +34,7 @@ import { siteConfig } from "@/config/site";
 import { type NavItem } from "@/types";
 import { useMembershipSaleStatus } from "@/lib/use-membership-sale-status";
 import {
+  isMembershipSalePromotionVisible,
   MEMBERSHIP_SALE_PATH,
 } from "@/lib/membership-sale-window";
 
@@ -58,7 +59,7 @@ export function Navigation() {
       : siteConfig.coursesNav;
 
   const saleStatus = useMembershipSaleStatus();
-  const mainNavItems: NavItem[] = saleStatus === "active"
+  const mainNavItems: NavItem[] = isMembershipSalePromotionVisible(saleStatus)
     ? [...siteConfig.mainNav, MEMBERSHIP_SALE_NAV_ITEM]
     : siteConfig.mainNav;
 

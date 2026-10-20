@@ -2,11 +2,11 @@
 
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { MEMBERSHIP_SALE_PATH } from "@/lib/membership-sale-window";
+import { isMembershipSalePromotionVisible, MEMBERSHIP_SALE_PATH } from "@/lib/membership-sale-window";
 import { useMembershipSaleStatus } from "@/lib/use-membership-sale-status";
 
 export function MembershipSaleBanner() {
-  if (useMembershipSaleStatus() !== "active") return null;
+  if (!isMembershipSalePromotionVisible(useMembershipSaleStatus())) return null;
 
   return (
     <aside aria-label="Fall membership sale" className="border-b border-[#96bf50]/30 bg-gradient-to-r from-[#2d4934] via-[#405e3b] to-[#2d4934] text-[#fbf8ef]">

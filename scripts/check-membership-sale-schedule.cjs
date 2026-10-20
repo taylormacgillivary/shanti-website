@@ -14,6 +14,7 @@ try {
   }
   const { membershipSale, getMembershipSaleStatus } = require(path.join(temp, "membership-sale.js"));
   const { isMembershipSaleNavOrPopupVisible } = require(path.join(temp, "membership-sale-window.js"));
+  assert.equal(membershipSale.promotionPaused, true, "Public promotion must remain manually paused");
   assert.equal(membershipSale.dates, "October 20–22, 2026");
   assert.equal(new Date(membershipSale.startsAt).toISOString(), "2026-10-20T03:01:00.000Z");
   assert.equal(new Date(membershipSale.endsAt).toISOString(), "2026-10-24T01:00:00.000Z");
@@ -32,10 +33,13 @@ try {
     for (const [instant, expected] of cases) {
       const now = new Date(instant);
       assert.equal(getMembershipSaleStatus(now), expected, `${zone}: ${instant}`);
-      assert.equal(isMembershipSaleNavOrPopupVisible(now), expected === "active", `${zone}: visibility ${instant}`);
+      assert.equal(isMembershipSaleNavOrPopupVisible(now), false, `${zone}: paused ${instant}`);
+      membershipSale.promotionPaused = false;
+      assert.equal(isMembershipSaleNavOrPopupVisible(now), expected === "active", `${zone}: restored ${instant}`);
+      membershipSale.promotionPaused = true;
     }
   }
-  console.log("Passed: exact opening/closing boundaries, October 23 grace day, and consistent visibility in 3 timezones.");
+  console.log("Passed: manual pause, restored schedule, exact boundaries and grace day in 3 timezones.");
 } finally {
   fs.rmSync(temp, { recursive: true, force: true });
 }

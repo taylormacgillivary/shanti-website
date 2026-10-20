@@ -9,7 +9,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { Button } from "@/components/ui/button";
 import { useMembershipSaleStatus } from "@/lib/use-membership-sale-status";
 import { membershipSale } from "@/lib/membership-sale";
-import { MEMBERSHIP_SALE_PATH } from "@/lib/membership-sale-window";
+import { isMembershipSalePromotionVisible, MEMBERSHIP_SALE_PATH } from "@/lib/membership-sale-window";
 
 const POPUP_DISMISS_AT_KEY = "shanti-fall-membership-sale-2026-popup-dismissed-at";
 const SUPPRESS_MS = 12 * 60 * 60 * 1000;
@@ -35,7 +35,7 @@ function recordPopupClosedAt(): void {
 export function MembershipSaleAnnouncement() {
   const saleStatus = useMembershipSaleStatus();
   const pathname = usePathname();
-  const visible = saleStatus === "active" && pathname !== MEMBERSHIP_SALE_PATH;
+  const visible = isMembershipSalePromotionVisible(saleStatus) && pathname !== MEMBERSHIP_SALE_PATH;
   const [open, setOpen] = React.useState(false);
 
   React.useEffect(() => {
