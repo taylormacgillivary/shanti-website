@@ -100,6 +100,20 @@ test("webhook tags the course recipient, not a different payer", () => {
   assert.deepEqual(receiptFromSale(sale(), config)?.recipients, ["student"]);
 });
 
+for (const [productId, amount] of [[1344, 695], [1285, 795]]) {
+  test(`full-payment option ${productId} qualifies in notifications and historical receipts without a deposit`, () => {
+    const item = { itemId: productId, type: "Service", quantity: 1, amountPaid: amount, recipientClientId: "student" };
+    const ledgerItem = { Id: String(productId), IsService: true, Quantity: 1, TotalAmount: amount, RecipientClientId: "student" };
+    assert.deepEqual(receiptFromWebhook(webhook({ items: [item] }), config)?.recipients, ["student"]);
+    assert.deepEqual(receiptFromSale(sale({ PurchasedItems: [ledgerItem] }), config)?.recipients, ["student"]);
+    assert.equal(receiptFromSale(sale({ PurchasedItems: [{ ...ledgerItem, Returned: true }] }), config), null);
+    assert.equal(receiptFromWebhook(webhook({ items: [{ ...item, quantity: -1, amountPaid: -amount }] }), config), null);
+    assert.equal(receiptFromWebhook(webhook({ items: [{ ...item, type: "Product" }] }), config), null);
+    assert.equal(receiptFromWebhook(webhook({ saleDateTime: "2026-08-31T12:00:00Z", items: [item] }), config), null);
+    assert.ok(receiptFromWebhook(webhook({ items: [{ ...item, amountPaid: 0 }] }), config));
+  });
+}
+
 test("receipt recipient falls back to payer only when no recipient is supplied", () => {
   const event = webhook({ items: [{ itemId: 1283, type: "Service", quantity: 1, amountPaid: 150 }] });
   assert.deepEqual(receiptFromWebhook(event, config)?.recipients, ["payer"]);
@@ -111,6 +125,7 @@ test("non-MFR, wrong-business, old and future-intake receipts are ignored", () =
   assert.equal(receiptFromWebhook(webhook({ saleDateTime: "2026-08-31T12:00:00Z" }), config), null);
   assert.equal(receiptFromWebhook(webhook({ saleDateTime: "2027-02-01T12:00:00Z" }), config), null);
   assert.equal(receiptFromWebhook(webhook({ items: [{ itemId: 1594, type: "Service", quantity: 1, amountPaid: 40 }] }), config), null);
+  assert.equal(receiptFromWebhook(webhook({ items: [{ itemId: 1123, type: "Service", quantity: 1, amountPaid: 545 }] }), config), null);
   assert.equal(receiptFromWebhook(webhook({ items: [{ itemId: 1283, type: "Product", quantity: 1, amountPaid: 150 }] }), config), null);
 });
 
@@ -176,13 +191,18 @@ test("dry runs perform no writes", async () => {
 });
 
 test("daily reconciliation paginates the full intake window and catches missing notifications", async () => {
-  const mock = mockService({ pages: [[sale({ Id: 101 })], [sale({ Id: 102, PurchasedItems: [{ Id: 1283, IsService: true, Quantity: 1, TotalAmount: 150, RecipientClientId: "student-2" }] })]] });
+  const mock = mockService({ pages: [
+    [sale({ Id: 101 })],
+    [sale({ Id: 102, PurchasedItems: [{ Id: 1344, IsService: true, Quantity: 1, TotalAmount: 695, RecipientClientId: "student-2" }] })],
+    [sale({ Id: 103, PurchasedItems: [{ Id: 1285, IsService: true, Quantity: 1, TotalAmount: 795, RecipientClientId: "student-3" }] })],
+  ] });
   const result = await new PurchaseTracker(config, mock.fetcher).reconcile(false, new Date("2026-10-14T12:00:00Z"));
-  assert.equal(result.receipts, 2);
-  assert.equal(result.recipients, 2);
+  assert.equal(result.receipts, 3);
+  assert.equal(result.recipients, 3);
   const calls = mock.calls.filter(c => c.url.pathname.endsWith("/sale/sales"));
-  assert.equal(calls.length, 2);
+  assert.equal(calls.length, 3);
   assert.equal(calls[1].url.searchParams.get("Offset"), "1");
+  assert.equal(calls[2].url.searchParams.get("Offset"), "2");
   assert.equal(calls[0].url.searchParams.get("StartSaleDateTime"), "2026-09-01T00:00:00");
 });
 
@@ -253,6 +273,27 @@ test("signed webhook processes a purchase through the complete route", async () 
     } finally { globalThis.fetch = previous; }
   });
 });
+
+for (const [productId, amount] of [[1344, 695], [1285, 795]]) {
+  test(`signed full-payment webhook ${productId} applies the registered tag and is safe to retry`, async () => {
+    await withRouteEnvironment(async () => {
+      const previous = globalThis.fetch;
+      const mock = mockService();
+      globalThis.fetch = mock.fetcher;
+      try {
+        const event = webhook({ items: [{ itemId: productId, type: "Service", quantity: 1, amountPaid: amount, recipientClientId: "student" }] });
+        const first = await POST(signedRequest(event));
+        assert.equal(first.status, 200);
+        assert.equal((await first.json()).tagged, 1);
+        const retry = await POST(signedRequest(event));
+        assert.equal(retry.status, 200);
+        assert.equal((await retry.json()).already_tagged, 1);
+        assert.equal(mock.calls.filter(c => c.method === "POST").length, 1);
+        assert.ok(mock.tagged.has("MFR YTT 2027 - Registered"));
+      } finally { globalThis.fetch = previous; }
+    });
+  });
+}
 
 test("signed unrelated or wrong-site events are acknowledged without any vendor requests", async () => {
   await withRouteEnvironment(async () => {
