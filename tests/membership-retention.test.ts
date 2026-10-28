@@ -11,7 +11,7 @@ const now = new Date("2026-10-28T15:00:00Z");
 function visit(day: string, id = 1, overrides: Partial<Visit> = {}): Visit {
   return { Id: id, ClassId: id, ClientId: client.Id, ClientUniqueId: client.UniqueId, SiteId: 11233,
     StartDateTime: `${day}T09:00:00`, EndDateTime: `${day}T10:00:00`, TypeGroup: 22,
-    SignedIn: true, Missed: false, LateCancelled: false, AppointmentStatus: "Booked", ...overrides };
+    SignedIn: true, Missed: false, LateCancelled: false, AppointmentStatus: "NoShow", ...overrides };
 }
 function snapshot(overrides: Partial<Snapshot> = {}): Snapshot {
   return { purchase: { ...purchase }, client: { ...client }, contracts: [{ Id: 123, ContractID: 184, SiteId: 11233,
@@ -53,8 +53,21 @@ test("future signed-in classes, no-shows, cancellations and Pilates do not count
   const visits = [visit("2026-10-29"), visit("2026-10-22", 2, { Missed: true }),
     visit("2026-10-23", 3, { LateCancelled: true }), visit("2026-10-24", 4, { TypeGroup: 52 }),
     visit("2026-10-25", 5, { SignedIn: false }), visit("2026-10-26", 6, { ClassId: null }),
-    visit("2026-10-27", 7, { AppointmentStatus: "Cancelled" })];
+    visit("2026-10-27", 7, { Missed: true })];
   assert.equal(assess(snapshot({ visits }), now).visits21, 0);
+});
+test("real class visit shape ignores the appointment-only NoShow default", () => {
+  const s = snapshot({ visits: [visit("2026-10-24"), visit("2026-10-26", 2)],
+    schedule: [visit("2026-10-28", 3, { StartDateTime: "2026-10-28T17:30:00", EndDateTime: "2026-10-28T18:30:00",
+      WaitlistInfo: { WaitlistId: null, WaitlistOrderNumber: null } })] });
+  const a = assess(s, now);
+  assert.equal(a.visits21, 2); assert.equal(a.last, "2026-10-26"); assert.equal(a.next, "2026-10-28");
+  assert.equal(a.first, false);
+});
+test("an ongoing first class suppresses the nudge but only counts once it finishes", () => {
+  const ongoing = visit("2026-10-28", 3, { StartDateTime: "2026-10-28T11:30:00", EndDateTime: "2026-10-28T12:30:00" });
+  const a = assess(snapshot({ visits: [ongoing], schedule: [ongoing] }), now);
+  assert.equal(a.visits21, 0); assert.equal(a.first, false); assert.equal(a.next, "2026-10-28");
 });
 test("5 classes within first 21 days earns celebration even if sync runs later", () => {
   const visits = ["2026-10-20", "2026-10-23", "2026-10-25", "2026-11-05", "2026-11-09"].map((d, i) => visit(d, i + 1));
@@ -131,6 +144,16 @@ test("inflated sales total requires an independent full-page ID reconciliation",
   });
   assert.deepEqual(await api.pages("sale/sales", "Sales", {}), [{ Id: 1 }]);
   assert.equal(api.paginationRechecks, 1);
+});
+test("tag segments with stale zero totals are paged to empty and include unsubscribed contacts", async () => {
+  let calls = 0;
+  const api = new RetentionApi(config, now, async url => {
+    assert.match(String(url), /include_unsubscribed=true/);
+    calls++;
+    return json({ total_items: 0, members: calls === 1 ? [member()] : [] });
+  });
+  assert.equal((await api.previousMembers()).length, 1);
+  assert.equal(calls, 2);
 });
 test("write allowlist blocks email sends, subscription changes and unrelated tags", async () => {
   const api = new RetentionApi(config, now, async () => new Response(null, { status: 204 }));

@@ -143,8 +143,12 @@ export async function syncRetention(config: RetentionConfig, apply = false, now 
     if (seenMembers.has(member.id)) continue;
     if (member.status === "archived") continue;
     if (member.id !== emailHash(member.email_address)) throw new RetentionError("previous_member_identity");
+    // Segment member lists omit tags: retrieve full current state before clearing
+    // stale eligibility, so a previously earned milestone stays intact.
+    const current = await api.member(member.email_address);
+    if (!current || current.status === "archived") continue;
     result.staleCohort++;
-    plans.push(planMember({ uniqueId: member.id, contractId: "0", product: "1591", purchasedDay: SALE.firstDay, paid: false, ambiguous: true }, member, undefined, now, "cohort-review"));
+    plans.push(planMember({ uniqueId: member.id, contractId: "0", product: "1591", purchasedDay: SALE.firstDay, paid: false, ambiguous: true }, current, undefined, now, "cohort-review"));
   }
   for (const p of plans) {
     const status = String(p.fields.SRSTATUS);

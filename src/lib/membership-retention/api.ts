@@ -217,13 +217,26 @@ export class RetentionApi {
   }
   async previousMembers(): Promise<Member[]> {
     const result: Member[] = [];
-    for (let offset = 0; offset < 10000; offset += 1000) {
-      const data = object(await this.mc(`lists/${SALE.audienceId}/segments/3209079/members?count=1000&offset=${offset}`));
+    const seen = new Set<string>();
+    let total = 0;
+    for (let offset = 0; offset < 10000;) {
+      const data = object(await this.mc(`lists/${SALE.audienceId}/segments/3209079/members?count=1000&offset=${offset}&include_unsubscribed=true&include_cleaned=true&include_transactional=true`));
       const members = rows(data.members);
       if (!Number.isSafeInteger(data.total_items)) throw new RetentionError("invalid_cohort_pagination");
+      // Mailchimp tag segments currently return total_items=0 with nonempty
+      // members. Explicitly read through the empty terminal page; don't silently
+      // drop unsubscribed members or treat that stale count as an empty cohort.
+      total = Math.max(total, Number(data.total_items));
+      for (const member of members) {
+        if (typeof member.id !== "string" || member.id !== emailHash(String(member.email_address)) || seen.has(member.id)) throw new RetentionError("cohort_identity_review");
+        seen.add(member.id);
+      }
       result.push(...members as unknown as Member[]);
-      if (result.length === data.total_items) return result;
-      if (!members.length || result.length > Number(data.total_items)) throw new RetentionError("incomplete_cohort_pagination");
+      if (!members.length) {
+        if (result.length < total) throw new RetentionError("incomplete_cohort_pagination");
+        return result;
+      }
+      offset += members.length;
     }
     throw new RetentionError("cohort_pagination_limit");
   }

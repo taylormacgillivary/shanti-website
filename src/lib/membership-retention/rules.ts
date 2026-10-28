@@ -105,8 +105,9 @@ function yoga(visit: Visit): boolean {
   const program = visit.Service?.Program?.Id ?? visit.TypeGroup;
   return !!visit.ClassId && SALE.yogaPrograms.includes(program as never)
     && visit.Missed === false && visit.LateCancelled === false
-    && visit.Service?.Returned !== true
-    && !/cancel|no.?show/i.test(visit.AppointmentStatus || "");
+    && visit.Service?.Returned !== true;
+  // AppointmentStatus applies to appointments, not classes. Live class rows
+  // default to "NoShow" even with SignedIn=true, Missed=false and no cancellation.
 }
 export function assess(snapshot: Snapshot, now: Date): Assessment {
   const { purchase, client } = snapshot;
@@ -134,8 +135,9 @@ export function assess(snapshot: Snapshot, now: Date): Assessment {
   const visits = [...completed.values()].sort((a, b) => mindbodyTime(a.StartDateTime).localeCompare(mindbodyTime(b.StartDateTime)));
   const visits21 = visits.filter(v => mindbodyTime(v.StartDateTime).slice(0, 10) < addDays(start, 21)).length;
   const last = visits.length ? mindbodyDay(visits[visits.length - 1].StartDateTime) : undefined;
-  const future = snapshot.schedule.filter(v => yoga(v) && mindbodyTime(v.StartDateTime) >= clock
-    && v.AppointmentStatus === "Booked" && v.WaitlistInfo?.WaitlistId == null
+  const future = snapshot.schedule.filter(v => yoga(v) && mindbodyTime(v.EndDateTime) > clock
+    && v.WaitlistInfo?.WaitlistId == null
+    && mindbodyDay(v.StartDateTime) >= start
     && v.WaitlistInfo?.WaitlistOrderNumber == null).sort((a, b) => mindbodyTime(a.StartDateTime).localeCompare(mindbodyTime(b.StartDateTime)));
   const next = future.length ? mindbodyDay(future[0].StartDateTime) : undefined;
   const base = { ...empty, start, last, next, visits21, milestone: visits21 >= 5 };

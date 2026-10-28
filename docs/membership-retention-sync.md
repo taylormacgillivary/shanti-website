@@ -47,6 +47,13 @@ check-ins to the same class/start time count once. Upcoming booking lookup cover
 the four-month program window. Four-month date arithmetic is used only as a
 lookup horizon; it is not treated as a verified cancellation/billing deadline.
 
+Use the **class** flags SignedIn/Missed/LateCancelled and the client schedule
+roster to evaluate classes. Do not filter classes using AppointmentStatus: live
+class records default that unrelated appointment field to "NoShow", including
+attended and future booked classes. A regression fixture covers this source shape.
+An in-progress booked class also suppresses an absence nudge; it is counted as
+completed attendance only after its end time.
+
 Private optional fields: SRSTART, SRLAST, SRNEXT (MM/DD/YYYY); SRVIS21 (count);
 SRSTATUS; SRREASON; SRSYNC (UTC successful attendance snapshot). Existing unrelated
 contact fields are never written. API/data failures preserve old attendance
@@ -75,6 +82,10 @@ only after checking actual send history and the shared 72-hour spacing rule.
    reminders are not eligible for dispatch. The intro EndDate must never be
    mistaken for the four-month commitment end. Past that intro EndDate, this
    version holds the member for continuation review rather than guessing.
+4. Mailchimp tag-segment membership can report total_items=0 with a nonempty
+   member list. The connector explicitly paginates through an empty terminal page
+   with unsubscribed/cleaned/transactional inclusion enabled. It checks duplicate
+   IDs and uses the actual returned member lists, not that stale zero count.
 
 ## Run and deploy
 
