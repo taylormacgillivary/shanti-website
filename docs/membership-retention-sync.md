@@ -94,6 +94,11 @@ Required: MINDBODY_API_KEY, MINDBODY_SITE_ID, MINDBODY_USERNAME,
 MINDBODY_PASSWORD, MAILCHIMP_API_KEY, MAILCHIMP_SERVER_PREFIX,
 MAILCHIMP_NEWSLETTER_AUDIENCE_ID. MINDBODY_API_SOURCE_NAME is optional.
 
+Production uses dedicated `RETENTION_MINDBODY_USERNAME` and
+`RETENTION_MINDBODY_PASSWORD` secrets instead of the local MINDBODY_USERNAME and
+MINDBODY_PASSWORD entries. This leaves older site configuration untouched and
+prevents a fallback to those shared credentials in Production.
+
 ```sh
 # Read-only by default. Output contains counts, never names/emails/raw payloads.
 RETENTION_ENV_FILE=/absolute/private/.env npm run sync:retention

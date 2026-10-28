@@ -104,6 +104,12 @@ test("staff credentials and exact Shanti account are required", () => {
   assert.throws(() => getConfig({ MINDBODY_SITE_ID: "other" }), RetentionError);
   assert.throws(() => getConfig({ MINDBODY_SITE_ID: "11233", MAILCHIMP_NEWSLETTER_AUDIENCE_ID: "other" }), RetentionError);
 });
+test("production requires dedicated credentials and cannot use the legacy shared-login fallback", () => {
+  const env = { VERCEL_ENV: "production", MINDBODY_SITE_ID: "11233", MAILCHIMP_NEWSLETTER_AUDIENCE_ID: "20f894ac06",
+    MAILCHIMP_SERVER_PREFIX: "us18", MINDBODY_API_KEY: "test", MAILCHIMP_API_KEY: "test", MINDBODY_USERNAME: "old", MINDBODY_PASSWORD: "old" };
+  assert.throws(() => getConfig(env), /missing_RETENTION_MINDBODY_USERNAME/);
+  assert.equal(getConfig({ ...env, RETENTION_MINDBODY_USERNAME: "dedicated", RETENTION_MINDBODY_PASSWORD: "test" }).username, "dedicated");
+});
 test("purchases use item recipient and purchased instance, net returns and ambiguous repeat purchases", async () => {
   const sale = (id: number, uid: number, item: object) => ({ Id: id, ClientId: 99, RecipientClientId: 88,
     SaleDateTime: "2026-10-20T00:23:58Z", PurchasedItems: [{ Id: 1591, IsService: true, ContractId: 123,

@@ -14,8 +14,12 @@ export function getConfig(env: Record<string, string | undefined> = process.env)
     || get("MAILCHIMP_SERVER_PREFIX") !== SALE.server) throw new RetentionError("wrong_account");
   const mode = env.MEMBERSHIP_RETENTION_MODE || "read-only";
   if (mode !== "read-only" && mode !== "tags") throw new RetentionError("invalid_mode");
+  // Keep this job's Production-only entries separate from legacy site settings.
+  // Production never silently falls back to an older shared cloud login.
+  const dedicated = env.VERCEL_ENV === "production" || !!env.RETENTION_MINDBODY_USERNAME;
   return { mindbodyKey: get("MINDBODY_API_KEY"), sourceName: env.MINDBODY_API_SOURCE_NAME || "ShantiRetention",
-    username: get("MINDBODY_USERNAME"), password: get("MINDBODY_PASSWORD"), mailchimpKey: get("MAILCHIMP_API_KEY"), mode };
+    username: get(dedicated ? "RETENTION_MINDBODY_USERNAME" : "MINDBODY_USERNAME"),
+    password: get(dedicated ? "RETENTION_MINDBODY_PASSWORD" : "MINDBODY_PASSWORD"), mailchimpKey: get("MAILCHIMP_API_KEY"), mode };
 }
 type Row = Record<string, unknown>;
 export function object(value: unknown): Row {
