@@ -11,7 +11,9 @@
     "check-mailchimp": "node scripts/check-mailchimp-setup.js",
     "test:mfr": "tsx --test tests/mfr-purchase-tracking.test.ts",
     "sync:mfr": "tsx scripts/sync-mfr-purchases.ts",
-    "webhook:mfr": "tsx scripts/manage-mfr-webhook.ts"
+    "webhook:mfr": "tsx scripts/manage-mfr-webhook.ts",
+    "test:retention": "tsx --test tests/membership-retention.test.ts",
+    "sync:retention": "tsx scripts/sync-membership-retention.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
