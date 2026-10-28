@@ -1,5 +1,6 @@
 {
   "crons": [
-    { "path": "/api/cron/mfr-purchases", "schedule": "0 9 * * *" }
+    { "path": "/api/cron/mfr-purchases", "schedule": "0 9 * * *" },
+    { "path": "/api/cron/membership-retention", "schedule": "30 10 * * *" }
   ]
 }
