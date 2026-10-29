@@ -7,6 +7,10 @@ export const SALE = {
   products: { "1591": 184, "1592": 185 } as Record<string, number>,
   // Verified against GET site/programs. Pilates is 52, workshops/enrolments are excluded.
   yogaPrograms: [22, 28, 44, 47],
+  // Taylor confirmed October 29: staff create months 3–4 separately. The sale
+  // commitment is four calendar months even though the intro instance ends at 2.
+  commitmentMonths: 4,
+  manualHoldTag: "sale-retention-hold",
   tags: {
     cohort: "sale-2026-10", eligible: "sale-retention-eligible",
     first: "sale-needs-first-class", returning: "sale-return-check-in",
@@ -100,6 +104,8 @@ export interface Assessment {
   status: string; membershipEligible: boolean; first: boolean; returning: boolean;
   milestone: boolean; staffReview: boolean; visits21: number;
   start?: string; last?: string; next?: string; billingVerified: boolean;
+  commitmentEnd?: string;
+  lastAt?: string;
 }
 function yoga(visit: Visit): boolean {
   const program = visit.Service?.Program?.Id ?? visit.TypeGroup;
@@ -134,19 +140,24 @@ export function assess(snapshot: Snapshot, now: Date): Assessment {
   }
   const visits = [...completed.values()].sort((a, b) => mindbodyTime(a.StartDateTime).localeCompare(mindbodyTime(b.StartDateTime)));
   const visits21 = visits.filter(v => mindbodyTime(v.StartDateTime).slice(0, 10) < addDays(start, 21)).length;
-  const last = visits.length ? mindbodyDay(visits[visits.length - 1].StartDateTime) : undefined;
+  const lastAt = visits.length ? mindbodyTime(visits[visits.length - 1].StartDateTime) : undefined;
+  const last = lastAt?.slice(0, 10);
   const future = snapshot.schedule.filter(v => yoga(v) && mindbodyTime(v.EndDateTime) > clock
     && v.WaitlistInfo?.WaitlistId == null
     && mindbodyDay(v.StartDateTime) >= start
     && v.WaitlistInfo?.WaitlistOrderNumber == null).sort((a, b) => mindbodyTime(a.StartDateTime).localeCompare(mindbodyTime(b.StartDateTime)));
   const next = future.length ? mindbodyDay(future[0].StartDateTime) : undefined;
-  const base = { ...empty, start, last, next, visits21, milestone: visits21 >= 5 };
+  const commitmentEnd = addMonths(start, SALE.commitmentMonths);
+  const base = { ...empty, start, last, lastAt, next, visits21, milestone: visits21 >= 5, commitmentEnd };
   if (!client.Active) return { ...base, status: "client-inactive" };
   if (contract.TerminationDate) return { ...base, status: "cancelled" };
-  if (contract.AutopayStatus !== "Active") return { ...base, status: "membership-review" };
+  // An inactive *expired* introductory instance is not a cancelled four-month
+  // sale membership. Explicit termination, suspension, refunds and staff hold
+  // still stop delivery; an unexplained inactive current intro stays on hold.
+  const naturalIntroExpiry = today >= end && ["Inactive", "Expired"].includes(contract.AutopayStatus || "");
+  if (contract.AutopayStatus !== "Active" && !naturalIntroExpiry) return { ...base, status: "membership-review" };
   if (today < start) return { ...base, status: "not-started" };
-  // Intro contracts end after two months, not four. Never assume an unseen continuation exists.
-  if (today >= end) return { ...base, status: "continuation-review" };
+  if (today >= commitmentEnd) return { ...base, status: "programme-complete" };
   const first = !last && dayGap(start, today) >= 7 && !next;
   const returning = !!last && dayGap(last, today) >= 14 && !next;
   return { ...base, status: "active", membershipEligible: true, first, returning,

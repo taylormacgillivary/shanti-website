@@ -1,5 +1,14 @@
 # October 2026 membership retention connector
 
+October 29 update: the tag-only job remains incapable of sending. A separately
+gated delivery scheduler is now implemented in preview mode; see
+[membership-retention-delivery.md](membership-retention-delivery.md) for current
+delivery rules and activation checks. Taylor confirmed that the sale commitment
+is four months and staff create months 3–4 separately; this supersedes the
+earlier continuation-review assumptions and billing-reminder notes below.
+Production staff credentials and the tag job were already deployed and verified
+on October 28; the original deployment checklist below is historical.
+
 This implementation syncs Mindbody purchases, membership status, completed yoga
 attendance and upcoming bookings to **existing** Mailchimp contacts. It cannot
 send email, activate a journey, subscribe a contact, or restore archived contacts.
