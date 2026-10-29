@@ -1,0 +1,51 @@
+{
+  "approvedAt": "2026-10-29",
+  "revision": "7e29b77b25a8db241a3ffabc722d5253a85a2d53bd154b0d257e577e47099676",
+  "emails": {
+    "support-01": {
+      "campaign": "d935a58b22",
+      "subject": "Finding Your Groove",
+      "sha256": "8f6a8fdf016fb5397d37cbcbecaed461fee4e8ba952a06d62aa583dc30f8cce4"
+    },
+    "support-02": {
+      "campaign": "35203e080a",
+      "subject": "Your Brain on Yoga",
+      "sha256": "cae4b909618ae494e39527ac7fcaeeb1047086ff0c126ed8592f62941a5921e4"
+    },
+    "support-03": {
+      "campaign": "c06e6ad2d6",
+      "subject": "Who's your next favourite teacher?",
+      "sha256": "b40630de404e541f01fdecf7bb2833d0c17f4496ceb26f071cdf4137337f56a9"
+    },
+    "support-04": {
+      "campaign": "693e2b3c4a",
+      "subject": "Yin, Vinyasa, Core & Flow...what's the difference?",
+      "sha256": "e83e0cdfa84d950d31aae13c19d3ee2f92bf3781daf11cc1dbe447d8e0fc7953"
+    },
+    "support-05": {
+      "campaign": "58132830a8",
+      "subject": "Found your favourite class yet?",
+      "sha256": "bf855441338731440eb306fcd1ebcaf34f5b5cc997e2753a44e65e848f637bc6"
+    },
+    "support-06": {
+      "campaign": "6b1132925e",
+      "subject": "Let's keep this party rolling",
+      "sha256": "97471da0c5c075bd130977dbed752915ccf6ba023cfffaff7158672e64eab9af"
+    },
+    "attendance-first-class": {
+      "campaign": "cfbd435561",
+      "subject": "Can we help you find your first class?",
+      "sha256": "16dfef09e15cb66761fdb4f26fa43290133bc3c465b0dc625e1758891fd44732"
+    },
+    "attendance-return": {
+      "campaign": "57ee56f80a",
+      "subject": "Let's get started!",
+      "sha256": "fd944354b0b0219459a3f74b7fa69e0562f26bf9227fb8ea385b39a67fafebbd"
+    },
+    "attendance-celebration": {
+      "campaign": "3ff26db48b",
+      "subject": "You are absolutely CRUSHING IT!",
+      "sha256": "93cc92b44afadf51f0a0c80552c8f0eb91175cccb43c2852ee26dae659a6f14b"
+    }
+  }
+}

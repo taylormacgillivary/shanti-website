@@ -82,7 +82,8 @@ test("refunded, cancelled, inactive, unmatched and ambiguous contracts are held"
   assert.equal(assess(s, now).status, "cancelled");
   assert.equal(assess(snapshot({ client: { ...client, Active: false } }), now).membershipEligible, false);
   assert.equal(assess(snapshot({ contracts: [] }), now).status, "contract-review");
-  assert.equal(assess(snapshot(), new Date("2026-12-20T15:00:00Z")).status, "continuation-review");
+  assert.equal(assess(snapshot(), new Date("2026-12-20T15:00:00Z")).status, "active");
+  assert.equal(assess(snapshot(), new Date("2027-02-20T15:00:00Z")).status, "programme-complete");
   assert.equal(assess(snapshot(), now).billingVerified, false);
 });
 test("every eligible current buyer starts at welcome, with no automatic stage advancement", () => {

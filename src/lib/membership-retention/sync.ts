@@ -1,11 +1,13 @@
 import { RetentionApi, type Member, type RetentionConfig } from "./api";
-import { assess, emailHash, localTime, mergeDate, privateKey, RetentionError, SALE, type Assessment, type Purchase } from "./rules";
+import { assess, emailHash, localTime, mergeDate, privateKey, RetentionError, SALE, type Assessment, type Purchase, type Client } from "./rules";
 
 export interface Plan {
   key: string; member: Member; fields: Record<string, string | number>;
   tags: Record<string, boolean>; assessment?: Assessment;
+  source?: { purchase: Purchase; client: Client };
 }
 export function planMember(purchase: Purchase, member: Member, assessment: Assessment | undefined, now: Date, hold?: string): Plan {
+  if (member.tags.some(t => t.name === SALE.manualHoldTag)) hold = "staff-hold";
   const status = hold || (member.status !== "subscribed" ? `mailchimp-${member.status}` : assessment?.status || "data-review");
   const eligible = !hold && member.status === "subscribed" && assessment?.membershipEligible === true;
   const fields: Plan["fields"] = { SRSTATUS: status, SRREASON: "", SRBILLAMT: "", SRBILLDAY: "" };
@@ -50,9 +52,9 @@ export async function applyPlan(api: RetentionApi, plan: Plan): Promise<void> {
   if (!current || current.id !== plan.member.id) throw new RetentionError("contact_changed");
   if (String(current.merge_fields.SRSYNC || "") > api.now.toISOString()) throw new RetentionError("newer_snapshot_exists");
   const tags = { ...plan.tags }, fields = { ...plan.fields };
-  if (current.status !== "subscribed") {
+  if (current.status !== "subscribed" || current.tags.some(t => t.name === SALE.manualHoldTag)) {
     tags[SALE.tags.eligible] = false; tags[SALE.tags.first] = false; tags[SALE.tags.returning] = false;
-    fields.SRREASON = ""; fields.SRSTATUS = `mailchimp-${current.status}`;
+    fields.SRREASON = ""; fields.SRSTATUS = current.status !== "subscribed" ? `mailchimp-${current.status}` : "staff-hold";
     delete fields.SRSTAGE;
   }
   // Remove eligibility before updating fields. An interrupted sync cannot leave a
@@ -65,7 +67,7 @@ export async function applyPlan(api: RetentionApi, plan: Plan): Promise<void> {
     tags: Object.entries(tags).map(([name, active]) => ({ name, status: active ? "active" : "inactive" })) });
 }
 export async function syncRetention(config: RetentionConfig, apply = false, now = new Date(), suppliedApi?: RetentionApi,
-  beforeApply?: (plans: Plan[]) => Promise<void>): Promise<SyncSummary> {
+  beforeApply?: (plans: Plan[]) => Promise<void>, onPlanned?: (plans: Plan[]) => Promise<void>): Promise<SyncSummary> {
   if (apply && config.mode !== "tags") throw new RetentionError("apply_requires_tags_mode");
   const api = suppliedApi || new RetentionApi(config, now);
   const result: SyncSummary = { mode: apply ? "tags" : "read-only", snapshotAt: now.toISOString(), emailsSent: 0,
@@ -131,7 +133,7 @@ export async function syncRetention(config: RetentionConfig, apply = false, now 
       }
       try {
         const assessment = assess(await api.snapshot(p, client), now);
-        plans.push(planMember(p, member, assessment, now));
+        plans.push({ ...planMember(p, member, assessment, now), source: { purchase: p, client } });
       } catch (error) {
         failed(error);
         plans.push(planMember(p, member, undefined, now, "data-review"));
@@ -166,6 +168,7 @@ export async function syncRetention(config: RetentionConfig, apply = false, now 
     if (p.tags[SALE.tags.milestone]) result.milestones++;
   }
   result.planned = plans.length;
+  if (onPlanned) await onPlanned(plans);
   if (apply) {
     if (beforeApply) await beforeApply(plans);
     await each(plans, async plan => {
