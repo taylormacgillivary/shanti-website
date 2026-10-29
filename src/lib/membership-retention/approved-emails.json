@@ -1,51 +1,51 @@
 {
   "approvedAt": "2026-10-29",
-  "revision": "5845a4c5b3cbe323819955c6367f6ef8e416da515012e251b52eac49a0c359ea",
+  "revision": "02cb7e64150041ada4c3da39c9a89efd4fd534a9458ddabffe61704885cd61ce",
   "emails": {
     "support-01": {
       "campaign": "d935a58b22",
       "subject": "Finding Your Groove",
-      "sha256": "13b197ac836557bcb31f75e88040ccc4330780c4395aff3b6168b250017e15fa"
+      "sha256": "39b7ec604de9cc262c4c19c9f37687938c133eee4d258ae500e6048e8050dfce"
     },
     "support-02": {
       "campaign": "35203e080a",
       "subject": "Your Brain on Yoga",
-      "sha256": "25b1e582cec2f97d3a45ba4a4dd81ae068c71cb48f0262315ae0760121971fd2"
+      "sha256": "163dd4b08e8ea9b109d1e837ff714e7539cc965c7bdb57f5e7fd0dc30403b5bb"
     },
     "support-03": {
       "campaign": "c06e6ad2d6",
       "subject": "Who's your next favourite teacher?",
-      "sha256": "f962b9c85383ee1eb05e3b3eec995db55cc176fa277050d1ff8a2ba9f5ada291"
+      "sha256": "7126f20c2253027e67c36a04774b4ea677ceafee922a0a251ea9bcb5ca412ff2"
     },
     "support-04": {
       "campaign": "693e2b3c4a",
       "subject": "Yin, Vinyasa, Core & Flow...what's the difference?",
-      "sha256": "d6940d3774fe8924db95873fb1d215ce08c7eaee6174e4b20acd631ee20a819f"
+      "sha256": "2a75f13b00c3209062ade56fae7e93107748b0f02e9de589b68a6a467b3a7ba5"
     },
     "support-05": {
       "campaign": "58132830a8",
       "subject": "Found your favourite class yet?",
-      "sha256": "f1514086292cc5abfc349d6e27ac8633e7c77b19b8d99cf7d5ceb814e66b8cc7"
+      "sha256": "79f6ace488c36874f361689b918717256b9d746541c57b0076f249c4692e4604"
     },
     "support-06": {
       "campaign": "6b1132925e",
       "subject": "Let's keep this party rolling",
-      "sha256": "7f63ac4466b1128f93e2b1f99ea717a00bf0b11ad0bb122623e15a2d415af96f"
+      "sha256": "71ae7d4ea4988940efaf467aa70e802591a3342eadc40c4583c6799149702f26"
     },
     "attendance-first-class": {
       "campaign": "cfbd435561",
       "subject": "Can we help you find your first class?",
-      "sha256": "b190c69ea41e5af50af914513d99cac3c95a0159d8cd9b59bea81702e8377c06"
+      "sha256": "4582bb37e081b1ef5f9e8f35ec6e407c8bb38c0e41155e40fc3af3376d771bb3"
     },
     "attendance-return": {
       "campaign": "57ee56f80a",
       "subject": "Let's get started!",
-      "sha256": "4df6e3d18eb11b1986e444d17ecbd973c9b19152f07e2daba678e21ab4d65d7f"
+      "sha256": "2a13d217e8bc08bf726e25ab445fea11a05e18632691f3feda3c89c5ca057c2d"
     },
     "attendance-celebration": {
       "campaign": "3ff26db48b",
       "subject": "You are absolutely CRUSHING IT!",
-      "sha256": "3e8da42592f74eb6aaa1360f04f72f174623a8627227b984d15c2890903ef5f6"
+      "sha256": "e0818eab28c43b049c7f4b3665e3e12714733380886a3b8c20c461349289c08f"
     }
   }
 }
