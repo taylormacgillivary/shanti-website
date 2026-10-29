@@ -45,9 +45,13 @@ export class RetentionApi {
   private deadline: number;
   calls = { mindbody: 0, mailchimp: 0, writes: 0 };
   paginationRechecks = 0;
-  constructor(readonly config: RetentionConfig, readonly now = new Date(), private fetcher: typeof fetch = fetch) {
-    this.deadline = Date.now() + 240000;
+  constructor(readonly config: RetentionConfig, readonly now = new Date(), private fetcher: typeof fetch = fetch,
+    runBudgetMs = 240000) {
+    if (!Number.isSafeInteger(runBudgetMs) || runBudgetMs < 30000 || runBudgetMs > 700000)
+      throw new RetentionError("invalid_run_budget");
+    this.deadline = Date.now() + runBudgetMs;
   }
+  remainingMs(): number { return Math.max(0, this.deadline - Date.now()); }
   private async request(url: URL, service: "mindbody" | "mailchimp", method = "GET", body?: unknown, missingOkay = false): Promise<unknown> {
     if (Date.now() >= this.deadline) throw new RetentionError("run_deadline");
     const headers: Record<string, string> = { "Content-Type": "application/json", "User-Agent": this.config.sourceName };

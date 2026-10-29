@@ -91,11 +91,11 @@ export async function dispatch(plans: Plan[], api: RetentionApi, ledger: Ledger,
     considered: 0, due: 0, acceptedTriggers: 0, confirmedReceipts: 0, held: {}, failures: 0, failureStages: {} };
   await ledger.probe(); result.ledgerReady = true;
   await gateway.preflight(); result.approvedCopyVerified = true;
-  const deadline = Date.now() + 210000;
+  const deadline = Date.now() + 420000;
   let index = 0;
   await Promise.all(Array.from({ length: Math.min(4, plans.length) }, async () => {
     while (index < plans.length) {
-      if (Date.now() > deadline) {
+      if (Date.now() > deadline || api.remainingMs() < 90000) {
         result.held.budget_deferred = (result.held.budget_deferred || 0) + plans.length - index;
         index = plans.length; return;
       }
