@@ -9,7 +9,7 @@ import { dispatch } from "@/lib/membership-retention/delivery";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
-export const maxDuration = 300;
+export const maxDuration = 800;
 
 export async function GET(request: Request) {
   const secret = process.env.CRON_SECRET;
@@ -19,7 +19,7 @@ export async function GET(request: Request) {
   try {
     const mode = deliveryMode();
     if (mode === "off") return NextResponse.json({ status: "disabled", acceptedTriggers: 0 });
-    const config = getConfig(), now = new Date(), api = new RetentionApi(config, now);
+    const config = getConfig(), now = new Date(), api = new RetentionApi(config, now, fetch, 700000);
     let plans: Plan[] = [];
     // Independent complete source read. Do not dispatch from yesterday's tags
     // or start advancing stages in the existing tag-only job.

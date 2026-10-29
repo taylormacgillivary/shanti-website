@@ -206,6 +206,15 @@ test("preview gateway cannot trigger even a known production journey", async () 
   await assert.rejects(g.trigger("support-01", initialMember), /trigger_not_allowed/);
   assert.equal(calls, 0);
 });
+test("initial welcome batch has a longer bounded budget; exhausted workers defer without claiming", async () => {
+  const api = new FakeApi(), ledger = new MemoryLedger(); let triggered = 0;
+  api.remainingMs = () => 89999;
+  const report = await dispatch([plan()], api, ledger, gateway([], async () => { triggered++; }), "live", now);
+  assert.equal(report.held.budget_deferred, 1); assert.equal(ledger.writes, 0); assert.equal(triggered, 0);
+  assert.throws(() => new RetentionApi(config, now, fetch, 700001), /invalid_run_budget/);
+  assert.ok(new RetentionApi(config, now, fetch, 700000).remainingMs() > 699000);
+  assert.ok(new RetentionApi(config, now).remainingMs() <= 240000);
+});
 test("receipt feed accepts only actual sent events with matching contact and campaign", async () => {
   const data = { list_id: SALE.audienceId, email_id: initialMember.id,
     activity: [{ activity_type: "sent", campaign_id: MESSAGES["support-01"].campaign, created_at_timestamp: "2026-10-28T15:00:00Z" }] };

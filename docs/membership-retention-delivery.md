@@ -100,6 +100,8 @@ manual hold, applies the current fields/tags with tag automations suppressed,
 and verifies the route immediately before the trigger. Source errors cannot
 become zero attendance. Summaries/logs contain aggregate counts only.
 
+The delivery function has an 800-second platform limit on the existing Pro Fluid plan, a 700-second API budget and a 420-second dispatch phase. New member claims stop with less than 90 seconds of API budget left. The tag-only job retains its original 240-second budget. The first verified cloud preview took 161.8 seconds; the larger delivery allowance leaves time for the initial welcome batch and its fresh checks.
+
 Before activation: tests, build, deployed preview job, private-store origin-read
 and stale-ETag rejection probe, approved-copy preflight and controlled provider
 test. Then, only on Taylor's request:
