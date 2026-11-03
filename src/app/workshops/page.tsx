@@ -39,6 +39,7 @@ interface Workshop {
   featured?: boolean;
   imagePosition?: string;
   widgetId?: string;
+  registrationUrl?: string;
   registrationClosed?: boolean;
   hasMultipleOptions?: boolean;
   takeHome?: string;
@@ -48,18 +49,20 @@ interface Workshop {
 const workshops: Workshop[] = [
   {
     title: "Prenatal Yoga",
-    instructor: "Stephanie Morton (Bedford) & Niki Smith (Dartmouth)",
+    instructor: "Prily MacPhee",
     description: "Prenatal Yoga is an incredible way to tune into your body in an intimate way as it undergoes a very challenging and magical transformation. Prenatal Yoga will help strengthen both the body and mind during your pregnancy and in preparation for labour while connecting you to a like-minded group. With everyone at a different stage of pregnancy, the community building aspect can be extremely valuable, while at the same time, building a closer connection to the little one in your belly!",
-    location: "Dartmouth & Bedford",
+    location: "Bedford",
     dates: [
-      "<strong>Bedford:</strong> Begins October 19th, 2026",
-      "<strong>Dartmouth:</strong> Begins October 15th, 2026"
+      "<strong>Bedford:</strong> November 23rd – December 14th, 2026",
+      "<strong>When:</strong> Mondays, 6:00 pm – 7:00 pm"
     ],
-    duration: "4 Week Programs",
+    duration: "4 Week Program",
+    cost: "$80 + tax",
+    discount: "$80 + tax",
+    dropIn: "Dartmouth prenatal sessions return in the new year.",
     image: "/images-in-use/prenatal-2017.jpg",
-    widgetId: "689767685be",
+    registrationUrl: "https://cart.mindbodyonline.com/sites/1889/cart/add_booking?item%5Bclass_schedule_id%5D=4297&item%5Binfo%5D=Mon.+Nov+23%2C+2026++6%3A00+pm&item%5Bmbo_id%5D=4297&item%5Bmbo_location_id%5D=2&item%5Bname%5D=Pre-Natal%3A+4+Weeks%2C+2026+BEDFORD&item%5Btype%5D=Enrollment&theme=modern&widget_type=enrollment",
     registrationClosed: false,
-    hasMultipleOptions: true,
     featured: true,
     hideLocationBadge: true,
   },
@@ -314,12 +317,20 @@ export default function WorkshopsPage() {
                   </div>
                 )}
 
-                <Button 
-                  onClick={() => handleRegisterClick(workshop)}
-                  className="gradient-sage text-white hover:opacity-90 shadow-lg"
-                >
-                  Register Now
-                </Button>
+                {workshop.registrationUrl && !isRegistrationClosed(workshop) ? (
+                  <Button asChild className="gradient-sage text-white hover:opacity-90 shadow-lg">
+                    <a href={workshop.registrationUrl} target="_blank" rel="noopener noreferrer">
+                      Register Now
+                    </a>
+                  </Button>
+                ) : (
+                  <Button
+                    onClick={() => handleRegisterClick(workshop)}
+                    className="gradient-sage text-white hover:opacity-90 shadow-lg"
+                  >
+                    Register Now
+                  </Button>
+                )}
               </div>
             </div>
           </div>
