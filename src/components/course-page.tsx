@@ -214,7 +214,7 @@ export function CoursePage({
                                         </p>
                                     </div>
                                     {infoPackageDownloadHref ? (
-                                        <Button asChild size="lg" className="w-full h-auto whitespace-normal text-center gradient-sage hover:opacity-90 text-white">
+                                        <Button asChild size="lg" className="w-full h-auto min-h-11 py-3 whitespace-normal text-center gradient-sage hover:opacity-90 text-white">
                                             <a href={infoPackageDownloadHref} download>Download the Info Package (PDF)</a>
                                         </Button>
                                     ) : <InfoPackageEmailCapture
@@ -553,7 +553,7 @@ export function CoursePage({
                                     </p>
                                 </div>
                                 {infoPackageDownloadHref ? (
-                                    <Button asChild size="lg" className="w-full h-auto whitespace-normal text-center gradient-sage hover:opacity-90 text-white">
+                                    <Button asChild size="lg" className="w-full h-auto min-h-11 py-3 whitespace-normal text-center gradient-sage hover:opacity-90 text-white">
                                         <a href={infoPackageDownloadHref} download>Download the Info Package (PDF)</a>
                                     </Button>
                                 ) : <InfoPackageEmailCapture
