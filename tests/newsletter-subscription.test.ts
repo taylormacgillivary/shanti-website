@@ -8,7 +8,7 @@ process.env.MAILCHIMP_API_KEY = "test-key";
 process.env.MAILCHIMP_SERVER_PREFIX = "us18";
 process.env.MAILCHIMP_NEWSLETTER_AUDIENCE_ID = "test-audience";
 
-for (const status of ["subscribed", "unsubscribed", "pending", "cleaned", "transactional", "unexpected"]) {
+for (const status of ["subscribed", "unsubscribed", "archived", "pending", "cleaned", "transactional", "unexpected"]) {
   test(`newsletter action handles Mailchimp status ${status} without forcing a resubscription`, async (t) => {
     const member = t.mock.method(mailchimp.lists, "setListMember", async () => ({ status }));
     const tags = t.mock.method(mailchimp.lists, "updateListMemberTags", async () => ({}));
@@ -18,11 +18,13 @@ for (const status of ["subscribed", "unsubscribed", "pending", "cleaned", "trans
     const request = member.mock.calls[0].arguments;
     assert.equal(request[0], "test-audience");
     assert.equal(request[1], "returning@example.com");
-    assert.equal(request[2].status_if_new, "subscribed");
-    assert.equal("status" in request[2], false, "must preserve the existing opt-out");
+    const body = request[2];
+    assert.ok(body);
+    assert.equal(body.status_if_new, "subscribed");
+    assert.equal("status" in body, false, "must preserve the existing opt-out");
     assert.equal(tags.mock.callCount(), 1);
     assert.equal(result.success, status === "subscribed");
-    assert.equal(result.status, status === "unsubscribed" ? "resubscribe" :
+    assert.equal(result.status, status === "unsubscribed" || status === "archived" ? "resubscribe" :
       status === "subscribed" || status === "pending" ? status : "error");
 
     if (result.status === "resubscribe" || result.status === "pending") {

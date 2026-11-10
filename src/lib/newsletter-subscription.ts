@@ -13,8 +13,9 @@ export type NewsletterSubscriptionResult =
 
 export function newsletterSubscriptionResult(result: MailchimpResponse): NewsletterSubscriptionResult {
   // A successful API update does not mean an existing contact is subscribed.
-  // Self-unsubscribed and permanently deleted contacts must opt in themselves.
-  if (result.status === "unsubscribed" ||
+  // Archived contacts can also rejoin through the hosted signup form.
+  // Preserve their existing opt-out until they complete that process.
+  if (result.status === "unsubscribed" || result.status === "archived" ||
       (!result.success && /compliance state|resubscribe|permanently deleted/i.test(result.error ?? ""))) {
     return {
       success: false,
