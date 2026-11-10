@@ -182,13 +182,14 @@ export default function YTT200HourPage() {
         <CoursePage
             title="Yoga Teacher Training"
             subtitle="Spring 2027 • A 200-Hour Foundational Journey"
-            dates="Module 1: April 2-9 | Module 2: April 16 | Module 3: April 30 - May 2"
+            dates="Module 1: April 2-9 | Module 2: April 16-30 | Module 3: April 30 - May 2"
             quote="We must be willing to let go of the life we have planned, so as to have the life that is waiting for us."
             heroImage="/images-in-use/05.jpg"
             imageTwo="/images-in-use/12.jpg"
             imageThree="/images-in-use/20.jpg"
             showInfoPackageCapture={true}
             infoPackageTrainingType="ytt-200-hour"
+            infoPackageDownloadHref="/ytt-2027-info-package.pdf"
             whoIsThisFor={whoIsThisFor}
             curriculum={modules}
             curriculumTitle="Course Curriculum"
@@ -208,4 +209,4 @@ export default function YTT200HourPage() {
             fullTuitionDisclaimer="Only use this link if you paid your deposit before March 1"
         />
     )
-} 
+}
