@@ -56,6 +56,7 @@ interface CoursePageProps {
     imageThree?: string;
     showInfoPackageCapture?: boolean;
     infoPackageTrainingType?: string;
+    infoPackageDownloadHref?: string;
     whoIsThisFor?: WhoIsThisFor[];
     learningOutcomes?: string[];
     curriculum: Module[];
@@ -92,6 +93,7 @@ export function CoursePage({
     imageThree,
     showInfoPackageCapture,
     infoPackageTrainingType,
+    infoPackageDownloadHref,
     whoIsThisFor,
     learningOutcomes,
     curriculum,
@@ -206,13 +208,19 @@ export function CoursePage({
                                             Ready to Learn More?
                                         </h3>
                                         <p className="text-lg text-stone-700">
-                                            Get the complete info package delivered to your inbox:
+                                            {infoPackageDownloadHref
+                                                ? "Explore the full training schedule, curriculum, tuition and payment options."
+                                                : "Get the complete info package delivered to your inbox:"}
                                         </p>
                                     </div>
-                                    <InfoPackageEmailCapture 
+                                    {infoPackageDownloadHref ? (
+                                        <Button asChild size="lg" className="w-full h-auto min-h-11 py-3 whitespace-normal text-center gradient-sage hover:opacity-90 text-white">
+                                            <a href={infoPackageDownloadHref} download>Download the Info Package (PDF)</a>
+                                        </Button>
+                                    ) : <InfoPackageEmailCapture
                                         trainingType={infoPackageTrainingType}
                                         buttonText="Send Me the Info Package"
-                                    />
+                                    />}
                                 </div>
                             </div>
                         )}
@@ -539,13 +547,19 @@ export function CoursePage({
                                         Want More Details?
                                     </h3>
                                     <p className="text-lg text-stone-700">
-                                        Get the complete info package delivered to your inbox:
+                                        {infoPackageDownloadHref
+                                            ? "Explore the full training schedule, curriculum, tuition and payment options."
+                                            : "Get the complete info package delivered to your inbox:"}
                                     </p>
                                 </div>
-                                <InfoPackageEmailCapture 
+                                {infoPackageDownloadHref ? (
+                                    <Button asChild size="lg" className="w-full h-auto min-h-11 py-3 whitespace-normal text-center gradient-sage hover:opacity-90 text-white">
+                                        <a href={infoPackageDownloadHref} download>Download the Info Package (PDF)</a>
+                                    </Button>
+                                ) : <InfoPackageEmailCapture
                                     trainingType={infoPackageTrainingType}
                                     buttonText="Send Me the Info Package"
-                                />
+                                />}
                             </div>
                         </div>
                     )}
@@ -591,4 +605,4 @@ export function CoursePage({
             )}
         </div>
     );
-} 
+}
