@@ -3,8 +3,9 @@
 import { z } from "zod";
 import { subscribeToList } from "@/lib/mailchimp";
 import { newsletterSchema, type NewsletterData } from "./newsletter-schema";
+import { newsletterSubscriptionResult, type NewsletterSubscriptionResult } from "@/lib/newsletter-subscription";
 
-export async function subscribeToNewsletter(data: NewsletterData) {
+export async function subscribeToNewsletter(data: NewsletterData): Promise<NewsletterSubscriptionResult> {
   try {
     // Validate the data
     const validatedData = newsletterSchema.parse(data);
@@ -15,6 +16,7 @@ export async function subscribeToNewsletter(data: NewsletterData) {
       console.error("MAILCHIMP_NEWSLETTER_AUDIENCE_ID is not configured in environment variables");
       return {
         success: false,
+        status: "error",
         message: "Newsletter subscription is not configured. Please contact support.",
       };
     }
@@ -38,18 +40,23 @@ export async function subscribeToNewsletter(data: NewsletterData) {
       tags,
     });
 
-    if (result.success) {
+    const subscription = newsletterSubscriptionResult(result);
+
+    if (subscription.success) {
       console.log(`Successfully subscribed: ${validatedData.email}`);
-    } else {
+    } else if (subscription.status === "error") {
       console.error(`Failed to subscribe: ${validatedData.email}`, result);
+    } else {
+      console.log(`Newsletter signup requires ${subscription.status}: ${validatedData.email}`);
     }
 
-    return result;
+    return subscription;
   } catch (error) {
     if (error instanceof z.ZodError) {
       console.error("Validation error:", error.errors);
       return {
         success: false,
+        status: "error",
         message: error.errors[0].message,
       };
     }
@@ -57,6 +64,7 @@ export async function subscribeToNewsletter(data: NewsletterData) {
     console.error("Newsletter subscription error:", error);
     return {
       success: false,
+      status: "error",
       message: "An unexpected error occurred. Please try again later.",
     };
   }

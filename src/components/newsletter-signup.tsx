@@ -6,6 +6,7 @@ import { subscribeToNewsletter } from "@/app/actions/newsletter";
 import { toast } from "sonner";
 import { NewsletterConfirmationModal } from "@/components/newsletter-confirmation-modal";
 import { Mail } from "lucide-react";
+import type { NewsletterConfirmationResult } from "@/lib/newsletter-subscription";
 
 interface NewsletterSignupProps {
   title?: string;
@@ -28,8 +29,10 @@ export function NewsletterSignup({
 }: NewsletterSignupProps) {
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [showConfirmation, setShowConfirmation] = useState(false);
-  const [confirmedEmail, setConfirmedEmail] = useState("");
+  const [confirmation, setConfirmation] = useState<{
+    email: string;
+    result: NewsletterConfirmationResult;
+  } | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -44,10 +47,9 @@ export function NewsletterSignup({
     try {
       const result = await subscribeToNewsletter({ email, tags });
 
-      if (result.success) {
-        setConfirmedEmail(email);
-        setShowConfirmation(true);
-        setEmail("");
+      if (result.status !== "error") {
+        setConfirmation({ email, result });
+        if (result.success) setEmail("");
       } else {
         toast.error(result.message || "Failed to subscribe. Please try again.");
         console.error("Newsletter subscription failed:", result);
@@ -59,6 +61,15 @@ export function NewsletterSignup({
       setIsLoading(false);
     }
   };
+
+  const confirmationModal = confirmation ? (
+    <NewsletterConfirmationModal
+      open
+      onOpenChange={(open) => { if (!open) setConfirmation(null); }}
+      email={confirmation.email}
+      result={confirmation.result}
+    />
+  ) : null;
 
   if (variant === "section") {
     return (
@@ -79,6 +90,8 @@ export function NewsletterSignup({
                 <input
                   className="flex-1 px-4 py-2.5 text-sm border border-border rounded-md bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-sage-green/50 focus:border-sage-green transition-colors h-10"
                   placeholder={placeholder}
+                  aria-label="Email address"
+                  autoComplete="email"
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -100,11 +113,7 @@ export function NewsletterSignup({
           </div>
         </section>
         
-        <NewsletterConfirmationModal
-          open={showConfirmation}
-          onOpenChange={setShowConfirmation}
-          email={confirmedEmail}
-        />
+        {confirmationModal}
       </>
     );
   }
@@ -122,6 +131,8 @@ export function NewsletterSignup({
           <input
             className="w-full max-w-sm p-2 border border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-700 dark:text-gray-50"
             placeholder={placeholder}
+            aria-label="Email address"
+            autoComplete="email"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -138,11 +149,7 @@ export function NewsletterSignup({
         </form>
       </div>
       
-      <NewsletterConfirmationModal
-        open={showConfirmation}
-        onOpenChange={setShowConfirmation}
-        email={confirmedEmail}
-      />
+      {confirmationModal}
     </>
   );
 }

@@ -26,6 +26,7 @@ export interface MailchimpResponse {
   success: boolean;
   message: string;
   error?: string;
+  status?: string;
 }
 
 /**
@@ -95,6 +96,7 @@ export async function subscribeToList({
     return {
       success: true,
       message: 'Successfully subscribed to the list!',
+      status: typeof memberResponse.status === 'string' ? memberResponse.status : undefined,
     };
   } catch (error: unknown) {
     console.error('Mailchimp subscription error:', error);
