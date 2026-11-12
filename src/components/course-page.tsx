@@ -64,6 +64,7 @@ interface CoursePageProps {
     teachers: Teacher[];
     faqs?: Faq[];
     investment?: Investment;
+    investmentDetails?: ReactNode;
     /** When set, replaces investment cards/buttons with this message (e.g. while dates are TBD). */
     investmentPlaceholder?: string;
     paymentDepositLink?: string;
@@ -101,6 +102,7 @@ export function CoursePage({
     teachers,
     faqs,
     investment,
+    investmentDetails,
     investmentPlaceholder,
     paymentDepositLink = "#",
     paymentFullLink = "#",
@@ -523,6 +525,11 @@ export function CoursePage({
                          )}
                     </div>
                     ) : null}
+                    {!investmentPlaceholder && investmentDetails && (
+                        <div className="max-w-3xl mx-auto mt-12 p-6 sm:p-8 bg-stone-50 rounded-lg text-stone-700 leading-relaxed">
+                            {investmentDetails}
+                        </div>
+                    )}
                     {!investmentPlaceholder && (
                     <div className="text-center mt-8 text-stone-600">
                         {showDepositOnly ? (

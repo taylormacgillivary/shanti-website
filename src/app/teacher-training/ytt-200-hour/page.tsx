@@ -172,7 +172,7 @@ const modules = [
 
   const investment = {
       deposit: 1000,
-      tuition: 3600,
+      tuition: 3400,
       earlyBirdTuition: 3200,
       earlyBirdDate: "March 1, 2027"
   }
@@ -196,6 +196,17 @@ export default function YTT200HourPage() {
             teachers={teachers}
             faqs={faqs}
             investment={investment}
+            investmentDetails={
+                <>
+                    <h3 className="text-xl sm:text-2xl font-bold text-stone-900 mb-4">200-Hour Yoga Teacher Training | Repeat Training Rates</h3>
+                    <p>Already completed a 200-hour Yoga Teacher Training? We’d love to welcome you to Shanti to revisit the foundations, deepen your practice, and build confidence in your teaching.</p>
+                    <ul className="list-disc pl-6 my-4 space-y-2">
+                        <li><strong>Shanti graduates:</strong> $1,700 (50% off)</li>
+                        <li><strong>Graduates of another 200-hour Yoga Teacher Training:</strong> $2,550 (25% off)</li>
+                    </ul>
+                    <p>Repeat-training discounts are based on our regular tuition of <strong>$3,400</strong>. One rate applies per registration. If you qualify for both the early-bird rate and a repeat-training rate, you’ll pay whichever is lower.</p>
+                </>
+            }
             paymentDepositLink="#"
             paymentFullLink="#"
             paymentDepositText="Pay Your Deposit"
