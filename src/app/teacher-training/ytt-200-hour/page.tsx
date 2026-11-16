@@ -143,7 +143,7 @@ const modules = [
         name: "Uriel MacGillivary",
         title: "E-RYT 500",
         bio: "Uriel is a dedicated yoga teacher and spiritual guide who brings deep wisdom and compassion to her teaching. With her E-RYT 500 certification, she has extensive experience in guiding students through transformational yoga journeys.",
-        image: "/images-in-use/teachers-used/uriel-macgillivary-headshot.jpg"
+        image: "/images-in-use/teachers-used/uriel-macgillivary-bio-2026.jpg"
     },
   ];
 

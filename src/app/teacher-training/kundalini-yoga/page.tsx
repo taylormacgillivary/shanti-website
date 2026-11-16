@@ -48,7 +48,7 @@ const curriculum = [
         name: "Uriel MacGillivary",
         title: "E-RYT 500 Hour, Reiki Master",
         bio: "Uriel is a yoga teacher, an entrepreneur, and a leader of transformational Yoga teacher trainings and retreats across the Globe. She is the founder of Shanti Yoga Studios and the Shanti Traditional School of Yoga based in Halifax, Nova Scotia. Having held senior management and marketing roles in Corporate Canada for twenty years she answered the call to become a yoga teacher. A life-changing journey to India to study the ancient teachings would transform her life. Overnight she walked away from everything that she knew and started a phase in her life that would take her on the adventure of a lifetime. Stepping into her true purpose she recognized that students longed for the same deep transformation in their lives. Her studios and teaching philosophy are guided by the values of the time-honored wisdom teachings of the yoga tradition. Led by masters such as the late Georg Feurerstein, of the Traditional School of Yoga and world-renowned yoga and meditation teacher Rod Stryker she is a student for life. Having studied Tantra, Vinyasa Krama, and Iyengar yoga, she brings a multi-disciplinary approach to her teaching. My vision is clear she says: 'I believe in the power of yoga to transform lives and inspire students to awaken their souls calling'.",
-        image: "/images-in-use/teachers-used/uriel-macgillivary.jpg"
+        image: "/images-in-use/teachers-used/uriel-macgillivary-bio-2026.jpg"
     },
     {
         name: "Nikki Martin",

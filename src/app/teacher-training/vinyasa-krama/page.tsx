@@ -48,7 +48,7 @@ const curriculum = [
         name: "Uriel MacGillivary",
         title: "",
         bio: "Uriel is a yoga teacher, an entrepreneur, and a leader of transformational Yoga teacher trainings and retreats across the Globe. She is the founder of Shanti Yoga Studios and the Shanti Traditional School of Yoga based in Halifax, Nova Scotia.",
-        image: "/images-in-use/teachers-used/uriel-macgillivary.jpg"
+        image: "/images-in-use/teachers-used/uriel-macgillivary-bio-2026.jpg"
     },
     {
         name: "Nikki Martin",

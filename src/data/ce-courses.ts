@@ -283,7 +283,7 @@ export const ceCourses: CeCourse[] = [
       },
       {
         name: "Uriel MacGillivary",
-        image: "/images-in-use/teachers-used/uriel-macgillivary.jpg",
+        image: "/images-in-use/teachers-used/uriel-macgillivary-bio-2026.jpg",
         role: "Founder, E-RYT 500",
         imageSize: 150,
         bio: [

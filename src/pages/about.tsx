@@ -98,7 +98,7 @@ const AboutPage: NextPage = () => {
               </p>
             </div>
             <div className="flex justify-center">
-              <Image src="/images-in-use/teachers-used/uriel-macgillivary-headshot.jpg" alt="Uriel MacGillivary" width={400} height={400} className="rounded-lg shadow-lg" />
+              <Image src="/images-in-use/teachers-used/uriel-macgillivary-bio-2026.jpg" alt="Uriel MacGillivary" width={400} height={400} className="rounded-lg shadow-lg" />
             </div>
           </div>
         </div>
