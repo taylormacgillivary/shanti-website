@@ -185,5 +185,60 @@ export async function checkSubscription(email: string, listId: string) {
   }
 }
 
+type TagSignupStatus = 'requested' | 'already-requested' | 'pending' | 'resubscribe' | 'unavailable';
+
+interface MailchimpApiError {
+  status?: number;
+  response?: { body?: { title?: string; detail?: string } };
+}
+
+/** Create a new subscriber or apply a request tag without updating an existing profile. */
+export async function tagSignup({
+  email,
+  firstName,
+  listId,
+  tag,
+}: { email: string; firstName: string; listId: string; tag: string }): Promise<TagSignupStatus> {
+  if (!process.env.MAILCHIMP_API_KEY || !process.env.MAILCHIMP_SERVER_PREFIX) {
+    throw new Error('Mailchimp credentials are not configured');
+  }
+  ensureMailchimpConfigured();
+
+  const lookup = () => mailchimp.lists.getListMember(listId, email, { fields: ['status', 'tags'] });
+  let member;
+  try {
+    member = await lookup();
+  } catch (error) {
+    if ((error as MailchimpApiError).status !== 404) throw error;
+
+    try {
+      member = await mailchimp.lists.addListMember(listId, {
+        email_address: email,
+        status: 'subscribed',
+        merge_fields: { FNAME: firstName },
+      });
+    } catch (addError) {
+      const { status, response } = addError as MailchimpApiError;
+      const { title, detail } = response?.body ?? {};
+      if (/compliance state|resubscribe|permanently deleted/i.test(`${title} ${detail}`)) {
+        return 'resubscribe';
+      }
+      if (status !== 400 || title !== 'Member Exists') throw addError;
+      // A concurrent signup created this contact after the first lookup.
+      member = await lookup();
+    }
+  }
+
+  if (member.status === 'pending') return 'pending';
+  if (member.status === 'unsubscribed' || member.status === 'archived') return 'resubscribe';
+  if (member.status !== 'subscribed') return 'unavailable';
+  if ('tags' in member && member.tags?.some(({ name }) => name === tag)) return 'already-requested';
+
+  await mailchimp.lists.updateListMemberTags(listId, email, {
+    tags: [{ name: tag, status: 'active' }],
+  });
+  return 'requested';
+}
+
 export default mailchimp;
 

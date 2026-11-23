@@ -1,4 +1,5 @@
 import { CoursePage } from "@/components/course-page";
+import { YttInfoPackageSignup } from "@/components/ytt-info-package-signup";
 import { Heart, Leaf, BookOpen, Users, Sun, Star } from "lucide-react";
 
 const whoIsThisFor = [
@@ -188,8 +189,7 @@ export default function YTT200HourPage() {
             imageTwo="/images-in-use/12.jpg"
             imageThree="/images-in-use/20.jpg"
             showInfoPackageCapture={true}
-            infoPackageTrainingType="ytt-200-hour"
-            infoPackageDownloadHref="/ytt-2027-info-package.pdf"
+            infoPackageSignup={<YttInfoPackageSignup />}
             whoIsThisFor={whoIsThisFor}
             curriculum={modules}
             curriculumTitle="Course Curriculum"

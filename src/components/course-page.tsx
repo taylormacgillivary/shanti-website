@@ -57,6 +57,7 @@ interface CoursePageProps {
     showInfoPackageCapture?: boolean;
     infoPackageTrainingType?: string;
     infoPackageDownloadHref?: string;
+    infoPackageSignup?: ReactNode;
     whoIsThisFor?: WhoIsThisFor[];
     learningOutcomes?: string[];
     curriculum: Module[];
@@ -95,6 +96,7 @@ export function CoursePage({
     showInfoPackageCapture,
     infoPackageTrainingType,
     infoPackageDownloadHref,
+    infoPackageSignup,
     whoIsThisFor,
     learningOutcomes,
     curriculum,
@@ -215,14 +217,14 @@ export function CoursePage({
                                                 : "Get the complete info package delivered to your inbox:"}
                                         </p>
                                     </div>
-                                    {infoPackageDownloadHref ? (
+                                    {infoPackageSignup ?? (infoPackageDownloadHref ? (
                                         <Button asChild size="lg" className="w-full h-auto min-h-11 py-3 whitespace-normal text-center gradient-sage hover:opacity-90 text-white">
                                             <a href={infoPackageDownloadHref} download>Download the Info Package (PDF)</a>
                                         </Button>
                                     ) : <InfoPackageEmailCapture
                                         trainingType={infoPackageTrainingType}
                                         buttonText="Send Me the Info Package"
-                                    />}
+                                    />)}
                                 </div>
                             </div>
                         )}
@@ -559,14 +561,14 @@ export function CoursePage({
                                             : "Get the complete info package delivered to your inbox:"}
                                     </p>
                                 </div>
-                                {infoPackageDownloadHref ? (
+                                {infoPackageSignup ?? (infoPackageDownloadHref ? (
                                     <Button asChild size="lg" className="w-full h-auto min-h-11 py-3 whitespace-normal text-center gradient-sage hover:opacity-90 text-white">
                                         <a href={infoPackageDownloadHref} download>Download the Info Package (PDF)</a>
                                     </Button>
                                 ) : <InfoPackageEmailCapture
                                     trainingType={infoPackageTrainingType}
                                     buttonText="Send Me the Info Package"
-                                />}
+                                />)}
                             </div>
                         </div>
                     )}
