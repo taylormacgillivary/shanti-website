@@ -60,9 +60,9 @@ const teachers = [
     bio: "In Fall of 2009 Emilie completed a 200 hour, Yoga Alliance certified teacher training in Edmonton. She believes the person she was then was broken down into many pieces and re-sculpted. The new insight, and perspective gained, also brought acceptance of who she is and the desire to guide others on this path of self-awareness, acceptance and compassion."
   },
   {
-    name: "Paighton Arsenault",
+    name: "Paighton Arseneault",
     title: "Social Media Coordinator",
-    image: "/images-in-use/teachers-used/paighton-arsenault.jpg",
+    image: "/images-in-use/teachers-used/paighton-arseneault-bio-2026.png",
     bio: "Paighton's yoga journey started several years ago at Shanti Halifax. Arriving with few expectations, and leaving fulfilled with a newfound sense of peace, she knew she had found a home in this community. After several years of dreaming to do so, Paighton completed her 200HR Yoga Teacher Training with Shanti in the Fall of 2021, and shortly after her 75HR Yin Teacher Training with Shanti in the Winter of 2022. She is beyond thrilled to share her passion further among the Shanti community."
   },
   {
@@ -255,8 +255,9 @@ export default function TeachersPage() {
     // Check if there's a hash in the URL and scroll to/expand that teacher
     if (typeof window !== 'undefined' && window.location.hash) {
       const hash = window.location.hash.substring(1); // Remove the #
-      setTargetTeacherSlug(hash);
-      const targetElement = teacherRefs.current[hash];
+      const slug = hash === "paighton-arsenault" ? "paighton-arseneault" : hash;
+      setTargetTeacherSlug(slug);
+      const targetElement = teacherRefs.current[slug];
       if (targetElement) {
         // Small delay to ensure page is fully loaded
         setTimeout(() => {

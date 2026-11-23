@@ -273,8 +273,8 @@ export const ceCourses: CeCourse[] = [
     instructorsHeading: "Meet Your Instructors",
     instructors: [
       {
-        name: "Paighton Arsenault",
-        image: "/images-in-use/teachers-used/paighton-arsenault.jpg",
+        name: "Paighton Arseneault",
+        image: "/images-in-use/teachers-used/paighton-arseneault-bio-2026.png",
         role: "Social Media Coordinator & Teacher",
         imageSize: 150,
         bio: [
