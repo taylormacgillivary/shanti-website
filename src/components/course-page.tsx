@@ -122,6 +122,8 @@ export function CoursePage({
     fullTuitionDisclaimer,
     fullRegularTuitionDisclaimer,
 }: CoursePageProps) {
+    const regularTuition = investment?.tuition.toLocaleString("en-CA");
+
     const renderBadges = () => {
         if (!ceCredits && !isYogaAlliance && !showYinApplication) return null;
         return (
@@ -463,12 +465,12 @@ export function CoursePage({
                              </p>
                              {investment.earlyBirdTuition && investment.earlyBirdDate && 
                                 <p className="text-stone-600">
-                                    Early bird pricing until {investment.earlyBirdDate}. <strong>Regular price ${investment.tuition}</strong>.
+                                    Early bird pricing until {investment.earlyBirdDate}. <strong>Regular price ${regularTuition}</strong>.
                                 </p>
                              }
                              {investment.earlyBirdTuition && !investment.earlyBirdDate && 
                                 <p className="text-stone-600">
-                                    Early bird pricing. <strong>Regular price ${investment.tuition}</strong>.
+                                    Early bird pricing. <strong>Regular price ${regularTuition}</strong>.
                                 </p>
                              }
                              {investment.graduateTuition &&
@@ -498,7 +500,7 @@ export function CoursePage({
                          <div className="w-full md:w-1/3 p-8 bg-stone-100 rounded-lg shadow-lg text-center flex flex-col">
                              <h3 className="text-2xl font-bold">Full Tuition</h3>
                              <p className="text-5xl font-extrabold text-sage-green my-4">
-                                 ${investment.tuition}
+                                 ${regularTuition}
                              </p>
                              <p className="text-stone-600">
                                  Use this link if you signed up after {investment.earlyBirdDate || "the early bird date"}.
