@@ -244,6 +244,13 @@ const teachers = [
     image: "/images-in-use/teachers-used/sarah-mason.jpeg",
     objectPosition: "object-[50%_60%]",
     bio: "Sarah is a comprehensively trained STOTT Pilates instructor, certified yoga instructor, Pre- and Postnatal Corrective Exercise Specialist (PCES), and Functional Range Conditioning (FRC) mobility specialist. She believes movement should help us feel more capable, connected, and at home in our bodies throughout every stage of life.\nHer breath-led classes blend strength, mobility, and stability with thoughtful cueing and a sense of curiosity. Her background in both Pilates and yoga influences the way she teaches, bringing together precise, intentional movement with breath, body awareness, and space to explore."
+  },
+  {
+    name: "Abra Morrison",
+    title: "Teacher",
+    image: "/images-in-use/teachers-used/abra-morrison.jpg",
+    objectPosition: "object-[50%_35%]",
+    bio: "Abra’s passion for movement began at the age of three when she first discovered dance. By twelve, she had incorporated yoga into her training, beginning a lifelong journey of exploring the connection between movement, breath, and well-being.\n\nIn 2014, Abra completed both her 200-hour and 500-hour Hatha Vinyasa Yoga Teacher Training at T.A.Y.S. (Therapeutic Approach Yoga Studio) in Halifax, Nova Scotia. She later became an integral part of the T.A.Y.S. teacher training team, serving as a faculty member for both the 200-hour and 500-hour programs, as well as a program coordinator.\n\nHer dedication to learning extends beyond the yoga studio. Abra holds a Bachelor of Fine Arts in Contemporary Dance, a degree in Child and Youth Care, and a Business degree specializing in Accounting and Human Resources. Her diverse educational background brings a unique blend of creativity, knowledge, and understanding to her teaching.\n\nWith a strong foundation in anatomy, alignment, and mindful movement, Abra creates classes that are both engaging and accessible. Her teaching emphasizes the connection between breath and movement, encouraging students to explore their abilities, build confidence, and discover their own potential.\n\nFrom gentle Chair Yoga and restorative Yin to dynamic Power Yoga and advanced practices, Abra enjoys teaching a wide range of styles. Above all, she strives to create a welcoming, supportive, and inclusive environment where students of all levels feel comfortable, challenged, and empowered in their practice."
   }
 ];
 
