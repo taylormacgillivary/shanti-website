@@ -79,7 +79,7 @@ const teachers = [
         name: "Stephanie Morton",
         title: "",
         bio: "Stephanie Morton has been teaching yoga since 2011. A long-distance runner and running coach, she has worked with many endurance athletes and has a particular interest in healthy aging, functional movement, and sustainable practice.\nStephanie’s approach is pragmatic and accessible while remaining grounded in traditional yoga teachings and philosophy. Her classes thoughtfully combine asana and functional movement with pranayama and meditation to support students both on and off the mat. She also specializes in prenatal and postnatal yoga.\nAs one of a handful of actively teaching Yoga Medicine® Therapeutic Specialists in Canada, Stephanie has completed advanced training in anatomy, physiology, therapeutic applications of yoga, and evidence-informed movement practices. At Shanti, she is actively involved in the 200-hour teacher training program and leads courses in the 500-hour program, including Pranayama and Myofascial Release. She also leads Shanti’s teaching mentorship program, supporting teachers as they develop their confidence, knowledge, and authentic teaching voice.",
-        image: "/images-in-use/teachers-used/stephanie-morton.jpg"
+        image: "/images-in-use/teachers-used/stephanie-morton-bio-2026.jpg"
     },
 ];
 

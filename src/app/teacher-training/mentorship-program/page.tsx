@@ -101,11 +101,11 @@ export default function MentorshipProgramPage() {
                              <div className="bg-white p-6 rounded-lg shadow-sm">
                                 <div className="flex flex-col items-center text-center">
                                     <Image
-                                        src="/images-in-use/teachers-used/stephanie-morton.jpg"
+                                        src="/images-in-use/teachers-used/stephanie-morton-bio-2026.jpg"
                                         alt="Stephanie Morton"
                                         width={120}
                                         height={120}
-                                        className="rounded-full mb-4"
+                                        className="size-[120px] rounded-full object-cover mb-4"
                                     />
                                     <h3 className="text-xl font-bold">Stephanie Morton</h3>
                                     <p className="text-sage-green font-semibold">Mentorship Program Lead</p>

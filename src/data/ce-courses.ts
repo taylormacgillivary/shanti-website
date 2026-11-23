@@ -231,7 +231,7 @@ export const ceCourses: CeCourse[] = [
     instructors: [
       {
         name: "Stephanie Morton",
-        image: "/images-in-use/teachers-used/stephanie-morton.jpg",
+        image: "/images-in-use/teachers-used/stephanie-morton-bio-2026.jpg",
         bio: [
           "Stephanie brings a wealth of experience in understanding the challenges that yoga teachers face in maintaining their own well-being while supporting others. Her approach combines practical wisdom with compassionate guidance, drawing from her own journey of navigating the demands of teaching.",
           "With a deep understanding of how the very practice meant to heal can sometimes become a source of stress, Stephanie offers valuable insights into creating sustainable, joy-filled teaching practices that honor both teacher and student needs.",
