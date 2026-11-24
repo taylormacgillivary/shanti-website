@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/button";
 import PastRetreatsMap from "@/components/ui/PastRetreatsMap";
 
 const pastRetreats = [
+  { name: "Patagonia, Argentina", image: "/images-in-use/Retreats/patagonia-retreat-2027.jpg", upcoming: true },
+  { name: "Malta", image: "/images-in-use/malta-3.jpg" },
   { name: "Kerala, India", image: "/images-in-use/Retreats/kerala-india.jpeg" },
   { name: "Bali", image: "/images-in-use/Retreats/Bali.jpg" },
   { name: "South of France", image: "/images-in-use/Retreats/south-france.avif" },
@@ -26,6 +28,8 @@ const pastRetreats = [
 ];
 
 const retreatToCountryCode: { [key: string]: string } = {
+  "Malta": "mt",
+  "Patagonia, Argentina": "ar",
   "Kerala, India": "in",
   "Bali": "id",
   "South of France": "fr",
@@ -120,41 +124,6 @@ export default function RetreatsPage() {
         </div>
       </section>
 
-      <section className="py-24 bg-gradient-to-b from-background to-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="gradient-sage-text">Malta</span> 2026
-            </h2>
-
-            <p className="text-2xl md:text-3xl font-semibold text-foreground mb-10">
-              October 23-26, 2026
-            </p>
-
-            <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-8">
-              <Image
-                src="/images-in-use/malta-3.jpg"
-                alt="Malta retreat destination"
-                fill
-                sizes="(max-width: 768px) 100vw, 768px"
-                className="object-cover"
-              />
-            </div>
-
-            <p className="text-2xl md:text-3xl font-bold text-black">
-              Two spaces left. Please contact{" "}
-              <a
-                href="mailto:ujmacgillivary@gmail.com?subject=Malta%20Retreat%20Inquiry"
-                className="text-sage-green hover:text-sage-green/80 underline"
-              >
-                Uriel
-              </a>{" "}
-              to snag one of the last spots!
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* Past Retreats Section */}
       <section className="py-24 bg-gradient-to-b from-muted/30 to-background">
         <div className="container mx-auto px-4">
@@ -166,8 +135,7 @@ export default function RetreatsPage() {
               </span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              We&apos;ve had the privilege of taking yogis on incredible adventures to every corner of the globe. 
-              Explore our past retreats through our photo gallery or on the world map.
+              Explore our past and upcoming retreat destinations in the photo gallery and on the world map.
             </p>
           </div>
           
@@ -191,8 +159,8 @@ export default function RetreatsPage() {
           <div className="mt-8">
             {activeTab === 'photos' && (
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                {pastRetreats.map((retreat, index) => (
-                  <div key={index} className="relative aspect-square rounded-xl overflow-hidden group">
+                {pastRetreats.map((retreat) => (
+                  <div key={retreat.name} className="relative aspect-square rounded-xl overflow-hidden group">
                     <Image
                       src={retreat.image}
                       alt={`${retreat.name} Retreat`}
@@ -201,7 +169,10 @@ export default function RetreatsPage() {
                       className="object-cover transition-transform duration-300 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-black/0" />
-                    <div className="absolute bottom-4 left-4 text-white">
+                    <div className="absolute inset-x-4 bottom-4 text-white">
+                      {retreat.upcoming && (
+                        <Badge variant="secondary" className="mb-2">Upcoming</Badge>
+                      )}
                       <h3 className="text-xl font-bold">{retreat.name}</h3>
                     </div>
                   </div>
